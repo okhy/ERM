@@ -8,6 +8,8 @@ import MethodComponent from './components/MethodComponent/MethodComponent'
 
 ReactDOM.render(
   <div className="component-wrapper">
+    <h1>Hello React</h1>
+    <br/>
     <FunctionalComponent/>
     <br/>
     <ClassComponent/>
