@@ -1,15 +1,32 @@
 const webpack = require('webpack')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   devtool: 'inline-source-map',
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true
+            },
+          }
+        ],
+      },
     ]
   },
   plugins: [
@@ -18,15 +35,9 @@ module.exports = {
       'ReactDOM': 'react-dom',
     })
   ],
-  resolve: {
-    extensions: ['*', '.js', '.jsx']
-  },
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle.js'
-  },
-  devServer: {
-    contentBase: './dist'
   }
 };
