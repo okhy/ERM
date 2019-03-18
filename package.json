@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --watch --mode development",
-    "prod": "webpack --mode production",
+    "dev": "webpack --watch --env.mode=development",
+    "prod": "webpack --env.mode=production",
     "test": "jest --watchAll"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
     "jest": "^24.4.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",

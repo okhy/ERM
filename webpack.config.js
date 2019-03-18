@@ -1,8 +1,12 @@
 const webpack = require('webpack')
 
-module.exports = {
+module.exports = (env, options) => {
+  const isProduction = env.mode === "production"
+
+  const config = {
   entry: './src/index.jsx',
-  devtool: 'inline-source-map',
+  mode: isProduction ? "production" : "development",
+  devtool: isProduction ? "none" : "source-map",
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },
@@ -27,17 +31,35 @@ module.exports = {
           }
         ],
       },
+      {
+        test: /\.(ttf|eot|svg|woff|png)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]?[hash]'
+          }
+        }]
+      }
     ]
   },
   plugins: [
     new webpack.ProvidePlugin({
       'React': 'react',
       'ReactDOM': 'react-dom',
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
+  devServer: {
+    hot: true,
+    contentBase: "./dist"
+  },
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle.js'
   }
-};
+}
+
+return config;
+
+}
