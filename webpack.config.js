@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   entry: './src/index.js',
   devtool: 'inline-source-map',
@@ -10,6 +12,12 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      'React': 'react',
+      'ReactDOM': 'react-dom',
+    })
+  ],
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },
