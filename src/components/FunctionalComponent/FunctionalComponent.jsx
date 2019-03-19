@@ -1,3 +1,3 @@
-const FunctionalComponent = () => <span>Functional Component contents.</span>
+const FunctionalComponent = () => <span>Functional Component contents.</span>;
 
-export default FunctionalComponent
+export default FunctionalComponent;
