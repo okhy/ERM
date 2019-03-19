@@ -1,12 +1,12 @@
-import {Component} from 'react'
+import { Component } from "react";
 
 class PureComponent extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
   }
-  render(){
-    return <span>Pure Component contents.</span>
+  render() {
+    return <span>Pure Component contents.</span>;
   }
 }
 
-export default PureComponent
+export default PureComponent;
