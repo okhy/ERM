@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
@@ -8,20 +7,12 @@
     "lib": ["es5", "es6", "es7", "es2017", "dom"],
     "jsx": "react",
     "pretty": true,
-    "allowJs": false,
-    "moduleResolution": "node",
-    "rootDirs": ["src", "stories"],
-    "baseUrl": "src",
-    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "declaration": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "noUnusedLocals": true
+    // "experimentalDecorators": true
   },
   "include": ["./src/**/*"],
   "exclude": ["./node_modules"]

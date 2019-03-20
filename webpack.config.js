@@ -40,10 +40,10 @@ module.exports = (env, options) => {
       ]
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
-    devServer: {
-      hot: true,
-      contentBase: "./dist"
-    },
+    // devServer: {
+    //   hot: true,
+    //   contentBase: "./dist"
+    // },
     output: {
       path: __dirname + "/dist",
       publicPath: "/",
