@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": { "*": ["types/*"] },
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
