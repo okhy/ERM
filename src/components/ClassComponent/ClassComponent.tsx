@@ -1,12 +1,13 @@
 import * as React from "react";
 import * as styles from "./styles.css";
 
-class ClassComponent extends React.Component<any, {}> {
+class ClassComponent extends React.Component<{ content?: string }, {}> {
   constructor(props: any) {
     super(props);
   }
   render() {
-    return <span className={styles.main}>Class Component contents.</span>;
+    const content = this.props.content && this.props.content;
+    return <span className={styles.main}>{content}</span>;
   }
 }
 
