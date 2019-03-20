@@ -1,6 +1,6 @@
-import { Component } from "react";
+import * as React from "react";
 
-class PureComponent extends Component {
+class PureComponent extends React.PureComponent {
   constructor() {
     super();
   }
