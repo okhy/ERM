@@ -4,7 +4,7 @@ module.exports = (env, options) => {
   const isProduction = env.mode === "production";
 
   const config = {
-    entry: "./src/index.jsx",
+    entry: "./src/index.tsx",
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? "none" : "source-map",
     resolve: {
