@@ -1,4 +1,7 @@
+# General ignore resources:
 /node_modules/
+
+# Build files:
 /dist/bundle.js.map
 /dist/bundle.js
 /dist/*.hot-update.*
