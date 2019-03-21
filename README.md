@@ -1,4 +1,4 @@
-# Epam React Mentorin Readme file
+# Epam React Mentoring Readme file
 
 ## Stack / tooling
 
