@@ -3,7 +3,7 @@ import * as React from "react";
 import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
 // interface
 interface IMoviesGird {
-  similarResults: false;
+  similarResults?: boolean;
   movies?: any[];
 }
 
