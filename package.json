@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --watch --env.mode=development",
     "prod": "webpack --env.mode=production",
-    "test": "jest --watchAll",
+    "test": "jest -o --watch --coverage",
     "storybook": "start-storybook"
   },
   "keywords": [],
