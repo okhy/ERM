@@ -9,4 +9,5 @@ describe("MovieSearch component...", () => {
 
     expect(wrapper.find(MovieSearch)).toBeTruthy();
   });
+  // todo: test value change
 });
