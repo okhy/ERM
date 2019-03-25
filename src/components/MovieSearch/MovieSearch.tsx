@@ -5,7 +5,6 @@ class MovieSearch extends React.Component<{}, { value: string }> {
     super(props);
     this.state = { value: "" };
   }
-
   handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ value: event.target.value });
   }
@@ -13,7 +12,7 @@ class MovieSearch extends React.Component<{}, { value: string }> {
     return (
       <div>
         <span>Find your movie</span>
-        <input type="text" placeholder="Movie title" onChange={this.handleChange.bind(this)} />
+        <input type="text" placeholder="Movie title" onChange={this.handleChange.bind(this)} value={this.state.value} />
         <div>
           <span>search by</span>
           <button>title</button>
