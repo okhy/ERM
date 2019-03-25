@@ -13,11 +13,7 @@ describe("LogoBar component...", () => {
   });
   it("...renders passed elements", () => {
     const TestComponent = () => <button>Test</button>;
-    const wrapper = shallow(
-      <LogoBar>
-        <TestComponent />
-      </LogoBar>
-    );
+    const wrapper = shallow(<LogoBar button={TestComponent} />);
     expect(wrapper.find(TestComponent)).toBeTruthy();
   });
 });
