@@ -8,6 +8,12 @@ module.exports = (env, options) => {
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? "none" : "source-map",
     resolve: {
+      alias: {
+        Components: path.resolve(__dirname, "src/components"),
+        Views: path.resolve(__dirname, "src/views"),
+        HOC: path.resolve(__dirname, "src/hoc"),
+        Index: path.resolve(__dirname, "src")
+      },
       extensions: ["*", ".js", ".jsx", ".ts", ".tsx"]
     },
     module: {
