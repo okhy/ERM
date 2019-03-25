@@ -14,7 +14,7 @@ class withError extends React.Component<IwithError, { hasError: boolean }> {
     return { hasError: true };
   }
 
-  voidcomponentDidCatch(error: string, errorInfo: string): void {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     console.log(error, errorInfo);
   }
 
