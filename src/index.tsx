@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 // components
-// hoc
 import WithError from "./components/WithError/WithError";
 
 ReactDOM.render(

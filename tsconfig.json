@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "paths": { "*": ["types/*"] },
+    "paths": {
+      "*": ["types/*"],
+      "Components/*": ["components/*"],
+      "Views/*": ["views/*"],
+      "HOC/*": ["hoc/*"],
+      "Index/*": ["*"]
+    },
+    "moduleResolution": "node",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
