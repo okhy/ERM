@@ -1,4 +1,4 @@
-Rimport * as React from "react";
+import * as React from "react";
 
 class WithError extends React.Component<{}, { hasError: boolean }> {
   constructor(props: {}) {
