@@ -1,11 +1,7 @@
 import * as React from "react";
 
-interface IwithError {
-  Component: React.Component | React.FunctionComponent;
-}
-
-class withError extends React.Component<IwithError, { hasError: boolean }> {
-  constructor(props: IwithError) {
+class WithError extends React.Component<{}, { hasError: boolean }> {
+  constructor(props: {}) {
     super(props);
     this.state = { hasError: false };
   }
@@ -22,8 +18,8 @@ class withError extends React.Component<IwithError, { hasError: boolean }> {
     if (this.state.hasError) {
       return <span>Something went wrong</span>;
     }
-    return this.props.Component;
+    return this.props.children;
   }
 }
 
-export default withError;
+export default WithError;
