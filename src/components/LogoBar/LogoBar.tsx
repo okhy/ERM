@@ -1,11 +1,16 @@
 import * as React from "react";
 // css
 import * as styles from "./LogoBar.styles.css";
+// interface
+interface ILogoBar {
+  children?: React.ReactNode;
+}
 
-const Logo = () => (
+const LogoBar = (props: ILogoBar) => (
   <div className={styles.main}>
     <span className={styles.logo}>netflixroulette</span>
+    {props.children && <div>{props.children}</div>}
   </div>
 );
 
-export default Logo;
+export default LogoBar;

@@ -3,12 +3,15 @@ import * as React from "react";
 import LogoBar from "./../LogoBar/LogoBar";
 
 interface IHeader {
+  actionItem?: React.ReactNode;
   children?: React.ReactNode;
 }
 
 const Header = (props: IHeader) => (
   <div>
-    <LogoBar />
+    <LogoBar> 
+      {props.actionItem && props.actionItem}
+    </LogoBar>
     {props.children}
   </div>
 );

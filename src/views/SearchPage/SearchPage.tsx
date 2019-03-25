@@ -2,6 +2,7 @@ import * as React from "react";
 // components
 import Header from "./../../components/Header/Header";
 import MovieSearch from "./../../components/MovieSearch/MovieSearch";
+import MovieGrid from "./../../components/MovieGrid/MovieGrid";
 import Footer from "./../../components/Footer/Footer";
 
 const SearchPage = () => (
@@ -9,7 +10,9 @@ const SearchPage = () => (
     <Header>
       <MovieSearch />
     </Header>
-    <div />
+    <div>
+      <MovieGrid />
+    </div>
     <Footer />
   </div>
 );

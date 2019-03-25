@@ -11,4 +11,13 @@ describe("LogoBar component...", () => {
     expect(wrapper.find(LogoBar)).toBeTruthy();
     // expect(wrapper.hasClass(styles.main)).toBeTruthy();
   });
+  it("...renders passed elements", () => {
+    const TestComponent = () => <button>Test</button>;
+    const wrapper = shallow(
+      <LogoBar>
+        <TestComponent />
+      </LogoBar>
+    );
+    expect(wrapper.find(TestComponent)).toBeTruthy();
+  });
 });
