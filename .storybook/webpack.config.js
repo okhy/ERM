@@ -9,6 +9,10 @@ module.exports = ({ config, mode }) => {
       // Optional
       {
         loader: require.resolve("react-docgen-typescript-loader")
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader?modules&sourceMap", "typed-css-modules-loader"]
       }
     ]
   });
