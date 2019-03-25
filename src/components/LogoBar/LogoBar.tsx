@@ -1,11 +1,11 @@
 import * as React from "react";
 // css
-import * as styles from './TopBar.styles.css'
+import * as styles from "./LogoBar.styles.css";
 
-const TopBar = () => (
+const Logo = () => (
   <div className={styles.main}>
     <span className={styles.logo}>netflixroulette</span>
   </div>
 );
 
-export default TopBar;
+export default Logo;

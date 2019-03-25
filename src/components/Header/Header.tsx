@@ -1,13 +1,14 @@
 import * as React from "react";
 // components
-import TopBar from "./../TopBar/TopBar";
+import LogoBar from "./../LogoBar/LogoBar";
 
 interface IHeader {
-  children?: [React.Component | React.FunctionComponent | React.ElementType];
+  children?: React.ReactNode;
 }
+
 const Header = (props: IHeader) => (
   <div>
-    <TopBar />
+    <LogoBar />
     {props.children}
   </div>
 );
