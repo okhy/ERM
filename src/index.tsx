@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 // components
-import FunctionalComponent from "./components/FunctionalComponent/FunctionalComponent";
-import ClassComponent from "./components/ClassComponent/ClassComponent";
-import PureComponent from "./components/PureComponent/PureComponent";
-import MethodComponent from "./components/MethodComponent/MethodComponent";
+import FunctionalComponent from "Components/FunctionalComponent/FunctionalComponent";
+import ClassComponent from "Components/ClassComponent/ClassComponent";
+import PureComponent from "Components/PureComponent/PureComponent";
+import MethodComponent from "Components/MethodComponent/MethodComponent";
 
 ReactDOM.render(
   <div className="component-wrapper">

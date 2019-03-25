@@ -1,31 +1,32 @@
 const webpack = require("webpack");
+const path = require("path");
 
 module.exports = (env, options) => {
   const isProduction = env.mode === "production";
 
   const config = {
-    entry: "./src/index.tsx",
+    entry: path.resolve(__dirname, "src/index.tsx"),
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? "none" : "source-map",
     resolve: {
+      extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
         Components: path.resolve(__dirname, "src/components"),
         Views: path.resolve(__dirname, "src/views"),
         HOC: path.resolve(__dirname, "src/hoc"),
         Index: path.resolve(__dirname, "src")
-      },
-      extensions: ["*", ".js", ".jsx", ".ts", ".tsx"]
+      }
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
+          exclude: path.resolve(__dirname, "/node_modules"),
           use: ["babel-loader"]
         },
         {
           test: /\.(ts|tsx)$/,
-          exclude: /node_modules/,
+          exclude: path.resolve(__dirname, "/node_modules"),
           use: ["awesome-typescript-loader"]
         },
         {
@@ -46,16 +47,11 @@ module.exports = (env, options) => {
       ]
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
-    // devServer: {
-    //   hot: true,
-    //   contentBase: "./dist"
-    // },
     output: {
-      path: __dirname + "/dist",
+      path: path.resolve(__dirname, "/dist"),
       publicPath: "/",
       filename: "bundle.js"
     }
   };
-
   return config;
 };
