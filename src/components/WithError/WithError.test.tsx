@@ -19,5 +19,16 @@ describe("WithError component...", () => {
 
     expect(wrapper.find(TestComponent)).toBeTruthy();
   });
-  //   it("...renders an error");
+  it("...renders an error", () => {
+    const TestComponent = () => <span>Test</span>;
+
+    const wrapper = shallow(
+      <WithError>
+        <TestComponent />
+      </WithError>
+    );
+    wrapper.simulateError(new Error("test error"));
+
+    expect(wrapper.find(<span>Something went wrong</span>)).toBeTruthy();
+  });
 });
