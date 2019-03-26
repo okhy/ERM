@@ -12,5 +12,7 @@ describe("SearchPage component...", () => {
     expect(wrapper.find(SearchPage)).toBeTruthy();
     expect(wrapper.find(Header)).toBeTruthy();
     expect(wrapper.find(Footer)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
 });

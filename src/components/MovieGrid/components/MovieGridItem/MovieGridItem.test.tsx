@@ -8,5 +8,7 @@ describe("MovieGridItem component...", () => {
     const wrapper = shallow(<MovieGridItem />);
 
     expect(wrapper.find(MovieGridItem)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
 });

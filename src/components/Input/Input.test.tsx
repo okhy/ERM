@@ -8,5 +8,7 @@ describe("Input component...", () => {
     const wrapper = shallow(<Input />);
 
     expect(wrapper.find(Input)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
 });

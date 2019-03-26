@@ -10,6 +10,8 @@ describe("LogoBar component...", () => {
 
     expect(wrapper.find(LogoBar)).toBeTruthy();
     // expect(wrapper.hasClass(styles.main)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
   it("...renders passed elements", () => {
     const TestComponent = () => <button>Test</button>;

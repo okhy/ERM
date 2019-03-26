@@ -8,5 +8,7 @@ describe("MovieDetails component...", () => {
     const wrapper = shallow(<MovieDetails />);
 
     expect(wrapper.find(MovieDetails)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
 });

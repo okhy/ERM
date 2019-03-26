@@ -8,5 +8,7 @@ describe("DetailsPage component...", () => {
     const wrapper = shallow(<DetailsPage />);
 
     expect(wrapper.find(DetailsPage)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
 });

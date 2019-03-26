@@ -9,6 +9,8 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(<MovieGrid />);
 
     expect(wrapper.find(MovieGrid)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
   it("...renders sorting options", () => {
     const wrapper = shallow(<MovieGrid />);
@@ -29,7 +31,6 @@ describe("MovieGrid component...", () => {
   it("...renders error message", () => {
     const wrapper = shallow(<MovieGrid />);
 
-    expect(wrapper.find(<span>No movies :(</span>
-)).toBeTruthy();
+    expect(wrapper.find(<span>No movies :(</span>)).toBeTruthy();
   });
 });

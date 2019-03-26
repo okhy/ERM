@@ -10,6 +10,8 @@ describe("Header component...", () => {
 
     expect(wrapper.find(Header)).toBeTruthy();
     expect(wrapper.find(LogoBar)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
   it("...renders passed children", () => {
     const TestComponent = <span>Test</span>;

@@ -8,6 +8,8 @@ describe("MovieSearch component...", () => {
     const wrapper = shallow(<MovieSearch />);
 
     expect(wrapper.find(MovieSearch)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
   // todo: test value change
   it("...updates the value", () => {

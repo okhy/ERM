@@ -10,5 +10,7 @@ describe("Footer component...", () => {
 
     expect(wrapper.find(Footer)).toBeTruthy();
     expect(wrapper.find(LogoBar)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
 });

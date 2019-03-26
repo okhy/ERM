@@ -9,6 +9,8 @@ describe("WithError component...", () => {
 
     expect(wrapper.state("hasError")).toBeFalsy();
     expect(wrapper.find(WithError)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
   it("...renders children", () => {
     const TestComponent = () => <span>Test</span>;

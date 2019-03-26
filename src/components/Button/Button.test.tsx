@@ -11,5 +11,7 @@ describe("Button component...", () => {
 
     expect(wrapper.find(Button)).toBeTruthy();
     expect(wrapper.contains(label)).toBeTruthy();
+    // snapshot
+    expect(wrapper).toMatchSnapshot();
   });
 });
