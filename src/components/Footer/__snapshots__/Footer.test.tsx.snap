@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Footer component... ... matches the snapshot 1`] = `ShallowWrapper {}`;
-
-exports[`Footer component... ...matches the snapshot 1`] = `ShallowWrapper {}`;
-
-exports[`Footer component... ...renders without errors 1`] = `ShallowWrapper {}`;
