@@ -7,6 +7,7 @@ describe("WithError component...", () => {
   it("...renders without errors", () => {
     const wrapper = shallow(<WithError />);
 
+    expect(wrapper.state("hasError")).toBeFalsy();
     expect(wrapper.find(WithError)).toBeTruthy();
   });
   it("...renders children", () => {
@@ -19,16 +20,24 @@ describe("WithError component...", () => {
 
     expect(wrapper.find(TestComponent)).toBeTruthy();
   });
-  it("...renders an error", () => {
-    const TestComponent = () => <span>Test</span>;
+  describe("... handles errors by ...", () => {
+    it("... calling componentDidCatch", () => {
+      const TestComponent = () => <span>Test</span>;
+      const wrapper = shallow(
+        <WithError>
+          <TestComponent />
+        </WithError>
+      );
 
-    const wrapper = shallow(
-      <WithError>
-        <TestComponent />
-      </WithError>
-    );
-    wrapper.simulateError(new Error("test error"));
+      // mocking as jest function
+      wrapper.instance().componentDidCatch = jest.fn();
+      wrapper.simulateError(new Error());
 
-    expect(wrapper.find(<span>Something went wrong</span>)).toBeTruthy();
+      expect(wrapper.instance().componentDidCatch).toHaveBeenCalled();
+    });
+    it("... returning correct state by getDerivedStateFromError", () => {
+      const result = WithError.getDerivedStateFromError();
+      expect(result.hasError).toBe(true);
+    });
   });
 });

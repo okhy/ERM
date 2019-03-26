@@ -46,7 +46,6 @@ module.exports = (env, options) => {
         }
       ]
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()],
     output: {
       path: path.resolve(__dirname, "/dist"),
       publicPath: "/",

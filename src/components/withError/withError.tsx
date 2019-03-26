@@ -1,7 +1,7 @@
 import * as React from "react";
 
-class WithError extends React.Component<{ children?: React.ReactNode }, { hasError: boolean }> {
-  constructor(props: any) {
+class WithError extends React.Component<{}, { hasError: boolean }> {
+  constructor(props: {}) {
     super(props);
     this.state = { hasError: false };
   }
@@ -11,7 +11,7 @@ class WithError extends React.Component<{ children?: React.ReactNode }, { hasErr
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    console.log(error, errorInfo);
+    console.log(errorInfo.componentStack);
   }
 
   render() {
