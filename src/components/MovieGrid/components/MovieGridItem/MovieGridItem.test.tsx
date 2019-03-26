@@ -4,9 +4,12 @@ import { shallow } from "enzyme";
 import MovieGridItem from "./MovieGridItem";
 
 describe("MovieGridItem component...", () => {
-  it("...renders without errors", () => {
+  it("... renders without errors", () => {
     const wrapper = shallow(<MovieGridItem />);
-
     expect(wrapper.find(MovieGridItem)).toBeTruthy();
+  });
+  it("... matches snapshot", () => {
+    const wrapper = shallow(<MovieGridItem />);
+    expect(wrapper).toMatchSnapshot();
   });
 });
