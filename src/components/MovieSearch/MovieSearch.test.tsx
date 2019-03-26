@@ -4,15 +4,16 @@ import { shallow } from "enzyme";
 import MovieSearch from "./MovieSearch";
 
 describe("MovieSearch component...", () => {
-  it("...renders without errors", () => {
+  it("... renders without errors", () => {
     const wrapper = shallow(<MovieSearch />);
-
     expect(wrapper.find(MovieSearch)).toBeTruthy();
-    // snapshot
+  });
+  it("... matches snapshot", () => {
+    const wrapper = shallow(<MovieSearch />);
     expect(wrapper).toMatchSnapshot();
   });
   // todo: test value change
-  it("...updates the value", () => {
+  it("... updates the value", () => {
     const wrapper = shallow(<MovieSearch />);
 
     wrapper.find("input").simulate("change", {

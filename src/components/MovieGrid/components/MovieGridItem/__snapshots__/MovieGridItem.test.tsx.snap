@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MovieGridItem component... ... matches snapshot 1`] = `ShallowWrapper {}`;
+
 exports[`MovieGridItem component... ...renders without errors 1`] = `ShallowWrapper {}`;

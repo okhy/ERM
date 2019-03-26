@@ -4,14 +4,16 @@ import { shallow } from "enzyme";
 import WithError from "./WithError";
 
 describe("WithError component...", () => {
-  it("...renders without errors", () => {
+  it("... renders without errors", () => {
     const wrapper = shallow(<WithError />);
 
     expect(wrapper.state("hasError")).toBeFalsy();
     expect(wrapper.find(WithError)).toBeTruthy();
-    // snapshot
-    expect(wrapper).toMatchSnapshot();
   });
+  it('... matches snapshot', () => {
+    const wrapper = shallow(<WithError />);
+    expect(wrapper).toMatchSnapshot();
+  })
   it("...renders children", () => {
     const TestComponent = () => <span>Test</span>;
     const wrapper = shallow(

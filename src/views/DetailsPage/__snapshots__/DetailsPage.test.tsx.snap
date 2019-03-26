@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DetailsPage component... ... matches snapshot 1`] = `ShallowWrapper {}`;
+
 exports[`DetailsPage component... ...renders without errors 1`] = `ShallowWrapper {}`;

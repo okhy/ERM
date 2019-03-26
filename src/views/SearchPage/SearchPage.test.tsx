@@ -6,13 +6,15 @@ import Header from "./../../components/Header/Header";
 import Footer from "./../../components/Footer/Footer";
 
 describe("SearchPage component...", () => {
-  it("...renders without errors", () => {
+  it("... renders without errors", () => {
     const wrapper = shallow(<SearchPage />);
 
     expect(wrapper.find(SearchPage)).toBeTruthy();
     expect(wrapper.find(Header)).toBeTruthy();
     expect(wrapper.find(Footer)).toBeTruthy();
-    // snapshot
+  });
+  it("... matches snapshot", () => {
+    const wrapper = shallow(<SearchPage />);
     expect(wrapper).toMatchSnapshot();
   });
 });
