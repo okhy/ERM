@@ -32,17 +32,6 @@ module.exports = (env, options) => {
         {
           test: /\.css$/,
           use: ["style-loader", "css-loader?modules&sourceMap", "typed-css-modules-loader"]
-        },
-        {
-          test: /\.(ttf|eot|svg|woff|png)$/,
-          use: [
-            {
-              loader: "file-loader",
-              options: {
-                name: "[path][name].[ext]?[hash]"
-              }
-            }
-          ]
         }
       ]
     },

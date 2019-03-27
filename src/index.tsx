@@ -8,15 +8,13 @@ import SearchPage from "./views/SearchPage/SearchPage";
 import * as styles from "./global.css";
 import * as resetCSS from "./reset.css";
 /* tslint:disable */
-
 // init styles
 resetCSS.main;
 styles.main;
-// fonts.main;
 /* tslint:enable */
 
 ReactDOM.render(
-  <div className={`${styles.main} ${resetCSS.main}`}>
+  <div className="app-wrapper">
     <WithError>
       <SearchPage />
     </WithError>
