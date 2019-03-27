@@ -1,0 +1,129 @@
+/* empty class required for correct global style import */
+.main {
+  composes: main from "./reset.css";
+}
+/* global css file */
+
+:root {
+  --white: #ffffff;
+  --white-transparent: rgba(255, 255, 255, 0.95);
+  --epam-blue: #76cdd8;
+  --sharp-blue: #39c2d7;
+  --sharp-blue-light: #4ccfe4;
+  --sharp-blue-dark: #25b3c9;
+  --pale-gray: #f1f2f3;
+  --lighter-gray: #dddddd;
+  --light-gray: #cccccc;
+  --mid-gray: #aaaaaa;
+  --dark-gray: #454647;
+  --graphite: #222222;
+  --black: #000000;
+  --coral: #d35d47;
+  --coral-light: #df6954;
+  --coral-dark: #b93720;
+  --lime-green: #cedb56;
+  --lime-green-light: #d5e262;
+  --lime-green-dark: #c0ce47;
+}
+
+/**
+* Misc: global values
+*/
+
+:root {
+  --corner-radius: 8px;
+  --wide-width: 1024px;
+  --narrow-width: 480px;
+  --step-1: 4px;
+  --step-2: 8px;
+  --step-3: 12px;
+  --step-4: 16px;
+  --step-5: 20px;
+  --step-6: 24px;
+  --step-7: 28px;
+  --step-8: 32px;
+  --step-9: 36px;
+  --step-10: 40px;
+}
+
+/**
+* Typography based on modular scale.
+* Settings: 
+*   Bases: 10, 12
+*   Ratio: 1.4
+*/
+:global(.centerX) {
+  display: flex;
+  align-items: center;
+}
+:global(.centerY) {
+  display: flex;
+  justify-content: center;
+}
+
+:global(.T900) {
+  font-family: "Museo Sans Bold";
+  font-size: 24px;
+}
+
+:global(.T600) {
+  font-family: "Source Sans Pro";
+  font-size: 20px;
+}
+
+:global(.T500) {
+  font-family: "Source Sans Pro";
+  font-size: 17px;
+}
+
+:global(.T400) {
+  font-family: "Source Sans Pro";
+  font-size: 14px;
+  line-height: 1.6;
+}
+:global(.T400B) {
+  font-family: "Source Sans Pro Bold";
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+:global(.T300BL) {
+  font-family: "Source Sans Pro Black";
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+:global(.T300B) {
+  font-family: "Source Sans Pro Bold";
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+:global(.T300) {
+  font-family: "Source Sans Pro";
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+:global(.T200B) {
+  font-family: "Source Sans Pro Bold";
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+:global(.T200) {
+  font-family: "Source Sans Pro";
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+:global(.T100) {
+  font-family: "Source Sans Pro";
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+:global(.pullRight) {
+  position: absolute;
+  right: 0;
+}

@@ -4,9 +4,19 @@ import * as ReactDOM from "react-dom";
 import WithError from "./components/WithError/WithError";
 // views
 import SearchPage from "./views/SearchPage/SearchPage";
+// assets
+import * as styles from "./global.css";
+import * as resetCSS from "./reset.css";
+/* tslint:disable */
+
+// init styles
+resetCSS.main;
+styles.main;
+// fonts.main;
+/* tslint:enable */
 
 ReactDOM.render(
-  <div className="erm-main-wrapper">
+  <div className={`${styles.main} ${resetCSS.main}`}>
     <WithError>
       <SearchPage />
     </WithError>
