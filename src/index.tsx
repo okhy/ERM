@@ -7,14 +7,12 @@ import SearchPage from "./views/SearchPage/SearchPage";
 // assets
 import * as styles from "./global.css";
 import * as resetCSS from "./reset.css";
-/* tslint:disable */
-// init styles
-resetCSS.main;
-styles.main;
-/* tslint:enable */
+// init styles for whole app
+styles;
+resetCSS;
 
 ReactDOM.render(
-  <div className="app-wrapper">
+  <div className="app-container">
     <WithError>
       <SearchPage />
     </WithError>

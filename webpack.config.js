@@ -31,7 +31,21 @@ module.exports = (env, options) => {
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader?modules&sourceMap", "typed-css-modules-loader"]
+          use: [
+            { loader: "style-loader" },
+            {
+              loader: "css-loader",
+              options: {
+                import: true,
+                modules: true,
+                sourceMap: true,
+                // camelCase: true,
+                importLoaders: 1
+                // exportOnlyLocals: true
+              }
+            },
+            { loader: "typed-css-modules-loader" }
+          ]
         }
       ]
     },

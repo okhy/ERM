@@ -4,7 +4,8 @@
 }
 
 .logo {
+  composes: Typo-Big from global;
   font-weight: bold;
   font-family: sans-serif;
-  color: red;
+  color: var(--color-negative);
 }
