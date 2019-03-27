@@ -1,21 +1,42 @@
 const path = require("path");
-module.exports = ({ config, mode }) => {
-  config.module.rules.push({
-    test: /\.(ts|tsx)$/,
-    use: [
+
+module.exports = {
+  resolve: {
+    extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+    alias: {
+      Components: path.resolve(__dirname, "./../src/components"),
+      Views: path.resolve(__dirname, "./../src/views"),
+      HOC: path.resolve(__dirname, "./../src/hoc"),
+      Index: path.resolve(__dirname, "./../src")
+    }
+  },
+  module: {
+    rules: [
       {
-        loader: require.resolve("awesome-typescript-loader")
+        test: /\.(js|jsx)$/,
+        exclude: path.resolve(__dirname, "/node_modules"),
+        use: ["babel-loader"]
       },
-      // Optional
       {
-        loader: require.resolve("react-docgen-typescript-loader")
+        test: /\.(ts|tsx)$/,
+        exclude: path.resolve(__dirname, "/node_modules"),
+        use: ["awesome-typescript-loader"]
       },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader?modules&sourceMap", "typed-css-modules-loader"]
+      },
+      {
+        test: /\.(ttf|eot|svg|woff|png)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[path][name].[ext]?[hash]"
+            }
+          }
+        ]
       }
     ]
-  });
-  config.resolve.extensions.push(".ts", ".tsx");
-  return config;
+  }
 };
