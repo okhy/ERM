@@ -2,7 +2,7 @@
   padding: 10px 20px;
   border-radius: 4px;
   border-style: none;
-  color: black;
+  color: #1e0f75;
 }
 .label {
   font-weight: bold;
@@ -14,21 +14,25 @@
   background-color: #1e0f75;
   color: white;
 }
-.primary:hover {
+.primary:hover,
+.grey:hover {
   background-color: #49e4ff;
+  color: #1e0f75;
 }
-.primary:active {
+.primary:active,
+.grey:active {
   background-color: #11c3e2;
+  color: #1e0f75;
 }
 .negative {
-  background-color: #ff3751;
+  background-color: #df102c;
   color: white;
 }
 .negative:hover {
-  background-color: #ff1938;
+  background-color: #ff3751;
 }
 .negative:active {
-  background-color: #df102c;
+  background-color: #ff566c;
 }
 .disabled {
 }
