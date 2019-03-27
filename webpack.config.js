@@ -46,6 +46,10 @@ module.exports = (env, options) => {
         }
       ]
     },
+    devServer: {
+      contentBase: path.resolve(__dirname, "dist"),
+      port: 8080
+    },
     output: {
       path: path.resolve(__dirname, "/dist"),
       publicPath: "/",

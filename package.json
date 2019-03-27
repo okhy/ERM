@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --watch --env.mode=development",
+    "dev": "webpack-dev-server --watch --env.mode=development",
     "prod": "webpack --env.mode=production",
     "test": "jest -o --watch",
     "fullTest": "jest --watchAll --coverage",
