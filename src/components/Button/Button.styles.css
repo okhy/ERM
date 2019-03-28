@@ -8,7 +8,7 @@
 .label {
   composes: Typo-Base from global;
 }
-.grey {
+.basic {
   background-color: var(--color-gray-pale);
 }
 .primary {
@@ -16,12 +16,12 @@
   color: var(--color-white);
 }
 .primary:hover,
-.grey:hover {
+.basic:hover {
   background-color: var(--color-secondary);
   color: var(--color-primary);
 }
 .primary:active,
-.grey:active {
+.basic:active {
   background-color: var(--color-secondary-darker);
   color: var(--color-primary);
 }
@@ -36,6 +36,6 @@
   background-color: var(--color-negative-lighter);
 }
 .disabled {
-  composes: grey;
+  background-color: var(--color-gray-pale);
   color: var(--color-gray-light);
 }

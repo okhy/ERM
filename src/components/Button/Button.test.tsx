@@ -16,21 +16,25 @@ describe("Button component...", (): void => {
     const wrapper = shallow(<Button label="test" />);
     expect(wrapper).toMatchSnapshot();
   });
-  it("... renders default button", (): void => {
+  it("... renders basic button", (): void => {
     const wrapper = shallow(<Button label="test" />);
-    expect(wrapper.find(`.${styles.grey}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.basic}`)).toBeTruthy();
   });
   it("... renders primary button", () => {
-    const wrapper = shallow(<Button label="test" type="primary" />);
+    const wrapper = shallow(<Button label="primary" type="primary" />);
     expect(wrapper.find(`.${styles.primary}`)).toBeTruthy();
   });
   it("... renders negative button", () => {
-    const wrapper = shallow(<Button label="test" type="negative" />);
+    const wrapper = shallow(<Button label="negative" type="negative" />);
     expect(wrapper.find(`.${styles.negative}`)).toBeTruthy();
   });
   it("... renders disabled button", () => {
-    const wrapper = shallow(<Button label="test" disabled={true} />);
-    expect(wrapper.find(`.${styles.grey}`)).toBeTruthy();
-    expect(wrapper.find(`.${styles.grey}`).prop("disabled")).toBeTruthy();
+    const wrapper = shallow(<Button label="disabled" disabled={true} />);
+    expect(wrapper.find(`.${styles.basic}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.basic}`).prop("disabled")).toBeTruthy();
+  });
+  it("... does not return undefined as class", () => {
+    const wrapper = shallow(<Button label="basic" />);
+    expect(wrapper.hasClass("undefined")).toBeFalsy();
   });
 });
