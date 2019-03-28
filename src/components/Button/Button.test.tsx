@@ -30,6 +30,7 @@ describe("Button component...", (): void => {
   });
   it("... renders disabled button", () => {
     const wrapper = shallow(<Button label="disabled" disabled={true} />);
+
     expect(wrapper.find(`.${styles.basic}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.basic}`).prop("disabled")).toBeTruthy();
   });
@@ -37,4 +38,7 @@ describe("Button component...", (): void => {
     const wrapper = shallow(<Button label="basic" />);
     expect(wrapper.hasClass("undefined")).toBeFalsy();
   });
+  // tests to do:
+  it("... executes passed click action");
+  it("... renders passed icon");
 });
