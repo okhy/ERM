@@ -36,4 +36,6 @@
   background-color: var(--color-negative-lighter);
 }
 .disabled {
+  composes: grey;
+  color: var(--color-gray-light);
 }
