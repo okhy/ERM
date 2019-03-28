@@ -1,6 +1,6 @@
 import * as React from "react";
 // components
-import LogoBar from "./../LogoBar/LogoBar";
+import LogoBar from "Components/LogoBar/LogoBar";
 import * as styles from "./Header.styles.css";
 
 interface IHeader {
@@ -11,7 +11,7 @@ interface IHeader {
 const Header = (props: IHeader) => (
   <div className={styles.main}>
     <LogoBar>{props.actionItem && props.actionItem}</LogoBar>
-    <div className={styles.content}>{props.children}</div>
+    {props.children && <div className={styles.content}>{props.children}</div>}
   </div>
 );
 

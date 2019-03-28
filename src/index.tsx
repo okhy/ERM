@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 // components
-import WithError from "./components/WithError/WithError";
+import WithError from "Components/WithError/WithError";
 // views
-import SearchPage from "./views/SearchPage/SearchPage";
+import SearchPage from "Views/SearchPage/SearchPage";
 // assets
 import * as styles from "./global.css";
 import * as resetCSS from "./reset.css";

@@ -1,9 +1,9 @@
 import * as React from "react";
 // components
-import Header from "./../../components/Header/Header";
+import Header from "Components/Header/Header";
 import MovieSearch from "./components/MovieSearch/MovieSearch";
-import MovieGrid from "./../../components/MovieGrid/MovieGrid";
-import Footer from "./../../components/Footer/Footer";
+import MovieGrid from "Components/MovieGrid/MovieGrid";
+import Footer from "Components/Footer/Footer";
 
 const SearchPage = () => (
   <div>

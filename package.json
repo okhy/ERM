@@ -10,8 +10,10 @@
     "fullTest": "jest --watchAll --coverage",
     "storybook": "start-storybook"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react"
+  ],
+  "author": "Dawid Sokół",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -50,25 +52,5 @@
     "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
     "redux": "^4.0.1"
-  },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "ts-jest"
-    },
-    "setupFilesAfterEnv": [
-      "<rootDir>/testsetup.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.css$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "json",
-      "ts",
-      "tsx",
-      "node"
-    ]
   }
 }

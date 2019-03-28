@@ -7,7 +7,8 @@ module.exports = {
       Components: path.resolve(__dirname, "./../src/components"),
       Views: path.resolve(__dirname, "./../src/views"),
       HOC: path.resolve(__dirname, "./../src/hoc"),
-      Index: path.resolve(__dirname, "./../src")
+      Index: path.resolve(__dirname, "./../src"),
+      Mocks: path.relative(__dirname, "./../__mocks__")
     }
   },
   module: {

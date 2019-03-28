@@ -2,11 +2,12 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "*": ["types/*"],
+      // "*": ["types/*"],
       "Components/*": ["components/*"],
       "Views/*": ["views/*"],
       "HOC/*": ["hoc/*"],
-      "Index/*": ["*"]
+      "AppRoot/*": ["*"],
+      "Mocks/*": ["../__mocks__/*"]
     },
     "moduleResolution": "node",
     "sourceMap": true,
@@ -24,5 +25,5 @@
     // "experimentalDecorators": true
   },
   "include": ["./src/**/*"],
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules", "./dist", "./__mocks__", "./coverage"]
 }
