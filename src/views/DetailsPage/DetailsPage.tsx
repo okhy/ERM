@@ -1,7 +1,7 @@
 import * as React from "react";
 // components
 import Header from "./../../components/Header/Header";
-import MovieDetails from "./../../components/MovieDetails/MovieDetails";
+import MovieDetails from "./components/MovieDetails/MovieDetails";
 import MovieGrid from "./../../components/MovieGrid/MovieGrid";
 import Footer from "./../../components/Footer/Footer";
 import Button from "./../../components/Button/Button";
