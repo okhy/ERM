@@ -1,6 +1,7 @@
 .main {
-  padding: 10px 20px;
-  border-radius: 4px;
+  /* adjustment for better centering */
+  padding: var(--step-2) var(--step-4) calc(var(--step-2) + 2px);
+  border-radius: var(--step-2);
   border-style: none;
   color: var(--color-primary);
 }

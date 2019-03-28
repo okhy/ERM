@@ -16,8 +16,11 @@ describe("Button component...", (): void => {
     const wrapper = shallow(<Button label="test" />);
     expect(wrapper).toMatchSnapshot();
   });
-  it("... renders with appropriate classes", (): void => {
+  it("... renders with appropriate styles", (): void => {
     const wrapper = shallow(<Button label="test" />);
+
+    console.log(wrapper.debug());
+
     expect(wrapper.find("span").prop("className")).toEqual(styles.label);
   });
 });

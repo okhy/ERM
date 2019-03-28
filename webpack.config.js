@@ -9,7 +9,7 @@ module.exports = (env, options) => {
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? "none" : "source-map",
     resolve: {
-      extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+      extensions: ["*", ".js", ".jsx", ".ts", ".tsx", ".css"],
       alias: {
         Components: path.resolve(__dirname, "src/components"),
         Views: path.resolve(__dirname, "src/views"),
