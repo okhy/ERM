@@ -1,0 +1,8 @@
+.main {
+  background-color: var(--color-gray-lightest);
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  padding: var(--step-5);
+}

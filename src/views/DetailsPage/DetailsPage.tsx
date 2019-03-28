@@ -7,7 +7,7 @@ import Footer from "./../../components/Footer/Footer";
 import Button from "./../../components/Button/Button";
 
 const DetailsPage = () => {
-  const SearchLinkButton = <Button label="search" />;
+  const SearchLinkButton = <Button type="primary" label="search" />;
   return (
     <div>
       <Header actionItem={SearchLinkButton}>

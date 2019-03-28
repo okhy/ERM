@@ -6,7 +6,7 @@
   color: var(--color-primary);
 }
 .basic {
-  background-color: var(--color-gray-pale);
+  background-color: var(--color-gray-lightest);
 }
 .primary {
   background-color: var(--color-primary);
@@ -33,7 +33,7 @@
   background-color: var(--color-negative-lighter);
 }
 .disabled {
-  background-color: var(--color-gray-pale);
+  background-color: var(--color-gray-lightest);
   color: var(--color-gray-light);
 }
 
