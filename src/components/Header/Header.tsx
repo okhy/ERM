@@ -11,7 +11,6 @@ const Header = (props: IHeader) => (
   <div>
     <LogoBar />
     {props.children}
-    <LogoBar />
   </div>
 );
 
