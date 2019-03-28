@@ -9,8 +9,9 @@ interface IHeader {
 
 const Header = (props: IHeader) => (
   <div>
-    <LogoBar button={props.actionItem} />
+    <LogoBar />
     {props.children}
+    <LogoBar />
   </div>
 );
 

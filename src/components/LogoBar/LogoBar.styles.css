@@ -1,6 +1,10 @@
 .main {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+
+  padding: var(--step-4);
+  background-color: var(--color-gray-pale);
 }
 
 .logo {
@@ -8,4 +12,7 @@
   font-weight: bold;
   font-family: sans-serif;
   color: var(--color-negative);
+}
+
+.actionsWrapper {
 }
