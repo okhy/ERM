@@ -11,10 +11,11 @@ module.exports = (env, options) => {
     resolve: {
       extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
-        Components: path.resolve(__dirname, "src/components"),
-        Views: path.resolve(__dirname, "src/views"),
-        HOC: path.resolve(__dirname, "src/hoc"),
-        Index: path.resolve(__dirname, "src")
+        Components: path.resolve(__dirname, "./src/components"),
+        Views: path.resolve(__dirname, "./src/views"),
+        HOC: path.resolve(__dirname, "./src/hoc"),
+        AppRoot: path.resolve(__dirname, "./src"),
+        Mocks: path.relative(__dirname, "./__mocks__")
       }
     },
     module: {
