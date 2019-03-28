@@ -16,11 +16,21 @@ describe("Button component...", (): void => {
     const wrapper = shallow(<Button label="test" />);
     expect(wrapper).toMatchSnapshot();
   });
-  it("... renders with appropriate styles", (): void => {
+  it("... renders default button", (): void => {
     const wrapper = shallow(<Button label="test" />);
-
-    console.log(wrapper.debug());
-
-    expect(wrapper.find("span").prop("className")).toEqual(styles.label);
+    expect(wrapper.find(`.${styles.grey}`)).toBeTruthy();
+  });
+  it("... renders primary button", () => {
+    const wrapper = shallow(<Button label="test" type="primary" />);
+    expect(wrapper.find(`.${styles.primary}`)).toBeTruthy();
+  });
+  it("... renders negative button", () => {
+    const wrapper = shallow(<Button label="test" type="negative" />);
+    expect(wrapper.find(`.${styles.negative}`)).toBeTruthy();
+  });
+  it("... renders disabled button", () => {
+    const wrapper = shallow(<Button label="test" disabled={true} />);
+    expect(wrapper.find(`.${styles.grey}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.grey}`).prop("disabled")).toBeTruthy();
   });
 });

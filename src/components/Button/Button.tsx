@@ -5,6 +5,7 @@ import * as cx from "classnames";
 interface IButton {
   label: string;
   type?: string;
+  disabled?: boolean;
 }
 
 const Button = (props: IButton): React.ReactElement => {
@@ -14,7 +15,7 @@ const Button = (props: IButton): React.ReactElement => {
     [styles.negative]: props.type && props.type === "negative"
   });
   return (
-    <button className={mainClass}>
+    <button className={mainClass} disabled={!!props.disabled}>
       <span className={styles.label}>{props.label}</span>
     </button>
   );
