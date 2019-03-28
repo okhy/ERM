@@ -6,10 +6,11 @@ interface IButton {
   label: string;
   type?: string;
   disabled?: boolean;
+  icon?: string;
 }
 
 const Button = (props: IButton): React.ReactElement => {
-  const { type, disabled } = props;
+  const { type, disabled, icon } = props;
 
   const mainClass = cx(styles.main, {
     [styles.basic]: !type,
@@ -20,6 +21,7 @@ const Button = (props: IButton): React.ReactElement => {
 
   return (
     <button className={mainClass} disabled={!!disabled}>
+      {icon && <i className={icon} />}
       <span className={styles.label}>{props.label}</span>
     </button>
   );

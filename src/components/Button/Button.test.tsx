@@ -38,7 +38,11 @@ describe("Button component...", (): void => {
     const wrapper = shallow(<Button label="basic" />);
     expect(wrapper.hasClass("undefined")).toBeFalsy();
   });
-  // tests to do:
-  it("... executes passed click action");
-  it("... renders passed icon");
+  it("... renders passed icon", () => {
+    const wrapper = shallow(<Button label="basic" icon="fab fa-font-awesome-flag" />);
+    expect(wrapper.find("i")).toBeTruthy();
+    expect(wrapper.find("i").hasClass("fa-font-awesome-flag")).toBeTruthy();
+  });
+  // todo:
+  it.todo("... executes passed click action");
 });

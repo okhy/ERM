@@ -6,4 +6,5 @@ storiesOf("Components / Button", module)
   .add("basic", () => <Button label="basic" />)
   .add("primary", () => <Button label="primary" type="primary" />)
   .add("negative", () => <Button label="negative" type="negative" />)
-  .add("disabled", () => <Button label="disabled" type="disabled" disabled={true} />);
+  .add("disabled", () => <Button label="disabled" type="disabled" disabled={true} />)
+  .add("with icon", () => <Button label="basic" icon="fab fa-font-awesome-flag" />);
