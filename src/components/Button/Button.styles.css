@@ -5,9 +5,6 @@
   border-style: none;
   color: var(--color-primary);
 }
-.label {
-  composes: Typo-Base from global;
-}
 .basic {
   background-color: var(--color-gray-pale);
 }
@@ -38,4 +35,11 @@
 .disabled {
   background-color: var(--color-gray-pale);
   color: var(--color-gray-light);
+}
+
+.icon {
+  margin-right: var(--step-2);
+}
+.label {
+  composes: Typo-Base from global;
 }

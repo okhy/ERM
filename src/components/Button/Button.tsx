@@ -21,7 +21,7 @@ const Button = (props: IButton): React.ReactElement => {
 
   return (
     <button className={mainClass} disabled={!!disabled}>
-      {icon && <i className={icon} />}
+      {icon && <i className={`${styles.icon} ${icon}`} />}
       <span className={styles.label}>{props.label}</span>
     </button>
   );
