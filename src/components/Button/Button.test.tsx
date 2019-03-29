@@ -50,7 +50,6 @@ describe("Button component...", (): void => {
     expect(wrapper.find(`.${styles.smallIcon}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.smallLabel}`)).toBeTruthy();
   });
-  it.todo("... renders properly depending on background (white on gray, gray on white)");
   it.todo("... executes passed click action");
-  it.todo("... shows pointer if it's a link");
+  it.todo("... shows pointer if action is a link");
 });
