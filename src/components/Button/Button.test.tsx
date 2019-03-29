@@ -44,5 +44,13 @@ describe("Button component...", (): void => {
     expect(wrapper.find(`${styles.icon}`).hasClass("fa-font-awesome-flag")).toBeTruthy();
   });
   // todo:
+  it.todo("... renders 'small' type'", () => {
+    const wrapper = shallow(<Button label="basic" type="primary" size="small" />);
+    expect(wrapper.find(`.${styles.small}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.smallIcon}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.smallLabel}`)).toBeTruthy();
+  });
+  it.todo("... renders properly depending on background (white on gray, gray on white)");
   it.todo("... executes passed click action");
+  it.todo("... shows pointer if it's a link");
 });

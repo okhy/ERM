@@ -34,7 +34,7 @@ module.exports = {
               modules: true,
               sourceMap: true,
               localIdentName: "[local]--[hash:base64:10]",
-              camelCase: true,
+              // camelCase: true,
               importLoaders: 1
               // exportOnlyLocals: true
             }

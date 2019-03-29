@@ -1,4 +1,6 @@
 import * as React from "react";
+// components
+import Button from "Components/Button/Button";
 
 class MovieSearch extends React.Component<{}, { value: string }> {
   constructor(props: {}) {
@@ -15,10 +17,10 @@ class MovieSearch extends React.Component<{}, { value: string }> {
         <input type="text" placeholder="Movie title" onChange={this.handleChange.bind(this)} value={this.state.value} />
         <div>
           <span>search by</span>
-          <button>title</button>
-          <button>genre</button>
+          <Button label="title" />
+          <Button label="genre" />
         </div>
-        <button>search</button>
+        <Button label="search" />
       </div>
     );
   }

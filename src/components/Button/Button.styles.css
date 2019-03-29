@@ -5,6 +5,25 @@
   border-style: none;
   color: var(--color-primary);
 }
+.small {
+  padding: var(--step-1) var(--step-3) calc(var(--step-1) + 2px);
+}
+.icon {
+  margin-right: var(--step-2);
+}
+.label {
+  composes: Typo-Base from global;
+}
+
+/* small button overrides: */
+.smallLabel {
+  composes: Typo-Small from global;
+}
+.smallIcon {
+  margin-right: var(--step-1);
+}
+
+/* variants */
 .basic {
   background-color: var(--color-gray-lightest);
 }
@@ -35,11 +54,4 @@
 .disabled {
   background-color: var(--color-gray-lightest);
   color: var(--color-gray-light);
-}
-
-.icon {
-  margin-right: var(--step-2);
-}
-.label {
-  composes: Typo-Base from global;
 }
