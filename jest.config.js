@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  // verbose: true,
+  verbose: true,
   transform: {
     ".(ts|tsx)": "ts-jest"
   },

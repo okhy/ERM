@@ -17,7 +17,7 @@ describe("LogoBar component...", () => {
     const wrapper = shallow(<LogoBar />);
     expect(wrapper).toMatchSnapshot();
   });
-  it("... renders passed elements in wrapper", () => {
+  it("... renders children in wrapper", () => {
     const TestComponent = () => <button>Test</button>;
     const wrapper = shallow(
       <LogoBar>

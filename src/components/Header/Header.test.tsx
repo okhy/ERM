@@ -8,6 +8,7 @@ import * as styles from "./Header.styles.css";
 describe("Header component...", () => {
   it("... renders without errors", () => {
     const wrapper = shallow(<Header />);
+
     expect(wrapper.find(Header)).toBeTruthy();
     expect(wrapper.find(`${styles.main}`)).toBeTruthy();
   });
@@ -18,6 +19,14 @@ describe("Header component...", () => {
   it("... renders passed children", () => {
     const TestComponent = () => <span>Test</span>;
     const wrapper = shallow(<Header>{TestComponent}</Header>);
+
+    expect(wrapper.find(TestComponent)).toBeTruthy();
+  });
+  it("... passes actionItem", () => {
+    const TestComponent = () => <button>Test</button>;
+    const wrapper = shallow(<Header actionItem={TestComponent} />);
+
+    console.log(wrapper.debug());
 
     expect(wrapper.find(TestComponent)).toBeTruthy();
   });
