@@ -17,10 +17,10 @@ class MovieSearch extends React.Component<{}, { value: string }> {
         <input type="text" placeholder="Movie title" onChange={this.handleChange.bind(this)} value={this.state.value} />
         <div>
           <span>search by</span>
-          <Button label="title" />
-          <Button label="genre" />
+          <Button label="title" size="small" />
+          <Button label="genre" size="small" />
         </div>
-        <Button label="search" />
+        <Button label="search" type="primary" />
       </div>
     );
   }
