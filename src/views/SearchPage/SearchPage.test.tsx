@@ -30,6 +30,6 @@ describe("SearchPage component...", () => {
       const text = await page.$eval("input", el => el.getAttribute("value"));
 
       expect(text).toBe("test movie title");
-    });
+    }, 10000);
   });
 });
