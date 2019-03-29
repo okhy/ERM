@@ -15,6 +15,7 @@ const Button = (props: IButton): React.ReactElement => {
   const isSmall = props.size === "small";
   const mainClass = cx(styles.main, {
     [styles.basic]: !type,
+    [styles.white]: !disabled && type && type === "white",
     [styles.primary]: !disabled && type && type === "primary",
     [styles.negative]: !disabled && type && type === "negative",
     [styles.disabled]: !!disabled,

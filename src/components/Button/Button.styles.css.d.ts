@@ -6,5 +6,6 @@ export const smallLabel: string;
 export const smallIcon: string;
 export const basic: string;
 export const primary: string;
+export const white: string;
 export const negative: string;
 export const disabled: string;

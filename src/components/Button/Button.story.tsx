@@ -6,6 +6,7 @@ storiesOf("Components / Button", module)
   .add("default variants", () => (
     <>
       <Button label="basic" />
+      <Button label="white" type="white" />
       <Button label="primary" type="primary" />
       <Button label="negative" type="negative" />
       <Button label="disabled" type="disabled" disabled={true} />

@@ -33,12 +33,17 @@
   background-color: var(--color-primary);
   color: var(--color-white);
 }
+.white {
+  background-color: var(--color-white);
+}
 .primary:hover,
+.white:hover,
 .basic:hover {
   background-color: var(--color-secondary);
   color: var(--color-primary);
 }
 .primary:active,
+.white:active,
 .basic:active {
   background-color: var(--color-secondary-darker);
   color: var(--color-primary);
