@@ -26,8 +26,6 @@ describe("Header component...", () => {
     const TestComponent = () => <button>Test</button>;
     const wrapper = shallow(<Header actionItem={TestComponent} />);
 
-    console.log(wrapper.debug());
-
     expect(wrapper.find(TestComponent)).toBeTruthy();
   });
 });
