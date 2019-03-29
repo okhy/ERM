@@ -69,9 +69,15 @@
   font-family: var(--source-font);
   font-size: var(--step-5);
 }
+:global(.Typo-Base-Size) {
+  font-size: var(--step-4);
+}
 :global(.Typo-Base) {
   font-family: var(--source-font);
   font-size: var(--step-4);
+}
+:global(.Typo-Small-Size) {
+  font-size: var(--step-3);
 }
 :global(.Typo-Small) {
   font-family: var(--source-font);

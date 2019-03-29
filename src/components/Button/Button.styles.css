@@ -9,6 +9,7 @@
   padding: var(--step-1) var(--step-3) calc(var(--step-1) + 2px);
 }
 .icon {
+  composes: Typo-Base-Size from global;
   margin-right: var(--step-2);
 }
 .label {
@@ -20,7 +21,8 @@
   composes: Typo-Small from global;
 }
 .smallIcon {
-  margin-right: var(--step-1);
+  composes: icon;
+  composes: Typo-Small-Size from global;
 }
 
 /* variants */
