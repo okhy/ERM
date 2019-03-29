@@ -30,9 +30,7 @@ describe("Button component...", (): void => {
   });
   it("... renders disabled button", () => {
     const wrapper = shallow(<Button label="disabled" disabled={true} />);
-
-    expect(wrapper.find(`.${styles.basic}`)).toBeTruthy();
-    expect(wrapper.find(`.${styles.basic}`).prop("disabled")).toBeTruthy();
+    expect(wrapper.prop("disabled")).toBeTruthy();
   });
   it("... does not return undefined as class", () => {
     const wrapper = shallow(<Button label="basic" />);
@@ -40,8 +38,7 @@ describe("Button component...", (): void => {
   });
   it("... renders passed icon", () => {
     const wrapper = shallow(<Button label="basic" icon="fab fa-font-awesome-flag" />);
-    expect(wrapper.find(`${styles.icon}`)).toBeTruthy();
-    expect(wrapper.find(`${styles.icon}`).hasClass("fa-font-awesome-flag")).toBeTruthy();
+    expect(wrapper.find("i.fa-font-awesome-flag")).toBeTruthy();
   });
   // todo:
   it("... renders 'small' type'", () => {
