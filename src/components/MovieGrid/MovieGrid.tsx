@@ -1,6 +1,8 @@
 import * as React from "react";
 // components
 import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
+// styles
+import * as styles from "./MovieGrid.styles.css";
 // interface
 interface IMoviesGird {
   similarResults?: boolean;
@@ -8,24 +10,26 @@ interface IMoviesGird {
 }
 
 const MovieGrid = (props: IMoviesGird) => (
-  <div className="main">
-    {props.similarResults ? (
-      <div>
-        <span>Films by </span>
-        <span>Drama genre</span>
-      </div>
-    ) : (
-      <div className="results">
-        <span className="count">7 movies found</span>
-        <div className="sorting">
-          <span>Sort by</span>
-          <button>release date</button>
-          <button>rating</button>
-        </div>
-      </div>
-    )}
+  <div className={styles.main}>
+    <div className={styles.results}>
+      {props.similarResults ? (
+        <>
+          <span>Films by </span>
+          <span>Drama genre</span>
+        </>
+      ) : (
+        <>
+          <span className="count">7 movies found</span>
+          <div className="sorting">
+            <span>Sort by</span>
+            <button>release date</button>
+            <button>rating</button>
+          </div>
+        </>
+      )}
+    </div>
     {props.movies ? (
-      <div className="grid">
+      <div className={styles.grid}>
         <MovieGridItem />
         <MovieGridItem />
         <MovieGridItem />
@@ -35,7 +39,7 @@ const MovieGrid = (props: IMoviesGird) => (
         <MovieGridItem />
       </div>
     ) : (
-      <div>
+      <div className={styles.sorryMessage}>
         <span>No movies :(</span>
       </div>
     )}
