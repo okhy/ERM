@@ -1,0 +1,32 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: var(--step-2);
+}
+:local(.label) {
+  composes: Typo-Base from global;
+  color: var(--color-gray-dark);
+}
+.searchLabel {
+  composes: label;
+  display: block;
+  margin-bottom: var(--step-1);
+}
+.searchField {
+  composes: Typo-Small from global;
+  color: var(--color-gray-dark);
+  border: 1px solid var(--color-gray);
+  border-radius: var(--corner-radius);
+  padding: var(--step-2);
+  margin-bottom: var(--step-2);
+}
+.optionsLabel {
+  composes: label;
+
+  display: block;
+  margin-bottom: var(--step-1);
+}
+.options button {
+  margin-bottom: var(--step-1);
+  margin-right: var(--step-2);
+}

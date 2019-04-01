@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --watch --env.mode=development",
     "prod": "webpack --env.mode=production",
     "test": "jest -o --watch",
-    "fullTest": "jest --watchAll --coverage",
+    "test:coverage": "jest --coverage",
     "storybook": "start-storybook"
   },
   "keywords": [
