@@ -17,4 +17,5 @@ module.exports = {
     "Mocks(.*)$": "<rootDir>/__mocks__/$1"
   },
   moduleFileExtensions: ["js", "jsx", "json", "ts", "tsx", "node"]
+  // testRegex: "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
 };
