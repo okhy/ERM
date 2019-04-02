@@ -21,12 +21,16 @@ describe("MovieGridItem component...", () => {
     expect(wrapper).toMatchSnapshot();
   });
   it("... renders passed props", () => {
+    const tempReleaseDate = mockMovie.releaseDate.substr(0, 4);
     const wrapper = shallow(<MovieGridItem {...mockMovie} />);
 
-    console.log(wrapper.debug());
-
-    expect(wrapper.find(`${mockMovie.title}`)).toBeTruthy();
-    expect(wrapper.find(`${mockMovie.releaseDate.substr(0, 4)}`)).toBeTruthy();
-    expect(wrapper.find(`${mockMovie.genres.join(" & ")}`)).toBeTruthy();
+    expect(wrapper.find("img").prop("src")).toEqual(mockMovie.poster);
+    expect(wrapper.contains(`${mockMovie.title}`)).toBeTruthy();
+    expect(wrapper.contains(`${tempReleaseDate}`)).toBeTruthy();
+    expect(wrapper.contains(`${mockMovie.genres.join(" & ")}`)).toBeTruthy();
+  });
+  it("... renders no-poster message ", () => {
+    const wrapper = shallow(<MovieGridItem {...mockMovie} poster="" />);
+    expect(wrapper.contains("No poster")).toBeTruthy();
   });
 });
