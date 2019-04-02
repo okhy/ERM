@@ -1,13 +1,33 @@
 .main {
+  border-radius: var(--step-3);
+  overflow: hidden;
+  max-width: 250px;
+  border: 1px solid var(--color-gray-light);
+  background-color: var(--color-white);
 }
 .poster {
+  max-width: 100%;
 }
 .noPoster {
 }
-.data{}
+.data {
+  display: flex;
+  flex-direction: column;
+  padding: var(--step-2) var(--step-3) var(--step-3);
+}
+.baseData {
+  margin-bottom: var(--step-2);
+}
 .title {
+  composes: Typo-Big-Bold from global;
+  color: var(--color-gray-dark);
+  margin-right: var(--step-2);
 }
 .releaseDate {
+  composes: Typo-Base from global;
+  color: var(--color-gray);
 }
 .genres {
+  composes: Typo-Small from global;
+  color: var(--color-primary);
 }

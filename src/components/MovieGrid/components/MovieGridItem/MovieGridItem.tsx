@@ -31,10 +31,12 @@ const MovieGridItem: React.SFC<IMovieGridItem> = ({
         </div>
       )}
       <div className={styles.data}>
-        <span className={styles.title}>{title}</span>
-        <span className={styles.releaseDate}>{parsedDate}</span>
+        <div className={styles.baseData}>
+          <span className={styles.title}>{title}</span>
+          <span className={styles.releaseDate}>{parsedDate}</span>
+        </div>
+        <span className={styles.genres}>{joinedGenres}</span>
       </div>
-      <span className={styles.genres}>{joinedGenres}</span>
     </div>
   );
 };

@@ -10,4 +10,18 @@ const singleMovie: IMovieGridItem = {
   genres: ["Thriller", "Crime"]
 };
 
-storiesOf("Components / MovieGrid / MovieGridItem", module).add("default", () => <MovieGridItem {...singleMovie} />);
+storiesOf("Components / MovieGrid / MovieGridItem", module).add(
+  "default",
+  () => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#f1f2f3"
+      }}
+    >
+      <MovieGridItem {...singleMovie} />
+    </div>
+  )
+);
