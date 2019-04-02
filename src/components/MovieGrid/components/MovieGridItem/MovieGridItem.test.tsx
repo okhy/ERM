@@ -41,7 +41,7 @@ describe("MovieGridItem component...", () => {
     expect(wrapper.find(`.${styles.main}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.poster}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.title}`)).toBeTruthy();
-    expect(wrapper.find(`.${styles.year}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.releaseDate}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.genres}`)).toBeTruthy();
   });
 });

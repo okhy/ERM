@@ -1,5 +1,8 @@
 import * as React from "react";
+// styles
+import * as styles from "./MovieGridItem.styles.css";
 
+// interface
 interface IMovieGridItem {
   id: number;
   title: string;
@@ -19,17 +22,19 @@ const MovieGridItem: React.SFC<IMovieGridItem> = ({
   const joinedGenres = genres.join(" & ");
   const isPosterDefined = poster.length > 0;
   return (
-    <div key={id}>
+    <div key={id} className={styles.main}>
       {isPosterDefined ? (
-        <img src={poster} alt={title} />
+        <img src={poster} alt={title} className={styles.poster} />
       ) : (
-        <div>No poster</div>
+        <div className={styles.noPoster}>
+          <span>No poster</span>
+        </div>
       )}
-      <div>
-        <span>{title}</span>
-        <span>{parsedDate}</span>
+      <div className={styles.data}>
+        <span className={styles.title}>{title}</span>
+        <span className={styles.releaseDate}>{parsedDate}</span>
       </div>
-      <span>{joinedGenres}</span>
+      <span className={styles.genres}>{joinedGenres}</span>
     </div>
   );
 };
