@@ -18,7 +18,8 @@ storiesOf("Components / MovieGrid / MovieGridItem", module).add(
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#f1f2f3"
+        backgroundColor: "#f1f2f3",
+        padding: "100px"
       }}
     >
       <MovieGridItem {...singleMovie} />

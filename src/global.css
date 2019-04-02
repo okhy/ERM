@@ -5,7 +5,7 @@
 /* global css file */
 
 :root {
-  --color-white-transparent: rgba(255, 255, 255, 0.95);
+  --color-white-transparent: rgba(255, 255, 255, 0.9);
   --color-primary: #1e0f75;
   --color-primary-darker: #11045c;
   --color-primary-lighter: #4f3db4;

@@ -2,32 +2,49 @@
   border-radius: var(--step-3);
   overflow: hidden;
   max-width: 250px;
-  border: 1px solid var(--color-gray-light);
+  border: 1px solid var(--color-gray-lighter);
   background-color: var(--color-white);
+  box-shadow: 0 2px 5px 0 var(--color-gray-lighter);
+  position: relative;
 }
 .poster {
   max-width: 100%;
+  display: block;
+  z-index: 1;
 }
 .noPoster {
+  width: 100%;
+  display: block;
+  height: 100%;
+  color: var(--color-gray-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 .data {
   display: flex;
   flex-direction: column;
-  padding: var(--step-2) var(--step-3) var(--step-3);
+  padding: var(--step-3);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 4;
+  background-color: var(--color-white-transparent);
 }
 .baseData {
   margin-bottom: var(--step-2);
 }
 .title {
   composes: Typo-Big-Bold from global;
-  color: var(--color-gray-dark);
+  color: var(--color-gray-darkest);
   margin-right: var(--step-2);
 }
 .releaseDate {
   composes: Typo-Base from global;
-  color: var(--color-gray);
+  color: var(--color-primary);
 }
 .genres {
   composes: Typo-Small from global;
-  color: var(--color-primary);
+  color: var(--color-gray-dark);
 }
