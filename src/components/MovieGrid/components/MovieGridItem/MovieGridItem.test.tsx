@@ -2,6 +2,8 @@ import * as React from "react";
 import { shallow } from "enzyme";
 // components
 import MovieGridItem, { IMovieGridItem } from "./MovieGridItem";
+// styles
+import * as styles from "./MovieGridItem.styles.css";
 // mock data
 const mockMovie: IMovieGridItem = {
   id: 1,
@@ -32,5 +34,14 @@ describe("MovieGridItem component...", () => {
   it("... renders no-poster message ", () => {
     const wrapper = shallow(<MovieGridItem {...mockMovie} poster="" />);
     expect(wrapper.contains("No poster")).toBeTruthy();
+  });
+  it("... renders styles", () => {
+    const wrapper = shallow(<MovieGridItem {...mockMovie} />);
+
+    expect(wrapper.find(`.${styles.main}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.poster}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.title}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.year}`)).toBeTruthy();
+    expect(wrapper.find(`.${styles.genres}`)).toBeTruthy();
   });
 });
