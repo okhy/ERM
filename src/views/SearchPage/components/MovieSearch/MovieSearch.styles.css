@@ -11,7 +11,8 @@
 .searchWrap {
   width: 100%;
   display: flex;
-  /* justify-content: space-between; */
+  margin-bottom: var(--step-2);
+  align-items: flex-end;
 }
 .searchField {
   display: flex;
@@ -26,7 +27,6 @@
   border: 1px solid var(--color-gray);
   border-radius: var(--corner-radius);
   padding: var(--step-2);
-  margin-bottom: var(--step-2);
   margin-right: var(--step-2);
 }
 .optionsLabel {
