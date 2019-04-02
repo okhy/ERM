@@ -1,7 +1,7 @@
 .main {
   border-radius: var(--step-3);
   overflow: hidden;
-  max-width: 250px;
+  width: 250px;
   border: 1px solid var(--color-gray-lighter);
   background-color: var(--color-white);
   box-shadow: 0 2px 5px 0 var(--color-gray-lighter);
@@ -9,18 +9,20 @@
 }
 .poster {
   max-width: 100%;
+  max-height: 375px;
   display: block;
   z-index: 1;
 }
 .noPoster {
-  width: 100%;
-  display: block;
-  height: 100%;
-  color: var(--color-gray-dark);
+  height: 375px;
+  background-color: var(--color-gray-lightest);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+}
+.noPosterLabel {
+  composes: Typo-Big Typo-Bold from global;
+  color: var(--color-gray-light);
 }
 .data {
   display: flex;
@@ -31,20 +33,21 @@
   width: 100%;
   z-index: 4;
   background-color: var(--color-white-transparent);
+  border-top: 1px solid var(--color-gray-lighter);
 }
 .baseData {
   margin-bottom: var(--step-2);
 }
 .title {
-  composes: Typo-Big-Bold from global;
+  composes: Typo-Big Typo-Bold from global;
   color: var(--color-gray-darkest);
   margin-right: var(--step-2);
 }
 .releaseDate {
   composes: Typo-Base from global;
-  color: var(--color-primary);
+  color: var(--color-gray-dark);
 }
 .genres {
   composes: Typo-Small from global;
-  color: var(--color-gray-dark);
+  color: var(--color-primary-lighter);
 }

@@ -1,6 +1,7 @@
 export const main: string;
 export const poster: string;
 export const noPoster: string;
+export const noPosterLabel: string;
 export const data: string;
 export const baseData: string;
 export const title: string;

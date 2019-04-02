@@ -27,7 +27,7 @@ const MovieGridItem: React.SFC<IMovieGridItem> = ({
         <img src={poster} alt={title} className={styles.poster} />
       ) : (
         <div className={styles.noPoster}>
-          <span>No poster</span>
+          <span className={styles.noPosterLabel}>No poster</span>
         </div>
       )}
       <div className={styles.data}>

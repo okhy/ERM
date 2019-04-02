@@ -67,8 +67,6 @@
 }
 :global(.Typo-Big-Bold) {
   font-weight: bold;
-  font-family: var(--source-font);
-  font-size: var(--step-5);
 }
 :global(.Typo-Big) {
   font-family: var(--source-font);
@@ -76,6 +74,9 @@
 }
 :global(.Typo-Base-Size) {
   font-size: var(--step-4);
+}
+:global(.Typo-Bold) {
+  font-weight: bold;
 }
 :global(.Typo-Base) {
   font-family: var(--source-font);

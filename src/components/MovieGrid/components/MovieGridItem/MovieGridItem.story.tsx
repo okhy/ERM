@@ -10,19 +10,21 @@ const singleMovie: IMovieGridItem = {
   genres: ["Thriller", "Crime"]
 };
 
-storiesOf("Components / MovieGrid / MovieGridItem", module).add(
-  "default",
-  () => (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#f1f2f3",
-        padding: "100px"
-      }}
-    >
+const centerStyles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "100px"
+};
+
+storiesOf("Components / MovieGrid / MovieGridItem", module)
+  .add("default", () => (
+    <div style={centerStyles}>
       <MovieGridItem {...singleMovie} />
     </div>
-  )
-);
+  ))
+  .add("no poster", () => (
+    <div style={centerStyles}>
+      <MovieGridItem {...singleMovie} poster="" />
+    </div>
+  ));
