@@ -3,27 +3,27 @@ import * as styles from "./Button.styles.css";
 import * as cx from "classnames";
 
 interface IButton {
-  label: string;
-  type?: string;
-  disabled?: boolean;
-  icon?: string;
-  size?: string;
+  label: string; // label, mandatory
+  variant?: string; // css button variants -> "primary", "white", "negative" etc.
+  type?: string; // html button type prop -> "submit"
+  disabled?: boolean; // is diabled
+  icon?: string; // full fontawesome class set -> "fab fa-font-awesome-flag"
+  size?: string; // "small"
 }
 
-const Button = (props: IButton): React.ReactElement => {
-  const { type, disabled, icon } = props;
+const Button: React.SFC<IButton> = ({ type, disabled, icon, variant, ...props }) => {
   const isSmall = props.size === "small";
   const mainClass = cx(styles.main, {
-    [styles.basic]: !type,
-    [styles.white]: !disabled && type && type === "white",
-    [styles.primary]: !disabled && type && type === "primary",
-    [styles.negative]: !disabled && type && type === "negative",
+    [styles.basic]: !variant,
+    [styles.white]: !disabled && variant && variant === "white",
+    [styles.primary]: !disabled && variant && variant === "primary",
+    [styles.negative]: !disabled && variant && variant === "negative",
     [styles.disabled]: !!disabled,
     [styles.small]: isSmall
   });
 
   return (
-    <button className={mainClass} disabled={!!disabled}>
+    <button className={mainClass} disabled={!!disabled} type={type}>
       {icon && <i className={`${isSmall ? styles.smallIcon : styles.icon} ${icon}`} />}
       <span className={isSmall ? styles.smallLabel : styles.label}>{props.label}</span>
     </button>

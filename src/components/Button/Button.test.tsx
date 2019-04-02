@@ -20,9 +20,9 @@ describe("Button component...", (): void => {
     const wrapper = shallow(
       <div>
         <Button label="test" />
-        <Button label="test" type="white" />
-        <Button label="primary" type="primary" />
-        <Button label="negative" type="negative" />
+        <Button label="test" variant="white" />
+        <Button label="primary" variant="primary" />
+        <Button label="negative" variant="negative" />
         <Button label="disabled" disabled={true} />
       </div>
     );
@@ -44,11 +44,17 @@ describe("Button component...", (): void => {
   });
   // todo:
   it("... renders 'small' type'", () => {
-    const wrapper = shallow(<Button label="basic" type="primary" size="small" icon="fab fa-font-awesome-flag" />);
+    const wrapper = shallow(<Button label="basic" variant="primary" size="small" icon="fab fa-font-awesome-flag" />);
 
     expect(wrapper.find(`.${styles.small}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.smallIcon}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.smallLabel}`)).toBeTruthy();
+  });
+  it("... renders passed type", () => {
+    const testType = "test";
+    const wrapper = shallow(<Button label="basic" type={testType} />);
+
+    expect(wrapper.prop("type")).toEqual(testType);
   });
   it.todo("... executes passed click action");
   it.todo("... shows pointer if action is a link");

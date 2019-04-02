@@ -30,13 +30,12 @@ class MovieSearch extends React.Component<{}, { value: string }> {
               value={this.state.value}
             />
           </div>
-          {/* <Button label="search" type="primary" /> */}
-          <button type="submit">submit</button>
+          <Button label="search" variant="primary" type="submit" />
         </div>
         <div className={styles.options}>
           <span className={styles.optionsLabel}>search by</span>
-          <Button label="title" size="small" type="white" />
-          <Button label="genre" size="small" type="white" />
+          <Button label="title" size="small" variant="white" />
+          <Button label="genre" size="small" variant="white" />
         </div>
       </form>
     );
