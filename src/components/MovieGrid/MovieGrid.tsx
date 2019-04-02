@@ -1,6 +1,6 @@
 import * as React from "react";
 // components
-import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
+// import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
 // styles
 import * as styles from "./MovieGrid.styles.css";
 // interface
@@ -30,13 +30,13 @@ const MovieGrid = (props: IMoviesGird) => (
     </div>
     {props.movies ? (
       <div className={styles.grid}>
+        {/* <MovieGridItem />
         <MovieGridItem />
         <MovieGridItem />
         <MovieGridItem />
         <MovieGridItem />
         <MovieGridItem />
-        <MovieGridItem />
-        <MovieGridItem />
+        <MovieGridItem /> */}
       </div>
     ) : (
       <div className={styles.sorryMessage}>
