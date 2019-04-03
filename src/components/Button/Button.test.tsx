@@ -37,21 +37,30 @@ describe("Button component...", (): void => {
     expect(wrapper.hasClass("undefined")).toBeFalsy();
   });
   it("... renders passed icon", () => {
-    const wrapper = shallow(<Button label="basic" icon="fab fa-font-awesome-flag" />);
+    const wrapper = shallow(
+      <Button label="basic" icon="fab fa-font-awesome-flag" />
+    );
 
     expect(wrapper.find(`.${styles.icon}`)).toBeTruthy();
     expect(wrapper.find("i.fa-font-awesome-flag")).toBeTruthy();
   });
   // todo:
   it("... renders 'small' type'", () => {
-    const wrapper = shallow(<Button label="basic" variant="primary" size="small" icon="fab fa-font-awesome-flag" />);
+    const wrapper = shallow(
+      <Button
+        label="basic"
+        variant="primary"
+        size="small"
+        icon="fab fa-font-awesome-flag"
+      />
+    );
 
     expect(wrapper.find(`.${styles.small}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.smallIcon}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.smallLabel}`)).toBeTruthy();
   });
   it("... renders passed type", () => {
-    const testType = "test";
+    const testType = "submit";
     const wrapper = shallow(<Button label="basic" type={testType} />);
 
     expect(wrapper.prop("type")).toEqual(testType);

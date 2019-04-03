@@ -4,7 +4,7 @@ import * as cx from "classnames";
 
 interface IButton {
   label: string; // label, mandatory
-  variant?: "primary" | "white" | "negative"; // css button variants "primary", "white", "negative" etc.
+  variant?: "primary" | "white" | "negative" | "disabled"; // css button variants "primary", "white", "negative" etc.
   type?: "submit" | "reset"; // html button type prop
   disabled?: boolean; // is diabled
   icon?: string; // full fontawesome class set -> "fab fa-font-awesome-flag"

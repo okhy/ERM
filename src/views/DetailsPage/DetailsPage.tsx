@@ -8,7 +8,7 @@ import Button from "Components/Button/Button";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 
 const DetailsPage = () => {
-  const SearchLinkButton = <Button type="primary" label="search" />;
+  const SearchLinkButton = <Button variant="primary" label="search" />;
   return (
     <div>
       <Header actionItem={SearchLinkButton}>
