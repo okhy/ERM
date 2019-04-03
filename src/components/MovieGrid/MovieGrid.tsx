@@ -7,7 +7,7 @@ import MovieGridItem, {
 import * as styles from "./MovieGrid.styles.css";
 // interface
 interface IMovie extends IMovieGridItem {
-  id: string;
+  id: number;
 }
 interface IMoviesGird {
   similarResults?: boolean;
