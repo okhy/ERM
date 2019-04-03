@@ -8,7 +8,7 @@ interface IButton {
   type?: "submit" | "reset"; // html button type prop
   disabled?: boolean; // is diabled
   icon?: string; // full fontawesome class set -> "fab fa-font-awesome-flag"
-  size?: "small" | "big";
+  size?: "small";
 }
 
 const Button: React.SFC<IButton> = ({
@@ -16,9 +16,10 @@ const Button: React.SFC<IButton> = ({
   disabled,
   icon,
   variant,
-  ...props
+  size,
+  label
 }) => {
-  const isSmall = props.size === "small";
+  const isSmall = !!size;
   const mainClass = cx(styles.main, {
     [styles.basic]: !variant,
     [styles.white]: !disabled && variant && variant === "white",
@@ -34,7 +35,7 @@ const Button: React.SFC<IButton> = ({
         <i className={`${isSmall ? styles.smallIcon : styles.icon} ${icon}`} />
       )}
       <span className={isSmall ? styles.smallLabel : styles.label}>
-        {props.label}
+        {label}
       </span>
     </button>
   );
