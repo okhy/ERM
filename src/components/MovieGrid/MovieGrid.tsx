@@ -6,7 +6,7 @@ import MovieGridItem, {
 // styles
 import * as styles from "./MovieGrid.styles.css";
 // interface
-interface IMovie extends IMovieGridItem {
+export interface IMovie extends IMovieGridItem {
   id: number;
 }
 interface IMoviesGird {
