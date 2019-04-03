@@ -3,8 +3,7 @@ import * as React from "react";
 import * as styles from "./MovieGridItem.styles.css";
 
 // interface
-interface IMovieGridItem {
-  id: number;
+export interface IMovieGridItem {
   title: string;
   poster?: string;
   releaseDate: string;
@@ -12,7 +11,6 @@ interface IMovieGridItem {
 }
 
 const MovieGridItem: React.SFC<IMovieGridItem> = ({
-  id,
   title,
   poster,
   releaseDate,
@@ -22,7 +20,7 @@ const MovieGridItem: React.SFC<IMovieGridItem> = ({
   const joinedGenres = genres.join(" & ");
   const isPosterDefined = poster.length > 0;
   return (
-    <div key={id} className={styles.main}>
+    <div className={styles.main}>
       {isPosterDefined ? (
         <img src={poster} alt={title} className={styles.poster} />
       ) : (
@@ -42,4 +40,3 @@ const MovieGridItem: React.SFC<IMovieGridItem> = ({
 };
 
 export default MovieGridItem;
-export { IMovieGridItem };
