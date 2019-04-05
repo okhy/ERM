@@ -39,7 +39,9 @@ const MovieDetails: React.SFC<IMovieDetails> = ({
         {!!releaseDate && releaseDate.length > 3 && (
           <span className={styles.year}>{releaseDate.substr(0, 4)}</span>
         )}
-        {runtime && <span className={styles.duration}>{`${runtime} min`}</span>}
+        {!!runtime && (
+          <span className={styles.duration}>{`${runtime} min`}</span>
+        )}
       </div>
       <span className={styles.overview}>{overview}</span>
     </div>

@@ -46,6 +46,6 @@ describe("MovieDetails component...", () => {
     expect(wrapper.contains(mockMovie.releaseDate.substr(0, 4))).toBeTruthy();
     expect(wrapper.contains(mockMovie.genres.join(" & "))).toBeTruthy();
     expect(wrapper.contains(mockMovie.overview)).toBeTruthy();
-    expect(wrapper.contains(`${mockMovie.runtime}`)).toBeTruthy();
+    expect(wrapper.contains(`${mockMovie.runtime} min`)).toBeTruthy();
   });
 });
