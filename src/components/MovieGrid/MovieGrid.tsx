@@ -43,7 +43,7 @@ const MovieGrid: React.SFC<IMoviesGrid> = ({ movies, similarResults }) => {
           </>
         )}
       </div>
-      {movies ? (
+      {!!movies && !!movies.length ? (
         <div className={styles.grid}>{movieList}</div>
       ) : (
         <div className={styles.sorryMessage}>
