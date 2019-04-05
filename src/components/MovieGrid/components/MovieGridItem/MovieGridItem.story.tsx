@@ -26,4 +26,15 @@ storiesOf("Components / MovieGrid / MovieGridItem", module)
     <div style={centerStyles}>
       <MovieGridItem {...singleMovie} poster="" />
     </div>
+  ))
+  .add("missing data", () => (
+    <div style={centerStyles}>
+      <MovieGridItem
+        {...singleMovie}
+        poster={undefined}
+        title=""
+        genres={undefined}
+        releaseDate=""
+      />
+    </div>
   ));

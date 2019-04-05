@@ -4,10 +4,10 @@ import * as styles from "./MovieGridItem.styles.css";
 
 // interface
 export interface IMovieGridItem {
-  title: string;
+  title?: string;
   poster?: string;
-  releaseDate: string;
-  genres: string[];
+  releaseDate?: string;
+  genres?: string[];
 }
 
 const MovieGridItem: React.SFC<IMovieGridItem> = ({
@@ -17,12 +17,16 @@ const MovieGridItem: React.SFC<IMovieGridItem> = ({
   genres
 }) => {
   const parsedDate = releaseDate.substr(0, 4);
-  const joinedGenres = genres.join(" & ");
-  const isPosterDefined = poster.length > 0;
+  const joinedGenres = !!genres ? genres.join(" & ") : "";
+  const isPosterDefined = !!poster;
+  const unknownMessage = "unknown";
   return (
-    <div className={styles.main}>
+    <div>
       {isPosterDefined ? (
-        <img src={poster} alt={title} className={styles.poster} />
+        <div
+          className={styles.poster}
+          style={{ backgroundImage: `url(${poster})` }}
+        />
       ) : (
         <div className={styles.noPoster}>
           <span className={styles.noPosterLabel}>No poster</span>
@@ -30,10 +34,12 @@ const MovieGridItem: React.SFC<IMovieGridItem> = ({
       )}
       <div className={styles.data}>
         <div className={styles.baseData}>
-          <span className={styles.title}>{title}</span>
-          <span className={styles.releaseDate}>{parsedDate}</span>
+          <span className={styles.title}>{title || unknownMessage}</span>
+          <span className={styles.releaseDate}>
+            {parsedDate || unknownMessage}
+          </span>
         </div>
-        <span className={styles.genres}>{joinedGenres}</span>
+        <span className={styles.genres}>{joinedGenres || unknownMessage}</span>
       </div>
     </div>
   );

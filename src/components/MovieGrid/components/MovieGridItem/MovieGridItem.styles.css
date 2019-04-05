@@ -1,20 +1,17 @@
-.main {
+.posterBase {
   border-radius: var(--step-3);
-  overflow: hidden;
-  width: 250px;
-  border: 1px solid var(--color-gray-lighter);
-  background-color: var(--color-white);
   box-shadow: 0 2px 5px 0 var(--color-gray-lighter);
-  position: relative;
+  height: 375px;
+  width: 250px;
 }
 .poster {
-  max-width: 100%;
-  max-height: 375px;
+  composes: posterBase;
+  background-size: cover;
   display: block;
   z-index: 1;
 }
 .noPoster {
-  height: 375px;
+  composes: posterBase;
   background-color: var(--color-gray-lightest);
   display: flex;
   justify-content: center;
@@ -28,12 +25,6 @@
   display: flex;
   flex-direction: column;
   padding: var(--step-3);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  z-index: 4;
-  background-color: var(--color-white-transparent);
-  border-top: 1px solid var(--color-gray-lighter);
 }
 .baseData {
   margin-bottom: var(--step-2);

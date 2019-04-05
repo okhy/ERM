@@ -15,9 +15,22 @@ storiesOf("Components / Button", module)
   .add("with icon", () => (
     <>
       <Button label="basic" icon="fab fa-font-awesome-flag" />
-      <Button label="primary" variant="primary" icon="fab fa-font-awesome-flag" />
-      <Button label="negative" variant="negative" icon="fab fa-font-awesome-flag" />
-      <Button label="disabled" variant="disabled" disabled={true} icon="fab fa-font-awesome-flag" />
+      <Button
+        label="primary"
+        variant="primary"
+        icon="fab fa-font-awesome-flag"
+      />
+      <Button
+        label="negative"
+        variant="negative"
+        icon="fab fa-font-awesome-flag"
+      />
+      <Button
+        label="disabled"
+        variant="disabled"
+        disabled={true}
+        icon="fab fa-font-awesome-flag"
+      />
     </>
   ))
   .add("small variants", () => (
@@ -31,8 +44,23 @@ storiesOf("Components / Button", module)
   .add("small variants with icons", () => (
     <>
       <Button label="small" size="small" icon="fab fa-font-awesome-flag" />
-      <Button label="small-primary" variant="primary" size="small" icon="fab fa-font-awesome-flag" />
-      <Button label="small-negative" variant="negative" size="small" icon="fab fa-font-awesome-flag" />
-      <Button label="small-disabled" variant="disabled" size="small" icon="fab fa-font-awesome-flag" />
+      <Button
+        label="small-primary"
+        variant="primary"
+        size="small"
+        icon="fab fa-font-awesome-flag"
+      />
+      <Button
+        label="small-negative"
+        variant="negative"
+        size="small"
+        icon="fab fa-font-awesome-flag"
+      />
+      <Button
+        label="small-disabled"
+        variant="disabled"
+        size="small"
+        icon="fab fa-font-awesome-flag"
+      />
     </>
   ));

@@ -4,11 +4,12 @@ import * as cx from "classnames";
 
 interface IButton {
   label: string; // label, mandatory
-  variant?: "primary" | "white" | "negative" | "disabled"; // css button variants "primary", "white", "negative" etc.
+  variant?: "primary" | "white" | "negative" | "disabled"; // css variants
   type?: "submit" | "reset"; // html button type prop
   disabled?: boolean; // is diabled
   icon?: string; // full fontawesome class set -> "fab fa-font-awesome-flag"
   size?: "small";
+  clickAction?(): void;
 }
 
 const Button: React.SFC<IButton> = ({
@@ -17,7 +18,8 @@ const Button: React.SFC<IButton> = ({
   icon,
   variant,
   size,
-  label
+  label,
+  clickAction
 }) => {
   const isSmall = !!size;
   const mainClass = cx(styles.main, {
@@ -30,7 +32,12 @@ const Button: React.SFC<IButton> = ({
   });
 
   return (
-    <button className={mainClass} disabled={!!disabled} type={type}>
+    <button
+      className={mainClass}
+      disabled={!!disabled}
+      type={type}
+      onClick={clickAction}
+    >
       {icon && (
         <i className={`${isSmall ? styles.smallIcon : styles.icon} ${icon}`} />
       )}

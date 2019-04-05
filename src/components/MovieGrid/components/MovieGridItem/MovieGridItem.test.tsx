@@ -1,5 +1,5 @@
 import * as React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 // components
 import MovieGridItem, { IMovieGridItem } from "./MovieGridItem";
 // styles
@@ -23,9 +23,14 @@ describe("MovieGridItem component...", () => {
   });
   it("... renders passed props", () => {
     const tempReleaseDate = mockMovie.releaseDate.substr(0, 4);
-    const wrapper = shallow(<MovieGridItem {...mockMovie} />);
+    const wrapper = mount(<MovieGridItem {...mockMovie} />);
 
-    expect(wrapper.find("img").prop("src")).toEqual(mockMovie.poster);
+    expect(
+      wrapper
+        .find(`.${styles.poster}`)
+        .prop("style")
+        .backgroundImage.includes(mockMovie.poster)
+    ).toBeTruthy();
     expect(wrapper.contains(`${mockMovie.title}`)).toBeTruthy();
     expect(wrapper.contains(`${tempReleaseDate}`)).toBeTruthy();
     expect(wrapper.contains(`${mockMovie.genres.join(" & ")}`)).toBeTruthy();
@@ -37,7 +42,6 @@ describe("MovieGridItem component...", () => {
   it("... renders styles", () => {
     const wrapper = shallow(<MovieGridItem {...mockMovie} />);
 
-    expect(wrapper.find(`.${styles.main}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.poster}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.title}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.releaseDate}`)).toBeTruthy();

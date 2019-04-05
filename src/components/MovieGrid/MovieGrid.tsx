@@ -9,27 +9,31 @@ import * as styles from "./MovieGrid.styles.css";
 export interface IMovie extends IMovieGridItem {
   id: number;
 }
-interface IMoviesGird {
+interface IMoviesGrid {
   similarResults?: boolean;
   movies?: IMovie[];
 }
 
-const MovieGrid = (props: IMoviesGird) => {
-  const movieList =
-    props.movies &&
-    props.movies.map(movie => <MovieGridItem key={movie.id} {...movie} />);
+const MovieGrid: React.SFC<IMoviesGrid> = ({ movies, similarResults }) => {
+  const movieCount: number = !!movies ? movies.length : 0;
+  const movieList: React.ReactElement[] =
+    movies && movies.map(movie => <MovieGridItem key={movie.id} {...movie} />);
+
+  const countMessage: string = `${movieCount || "No"} movie${
+    movieCount === 1 ? "" : "s"
+  } found`;
 
   return (
     <div className={styles.main}>
       <div className={styles.results}>
-        {props.similarResults ? (
+        {similarResults ? (
           <>
             <span>Films by </span>
             <span>Drama genre</span>
           </>
         ) : (
           <>
-            <span className="count">7 movies found</span>
+            <span className="count">{countMessage}</span>
             <div className="sorting">
               <span>Sort by</span>
               <button>release date</button>
@@ -38,7 +42,7 @@ const MovieGrid = (props: IMoviesGird) => {
           </>
         )}
       </div>
-      {props.movies ? (
+      {movies ? (
         <div className={styles.grid}>{movieList}</div>
       ) : (
         <div className={styles.sorryMessage}>

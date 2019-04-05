@@ -65,6 +65,13 @@ describe("Button component...", (): void => {
 
     expect(wrapper.prop("type")).toEqual(testType);
   });
-  it.todo("... executes passed click action");
+  it("... executes passed click action", () => {
+    const mockFn = jest.fn();
+    const wrapper = shallow(<Button label="basic" clickAction={mockFn} />);
+
+    wrapper.simulate("click");
+
+    expect(mockFn).toHaveBeenCalled();
+  });
   it.todo("... shows pointer if action is a link");
 });
