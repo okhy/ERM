@@ -47,4 +47,5 @@ describe("MovieGridItem component...", () => {
     expect(wrapper.find(`.${styles.releaseDate}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.genres}`)).toBeTruthy();
   });
+  it.todo('... passed date render')
 });

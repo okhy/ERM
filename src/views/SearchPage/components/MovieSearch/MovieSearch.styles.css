@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 :local(.label) {
-  composes: Typo-Base from global;
+  composes: Typo-Base Typo-Bold from global;
   color: var(--color-white);
   margin-bottom: var(--step-1);
   display: block;
@@ -23,11 +23,17 @@
 }
 .searchInput {
   composes: Typo-Base from global;
-  color: var(--color-gray-darkest);
-  border: 1px solid var(--color-gray);
+  color: var(--color-primary);
+  border: 1px solid var(--color-white);
   border-radius: var(--corner-radius);
   padding: var(--step-2);
   margin-right: var(--step-2);
+}
+.searchInput::placeholder {
+  color: var(--color-gray);
+}
+.searchInput:focus {
+  border: 1px solid var(--color-secondary);
 }
 .optionsLabel {
   composes: label;

@@ -1,8 +1,9 @@
 import * as React from "react";
-// components
+// components and interfaces
 import MovieGridItem, {
   IMovieGridItem
 } from "./components/MovieGridItem/MovieGridItem";
+import Button from "Components/Button/Button";
 // styles
 import * as styles from "./MovieGrid.styles.css";
 // interface
@@ -33,11 +34,11 @@ const MovieGrid: React.SFC<IMoviesGrid> = ({ movies, similarResults }) => {
           </>
         ) : (
           <>
-            <span className="count">{countMessage}</span>
-            <div className="sorting">
-              <span>Sort by</span>
-              <button>release date</button>
-              <button>rating</button>
+            <span className={styles.count}>{countMessage}</span>
+            <div className={styles.sorting}>
+              <span className={styles.sortingLabel}>Sort by</span>
+              <Button label="release date" size="small" variant="white" />
+              <Button label="rating" size="small" variant="white" />
             </div>
           </>
         )}
