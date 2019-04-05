@@ -6,10 +6,12 @@ interface ILogoBar {
   children?: React.ReactNode;
 }
 
-const LogoBar = (props: ILogoBar) => (
+const LogoBar: React.SFC<ILogoBar> = props => (
   <div className={styles.main}>
     <span className={styles.logo}>netflixroulette</span>
-    {props.children && <div className={styles.actionsWrapper}>{props.children}</div>}
+    {props.children && (
+      <div className={styles.actionsWrapper}>{props.children}</div>
+    )}
   </div>
 );
 

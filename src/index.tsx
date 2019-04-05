@@ -11,9 +11,17 @@ import * as resetCSS from "./reset.css";
 styles;
 resetCSS;
 
+export interface IErrorHandlerFunction {
+  (error: Error, errorInfo: React.ErrorInfo): void;
+}
+
+const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
+  console.log(error, errorInfo);
+};
+
 ReactDOM.render(
   <div className="app-container">
-    <WithError>
+    <WithError errorCallback={errorHandler}>
       <SearchPage />
     </WithError>
   </div>,

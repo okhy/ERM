@@ -21,8 +21,8 @@ const Button: React.SFC<IButton> = ({
   label,
   clickAction
 }) => {
-  const isSmall = !!size;
-  const mainClass = cx(styles.main, {
+  const isSmall: boolean = !!size;
+  const mainClass: string = cx(styles.main, {
     [styles.basic]: !variant,
     [styles.white]: !disabled && variant && variant === "white",
     [styles.primary]: !disabled && variant && variant === "primary",

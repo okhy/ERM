@@ -6,7 +6,7 @@ import Button from "Components/Button/Button";
 import * as styles from "./MovieSearch.styles.css";
 
 class MovieSearch extends React.Component<
-  { submitAction?(e: any): void },
+  { submitAction?(): void },
   { value: string }
 > {
   constructor(props: {}) {
@@ -21,7 +21,7 @@ class MovieSearch extends React.Component<
   }
   handleSubmit(event: React.SyntheticEvent): void {
     event.preventDefault();
-    this.props.submitAction(event);
+    this.props.submitAction();
   }
   render() {
     return (
@@ -37,7 +37,12 @@ class MovieSearch extends React.Component<
               value={this.state.value}
             />
           </div>
-          <Button label="search" variant="white" type="submit" />
+          <Button
+            label="search"
+            variant="white"
+            type="submit"
+            clickAction={this.props.submitAction}
+          />
         </div>
         <div className={styles.options}>
           <span className={styles.optionsLabel}>search by</span>

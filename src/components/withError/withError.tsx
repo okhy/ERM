@@ -1,7 +1,10 @@
 import * as React from "react";
 
-class WithError extends React.Component<{}, { hasError: boolean }> {
-  constructor(props: {}) {
+class WithError extends React.Component<
+  { errorCallback(error: Error, errorInfo: React.ErrorInfo): void },
+  { hasError: boolean }
+> {
+  constructor(props: any) {
     super(props);
     this.state = { hasError: false };
   }
@@ -11,14 +14,14 @@ class WithError extends React.Component<{}, { hasError: boolean }> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    console.log(errorInfo.componentStack);
+    this.props.errorCallback(error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
       return <span>Something went wrong</span>;
     }
-    return this.props.children;
+    return <>this.props.children</>;
   }
 }
 

@@ -8,9 +8,9 @@ interface IHeader {
   children?: React.ReactNode;
 }
 
-const Header = (props: IHeader) => (
+const Header: React.SFC<IHeader> = props => (
   <div className={styles.main}>
-    <LogoBar>{props.actionItem && props.actionItem}</LogoBar>
+    <LogoBar>{props.actionItem}</LogoBar>
     {props.children && <div className={styles.content}>{props.children}</div>}
   </div>
 );

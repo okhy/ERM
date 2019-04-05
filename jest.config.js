@@ -1,9 +1,11 @@
 const path = require("path");
 
 module.exports = {
+  preset: "ts-jest",
+  testEnvironment: "node",
   verbose: true,
   transform: {
-    ".(ts|tsx)": "ts-jest"
+    ".(js|jsx|ts|tsx)": "ts-jest"
   },
   setupFilesAfterEnv: [path.resolve(__dirname, "./enzyme.config.js")],
   moduleNameMapper: {
