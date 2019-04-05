@@ -12,7 +12,7 @@ const DetailsPage = () => {
   return (
     <div>
       <Header actionItem={SearchLinkButton}>
-        <MovieDetails />
+        <MovieDetails title="" overview="" />
       </Header>
       <div>
         <MovieGrid />

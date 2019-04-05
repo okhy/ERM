@@ -12,6 +12,9 @@ const containerStyle = {
 
 storiesOf("Components / MovieDetails", module).add("default", () => (
   <div style={containerStyle}>
-    <MovieDetails />
+    <MovieDetails
+      title="Movie Title"
+      overview="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nihil consequatur ipsa nesciunt sit molestiae molestias illum architecto tempora voluptatum quia recusandae? Nisi magni incidunt itaque blanditiis cumque, cupiditate quasi?"
+    />
   </div>
 ));

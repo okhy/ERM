@@ -2,22 +2,46 @@ import * as React from "react";
 // styles
 import * as styles from "./MovieDetails.styles.css";
 
-const MovieDetails = () => (
+export interface IMovieDetails {
+  title: string;
+  poster?: string;
+  releaseDate?: string;
+  genres?: string[];
+  runtime?: number;
+  overview: string;
+}
+
+const MovieDetails: React.SFC<IMovieDetails> = ({
+  title,
+  poster,
+  releaseDate,
+  genres,
+  runtime,
+  overview
+}) => (
   <div className={styles.main}>
-    <div className={styles.poster} />
-    <div className={styles.details}>
-      <span className={styles.title}>Movie Title</span>
-      <span className={styles.category}>Oscar-winning Movies</span>
-      <div className={styles.yearAndDuration}>
-        <span className={styles.year}>1994</span>
-        <span className={styles.duration}>154 min</span>
+    {!!poster ? (
+      <div
+        className={styles.poster}
+        style={{ backgroundImage: `url(${poster})` }}
+      />
+    ) : (
+      <div className={styles.noPoster}>
+        <span className={styles.noPosterLabel}>No poster</span>
       </div>
-      <span className={styles.description}>
-        Waving together three stories featuring a burger-loving hit man, his
-        philosophical partner and a washed-up boxer, Quenting Tarantino
-        influenced a generation of filmmakers with this crime caper's stylized,
-        ove-the-top violence and dark komic spirit.
-      </span>
+    )}
+    <div className={styles.details}>
+      <span className={styles.title}>{title}</span>
+      {!!genres && !!genres.length && (
+        <span className={styles.genres}>{genres.join(" & ")}</span>
+      )}
+      <div className={styles.yearAndDuration}>
+        {!!releaseDate && releaseDate.length > 3 && (
+          <span className={styles.year}>{releaseDate.substr(0, 4)}</span>
+        )}
+        {runtime && <span className={styles.duration}>{`${runtime} min`}</span>}
+      </div>
+      <span className={styles.overview}>{overview}</span>
     </div>
   </div>
 );
