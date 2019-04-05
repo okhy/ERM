@@ -28,4 +28,14 @@ describe("MovieSearch component...", () => {
     const wrapper = shallow(<MovieSearch />);
     expect(wrapper.find(`.${styles.main}`)).toBeTruthy();
   });
+  it("... calls passed action on submit", () => {
+    const mockFn = jest.fn(event => {
+      console.log(event);
+    });
+    const wrapper = shallow(<MovieSearch submitAction={mockFn} />);
+
+    wrapper.simulate("submit", { preventDefault: () => {} });
+
+    expect(mockFn).toHaveBeenCalled();
+  });
 });

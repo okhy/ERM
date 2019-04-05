@@ -5,16 +5,23 @@ import Button from "Components/Button/Button";
 // styles
 import * as styles from "./MovieSearch.styles.css";
 
-class MovieSearch extends React.Component<{}, { value: string }> {
+class MovieSearch extends React.Component<
+  { submitAction?(e: any): void },
+  { value: string }
+> {
   constructor(props: {}) {
     super(props);
     this.state = { value: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({ value: event.target.value });
   }
-  handleSubmit(event: any): void {
+  handleSubmit(event: React.SyntheticEvent): void {
     event.preventDefault();
+    this.props.submitAction(event);
   }
   render() {
     return (
@@ -26,7 +33,7 @@ class MovieSearch extends React.Component<{}, { value: string }> {
               className={styles.searchInput}
               type="text"
               placeholder={"Movie title"}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.handleChange}
               value={this.state.value}
             />
           </div>
