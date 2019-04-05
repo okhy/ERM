@@ -29,12 +29,10 @@ describe("MovieSearch component...", () => {
     expect(wrapper.find(`.${styles.main}`)).toBeTruthy();
   });
   it("... calls passed action on submit", () => {
-    const mockFn = jest.fn(event => {
-      console.log(event);
-    });
+    const mockFn = jest.fn();
     const wrapper = shallow(<MovieSearch submitAction={mockFn} />);
 
-    wrapper.simulate("submit", { preventDefault: () => {} });
+    wrapper.simulate("submit", { preventDefault: jest.fn() });
 
     expect(mockFn).toHaveBeenCalled();
   });
