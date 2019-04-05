@@ -36,6 +36,11 @@
 }
 
 .sorryMessage {
+  composes: Typo-Big from global;
+  color: var(--color-negative);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Responsive rules */
