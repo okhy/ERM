@@ -21,7 +21,7 @@ class WithError extends React.Component<
     if (this.state.hasError) {
       return <span>Something went wrong</span>;
     }
-    return <>this.props.children</>;
+    return <>{this.props.children}</>;
   }
 }
 
