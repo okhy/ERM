@@ -1,0 +1,65 @@
+.main {
+  /* adjustment for better centering */
+  padding: var(--step-2) var(--step-4) calc(var(--step-2) + 2px);
+  border-radius: var(--corner-radius);
+  border-style: none;
+  color: var(--color-primary);
+  height: 100%;
+}
+.small {
+  padding: var(--step-1) var(--step-3) calc(var(--step-1) + 2px);
+}
+.icon {
+  composes: Typo-Base-Size from global;
+  margin-right: var(--step-2);
+}
+.label {
+  composes: Typo-Base from global;
+}
+
+/* small button overrides: */
+.smallLabel {
+  composes: Typo-Small from global;
+}
+.smallIcon {
+  composes: icon;
+  composes: Typo-Small-Size from global;
+}
+
+/* variants */
+.basic {
+  background-color: var(--color-gray-lightest);
+}
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.white {
+  background-color: var(--color-white);
+}
+.primary:hover,
+.white:hover,
+.basic:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+.primary:active,
+.white:active,
+.basic:active {
+  background-color: var(--color-secondary-darker);
+  color: var(--color-primary);
+}
+.negative {
+  background-color: var(--color-negative-darker);
+  color: var(--color-white);
+}
+.negative:hover {
+  background-color: var(--color-negative);
+}
+.negative:active {
+  background-color: var(--color-negative-lighter);
+}
+.disabled {
+  background-color: var(--color-gray-lightest);
+  color: var(--color-gray-light);
+}

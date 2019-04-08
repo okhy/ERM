@@ -1,10 +1,16 @@
 .main {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: var(--step-4);
 }
 
 .logo {
+  composes: Typo-Big from global;
   font-weight: bold;
   font-family: sans-serif;
-  color: red;
+  color: var(--color-negative);
+}
+
+.actionsWrapper {
 }

@@ -1,0 +1,10 @@
+.main {
+  background-color: var(--color-primary);
+  color: car(--color-white);
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--color-gray-lighter);
+}
+.content {
+  padding: var(--step-5);
+}

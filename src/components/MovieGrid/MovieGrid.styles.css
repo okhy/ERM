@@ -1,0 +1,74 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: var(--step-5);
+  background-color: var(--color-gray-lightest);
+  padding: var(--step-2) var(--step-4);
+}
+.count {
+  composes: Typo-Base Typo-Bold from global;
+  margin-bottom: var(--step-2);
+}
+.sorting {
+  display: flex;
+  align-items: baseline;
+}
+.sorting > button {
+  margin: 0 var(--step-1);
+}
+.sortingLabel {
+  composes: Typo-Base from global;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: var(--step-2);
+  row-gap: var(--step-5);
+}
+.grid > * {
+  justify-self: center;
+  align-self: center;
+}
+
+.sorryMessage {
+  composes: Typo-Big from global;
+  color: var(--color-negative);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive rules */
+@media only screen and (min-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .count {
+    margin-bottom: initial;
+  }
+  .results {
+    justify-content: space-between;
+    align-items: baseline;
+    flex-direction: row;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}

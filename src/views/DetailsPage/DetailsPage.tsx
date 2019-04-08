@@ -1,23 +1,22 @@
 import * as React from "react";
 // components
 import Header from "Components/Header/Header";
-import MovieDetails from "./../../components/MovieDetails/MovieDetails";
-import MovieGrid from "./../../components/MovieGrid/MovieGrid";
-import Footer from "./../../components/Footer/Footer";
-import Button from "./../../components/Button/Button";
+import MovieGrid from "Components/MovieGrid/MovieGrid";
+import Footer from "Components/Footer/Footer";
+import Button from "Components/Button/Button";
+// child components
+import MovieDetails from "./components/MovieDetails/MovieDetails";
 
-const DetailsPage = () => {
-  const SearchLinkButton = <Button label="search" />;
-  return (
+const DetailsPage = () => (
+  <div>
+    <Header actionItem={<Button variant="white" label="search" />}>
+      <MovieDetails title="" overview="" />
+    </Header>
     <div>
-      <Header actionItem={SearchLinkButton}>
-        <MovieDetails />
-      </Header>
-      <div>
-        <MovieGrid />
-      </div>
-      <Footer />
+      <MovieGrid />
     </div>
-  );
-};
+    <Footer />
+  </div>
+);
+
 export default DetailsPage;

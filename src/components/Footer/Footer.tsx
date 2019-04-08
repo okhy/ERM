@@ -1,6 +1,6 @@
 import * as React from "react";
 // components
-import LogoBar from "./../LogoBar/LogoBar";
+import LogoBar from "Components/LogoBar/LogoBar";
 
 const Footer = () => (
   <div>

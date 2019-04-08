@@ -5,19 +5,19 @@ import WithError from "./WithError";
 
 describe("WithError component...", () => {
   it("... renders without errors", () => {
-    const wrapper = shallow(<WithError />);
+    const wrapper = shallow(<WithError errorCallback={() => {}} />);
 
     expect(wrapper.state("hasError")).toEqual(false);
     expect(wrapper.find(WithError)).toBeTruthy();
   });
   it("... matches snapshot", () => {
-    const wrapper = shallow(<WithError />);
+    const wrapper = shallow(<WithError errorCallback={() => {}} />);
     expect(wrapper).toMatchSnapshot();
   });
   it("... renders children", () => {
     const TestComponent = () => <span>Test</span>;
     const wrapper = shallow(
-      <WithError>
+      <WithError errorCallback={() => {}}>
         <TestComponent />
       </WithError>
     );
@@ -29,7 +29,7 @@ describe("WithError component...", () => {
     it("... calling componentDidCatch", () => {
       const TestComponent = () => <span>Test</span>;
       const wrapper = shallow(
-        <WithError>
+        <WithError errorCallback={() => {}}>
           <TestComponent />
         </WithError>
       );
@@ -48,7 +48,7 @@ describe("WithError component...", () => {
     it("... rendering error message", () => {
       const TestComponent = () => <span>Test</span>;
       const wrapper = shallow(
-        <WithError>
+        <WithError errorCallback={() => {}}>
           <TestComponent />
         </WithError>
       );

@@ -1,0 +1,44 @@
+.posterBase {
+  border-radius: var(--step-3);
+  box-shadow: 0 2px 5px 0 var(--color-gray-lighter);
+  height: 375px;
+  width: 250px;
+}
+.poster {
+  composes: posterBase;
+  background-size: cover;
+  display: block;
+  z-index: 1;
+}
+.noPoster {
+  composes: posterBase;
+  background-color: var(--color-gray-lightest);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.noPosterLabel {
+  composes: Typo-Big Typo-Bold from global;
+  color: var(--color-gray-light);
+}
+.data {
+  display: flex;
+  flex-direction: column;
+  padding: var(--step-3);
+}
+.baseData {
+  margin-bottom: var(--step-2);
+}
+.title {
+  composes: Typo-Big Typo-Bold from global;
+  color: var(--color-gray-darkest);
+  margin-right: var(--step-2);
+}
+.releaseDate {
+  composes: Typo-Base from global;
+  color: var(--color-gray-dark);
+}
+.genres {
+  composes: Typo-Small from global;
+  color: var(--color-primary-lighter);
+}

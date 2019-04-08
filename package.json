@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --watch --env.mode=development",
     "prod": "webpack --env.mode=production",
     "test": "jest -o --watch",
-    "fullTest": "jest --watchAll --coverage",
+    "test:coverage": "jest --coverage",
     "storybook": "start-storybook"
   },
   "keywords": [
@@ -20,7 +20,8 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@storybook/react": "^5.0.3",
+    "@storybook/react": "^5.0.6",
+    "@types/classnames": "^2.2.7",
     "@types/enzyme": "^3.9.1",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.11",
@@ -30,6 +31,7 @@
     "@types/storybook__react": "^4.0.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.5",
+    "classnames": "^2.2.6",
     "css-loader": "^2.1.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
@@ -42,7 +44,8 @@
     "typed-css-modules-loader": "0.0.17",
     "typescript": "^3.3.3333",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
     "react": "^16.8.4",

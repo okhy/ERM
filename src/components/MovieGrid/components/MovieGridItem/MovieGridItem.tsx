@@ -1,13 +1,43 @@
 import * as React from "react";
+// styles
+import * as styles from "./MovieGridItem.styles.css";
 
-const MovieGridItem = () => (
+// interface
+export interface IMovieGridItem {
+  title: string;
+  poster?: string;
+  releaseDate?: string;
+  genres?: string[];
+}
+
+const MovieGridItem: React.SFC<IMovieGridItem> = ({
+  title,
+  poster,
+  releaseDate,
+  genres
+}) => (
   <div>
-    <img src="." alt="Movie Title" />
-    <div>
-      <span>Movie Title</span>
-      <span>2004</span>
+    {!!poster ? (
+      <div
+        className={styles.poster}
+        style={{ backgroundImage: `url(${poster})` }}
+      />
+    ) : (
+      <div className={styles.noPoster}>
+        <span className={styles.noPosterLabel}>No poster</span>
+      </div>
+    )}
+    <div className={styles.data}>
+      <div className={styles.baseData}>
+        <span className={styles.title}>{title}</span>
+        {!!releaseDate && releaseDate.length > 3 && (
+          <span className={styles.releaseDate}>{releaseDate.substr(0, 4)}</span>
+        )}
+      </div>
+      {!!genres && !!genres.length && (
+        <span className={styles.genres}>{genres.join(" & ")}</span>
+      )}
     </div>
-    <span>Action & Adventure</span>
   </div>
 );
 

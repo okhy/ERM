@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+    extensions: ["*", ".js", ".jsx", ".ts", ".tsx", ".css"],
     alias: {
       Components: path.resolve(__dirname, "./../src/components"),
       Views: path.resolve(__dirname, "./../src/views"),
@@ -25,17 +25,21 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader?modules&sourceMap", "typed-css-modules-loader"]
-      },
-      {
-        test: /\.(ttf|eot|svg|woff|png)$/,
         use: [
+          { loader: "style-loader" },
           {
-            loader: "file-loader",
+            loader: "css-loader",
             options: {
-              name: "[path][name].[ext]?[hash]"
+              import: true,
+              modules: true,
+              sourceMap: true,
+              localIdentName: "[local]--[hash:base64:10]",
+              // camelCase: true,
+              importLoaders: 1
+              // exportOnlyLocals: true
             }
-          }
+          },
+          { loader: "typed-css-modules-loader" }
         ]
       }
     ]
