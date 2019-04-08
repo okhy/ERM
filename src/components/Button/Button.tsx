@@ -9,7 +9,7 @@ interface IButton {
   disabled?: boolean; // is diabled
   icon?: string; // full fontawesome class set -> "fab fa-font-awesome-flag"
   size?: "small";
-  clickAction?(): void;
+  clickAction?(e: React.MouseEvent): void;
 }
 
 const Button: React.SFC<IButton> = ({
