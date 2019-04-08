@@ -22,3 +22,11 @@ Webpack automatically watches and updates files. No `webpack-dev-server` is curr
 ## Building Project
 
 `npm run prod`
+
+# Dev notes
+
+## View/ component structure
+
+## Redux setup
+
+Actions and reducers are conteainer (view) wide. Everything is imported in index.ts from view components.

@@ -10,6 +10,18 @@ import * as resetCSS from "./reset.css";
 // init styles for whole app
 styles;
 resetCSS;
+// Redux store
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
+const store = createStore(() => {});
+
+/** redux todo:
+ * 1.import reducers
+ * 2.combine
+ * 3. create store
+ * 4. provide store to the app
+ */
 
 export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;
@@ -21,9 +33,11 @@ const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
 
 ReactDOM.render(
   <div className="app-container">
-    <WithError errorCallback={errorHandler}>
-      <SearchPage />
-    </WithError>
+    <Provider store={store}>
+      <WithError errorCallback={errorHandler}>
+        <SearchPage />
+      </WithError>
+    </Provider>
   </div>,
   document.getElementById("app")
 );

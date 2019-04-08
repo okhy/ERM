@@ -39,6 +39,8 @@
     "jest": "^24.4.0",
     "puppeteer": "^1.13.0",
     "react-docgen-typescript-loader": "^3.0.1",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.0",
     "typed-css-modules-loader": "0.0.17",
@@ -50,8 +52,6 @@
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-redux": "^6.0.1",
-    "react-router": "^4.3.1",
-    "redux": "^4.0.1"
+    "react-router": "^4.3.1"
   }
 }
