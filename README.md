@@ -30,3 +30,27 @@ Webpack automatically watches and updates files. No `webpack-dev-server` is curr
 ## Redux setup
 
 Actions and reducers are conteainer (view) wide. Everything is imported in index.ts from view components.
+
+Redux State:
+
+```javascript
+{
+  SearchResults: {
+    query: string;
+    movies?: array;
+    sorting: string;
+    filter: string;
+  },
+  MovieDetails: {
+    id: number;
+    similarMovies: array;
+  }
+  fetching: {
+    status: boolean,
+    error: "false" | {}
+  }
+  UI: {
+    spinner: true;
+  }
+}
+```

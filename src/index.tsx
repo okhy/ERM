@@ -11,17 +11,16 @@ import * as resetCSS from "./reset.css";
 styles;
 resetCSS;
 // Redux store
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
+import globalReducer from "./global.reducer";
+import searchPageReducer from "./views/SearchPage/SearchPage.reducer";
+// todo: detailsPageReducer
 
-const store = createStore(() => {});
-
-/** redux todo:
- * 1.import reducers
- * 2.combine
- * 3. create store
- * 4. provide store to the app
- */
+const store = createStore(
+  combineReducers({ globalReducer, searchPageReducer }),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;
