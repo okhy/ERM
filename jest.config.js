@@ -14,8 +14,7 @@ module.exports = {
     "\\.css$": "<rootDir>/__mocks__/styleMock.js",
     "Components(.*)$": "<rootDir>/src/components/$1",
     "Views(.*)$": "<rootDir>/src/views/$1",
-    "HOC(.*)$": "<rootDir>/src/hoc/$1",
-    "AppRoot(.*)$": "<rootDir>/src/$1",
+    // "Root(.*)$": "<rootDir>/src/$1",
     "Mocks(.*)$": "<rootDir>/__mocks__/$1"
   },
   moduleFileExtensions: ["js", "jsx", "json", "ts", "tsx", "node"]

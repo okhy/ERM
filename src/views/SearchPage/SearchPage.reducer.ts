@@ -1,4 +1,4 @@
-import { ActionType } from "AppRoot/types";
+import { ActionType } from "./../../types";
 import searchActionTypes from "./SearchPage.actions";
 import { IMovie } from "Components/MovieGrid/MovieGrid";
 

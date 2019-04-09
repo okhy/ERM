@@ -5,8 +5,7 @@
       // "*": ["types/*"],
       "Components/*": ["components/*"],
       "Views/*": ["views/*"],
-      "HOC/*": ["hoc/*"],
-      "AppRoot/*": ["*"],
+      // "Root/*": ["*"],
       "Mocks/*": ["../__mocks__/*"]
     },
     "moduleResolution": "node",

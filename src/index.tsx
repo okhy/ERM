@@ -10,16 +10,28 @@ import * as resetCSS from "./reset.css";
 // init styles for whole app
 styles;
 resetCSS;
-// Redux store
-import { createStore, combineReducers } from "redux";
+// Redux
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+// reducers
 import globalReducer from "./global.reducer";
-import searchPageReducer from "./views/SearchPage/SearchPage.reducer";
+import searchPageReducer from "Views/SearchPage/SearchPage.reducer";
+// actions
+import { movieSearch } from "Views/SearchPage/SearchPage.actions";
 // todo: detailsPageReducer
+
+const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  : compose;
 
 const store = createStore(
   combineReducers({ globalReducer, searchPageReducer }),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers(applyMiddleware(thunk))
+);
+
+store.dispatch<any>(
+  movieSearch({ search: "Pulp Fiction", searchBy: "title" })(store.dispatch)
 );
 
 export interface IErrorHandlerFunction {

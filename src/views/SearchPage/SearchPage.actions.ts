@@ -1,3 +1,8 @@
+import { movieListQuery } from "../../types";
+// import movieService from "./../services/movieService";
+import { movieList } from "./../../../__mocks__/moviesMocks";
+import { toggleFetchStatus } from "./../../global.actions";
+
 const searchActionTypes = {
   getMovieList: "GET_MOVIE_LIST_QUERY",
   getMovieListResponse: "GET_MOVIE_LIST_RESPONSE",
@@ -9,12 +14,22 @@ const searchActionTypes = {
 
 export default searchActionTypes;
 
-export const searchForMovie = (query: string) => ({
-  type: searchActionTypes.getMovieList,
-  payload: query
-});
+export const getMovie = (query: movieListQuery) => (dispatch: any) => {
+  dispatch(toggleFetchStatus(false));
+  return {
+    type: searchActionTypes.getMovieListResponse,
+    payload: movieList.data
+  };
+};
 
-export const getMovieDetails = (id: number) => ({
-  type: searchActionTypes,
-  payload: id
-});
+// thunk
+export const movieSearch = (query: movieListQuery) => (dispatch: any) => {
+  dispatch(toggleFetchStatus(true));
+  setTimeout(() => {
+    dispatch(getMovie(query)(dispatch));
+  }, 2000);
+  return {
+    type: searchActionTypes.getMovieList,
+    payload: query
+  };
+};

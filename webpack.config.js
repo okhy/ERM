@@ -9,8 +9,7 @@ module.exports = (env, options) => ({
     alias: {
       Components: path.resolve(__dirname, "./src/components"),
       Views: path.resolve(__dirname, "./src/views"),
-      HOC: path.resolve(__dirname, "./src/hoc"),
-      AppRoot: path.resolve(__dirname, "./src"),
+      Root: path.resolve(__dirname, "./src"),
       Mocks: path.relative(__dirname, "./__mocks__")
     }
   },

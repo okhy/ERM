@@ -34,7 +34,7 @@ interface IMovies {
   offset: number;
   limit: number;
 }
-const similarMovies: IMovies = {
+const movieList: IMovies = {
   data: [
     {
       id: 353081,
@@ -193,4 +193,4 @@ const similarMovies: IMovies = {
 };
 
 export { singleMovie };
-export { similarMovies };
+export { movieList };

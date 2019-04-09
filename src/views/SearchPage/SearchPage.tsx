@@ -4,8 +4,6 @@ import Header from "Components/Header/Header";
 import MovieSearch from "./components/MovieSearch/MovieSearch";
 import MovieGrid from "Components/MovieGrid/MovieGrid";
 import Footer from "Components/Footer/Footer";
-// redux
-import { connect } from "react-redux";
 
 const SearchPage = () => (
   <div>
@@ -19,15 +17,4 @@ const SearchPage = () => (
   </div>
 );
 
-export default connect(
-  (state: any) => ({
-    movies: state.searchResults.movies || false
-  }),
-  (dispatch: any) => ({
-    testAction: () => {
-      dispatch({ type: "TEST" });
-    }
-  })
-)(SearchPage);
-
-// export default SearchPage;
+export default SearchPage;
