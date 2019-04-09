@@ -1,4 +1,4 @@
-interface IMovie {
+export interface IMovie {
   id: number;
   title: string;
   tagline: string;
@@ -12,7 +12,7 @@ interface IMovie {
   genres: string[];
   runtime: number | null;
 }
-const singleMovie: IMovie = {
+export const singleMovie: IMovie = {
   id: 680,
   title: "Pulp Fiction",
   tagline: "Just because you are a character doesn't mean you have character.",
@@ -28,13 +28,13 @@ const singleMovie: IMovie = {
   runtime: 154
 };
 
-interface IMovies {
+export interface IMovies {
   data: IMovie[];
   total: number;
   offset: number;
   limit: number;
 }
-const movieList: IMovies = {
+export const movieList: IMovies = {
   data: [
     {
       id: 353081,
@@ -191,6 +191,3 @@ const movieList: IMovies = {
   offset: 0,
   limit: 10
 };
-
-export { singleMovie };
-export { movieList };

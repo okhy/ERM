@@ -1,7 +1,8 @@
 import { movieListQuery } from "./../types";
+// import { IMovies } from "./../../__mocks__/moviesMocks";
 
-const movieService = () => {
-  const apiURL = "reactjs-cdp.herokuapp.com/";
+export default (() => {
+  const apiURL = "https://reactjs-cdp.herokuapp.com";
 
   return {
     getMovies: (query: movieListQuery) => {
@@ -10,7 +11,7 @@ const movieService = () => {
         ""
       );
       const result = fetch(`${apiURL}/movies${queryOptions}`)
-        .then(result => result.json)
+        .then(response => response.json())
         .catch(error => {
           console.log(error);
         });
@@ -18,6 +19,6 @@ const movieService = () => {
       return result;
     }
   };
-};
+})();
 
-export default movieService;
+// export default movieService;
