@@ -37,7 +37,7 @@ describe("Search page reducer...", () => {
 
       expect(store.getState()).toBeTruthy();
       expect(store.getState().movies).toBeTruthy();
-      expect(store.getState().movies[0]).toEqual(mockedMovieList);
+      expect(store.getState().movies[0]).toEqual(mockedMovieList[0]);
     });
     // it.todo("... queryMoviesError action");
     // it.todo("... movie sorting action");

@@ -2,9 +2,8 @@ import {
   MovieListQuery,
   IMovie,
   ActionTypeMap,
-  ThunkAction
-  // StoreDispatch,
-  // PayloadAction
+  ThunkAction,
+  StoreDispatch
 } from "Types";
 import movieService from "Services/movieService";
 import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
@@ -21,8 +20,11 @@ const searchActionTypes: ActionTypeMap = {
 
 export default searchActionTypes;
 
-// helperFunction dispatching response actions
-export const getMovie = async (dispatch: any, query: MovieListQuery) => {
+// helperFunction dispatching response globalActionTypes
+export const getMovie = async (
+  dispatch: StoreDispatch<Error | IMovie[] | boolean>,
+  query: MovieListQuery
+) => {
   const result: Error | IMovie[] = await movieService.getMovies(query);
 
   dispatch(toggleFetchStatus(false));
