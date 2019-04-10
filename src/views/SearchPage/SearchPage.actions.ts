@@ -1,6 +1,5 @@
-import { movieListQuery } from "../../types";
+import { MovieListQuery, IMovie } from "Types";
 import movieService from "./../../services/movieService";
-import { IMovies } from "./../../../__mocks__/moviesMocks";
 import { toggleFetchStatus } from "./../../global.actions";
 
 const searchActionTypes = {
@@ -14,19 +13,21 @@ const searchActionTypes = {
 
 export default searchActionTypes;
 
-// helperFunction
-export const getMovie = async (dispatch: any, query: movieListQuery) => {
-  const result: IMovies = await movieService.getMovies(query);
+// helperFunction dispatching response actions
+export const getMovie = async (dispatch: any, query: MovieListQuery) => {
+  const result: Error | IMovie[] = await movieService.getMovies(query);
 
   dispatch(toggleFetchStatus(false));
   dispatch({
-    type: searchActionTypes.getMovieListResponse,
-    payload: result.data
+    type: Array.isArray(result)
+      ? searchActionTypes.getMovieListResponse
+      : searchActionTypes.getMovieListError,
+    payload: result
   });
 };
 
 // thunk action
-export const movieSearch = (query: movieListQuery) => (dispatch: any) => {
+export const movieSearch = (query: MovieListQuery) => (dispatch: any) => {
   dispatch(toggleFetchStatus(true));
   getMovie(dispatch, query);
 

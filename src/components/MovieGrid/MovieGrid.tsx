@@ -1,15 +1,12 @@
 import * as React from "react";
 // components and interfaces
-import MovieGridItem, {
-  IMovieGridItem
-} from "./components/MovieGridItem/MovieGridItem";
+import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
 import Button from "Components/Button/Button";
 // styles
 import * as styles from "./MovieGrid.styles.css";
 // interface
-export interface IMovie extends IMovieGridItem {
-  id: number;
-}
+import { IMovie } from "Types";
+
 interface IMoviesGrid {
   similarResults?: boolean;
   movies?: IMovie[];

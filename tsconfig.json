@@ -6,6 +6,7 @@
       "Components/*": ["components/*"],
       "Views/*": ["views/*"],
       // "Root/*": ["*"],
+      "Types": ["types.d.ts"],
       "Mocks/*": ["../__mocks__/*"]
     },
     "moduleResolution": "node",

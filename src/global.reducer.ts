@@ -1,4 +1,4 @@
-import { ActionType } from "./types";
+import { ActionType } from "Types";
 import globalActionTypes from "./global.actions";
 
 type initialStateType = {

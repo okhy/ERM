@@ -1,6 +1,5 @@
-import { ActionType } from "./../../types";
+import { ActionType, IMovie } from "Types";
 import searchActionTypes from "./SearchPage.actions";
-import { IMovie } from "Components/MovieGrid/MovieGrid";
 
 type SearchPageReducerState = {
   readonly query: false | string;
