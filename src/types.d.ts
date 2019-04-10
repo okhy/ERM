@@ -3,16 +3,11 @@ declare global {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
   }
 }
-
-export interface ActionType {
-  type: string;
-  payload?: Object;
-}
 export interface MovieListQuery {
   search: string;
+  searchBy?: "title" | "genres";
   sortBy?: string;
   sortOrder?: "desc" | "asc";
-  searchBy?: "title" | "genres";
   filter?: string[];
   offset?: number;
   limit?: number;
@@ -49,3 +44,51 @@ export interface IMovieGridItem {
 export interface IMovie extends IMovieGridItem {
   id: number;
 }
+
+/**
+ * ACTIONS
+ */
+export type ActionTypeMap = { [key: string]: string };
+
+type Partial<T> = { [P in keyof T]?: T[P] };
+
+// type payload<T> = {
+//   payload: T;
+// };
+// interface PayloadAction extends payload<string | number> {
+//   type: string;
+// }
+
+// interface GenericAction extends Partial<payload<usecases>> {
+//   type: string;
+// }
+
+export interface GenericAction<T> {
+  type: string;
+  payload?: T;
+}
+
+export interface PayloadAction<T> extends GenericAction<T> {
+  payload: T;
+}
+
+export interface ActionCreator<T> {
+  (payload: T): GenericAction<T>;
+}
+
+export interface StoreDispatch<T> {
+  (action: GenericAction<T> | ActionCreator<T>): void;
+}
+
+export type ThunkAction<T, D> = (
+  payload: T
+) => (dispatch: StoreDispatch<D>) => GenericAction<T>;
+
+// to experiment:
+// export interface ThunkDispatch<T> {
+//   (dispatch: StoreDispatch<T>): GenericAction<T>;
+// }
+
+// export interface ThunkAction<T, D> extends ActionCreator<T> {
+//   (payload: T): ThunkDispatch<D>;
+// }

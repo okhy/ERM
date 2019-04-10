@@ -1,4 +1,4 @@
-import { ActionType, IMovie } from "Types";
+import { GenericAction, IMovie } from "Types";
 import searchActionTypes from "./SearchPage.actions";
 
 type SearchPageReducerState = {
@@ -7,13 +7,21 @@ type SearchPageReducerState = {
   sort: false | "desc" | "asc";
 };
 
+type searchPageReducerType = (
+  state: SearchPageReducerState,
+  action: GenericAction<any>
+) => SearchPageReducerState;
+
 const initialState: SearchPageReducerState = {
   query: false,
   movies: false,
   sort: false
 };
 
-const searchPageReducer = (state = initialState, action: ActionType) => {
+const searchPageReducer: searchPageReducerType = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case searchActionTypes.getMovieList:
       return {
@@ -38,7 +46,7 @@ const searchPageReducer = (state = initialState, action: ActionType) => {
 
         return { ...state, movies: newMovies, sort: action.payload };
       }
-      return { ...state, sorting: action.payload };
+      return { ...state, sort: action.payload };
     default:
       return state;
   }

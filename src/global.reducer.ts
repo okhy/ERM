@@ -1,4 +1,4 @@
-import { ActionType } from "Types";
+import { GenericAction } from "Types";
 import globalActionTypes from "./global.actions";
 
 type initialStateType = {
@@ -8,6 +8,11 @@ type initialStateType = {
   };
 };
 
+type globalReducerType = (
+  state: initialStateType,
+  action: GenericAction<any>
+) => initialStateType;
+
 const initialState: initialStateType = {
   fetching: {
     status: false,
@@ -15,13 +20,14 @@ const initialState: initialStateType = {
   }
 };
 
-const globalReducer = (state = initialState, action: ActionType) => {
+const globalReducer: globalReducerType = (state = initialState, action) => {
   switch (action.type) {
     case globalActionTypes.fetchToggle:
       return {
         ...state,
         fetching: {
-          status: action.payload
+          status: action.payload,
+          error: false
         }
       };
     case globalActionTypes.fetchError:

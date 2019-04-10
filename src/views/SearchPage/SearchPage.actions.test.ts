@@ -1,12 +1,13 @@
 import searchActionTypes, { movieSearch, getMovie } from "./SearchPage.actions";
 import globalActionTypes from "Root/global.actions";
-import { movieListMock } from "Mocks/moviesMocks";
+import { MovieListQuery, IMovie, PayloadAction } from "Types";
 
 describe("SearchPage action creators ...", () => {
   it("... call dispatch function", () => {
     const mockDispatch = jest.fn();
-    const mockQuery = {
+    const mockQuery: MovieListQuery = {
       search: "test title",
+      searchBy: "title",
       sortBy: "desc"
     };
 
@@ -15,11 +16,12 @@ describe("SearchPage action creators ...", () => {
     expect(mockDispatch).toHaveBeenCalled();
   });
   it("... return proper searchMovies action", () => {
-    const mockQuery = {
+    const mockQuery: MovieListQuery = {
       search: "test title",
+      searchBy: "title",
       sortBy: "desc"
     };
-    const expectedActionObject = {
+    const expectedActionObject: PayloadAction<MovieListQuery> = {
       type: searchActionTypes.getMovieList,
       payload: mockQuery
     };
@@ -28,12 +30,13 @@ describe("SearchPage action creators ...", () => {
   });
   it("... dispatch proper Error action", () => {
     const mockDispatch = jest.fn();
-    const mockQuery = {
+    const mockQuery: MovieListQuery = {
       search: "test title",
+      searchBy: "title",
       sortBy: "desc"
     };
     const mockError = new Error("test error");
-    const errorAction = {
+    const errorAction: PayloadAction<Error> = {
       type: globalActionTypes.fetchError,
       payload: mockError
     };
@@ -47,15 +50,22 @@ describe("SearchPage action creators ...", () => {
   });
   it("... dispatch proper Result action", () => {
     const mockDispatch = jest.fn();
-    const mockQuery = {
-      search: "Pulp"
+    const mockQuery: MovieListQuery = {
+      search: "Pulp",
+      searchBy: "title"
     };
-    const responseAction = {
+    const mockMovieList: IMovie[] = [
+      {
+        id: 1,
+        title: "test title"
+      }
+    ];
+    const responseAction: PayloadAction<IMovie[]> = {
       type: searchActionTypes.getMovieListResponse,
-      payload: movieListMock
+      payload: mockMovieList
     };
 
-    (global as any).fetch = jest.fn(() => movieListMock);
+    (global as any).fetch = jest.fn(() => mockMovieList);
 
     getMovie(mockDispatch, mockQuery);
 

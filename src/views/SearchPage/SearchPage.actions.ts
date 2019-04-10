@@ -1,8 +1,15 @@
-import { MovieListQuery, IMovie } from "Types";
+import {
+  MovieListQuery,
+  IMovie,
+  ActionTypeMap,
+  ThunkAction
+  // StoreDispatch,
+  // PayloadAction
+} from "Types";
 import movieService from "Services/movieService";
 import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
 
-const searchActionTypes = {
+const searchActionTypes: ActionTypeMap = {
   getMovieList: "GET_MOVIE_LIST_QUERY",
   getMovieListResponse: "GET_MOVIE_LIST_RESPONSE",
   getMovieListError: "GET_MOVIE_LIST_ERROR",
@@ -28,7 +35,10 @@ export const getMovie = async (dispatch: any, query: MovieListQuery) => {
 };
 
 // thunk action
-export const movieSearch = (query: MovieListQuery) => (dispatch: any) => {
+export const movieSearch: ThunkAction<
+  MovieListQuery,
+  boolean
+> = query => dispatch => {
   dispatch(toggleFetchStatus(true));
   getMovie(dispatch, query);
 
