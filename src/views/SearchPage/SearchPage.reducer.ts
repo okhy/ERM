@@ -39,7 +39,6 @@ const searchPageReducer = (state = initialState, action: ActionType) => {
         return { ...state, movies: newMovies, sort: action.payload };
       }
       return { ...state, sorting: action.payload };
-    case searchActionTypes.getMovieListError:
     default:
       return state;
   }

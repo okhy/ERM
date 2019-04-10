@@ -5,7 +5,7 @@ import {
   IMovie
 } from "Types";
 
-export default (() => {
+const movieService = () => {
   const apiURL = "https://reactjs-cdp.herokuapp.com";
 
   return {
@@ -14,7 +14,9 @@ export default (() => {
         (acc, key) => `${acc}?${key}=${query[key]}`,
         ""
       );
-      const result: Promise<Error | IMovie[]> = fetch(`${apiURL}/movies${queryOptions}`)
+      const result: Promise<Error | IMovie[]> = fetch(
+        `${apiURL}/movies${queryOptions}`
+      )
         .then((response: Response) => response.json())
         .then(
           (responseData: ResponseMovieList): IMovie[] =>
@@ -31,8 +33,24 @@ export default (() => {
         .catch(error => error);
 
       return result;
+    },
+    getMovie: (id: string) => {
+      const result: Promise<Error | IMovie> = fetch(`${apiURL}/${id}`)
+        .then((response: Response) => response.json())
+        .then(
+          (responseData: ResponseMovie): IMovie => ({
+            id: responseData.id,
+            title: responseData.title,
+            poster: responseData.poster_path,
+            releaseDate: responseData.release_date,
+            genres: responseData.genres
+          })
+        )
+        .catch(error => error);
+
+      return result;
     }
   };
-})();
+};
 
-// export default movieService;
+export default movieService();

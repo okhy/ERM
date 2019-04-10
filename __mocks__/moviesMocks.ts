@@ -15,7 +15,7 @@ export const singleMovie: ResponseMovie = {
   runtime: 154
 };
 
-export const movieList: ResponseMovieList = {
+export const movieListMock: ResponseMovieList = {
   data: [
     {
       id: 353081,

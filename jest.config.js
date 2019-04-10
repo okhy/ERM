@@ -14,7 +14,7 @@ module.exports = {
     "\\.css$": "<rootDir>/__mocks__/styleMock.js",
     "Components(.*)$": "<rootDir>/src/components/$1",
     "Views(.*)$": "<rootDir>/src/views/$1",
-    "Services(.*)$": "<rootDir>/src/serviecs/$1",
+    "Services(.*)$": "<rootDir>/src/services/$1",
     "Root(.*)$": "<rootDir>/src/$1",
     Types: "<rootDir>/src/types.d.ts",
     "Mocks(.*)$": "<rootDir>/__mocks__/$1"

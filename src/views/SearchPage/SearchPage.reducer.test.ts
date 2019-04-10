@@ -18,7 +18,7 @@ describe("Search page reducer...", () => {
       expect(store.getState()).toBeTruthy();
       expect(store.getState().query).toEqual("test query");
     });
-    it.todo("... queryMoviesResult action", () => {
+    it("... queryMoviesResult action", () => {
       const mockedMovie = {
         id: 1,
         title: "test title",
@@ -37,7 +37,7 @@ describe("Search page reducer...", () => {
       expect(store.getState().movies).toBeTruthy();
       expect(store.getState().movies[0]).toEqual(mockedMovie);
     });
-    it.todo("... queryMoviesError action");
-    it.todo("... movie sorting action");
+    // it.todo("... queryMoviesError action");
+    // it.todo("... movie sorting action");
   });
 });

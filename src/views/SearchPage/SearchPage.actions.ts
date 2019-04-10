@@ -1,14 +1,14 @@
 import { MovieListQuery, IMovie } from "Types";
 import movieService from "Services/movieService";
-import { toggleFetchStatus } from "Root/global.actions";
+import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
 
 const searchActionTypes = {
   getMovieList: "GET_MOVIE_LIST_QUERY",
   getMovieListResponse: "GET_MOVIE_LIST_RESPONSE",
   getMovieListError: "GET_MOVIE_LIST_ERROR",
-  getMovieDetails: "GET_MOVIE_DETAILS_QUERY",
-  getMovieDetailsResponse: "GET_MOVIE_DETAILS_RESPONSE",
-  getMovieDetailsError: "GET_MOVIE_DETAILS_ERROR",
+  // getMovieDetails: "GET_MOVIE_DETAILS_QUERY",
+  // getMovieDetailsResponse: "GET_MOVIE_DETAILS_RESPONSE",
+  // getMovieDetailsError: "GET_MOVIE_DETAILS_ERROR",
   movieListSorting: "MOVIE_LIST_SORT"
 };
 
@@ -22,7 +22,7 @@ export const getMovie = async (dispatch: any, query: MovieListQuery) => {
   dispatch({
     type: Array.isArray(result)
       ? searchActionTypes.getMovieListResponse
-      : searchActionTypes.getMovieListError,
+      : globalActionTypes.fetchError,
     payload: result
   });
 };
