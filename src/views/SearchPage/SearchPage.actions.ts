@@ -8,7 +8,8 @@ const searchActionTypes = {
   getMovieListError: "GET_MOVIE_LIST_ERROR",
   getMovieDetails: "GET_MOVIE_DETAILS_QUERY",
   getMovieDetailsResponse: "GET_MOVIE_DETAILS_RESPONSE",
-  getMovieDetailsError: "GET_MOVIE_DETAILS_ERROR"
+  getMovieDetailsError: "GET_MOVIE_DETAILS_ERROR",
+  movieListSorting: 'MOVIE_LIST_SORT'
 };
 
 export default searchActionTypes;

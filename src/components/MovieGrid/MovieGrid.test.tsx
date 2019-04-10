@@ -1,8 +1,9 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 // components
-import MovieGrid, { IMovie } from "./MovieGrid";
+import MovieGrid from "./MovieGrid";
 import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
+import { IMovie } from "Types";
 // styles
 import * as styles from "./MovieGrid.styles.css";
 

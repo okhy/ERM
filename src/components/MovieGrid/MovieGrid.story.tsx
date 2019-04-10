@@ -1,7 +1,8 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 // component / interface
-import MovieGrid, { IMovie } from "./MovieGrid";
+import MovieGrid from "./MovieGrid";
+import { IMovie } from "Types";
 
 const movieList: IMovie[] = [
   {

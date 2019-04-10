@@ -1,7 +1,8 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 // components
-import MovieGridItem, { IMovieGridItem } from "./MovieGridItem";
+import MovieGridItem from "./MovieGridItem";
+import { IMovieGridItem } from 'Types'
 // styles
 import * as styles from "./MovieGridItem.styles.css";
 // mock data
