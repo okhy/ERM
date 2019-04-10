@@ -27,7 +27,7 @@ describe("movieService...", () => {
     expect(result).toEqual(mockMovieList);
   });
 
-  it("... returns an error", async () => {
+  it("... returns an getMovies error", async () => {
     const mockQuery: MovieListQuery = {
       search: "test title",
       searchBy: "title",
@@ -57,5 +57,14 @@ describe("movieService...", () => {
     const result = await movieService.getMovie("1");
     expect(result).toBeTruthy();
     expect(result).toEqual(mockMovie);
+  });
+  it("... returns getMovie error", async () => {
+    const mockError = new Error("test error");
+    const mockFetch = jest.fn(() => Promise.reject(mockError));
+    (global as any).fetch = jest.fn(mockFetch);
+
+    const result = await movieService.getMovie("1");
+    expect(result).toBeTruthy();
+    expect(result).toEqual(mockError);
   });
 });
