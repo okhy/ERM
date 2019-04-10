@@ -1,5 +1,5 @@
 import * as React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 // components
 import MovieGridItem, { IMovieGridItem } from "./MovieGridItem";
 // styles
@@ -23,7 +23,7 @@ describe("MovieGridItem component...", () => {
   });
   it("... renders passed props", () => {
     const tempReleaseDate = mockMovie.releaseDate.substr(0, 4);
-    const wrapper = mount(<MovieGridItem {...mockMovie} />);
+    const wrapper = shallow(<MovieGridItem {...mockMovie} />);
 
     expect(
       wrapper
@@ -47,5 +47,5 @@ describe("MovieGridItem component...", () => {
     expect(wrapper.find(`.${styles.releaseDate}`)).toBeTruthy();
     expect(wrapper.find(`.${styles.genres}`)).toBeTruthy();
   });
-  it.todo('... passed date render')
+  it.todo("... passed date render");
 });

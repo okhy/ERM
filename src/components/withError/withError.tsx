@@ -1,9 +1,14 @@
 import * as React from "react";
 
-class WithError extends React.Component<
-  { errorCallback(error: Error, errorInfo: React.ErrorInfo): void },
-  { hasError: boolean }
-> {
+type Props = {
+  errorCallback(error: Error, errorInfo: React.ErrorInfo): void;
+};
+
+type State = {
+  hasError: boolean;
+};
+
+class WithError extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = { hasError: false };
