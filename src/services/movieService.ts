@@ -8,13 +8,18 @@ import {
 const movieService = () => {
   const apiURL = "https://reactjs-cdp.herokuapp.com";
 
-  const transformResponseMovie = (movie: ResponseMovie): IMovie => ({
-    id: movie.id,
-    title: movie.title,
-    poster: movie.poster_path,
-    releaseDate: movie.release_date,
-    genres: movie.genres
-  });
+  const transformResponseMovie = (movie: ResponseMovie): IMovie => {
+    let formattedMovie: IMovie = {
+      id: movie.id,
+      title: movie.title
+    };
+    // todo: find better way to do these shenanigans
+    if (movie.poster_path) formattedMovie.poster = movie.poster_path;
+    if (movie.release_date) formattedMovie.releaseDate = movie.release_date;
+    if (movie.genres) formattedMovie.genres = movie.genres;
+
+    return formattedMovie;
+  };
 
   return {
     getMovies: (query: MovieListQuery) => {
@@ -51,3 +56,4 @@ const movieService = () => {
 };
 
 export default movieService();
+export { movieService };
