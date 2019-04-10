@@ -1,7 +1,6 @@
 import * as React from "react";
 // components
 import Button from "Components/Button/Button";
-// import Input from "../Input/Input";
 // styles
 import * as styles from "./MovieSearch.styles.css";
 

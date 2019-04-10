@@ -5,7 +5,8 @@
       // "*": ["types/*"],
       "Components/*": ["components/*"],
       "Views/*": ["views/*"],
-      // "Root/*": ["*"],
+      "Services/*": ["services/*"],
+      "Root/*": ["*"],
       "Types": ["types.d.ts"],
       "Mocks/*": ["../__mocks__/*"]
     },

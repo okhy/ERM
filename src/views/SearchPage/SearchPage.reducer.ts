@@ -2,13 +2,15 @@ import { ActionType, IMovie } from "Types";
 import searchActionTypes from "./SearchPage.actions";
 
 type SearchPageReducerState = {
-  readonly query: false | string;
-  readonly movies: false | IMovie[];
+  query: false | string;
+  movies: false | IMovie[];
+  sort: false | "desc" | "asc";
 };
 
 const initialState: SearchPageReducerState = {
   query: false,
-  movies: false
+  movies: false,
+  sort: false
 };
 
 const searchPageReducer = (state = initialState, action: ActionType) => {
@@ -34,7 +36,7 @@ const searchPageReducer = (state = initialState, action: ActionType) => {
           return a.title >= b.title ? 1 : -1;
         });
 
-        return { ...state, movies: newMovies, sorting: action.payload };
+        return { ...state, movies: newMovies, sort: action.payload };
       }
       return { ...state, sorting: action.payload };
     case searchActionTypes.getMovieListError:

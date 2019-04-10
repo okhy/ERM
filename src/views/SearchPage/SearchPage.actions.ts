@@ -1,6 +1,6 @@
 import { MovieListQuery, IMovie } from "Types";
-import movieService from "./../../services/movieService";
-import { toggleFetchStatus } from "./../../global.actions";
+import movieService from "Services/movieService";
+import { toggleFetchStatus } from "Root/global.actions";
 
 const searchActionTypes = {
   getMovieList: "GET_MOVIE_LIST_QUERY",
@@ -9,7 +9,7 @@ const searchActionTypes = {
   getMovieDetails: "GET_MOVIE_DETAILS_QUERY",
   getMovieDetailsResponse: "GET_MOVIE_DETAILS_RESPONSE",
   getMovieDetailsError: "GET_MOVIE_DETAILS_ERROR",
-  movieListSorting: 'MOVIE_LIST_SORT'
+  movieListSorting: "MOVIE_LIST_SORT"
 };
 
 export default searchActionTypes;
