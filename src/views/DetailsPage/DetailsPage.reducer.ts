@@ -24,6 +24,11 @@ const detailsPageReducer: detailsPageReducerType = (
 ) => {
   switch (action.type) {
     case detailsActionTypes.getMovieDetailsResponse:
+      return {
+        ...state,
+        details: action.payload.movie,
+        similarMovies: action.payload.similar
+      };
     case detailsActionTypes.getMovieDetails:
     default:
       return state;

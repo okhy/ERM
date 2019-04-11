@@ -23,6 +23,7 @@ const movieService: movieServiceType = () => {
   });
 
   const getMovieList = (query: MovieListQuery): Promise<Error | IMovie[]> => {
+    // convert options from object to query string "?optval&opt2=val2"
     const queryOptions: string = Object.keys(query).reduce(
       (accumulator, key, index) => {
         const ampersand = index > 0 ? "&" : "";
@@ -44,7 +45,7 @@ const movieService: movieServiceType = () => {
   const getMovieByID = (
     id: string
   ): Promise<Error | { movie: IMovie; similar: IMovie[] }> => {
-    return fetch(`${apiURL}/${id}`)
+    return fetch(`${apiURL}/movies/${id}`)
       .then((response: Response) => response.json())
       .then(
         (responseData: ResponseMovie): IMovie =>

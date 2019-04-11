@@ -2,7 +2,7 @@ import { StoreDispatch, ThunkAction } from "Types";
 import movieService, { resultType } from "Services/movieService";
 import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
 
-const enum detailsActionTypes {
+enum detailsActionTypes {
   getMovieDetails = "GET_MOVIE_DETAILS_QUERY",
   getMovieDetailsResponse = "GET_MOVIE_DETAILS_RESPONSE"
 }

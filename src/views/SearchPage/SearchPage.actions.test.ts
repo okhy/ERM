@@ -45,7 +45,7 @@ describe("SearchPage action creators ...", () => {
 
     expect(mockFetch).toHaveBeenCalled();
     expect(mockDispatch).toHaveBeenCalled();
-    expect(mockDispatch).toHaveBeenCalledWith(errorAction);
+    expect(mockDispatch).toHaveBeenLastCalledWith(errorAction);
   });
   it("... dispatch proper Result action", async () => {
     const mockDispatch = jest.fn();
@@ -65,6 +65,6 @@ describe("SearchPage action creators ...", () => {
 
     expect(mockFetch).toHaveBeenCalled();
     expect(mockDispatch).toHaveBeenCalled();
-    expect(mockDispatch).toHaveBeenCalledWith(responseAction);
+    expect(mockDispatch).toHaveBeenLastCalledWith(responseAction);
   });
 });

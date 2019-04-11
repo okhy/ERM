@@ -2,7 +2,7 @@ import { MovieListQuery, IMovie, ThunkAction, StoreDispatch } from "Types";
 import movieService from "Services/movieService";
 import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
 
-const enum searchActionTypes {
+enum searchActionTypes {
   getMovieList = "GET_MOVIE_LIST_QUERY",
   getMovieListResponse = "GET_MOVIE_LIST_RESPONSE",
   movieListSorting = "MOVIE_LIST_SORT"
