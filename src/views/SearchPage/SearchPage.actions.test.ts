@@ -1,4 +1,7 @@
-import searchActionTypes, { movieSearch, getMovie } from "./SearchPage.actions";
+import searchActionTypes, {
+  movieSearch,
+  getMovieList
+} from "./SearchPage.actions";
 import globalActionTypes from "Root/global.actions";
 import { MovieListQuery, IMovie, PayloadAction } from "Types";
 
@@ -10,7 +13,7 @@ const mockQuery: MovieListQuery = {
 const mockMovieList: IMovie[] = [
   {
     id: 1,
-    title: "test title"
+    title: "test title",
   }
 ];
 const mockError = new Error("test error");
@@ -38,7 +41,7 @@ describe("SearchPage action creators ...", () => {
 
     (global as any).fetch = mockFetch;
 
-    await getMovie(mockDispatch, mockQuery);
+    await getMovieList(mockDispatch, mockQuery);
 
     expect(mockFetch).toHaveBeenCalled();
     expect(mockDispatch).toHaveBeenCalled();
@@ -58,7 +61,7 @@ describe("SearchPage action creators ...", () => {
 
     (global as any).fetch = mockFetch;
 
-    await getMovie(mockDispatch, mockQuery);
+    await getMovieList(mockDispatch, mockQuery);
 
     expect(mockFetch).toHaveBeenCalled();
     expect(mockDispatch).toHaveBeenCalled();

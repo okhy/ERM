@@ -1,39 +1,37 @@
-import {
-  MovieListQuery,
-  IMovie,
-  ActionTypeMap,
-  ThunkAction,
-  StoreDispatch
-} from "Types";
+import { MovieListQuery, IMovie, ThunkAction, StoreDispatch } from "Types";
 import movieService from "Services/movieService";
 import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
 
-const searchActionTypes: ActionTypeMap = {
-  getMovieList: "GET_MOVIE_LIST_QUERY",
-  getMovieListResponse: "GET_MOVIE_LIST_RESPONSE",
-  getMovieListError: "GET_MOVIE_LIST_ERROR",
-  // getMovieDetails: "GET_MOVIE_DETAILS_QUERY",
-  // getMovieDetailsResponse: "GET_MOVIE_DETAILS_RESPONSE",
-  // getMovieDetailsError: "GET_MOVIE_DETAILS_ERROR",
-  movieListSorting: "MOVIE_LIST_SORT"
-};
+const enum searchActionTypes {
+  getMovieList = "GET_MOVIE_LIST_QUERY",
+  getMovieListResponse = "GET_MOVIE_LIST_RESPONSE",
+  getMovieListError = "GET_MOVIE_LIST_ERROR",
+  movieListSorting = "MOVIE_LIST_SORT"
+}
 
 export default searchActionTypes;
 
 // helperFunction dispatching response globalActionTypes
-export const getMovie = async (
+export const getMovieList = async (
   dispatch: StoreDispatch<Error | IMovie[] | boolean>,
   query: MovieListQuery
 ) => {
-  const result: Error | IMovie[] = await movieService.getMovies(query);
+  await movieService
+    .getMovieList(query)
+    .then((result: IMovie[]) => {
+      dispatch({
+        type: searchActionTypes.getMovieListResponse,
+        payload: result
+      });
+    })
+    .catch((error: Error) => {
+      dispatch({
+        type: globalActionTypes.fetchError,
+        payload: error
+      });
+    });
 
   dispatch(toggleFetchStatus(false));
-  dispatch({
-    type: Array.isArray(result)
-      ? searchActionTypes.getMovieListResponse
-      : globalActionTypes.fetchError,
-    payload: result
-  });
 };
 
 // thunk action
@@ -42,7 +40,7 @@ export const movieSearch: ThunkAction<
   boolean
 > = query => dispatch => {
   dispatch(toggleFetchStatus(true));
-  getMovie(dispatch, query);
+  getMovieList(dispatch, query);
 
   return {
     type: searchActionTypes.getMovieList,

@@ -48,9 +48,9 @@ export interface IMovie extends IMovieGridItem {
 /**
  * ACTIONS
  */
-export type ActionTypeMap = { [key: string]: string };
+// export type ActionTypeMap = { [key: string]: string };
 
-type Partial<T> = { [P in keyof T]?: T[P] };
+// type Partial<T> = { [P in keyof T]?: T[P] };
 
 // type payload<T> = {
 //   payload: T;

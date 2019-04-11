@@ -1,9 +1,9 @@
-import { ActionCreator, ActionTypeMap } from "Types";
+import { ActionCreator } from "Types";
 
-const globalActionTypes: ActionTypeMap = {
-  fetchToggle: "FETCHING_TOGGLE",
-  fetchError: "FETCHING_ERROR"
-};
+enum globalActionTypes {
+  fetchToggle = "FETCHING_TOGGLE",
+  fetchError = "FETCHING_ERROR"
+}
 
 export default globalActionTypes;
 
