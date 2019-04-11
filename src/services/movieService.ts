@@ -53,7 +53,7 @@ const movieService: movieServiceType = () => {
       )
       .then(async (resultMovie: IMovie) => {
         await getMovieList({
-          search: resultMovie.genres.join(", "),
+          search: resultMovie.genres ? resultMovie.genres.join(", ") : "",
           searchBy: "genres"
         }).then(movieList => ({ movie: resultMovie, similar: movieList }));
       })
