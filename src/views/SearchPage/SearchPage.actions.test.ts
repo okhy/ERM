@@ -30,6 +30,7 @@ describe("SearchPage action creators ...", () => {
   });
   it("... dispatch proper Error action", () => {
     const mockDispatch = jest.fn();
+    const mockFetch = jest.fn(() => mockError);
     const mockQuery: MovieListQuery = {
       search: "test title",
       searchBy: "title",
@@ -40,12 +41,11 @@ describe("SearchPage action creators ...", () => {
       type: globalActionTypes.fetchError,
       payload: mockError
     };
-
-    (global as any).fetch = jest.fn(() => mockError);
+    (global as any).fetch = mockFetch;
 
     getMovie(mockDispatch, mockQuery);
 
-    expect(window.fetch).toHaveBeenCalled();
+    expect(mockFetch).toHaveBeenCalled();
     expect(mockDispatch).toHaveBeenCalledWith(errorAction);
   });
   it("... dispatch proper Result action", () => {
