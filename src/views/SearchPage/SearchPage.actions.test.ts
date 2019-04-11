@@ -2,73 +2,66 @@ import searchActionTypes, { movieSearch, getMovie } from "./SearchPage.actions";
 import globalActionTypes from "Root/global.actions";
 import { MovieListQuery, IMovie, PayloadAction } from "Types";
 
+const mockQuery: MovieListQuery = {
+  search: "test title",
+  searchBy: "title",
+  sortBy: "desc"
+};
+const mockMovieList: IMovie[] = [
+  {
+    id: 1,
+    title: "test title"
+  }
+];
+const mockError = new Error("test error");
+
 describe("SearchPage action creators ...", () => {
   it("... call dispatch function", () => {
     const mockDispatch = jest.fn();
-    const mockQuery: MovieListQuery = {
-      search: "test title",
-      searchBy: "title",
-      sortBy: "desc"
-    };
-
     movieSearch(mockQuery)(mockDispatch);
-
     expect(mockDispatch).toHaveBeenCalled();
   });
   it("... return proper searchMovies action", () => {
-    const mockQuery: MovieListQuery = {
-      search: "test title",
-      searchBy: "title",
-      sortBy: "desc"
-    };
     const expectedActionObject: PayloadAction<MovieListQuery> = {
       type: searchActionTypes.getMovieList,
       payload: mockQuery
     };
-
     expect(movieSearch(mockQuery)(() => {})).toEqual(expectedActionObject);
   });
-  it("... dispatch proper Error action", () => {
+  it("... dispatch proper Error action", async () => {
     const mockDispatch = jest.fn();
-    const mockFetch = jest.fn(() => mockError);
-    const mockQuery: MovieListQuery = {
-      search: "test title",
-      searchBy: "title",
-      sortBy: "desc"
-    };
-    const mockError = new Error("test error");
+    const mockFetch = jest.fn(() => Promise.reject(mockError));
     const errorAction: PayloadAction<Error> = {
       type: globalActionTypes.fetchError,
       payload: mockError
     };
+
     (global as any).fetch = mockFetch;
 
-    getMovie(mockDispatch, mockQuery);
+    await getMovie(mockDispatch, mockQuery);
 
     expect(mockFetch).toHaveBeenCalled();
-    expect(mockDispatch).toHaveBeenCalledWith(errorAction);
+    expect(mockDispatch).toHaveBeenCalled();
+    expect(mockDispatch).toHaveBeenLastCalledWith(errorAction);
   });
-  it("... dispatch proper Result action", () => {
+  it("... dispatch proper Result action", async () => {
     const mockDispatch = jest.fn();
-    const mockQuery: MovieListQuery = {
-      search: "Pulp",
-      searchBy: "title"
-    };
-    const mockMovieList: IMovie[] = [
-      {
-        id: 1,
-        title: "test title"
-      }
-    ];
+    const mockFetch = jest.fn(() =>
+      Promise.resolve({
+        json: () => ({ data: mockMovieList })
+      })
+    );
     const responseAction: PayloadAction<IMovie[]> = {
       type: searchActionTypes.getMovieListResponse,
       payload: mockMovieList
     };
 
-    (global as any).fetch = jest.fn(() => mockMovieList);
+    (global as any).fetch = mockFetch;
 
-    getMovie(mockDispatch, mockQuery);
+    await getMovie(mockDispatch, mockQuery);
 
-    expect(mockDispatch).toHaveBeenCalledWith(responseAction);
+    expect(mockFetch).toHaveBeenCalled();
+    expect(mockDispatch).toHaveBeenCalled();
+    expect(mockDispatch).toHaveBeenLastCalledWith(responseAction);
   });
 });

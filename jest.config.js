@@ -19,5 +19,6 @@ module.exports = {
     Types: "<rootDir>/src/types.d.ts",
     "Mocks(.*)$": "<rootDir>/__mocks__/$1"
   },
+  coveragePathIgnorePatterns: ["node_modules", "./src/types.d.ts"],
   moduleFileExtensions: ["js", "jsx", "json", "ts", "tsx", "node"]
 };
