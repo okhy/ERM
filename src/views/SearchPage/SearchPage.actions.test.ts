@@ -13,7 +13,7 @@ const mockQuery: MovieListQuery = {
 const mockMovieList: IMovie[] = [
   {
     id: 1,
-    title: "test title",
+    title: "test title"
   }
 ];
 const mockError = new Error("test error");
@@ -45,7 +45,7 @@ describe("SearchPage action creators ...", () => {
 
     expect(mockFetch).toHaveBeenCalled();
     expect(mockDispatch).toHaveBeenCalled();
-    expect(mockDispatch).toHaveBeenLastCalledWith(errorAction);
+    expect(mockDispatch).toHaveBeenCalledWith(errorAction);
   });
   it("... dispatch proper Result action", async () => {
     const mockDispatch = jest.fn();
@@ -65,6 +65,6 @@ describe("SearchPage action creators ...", () => {
 
     expect(mockFetch).toHaveBeenCalled();
     expect(mockDispatch).toHaveBeenCalled();
-    expect(mockDispatch).toHaveBeenLastCalledWith(responseAction);
+    expect(mockDispatch).toHaveBeenCalledWith(responseAction);
   });
 });

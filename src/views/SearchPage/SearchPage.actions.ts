@@ -5,7 +5,6 @@ import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
 const enum searchActionTypes {
   getMovieList = "GET_MOVIE_LIST_QUERY",
   getMovieListResponse = "GET_MOVIE_LIST_RESPONSE",
-  getMovieListError = "GET_MOVIE_LIST_ERROR",
   movieListSorting = "MOVIE_LIST_SORT"
 }
 

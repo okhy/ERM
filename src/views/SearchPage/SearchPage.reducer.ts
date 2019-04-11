@@ -1,11 +1,11 @@
 import { GenericAction, IMovie } from "Types";
 import searchActionTypes from "./SearchPage.actions";
 
-type SearchPageReducerState = {
+interface SearchPageReducerState {
   query: false | string;
   movies: false | IMovie[];
   sort: false | "desc" | "asc";
-};
+}
 
 type searchPageReducerType = (
   state: SearchPageReducerState,

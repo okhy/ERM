@@ -21,7 +21,7 @@ describe("movieService...", () => {
     );
     (global as any).fetch = jest.fn(mockFetch);
 
-    const result = await movieService.getMovies(mockQuery);
+    const result = await movieService.getMovieList(mockQuery);
 
     expect(result).toBeTruthy();
     expect(result).toEqual(mockMovieList);
@@ -37,7 +37,7 @@ describe("movieService...", () => {
     const mockFetch = jest.fn(() => Promise.reject(mockError));
     (global as any).fetch = jest.fn(mockFetch);
 
-    const result = await movieService.getMovies(mockQuery);
+    const result = await movieService.getMovieList(mockQuery);
 
     expect(result).toBeTruthy();
     expect(result).toEqual(mockError);
@@ -54,7 +54,7 @@ describe("movieService...", () => {
     );
     (global as any).fetch = jest.fn(mockFetch);
 
-    const result = await movieService.getMovie("1");
+    const result = await movieService.getMovieByID("1");
     expect(result).toBeTruthy();
     expect(result).toEqual(mockMovie);
   });
@@ -63,7 +63,7 @@ describe("movieService...", () => {
     const mockFetch = jest.fn(() => Promise.reject(mockError));
     (global as any).fetch = jest.fn(mockFetch);
 
-    const result = await movieService.getMovie("1");
+    const result = await movieService.getMovieByID("1");
     expect(result).toBeTruthy();
     expect(result).toEqual(mockError);
   });

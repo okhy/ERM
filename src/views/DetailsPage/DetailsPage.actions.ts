@@ -4,8 +4,7 @@ import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
 
 const enum detailsActionTypes {
   getMovieDetails = "GET_MOVIE_DETAILS_QUERY",
-  getMovieDetailsResponse = "GET_MOVIE_DETAILS_RESPONSE",
-  getMovieDetailsError = "GET_MOVIE_DETAILS_ERROR"
+  getMovieDetailsResponse = "GET_MOVIE_DETAILS_RESPONSE"
 }
 
 export default detailsActionTypes;
@@ -37,7 +36,6 @@ export const fetchMovieById: ThunkAction<string, boolean> = id => dispatch => {
   dispatch(toggleFetchStatus(true));
 
   return {
-    type: detailsActionTypes.getMovieDetails,
-    payload: id
+    type: detailsActionTypes.getMovieDetails
   };
 };

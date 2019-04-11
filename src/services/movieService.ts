@@ -24,8 +24,12 @@ const movieService: movieServiceType = () => {
 
   const getMovieList = (query: MovieListQuery): Promise<Error | IMovie[]> => {
     const queryOptions: string = Object.keys(query).reduce(
-      (acc, key) => `${acc}?${key}=${query[key]}`,
-      ""
+      (accumulator, key, index) => {
+        const ampersand = index > 0 ? "&" : "";
+        const option = `${key}=${query[key]}`;
+        return accumulator + ampersand + option;
+      },
+      "?"
     );
     return fetch(`${apiURL}/movies${queryOptions}`)
       .then((response: Response) => response.json())
