@@ -2,9 +2,9 @@ import { GenericAction, IMovie } from "Types";
 import searchActionTypes from "./SearchPage.actions";
 
 interface SearchPageReducerState {
-  query: false | string;
-  movies: false | IMovie[];
-  sort: false | "desc" | "asc";
+  query: string;
+  movies: IMovie[];
+  sort: "desc" | "asc";
 }
 
 type searchPageReducerType = (
@@ -13,9 +13,9 @@ type searchPageReducerType = (
 ) => SearchPageReducerState;
 
 const initialState: SearchPageReducerState = {
-  query: false,
-  movies: false,
-  sort: false
+  query: "",
+  movies: [],
+  sort: "desc"
 };
 
 const searchPageReducer: searchPageReducerType = (
@@ -34,15 +34,12 @@ const searchPageReducer: searchPageReducerType = (
         movies: action.payload
       };
     case searchActionTypes.movieListSorting:
-      if (state.movies) {
-        const newMovies: IMovie[] = state.movies && state.movies;
-
-        newMovies.sort((a: IMovie, b: IMovie) => {
-          if (action.payload === "desc") {
-            return a.title <= b.title ? 1 : -1;
-          }
-          return a.title >= b.title ? 1 : -1;
-        });
+      if (state.movies.length) {
+        const newMovies: IMovie[] = state.movies;
+        newMovies.sort();
+        if (action.payload === "desc") {
+          newMovies.reverse();
+        }
 
         return { ...state, movies: newMovies, sort: action.payload };
       }
