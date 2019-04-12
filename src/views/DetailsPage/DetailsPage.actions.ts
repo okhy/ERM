@@ -1,4 +1,4 @@
-import { ThunkAction, IMovie } from "Types";
+import { ThunkAction, IMovie, MovieListQuery } from "Types";
 import movieService, { resultType } from "Services/movieService";
 import { toggleFetchStatus, fetchError } from "Root/global.actions";
 
@@ -21,20 +21,19 @@ export const fetchMovieById: ThunkAction<
   };
 
   const successHandler = (result: IMovie): void => {
-    movieService.getMovieList(
-      {
-        search: result.genres ? result.genres[0] : "",
-        searchBy: "genres"
-      },
-      errorHandler,
-      (similarMovies: IMovie[]): void => {
-        dispatch({
-          type: detailsActionTypes.getMovieDetailsResponse,
-          payload: { movie: result, similar: similarMovies }
-        });
-        dispatch(toggleFetchStatus(false));
-      }
-    );
+    const query: MovieListQuery = {
+      search: result.genres ? result.genres[0] : "",
+      searchBy: "genres"
+    };
+    const movieListsuccessHandler = (similarMovies: IMovie[]): void => {
+      dispatch({
+        type: detailsActionTypes.getMovieDetailsResponse,
+        payload: { movie: result, similar: similarMovies }
+      });
+      dispatch(toggleFetchStatus(false));
+    };
+
+    movieService.getMovieList(query, errorHandler, movieListsuccessHandler);
   };
 
   movieService.getMovieByID(id, errorHandler, successHandler);
