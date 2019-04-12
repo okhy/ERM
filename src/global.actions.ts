@@ -1,18 +1,18 @@
 import { ActionCreator } from "Types";
 
 enum globalActionTypes {
-  fetchToggle = "FETCHING_TOGGLE",
-  fetchError = "FETCHING_ERROR"
+  toggleFetchStatus = "TOGGLE_FETCHING_STATUS",
+  setfetchError = "SET_FETCHING_ERROR"
 }
 
 export default globalActionTypes;
 
 export const toggleFetchStatus: ActionCreator<boolean> = status => ({
-  type: globalActionTypes.fetchToggle,
+  type: globalActionTypes.toggleFetchStatus,
   payload: status
 });
 
 export const fetchError: ActionCreator<Error> = error => ({
-  type: globalActionTypes.fetchError,
+  type: globalActionTypes.setfetchError,
   payload: error
 });

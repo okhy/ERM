@@ -1,6 +1,6 @@
-import { StoreDispatch, ThunkAction } from "Types";
+import { ThunkAction, IMovie } from "Types";
 import movieService, { resultType } from "Services/movieService";
-import globalActionTypes, { toggleFetchStatus } from "Root/global.actions";
+import { toggleFetchStatus, fetchError } from "Root/global.actions";
 
 enum detailsActionTypes {
   getMovieDetails = "GET_MOVIE_DETAILS_QUERY",
@@ -9,31 +9,35 @@ enum detailsActionTypes {
 
 export default detailsActionTypes;
 
-type getMovieByIDType = (
-  id: string,
-  dispatch: StoreDispatch<Error | resultType | boolean>
-) => void;
-
-const getMovieByID: getMovieByIDType = async (id, dispatch) => {
-  await movieService
-    .getMovieByID(id)
-    .then((result: resultType) => {
-      dispatch({
-        type: detailsActionTypes.getMovieDetailsResponse,
-        payload: result
-      });
-    })
-    .catch((error: Error) => {
-      dispatch({
-        type: globalActionTypes.fetchError,
-        payload: error
-      });
-    });
-};
-
-export const fetchMovieById: ThunkAction<string, boolean> = id => dispatch => {
-  getMovieByID(id, dispatch);
+export const fetchMovieById: ThunkAction<
+  string,
+  boolean | resultType | Error
+> = id => dispatch => {
   dispatch(toggleFetchStatus(true));
+
+  const errorHandler = (error: Error): void => {
+    dispatch(fetchError(error));
+    dispatch(toggleFetchStatus(false));
+  };
+
+  const successHandler = (result: IMovie): void => {
+    movieService.getMovieList(
+      {
+        search: result.genres ? result.genres[0] : "",
+        searchBy: "genres"
+      },
+      errorHandler,
+      (similarMovies: IMovie[]): void => {
+        dispatch({
+          type: detailsActionTypes.getMovieDetailsResponse,
+          payload: { movie: result, similar: similarMovies }
+        });
+        dispatch(toggleFetchStatus(false));
+      }
+    );
+  };
+
+  movieService.getMovieByID(id, errorHandler, successHandler);
 
   return {
     type: detailsActionTypes.getMovieDetails

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 // components
-import WithError from "Components/WithError/WithError";
+import WithError from "Components/WithError/withError";
 // views
 import SearchPage from "Views/SearchPage/SearchPage";
 // assets
@@ -19,6 +19,7 @@ import globalReducer from "./global.reducer";
 import searchPageReducer from "Views/SearchPage/SearchPage.reducer";
 // actions
 import { movieSearch } from "Views/SearchPage/SearchPage.actions";
+import { fetchMovieById } from "Views/DetailsPage/DetailsPage.actions";
 // todo: detailsPageReducer
 
 const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -33,6 +34,7 @@ const store = createStore(
 store.dispatch<any>(
   movieSearch({ search: "Pulp Fiction", searchBy: "title" })(store.dispatch)
 );
+store.dispatch<any>(fetchMovieById("680")(store.dispatch));
 
 export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;

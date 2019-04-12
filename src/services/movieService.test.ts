@@ -1,4 +1,4 @@
-import movieService, { resultType } from "./movieService";
+import movieService from "./movieService";
 import { MovieListQuery, IMovie } from "Types";
 
 const mockQuery: MovieListQuery = {
@@ -8,13 +8,6 @@ const mockQuery: MovieListQuery = {
 };
 const mockError = new Error("test error");
 
-const mockMovie: IMovie = {
-  id: 2,
-  title: "Single Movie",
-  genres: ["genre1", "genre2"],
-  poster: undefined,
-  releaseDate: undefined
-};
 const mockMovieList: IMovie[] = [
   {
     id: 1,
@@ -32,66 +25,59 @@ const mockMovieList: IMovie[] = [
   }
 ];
 
-describe("movieService...", () => {
-  it("... gets movieList by query", async () => {
-    const mockFetch = jest.fn(() =>
+const getMockFetch = (type: "resolve" | "reject") => {
+  if (type === "resolve") {
+    return jest.fn(() =>
       Promise.resolve({
         json: () => ({ data: mockMovieList })
       })
     );
-    (global as any).fetch = jest.fn(mockFetch);
+  }
+  return jest.fn(() => Promise.reject(mockError));
+};
 
-    const result = await movieService
-      .getMovieList(mockQuery)
-      .then(result => result);
+describe("movieService...", () => {
+  it("... gets movieList by query", () => {
+    (global as any).fetch = jest.fn(getMockFetch("resolve"));
 
-    expect(result).toBeTruthy();
-    expect(result).toEqual(mockMovieList);
-  });
+    const successHandler = jest.fn();
 
-  it("... returns an getMovies error", async () => {
-    const mockFetch = jest.fn(() => Promise.reject(mockError));
-    (global as any).fetch = jest.fn(mockFetch);
-
-    const result = await movieService
-      .getMovieList(mockQuery)
-      .catch(error => error);
-
-    expect(result).toEqual(mockError);
-  });
-
-  it("... gets movie by id", async () => {
-    const mockResponse: resultType = {
-      movie: mockMovie,
-      similar: mockMovieList
-    };
-    const searchId = "1";
-    const mockFetch = jest.fn((query: string) => {
-      if (query.endsWith(searchId)) {
-        return Promise.resolve({
-          json: () => mockMovie
-        });
-      }
-      return Promise.resolve({
-        json: () => ({ data: mockMovieList })
+    return movieService
+      .getMovieList(mockQuery, () => {}, successHandler)
+      .then(() => {
+        expect(successHandler).toHaveBeenCalledWith(mockMovieList);
       });
-    });
-    (global as any).fetch = jest.fn(mockFetch);
-
-    const result = await movieService.getMovieByID(searchId);
-
-    expect(result).toBeTruthy();
-    expect(result).toEqual(mockResponse);
   });
 
-  it("... returns getMovie error", async () => {
-    const mockFetch = jest.fn(() => Promise.reject(mockError));
+  it("... returns an getMovies error", () => {
+    (global as any).fetch = jest.fn(getMockFetch("reject"));
 
-    (global as any).fetch = jest.fn(mockFetch);
+    const errorHandler = jest.fn();
 
-    const result = await movieService.getMovieByID("1").catch(error => error);
+    return movieService.getMovieList(mockQuery, errorHandler).catch(() => {
+      expect(errorHandler).toHaveBeenCalled();
+    });
+  });
 
-    expect(result).toBeTruthy();
-    expect(result).toEqual(mockError);
+  it("... gets movie by id", () => {
+    (global as any).fetch = jest.fn(getMockFetch("resolve"));
+
+    const successHandler = jest.fn();
+
+    return movieService
+      .getMovieByID("1", () => {}, successHandler)
+      .then(() => {
+        expect(successHandler).toHaveBeenCalled();
+      });
+  });
+
+  it("... returns getMovie error", () => {
+    (global as any).fetch = jest.fn(getMockFetch("reject"));
+
+    const errorHandler = jest.fn();
+
+    return movieService.getMovieByID("1", errorHandler).catch(() => {
+      expect(errorHandler).toHaveBeenCalled();
+    });
   });
 });

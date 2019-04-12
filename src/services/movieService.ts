@@ -6,12 +6,24 @@ import {
 } from "Types";
 export type resultType = { movie: IMovie; similar: IMovie[] };
 
-type movieServiceType = () => {
-  getMovieList(query: MovieListQuery): Promise<Error | IMovie[]>;
-  getMovieByID(id: string): Promise<Error | resultType>;
+type getMovieListType = (
+  query: MovieListQuery,
+  errorCallback?: (error: Error) => void,
+  successCallback?: (movies: IMovie[]) => void
+) => Promise<any>;
+
+type getMovieByIDType = (
+  id: string,
+  errorCallback?: (error: Error) => void,
+  successCallback?: (movie: IMovie) => void
+) => Promise<any>;
+
+type movieServiceReturnType = {
+  getMovieList: getMovieListType;
+  getMovieByID: getMovieByIDType;
 };
 
-const movieService: movieServiceType = () => {
+const movieService = (): movieServiceReturnType => {
   const apiURL = "https://reactjs-cdp.herokuapp.com";
 
   const transformResponseMovie = (movie: ResponseMovie): IMovie => ({
@@ -21,18 +33,20 @@ const movieService: movieServiceType = () => {
     releaseDate: movie.release_date,
     genres: movie.genres
   });
+  // convert options from object to query string "?optval&opt2=val2"
+  const formatOptions = (query: MovieListQuery): string =>
+    Object.keys(query).reduce((accumulator, key, index) => {
+      const ampersand = index > 0 ? "&" : "";
+      const option = `${key}=${query[key]}`;
+      return accumulator + ampersand + option;
+    }, "?");
 
-  const getMovieList = (query: MovieListQuery): Promise<Error | IMovie[]> => {
-    // convert options from object to query string "?optval&opt2=val2"
-    const queryOptions: string = Object.keys(query).reduce(
-      (accumulator, key, index) => {
-        const ampersand = index > 0 ? "&" : "";
-        const option = `${key}=${query[key]}`;
-        return accumulator + ampersand + option;
-      },
-      "?"
-    );
-    return fetch(`${apiURL}/movies${queryOptions}`)
+  const getMovieList: getMovieListType = (
+    query,
+    errorCallback,
+    successCallback
+  ) =>
+    fetch(`${apiURL}/movies${formatOptions(query)}`)
       .then((response: Response) => response.json())
       .then(
         (responseData: ResponseMovieList): IMovie[] =>
@@ -40,25 +54,27 @@ const movieService: movieServiceType = () => {
             (movie: ResponseMovie): IMovie => transformResponseMovie(movie)
           )
       )
-      .catch(error => error);
-  };
-  const getMovieByID = (
-    id: string
-  ): Promise<Error | { movie: IMovie; similar: IMovie[] }> => {
-    return fetch(`${apiURL}/movies/${id}`)
+      .then((movies: IMovie[]) => {
+        successCallback(movies);
+      })
+      .catch((error: Error) => {
+        errorCallback(error);
+        throw error;
+      });
+
+  const getMovieByID: getMovieByIDType = (id, errorCallback, successCallback) =>
+    fetch(`${apiURL}/movies/${id}`)
       .then((response: Response) => response.json())
       .then(
         (responseData: ResponseMovie): IMovie =>
           transformResponseMovie(responseData)
       )
       .then((resultMovie: IMovie) => {
-        return getMovieList({
-          search: resultMovie.genres ? resultMovie.genres[0] : "",
-          searchBy: "genres"
-        }).then(movieList => ({ movie: resultMovie, similar: movieList }));
+        successCallback(resultMovie);
       })
-      .catch(error => error);
-  };
+      .catch((error: Error) => {
+        errorCallback(error);
+      });
 
   return {
     getMovieList,
