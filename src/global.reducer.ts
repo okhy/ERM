@@ -22,7 +22,7 @@ const initialState: initialStateType = {
 
 const globalReducer: globalReducerType = (state = initialState, action) => {
   switch (action.type) {
-    case globalActionTypes.fetchToggle:
+    case globalActionTypes.toggleFetchStatus:
       return {
         ...state,
         fetching: {
@@ -30,7 +30,7 @@ const globalReducer: globalReducerType = (state = initialState, action) => {
           error: false
         }
       };
-    case globalActionTypes.fetchError:
+    case globalActionTypes.setfetchError:
       return {
         ...state,
         fetching: {
