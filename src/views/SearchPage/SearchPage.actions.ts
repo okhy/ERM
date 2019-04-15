@@ -17,10 +17,9 @@ export const movieSearch: ThunkAction<
   boolean | IMovie[] | Error
 > = query => dispatch => {
   dispatch(toggleFetchStatus(true));
+  /* istanbul ignore next: covered by service tests*/
   const errorHandler = (error: Error) => {
-    /* istanbul ignore next: covered by service tests*/
     dispatch(fetchError(error));
-    /* istanbul ignore next: covered by service tests*/
     dispatch(toggleFetchStatus(false));
   };
   const successHandler = (result: IMovie[]) => {

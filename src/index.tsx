@@ -18,23 +18,23 @@ import thunk from "redux-thunk";
 import globalReducer from "./global.reducer";
 import searchPageReducer from "Views/SearchPage/SearchPage.reducer";
 // actions
-import { movieSearch } from "Views/SearchPage/SearchPage.actions";
-import { fetchMovieById } from "Views/DetailsPage/DetailsPage.actions";
+// import { movieSearch } from "Views/SearchPage/SearchPage.actions";
+// import { fetchMovieById } from "Views/DetailsPage/DetailsPage.actions";
 // todo: detailsPageReducer
 
 const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   : compose;
 
+export const rootReducer = combineReducers({
+  globalReducer,
+  searchPageReducer
+});
+
 const store = createStore(
-  combineReducers({ globalReducer, searchPageReducer }),
+  rootReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
-
-store.dispatch<any>(
-  movieSearch({ search: "Pulp Fiction", searchBy: "title" })(store.dispatch)
-);
-store.dispatch<any>(fetchMovieById("680")(store.dispatch));
 
 export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;

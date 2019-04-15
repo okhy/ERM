@@ -1,8 +1,10 @@
+import { rootReducer } from "./index";
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
   }
 }
+
 export interface MovieListQuery {
   search: string;
   searchBy?: "title" | "genres";
