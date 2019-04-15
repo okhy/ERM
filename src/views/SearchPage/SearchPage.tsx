@@ -21,7 +21,7 @@ const SearchPage: React.SFC<SearchPageType> = props => (
       <MovieSearch submitAction={props.submitAction} />
     </Header>
     <div>
-      <MovieGrid />
+      <MovieGrid movies={props.movies} />
     </div>
     <Footer />
   </div>
