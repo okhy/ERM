@@ -1,6 +1,8 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import MovieGridItem, { IMovieGridItem } from "./MovieGridItem";
+import MovieGridItem from "./MovieGridItem";
+import { IMovieGridItem } from "Types";
+
 // mock data
 const singleMovie: IMovieGridItem = {
   title: "Pulp Fiction",
@@ -17,24 +19,33 @@ const centerStyles = {
 };
 
 storiesOf("Components / MovieGrid / MovieGridItem", module)
-  .add("default", () => (
-    <div style={centerStyles}>
-      <MovieGridItem {...singleMovie} />
-    </div>
-  ))
-  .add("no poster", () => (
-    <div style={centerStyles}>
-      <MovieGridItem {...singleMovie} poster="" />
-    </div>
-  ))
-  .add("missing data", () => (
-    <div style={centerStyles}>
-      <MovieGridItem
-        {...singleMovie}
-        poster={undefined}
-        title=""
-        genres={undefined}
-        releaseDate=""
-      />
-    </div>
-  ));
+  .add(
+    "default",
+    (): any => (
+      <div style={centerStyles}>
+        <MovieGridItem {...singleMovie} />
+      </div>
+    )
+  )
+  .add(
+    "no poster",
+    (): any => (
+      <div style={centerStyles}>
+        <MovieGridItem {...singleMovie} poster="" />
+      </div>
+    )
+  )
+  .add(
+    "missing data",
+    (): any => (
+      <div style={centerStyles}>
+        <MovieGridItem
+          {...singleMovie}
+          poster={undefined}
+          title=""
+          genres={undefined}
+          releaseDate=""
+        />
+      </div>
+    )
+  );

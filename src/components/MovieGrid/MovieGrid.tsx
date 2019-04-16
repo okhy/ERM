@@ -1,21 +1,19 @@
 import * as React from "react";
 // components and interfaces
-import MovieGridItem, {
-  IMovieGridItem
-} from "./components/MovieGridItem/MovieGridItem";
+import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
 import Button from "Components/Button/Button";
 // styles
 import * as styles from "./MovieGrid.styles.css";
 // interface
-export interface IMovie extends IMovieGridItem {
-  id: number;
-}
-interface IMoviesGrid {
+import { IMovie } from "Types";
+
+type MoviesGridType = {
   similarResults?: boolean;
   movies?: IMovie[];
-}
+  sortingAction?: () => void;
+};
 
-const MovieGrid: React.SFC<IMoviesGrid> = ({ movies, similarResults }) => {
+const MovieGrid: React.SFC<MoviesGridType> = ({ movies, similarResults }) => {
   const movieCount: number = !!movies ? movies.length : 0;
   const movieList: React.ReactElement[] =
     movies && movies.map(movie => <MovieGridItem key={movie.id} {...movie} />);
