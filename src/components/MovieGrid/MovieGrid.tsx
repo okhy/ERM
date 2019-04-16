@@ -7,12 +7,13 @@ import * as styles from "./MovieGrid.styles.css";
 // interface
 import { IMovie } from "Types";
 
-interface IMoviesGrid {
+type MoviesGridType = {
   similarResults?: boolean;
   movies?: IMovie[];
-}
+  sortingAction?: () => void;
+};
 
-const MovieGrid: React.SFC<IMoviesGrid> = ({ movies, similarResults }) => {
+const MovieGrid: React.SFC<MoviesGridType> = ({ movies, similarResults }) => {
   const movieCount: number = !!movies ? movies.length : 0;
   const movieList: React.ReactElement[] =
     movies && movies.map(movie => <MovieGridItem key={movie.id} {...movie} />);

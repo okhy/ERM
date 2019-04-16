@@ -9,6 +9,7 @@ type searchType = "title" | "genres";
 
 type MoviesearchProps = {
   submitAction?: (query: MovieListQuery) => void;
+  query?: MovieListQuery;
 };
 
 class MovieSearch extends React.Component<
@@ -22,6 +23,14 @@ class MovieSearch extends React.Component<
     this.handleSearchFieldChange = this.handleSearchFieldChange.bind(this);
     this.handleSearchByChange = this.handleSearchByChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount() {
+    if (this.props.query) {
+      this.setState({
+        searchFieldValue: this.props.query.search,
+        searchBy: this.props.query.searchBy
+      });
+    }
   }
   handleSearchFieldChange(event: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({ searchFieldValue: event.target.value });
