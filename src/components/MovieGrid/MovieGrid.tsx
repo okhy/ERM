@@ -6,17 +6,24 @@ import Button from "Components/Button/Button";
 import * as styles from "./MovieGrid.styles.css";
 // interface
 import { IMovie } from "Types";
+// redux
+import { connect } from "react-redux";
 
 type MoviesGridType = {
   similarResults?: boolean;
-  movies?: IMovie[];
+  movieIDs?: number[];
+  getMovie?: (id: number) => IMovie;
   sortingAction?: () => void;
 };
 
-const MovieGrid: React.SFC<MoviesGridType> = ({ movies, similarResults }) => {
-  const movieCount: number = !!movies ? movies.length : 0;
-  const movieList: React.ReactElement[] =
-    movies && movies.map(movie => <MovieGridItem key={movie.id} {...movie} />);
+const MovieGrid: React.SFC<MoviesGridType> = props => {
+  const movieCount: number = !!props.movieIDs ? props.movieIDs.length : 0;
+  const movieList: void[] | React.ReactElement[] =
+    props.movieIDs &&
+    props.movieIDs.map((movieID: number) => {
+      const movie = props.getMovie(movieID);
+      return <MovieGridItem key={movie.id} {...movie} />;
+    });
 
   const countMessage: string = `${movieCount || "No"} movie${
     movieCount === 1 ? "" : "s"
@@ -25,7 +32,7 @@ const MovieGrid: React.SFC<MoviesGridType> = ({ movies, similarResults }) => {
   return (
     <div className={styles.main}>
       <div className={styles.results}>
-        {similarResults ? (
+        {props.similarResults ? (
           <>
             <span>Films by </span>
             <span>Drama genre</span>
@@ -41,7 +48,7 @@ const MovieGrid: React.SFC<MoviesGridType> = ({ movies, similarResults }) => {
           </>
         )}
       </div>
-      {!!movies && !!movies.length ? (
+      {!!props.movieIDs && !!props.movieIDs.length ? (
         <div className={styles.grid}>{movieList}</div>
       ) : (
         <div className={styles.sorryMessage}>
@@ -52,4 +59,10 @@ const MovieGrid: React.SFC<MoviesGridType> = ({ movies, similarResults }) => {
   );
 };
 
-export default MovieGrid;
+const mapStateToProps = (state: any) => ({
+  getMovie: (id: number) =>
+    state.searchPageReducer.movies.find((movie: IMovie) => movie.id === id)
+  // movieIDs: state.searchPageReducer.movies.map((movie: IMovie) => movie.id)
+});
+
+export default connect(mapStateToProps)(MovieGrid);

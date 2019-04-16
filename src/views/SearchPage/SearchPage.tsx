@@ -11,7 +11,7 @@ import { movieSearch } from "./SearchPage.actions";
 import { MovieListQuery, IMovie } from "Root/types";
 
 type SearchPageType = {
-  movies: IMovie[];
+  movies: number[];
   submitAction: (query: MovieListQuery) => void;
 };
 
@@ -21,16 +21,17 @@ const SearchPage: React.SFC<SearchPageType> = props => (
       <MovieSearch submitAction={props.submitAction} />
     </Header>
     <div>
-      <MovieGrid movies={props.movies} />
+      <MovieGrid movieIDs={props.movies} />
     </div>
     <Footer />
   </div>
 );
 
 export default connect(
-  (state: any) => {
+  (state: any): { movies: number[] } => {
     return {
-      movies: state.searchPageReducer.movies || []
+      movies:
+        state.searchPageReducer.movies.map((movie: IMovie) => movie.id) || []
     };
   },
   dispatch => ({

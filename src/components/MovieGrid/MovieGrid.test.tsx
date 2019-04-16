@@ -3,17 +3,8 @@ import { shallow } from "enzyme";
 // components
 import MovieGrid from "./MovieGrid";
 import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
-import { IMovie } from "Types";
 // styles
 import * as styles from "./MovieGrid.styles.css";
-
-const mockMovie: IMovie = {
-  id: 1,
-  title: "Pulp Fiction",
-  poster: "https://image.tmdb.org/t/p/w500/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
-  releaseDate: "1994-09-10",
-  genres: ["Thriller", "Crime"]
-};
 
 describe("MovieGrid component...", () => {
   it("... renders without errors", () => {
@@ -36,7 +27,7 @@ describe("MovieGrid component...", () => {
     expect(wrapper.find(<span>Films by </span>)).toBeTruthy();
   });
   it("... renders movies", () => {
-    const wrapper = shallow(<MovieGrid movies={[mockMovie]} />);
+    const wrapper = shallow(<MovieGrid movieIDs={[1]} />);
     expect(wrapper.find(`.${styles.grid}`)).toBeTruthy();
     expect(wrapper.find(MovieGridItem)).toBeTruthy();
   });
