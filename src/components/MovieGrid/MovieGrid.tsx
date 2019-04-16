@@ -5,15 +5,15 @@ import Button from "Components/Button/Button";
 // styles
 import * as styles from "./MovieGrid.styles.css";
 // interface
-import { IMovie } from "Types";
+import { MovieTypes } from "Types";
 // redux
 import { connect } from "react-redux";
-import { StateType } from "Root/types";
+import { StateTypes } from "Types";
 
 type MoviesGridType = {
   similarResults?: boolean;
   movieIDs?: number[];
-  getMovie?: (id: number) => IMovie;
+  getMovie?: (id: number) => MovieTypes.IMovie;
   sortingAction?: () => void;
 };
 
@@ -60,9 +60,9 @@ const MovieGrid: React.SFC<MoviesGridType> = props => {
   );
 };
 
-const mapStateToProps = (state: StateType.ApplicationState) => ({
+const mapStateToProps = (state: StateTypes.ApplicationState) => ({
   getMovie: (id: number) =>
-    state.searchPage.movies.find((movie: IMovie) => movie.id === id)
+    state.searchPage.movies.find((movie: MovieTypes.IMovie) => movie.id === id)
 });
 
 export default connect(mapStateToProps)(MovieGrid);

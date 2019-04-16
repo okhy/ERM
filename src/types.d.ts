@@ -4,35 +4,6 @@ declare global {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
   }
 }
-
-declare module StateType {
-  interface globalState {
-    fetching: {
-      status: boolean;
-      error: false | Error;
-    };
-  }
-  interface searchPageState {
-    query: string;
-    movies: IMovie[];
-    sort: "desc" | "asc";
-  }
-  interface ApplicationState {
-    global: globalState;
-    searchPage: searchPageState;
-  }
-}
-
-export interface MovieListQuery {
-  search: string;
-  searchBy?: "title" | "genres";
-  sortBy?: string;
-  sortOrder?: "desc" | "asc";
-  filter?: string[];
-  offset?: number;
-  limit?: number;
-}
-
 export interface ResponseMovie {
   id: number;
   title: string;
@@ -54,21 +25,80 @@ export interface ResponseMovieList {
   offset: number;
   limit: number;
 }
-export interface IMovieGridItem {
-  title: string;
-  poster?: string;
-  releaseDate?: string;
-  genres?: string[];
+
+declare module StateTypes {
+  export interface globalState {
+    fetching: {
+      status: boolean;
+      error: false | Error;
+    };
+  }
+  export interface searchPageState {
+    query: string;
+    movies: MovieTypes.IMovie[];
+    sort: "desc" | "asc";
+  }
+  export interface ApplicationState {
+    global: globalState;
+    searchPage: searchPageState;
+  }
 }
 
-export interface IMovie extends IMovieGridItem {
-  id: number;
+declare module MovieTypes {
+  export interface MovieListQuery {
+    search: string;
+    searchBy?: "title" | "genres";
+    sortBy?: string;
+    sortOrder?: "desc" | "asc";
+    filter?: string[];
+    offset?: number;
+    limit?: number;
+  }
+
+  export interface IMovieGridItem {
+    title: string;
+    poster?: string;
+    releaseDate?: string;
+    genres?: string[];
+  }
+
+  export interface IMovie extends IMovieGridItem {
+    id: number;
+  }
+  export interface IMovieDetails {
+    title: string;
+    poster?: string;
+    releaseDate?: string;
+    genres?: string[];
+    runtime?: number;
+    overview: string;
+  }
 }
 
-/**
- * ACTIONS
- */
-// export type ActionTypeMap = { [key: string]: string };
+declare module ReduxTypes {
+  export interface GenericAction<T> {
+    type: string;
+    payload?: T;
+  }
+
+  export interface PayloadAction<T> extends GenericAction<T> {
+    payload: T;
+  }
+
+  export interface ActionCreator<T> {
+    (payload: T): GenericAction<T>;
+  }
+
+  export interface StoreDispatch<T> {
+    (action: GenericAction<T> | ActionCreator<T>): void;
+  }
+
+  export type ThunkAction<T, D> = (
+    payload: T
+  ) => (dispatch: StoreDispatch<D>) => GenericAction<T>;
+}
+
+// to experiment:
 
 // type Partial<T> = { [P in keyof T]?: T[P] };
 
@@ -83,28 +113,6 @@ export interface IMovie extends IMovieGridItem {
 //   type: string;
 // }
 
-export interface GenericAction<T> {
-  type: string;
-  payload?: T;
-}
-
-export interface PayloadAction<T> extends GenericAction<T> {
-  payload: T;
-}
-
-export interface ActionCreator<T> {
-  (payload: T): GenericAction<T>;
-}
-
-export interface StoreDispatch<T> {
-  (action: GenericAction<T> | ActionCreator<T>): void;
-}
-
-export type ThunkAction<T, D> = (
-  payload: T
-) => (dispatch: StoreDispatch<D>) => GenericAction<T>;
-
-// to experiment:
 // export interface ThunkDispatch<T> {
 //   (dispatch: StoreDispatch<T>): GenericAction<T>;
 // }

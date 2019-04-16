@@ -1,21 +1,19 @@
-import {
-  MovieListQuery,
-  ResponseMovie,
-  ResponseMovieList,
-  IMovie
-} from "Types";
-export type resultType = { movie: IMovie; similar: IMovie[] };
+import { ResponseMovie, ResponseMovieList, MovieTypes } from "Types";
+export type resultType = {
+  movie: MovieTypes.IMovie;
+  similar: MovieTypes.IMovie[];
+};
 
 type getMovieListType = (
-  query: MovieListQuery,
+  query: MovieTypes.MovieListQuery,
   errorCallback?: (error: Error) => void,
-  successCallback?: (movies: IMovie[]) => void
+  successCallback?: (movies: MovieTypes.IMovie[]) => void
 ) => Promise<any>;
 
 type getMovieByIDType = (
   id: string,
   errorCallback?: (error: Error) => void,
-  successCallback?: (movie: IMovie) => void
+  successCallback?: (movie: MovieTypes.IMovie) => void
 ) => Promise<any>;
 
 type movieServiceReturnType = {
@@ -26,7 +24,7 @@ type movieServiceReturnType = {
 const movieService = (): movieServiceReturnType => {
   const apiURL = "https://reactjs-cdp.herokuapp.com";
 
-  const transformResponseMovie = (movie: ResponseMovie): IMovie => ({
+  const transformResponseMovie = (movie: ResponseMovie): MovieTypes.IMovie => ({
     id: movie.id,
     title: movie.title,
     poster: movie.poster_path,
@@ -34,7 +32,7 @@ const movieService = (): movieServiceReturnType => {
     genres: movie.genres
   });
   // convert options from object to query string "?optval&opt2=val2"
-  const formatOptions = (query: MovieListQuery): string =>
+  const formatOptions = (query: MovieTypes.MovieListQuery): string =>
     Object.keys(query).reduce((accumulator, key, index) => {
       const ampersand = index > 0 ? "&" : "";
       const option = `${key}=${query[key]}`;
@@ -49,12 +47,13 @@ const movieService = (): movieServiceReturnType => {
     fetch(`${apiURL}/movies${formatOptions(query)}`)
       .then((response: Response) => response.json())
       .then(
-        (responseData: ResponseMovieList): IMovie[] =>
+        (responseData: ResponseMovieList): MovieTypes.IMovie[] =>
           responseData.data.map(
-            (movie: ResponseMovie): IMovie => transformResponseMovie(movie)
+            (movie: ResponseMovie): MovieTypes.IMovie =>
+              transformResponseMovie(movie)
           )
       )
-      .then((movies: IMovie[]) => {
+      .then((movies: MovieTypes.IMovie[]) => {
         successCallback(movies);
       })
       .catch((error: Error) => {
@@ -66,10 +65,10 @@ const movieService = (): movieServiceReturnType => {
     fetch(`${apiURL}/movies/${id}`)
       .then((response: Response) => response.json())
       .then(
-        (responseData: ResponseMovie): IMovie =>
+        (responseData: ResponseMovie): MovieTypes.IMovie =>
           transformResponseMovie(responseData)
       )
-      .then((resultMovie: IMovie) => {
+      .then((resultMovie: MovieTypes.IMovie) => {
         successCallback(resultMovie);
       })
       .catch((error: Error) => {

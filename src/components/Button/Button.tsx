@@ -12,15 +12,8 @@ interface IButton {
   clickAction?(e: React.MouseEvent): void;
 }
 
-const Button: React.SFC<IButton> = ({
-  type,
-  disabled,
-  icon,
-  variant,
-  size,
-  label,
-  clickAction
-}) => {
+const Button: React.SFC<IButton> = props => {
+  const { type, disabled, icon, variant, size, label, clickAction } = props;
   const isSmall: boolean = !!size;
   const mainClass: string = cx(styles.main, {
     [styles.basic]: !variant,

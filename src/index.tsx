@@ -1,4 +1,4 @@
-import { StateType } from "Root/types";
+import { StateTypes } from "Types";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 // views
@@ -30,8 +30,8 @@ const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   : compose;
 
 export interface ApplicationState {
-  global: StateType.globalState;
-  searchPage: StateType.searchPageState;
+  global: StateTypes.globalState;
+  searchPage: StateTypes.searchPageState;
 }
 
 export const rootReducer: Reducer<ApplicationState> = combineReducers({

@@ -1,9 +1,9 @@
 import { createStore } from "redux";
-import { IMovie, PayloadAction } from "Types";
+import { ReduxTypes, MovieTypes } from "Types";
 import searchPageReducer from "./SearchPage.reducer";
 import searchActionTypes from "./SearchPage.actions";
 
-const mockedMovieList: IMovie[] = [
+const mockedMovieList: MovieTypes.IMovie[] = [
   {
     id: 1,
     title: "A-Movie",
@@ -19,13 +19,13 @@ const mockedMovieList: IMovie[] = [
     genres: ["test genre"]
   }
 ];
-const mockMovieListAction: PayloadAction<IMovie[]> = {
+const mockMovieListAction: ReduxTypes.PayloadAction<MovieTypes.IMovie[]> = {
   type: searchActionTypes.getMovieListResponse,
   payload: mockedMovieList
 };
 
 const mockQuery = "test query";
-const mockQueryAction: PayloadAction<string> = {
+const mockQueryAction: ReduxTypes.PayloadAction<string> = {
   type: searchActionTypes.getMovieList,
   payload: mockQuery
 };
@@ -60,7 +60,7 @@ describe("Search page reducer...", () => {
     it("... movie sorting action (ascending)", () => {
       const store = createStore(searchPageReducer);
 
-      const mockSortingAction: PayloadAction<"asc"> = {
+      const mockSortingAction: ReduxTypes.PayloadAction<"asc"> = {
         type: searchActionTypes.movieListSorting,
         payload: "asc"
       };
@@ -75,13 +75,14 @@ describe("Search page reducer...", () => {
     it("... movie sorting action (descending)", () => {
       const store = createStore(searchPageReducer);
 
-      const mockSortingAction: PayloadAction<"desc"> = {
+      const mockSortingAction: ReduxTypes.PayloadAction<"desc"> = {
         type: searchActionTypes.movieListSorting,
         payload: "desc"
       };
       const mockedMovieListReversed = mockedMovieList;
-      mockedMovieListReversed.sort((a: IMovie, b: IMovie) =>
-        a.title <= b.title ? 1 : -1
+      mockedMovieListReversed.sort(
+        (a: MovieTypes.IMovie, b: MovieTypes.IMovie) =>
+          a.title <= b.title ? 1 : -1
       );
 
       store.dispatch(mockMovieListAction);
@@ -95,7 +96,7 @@ describe("Search page reducer...", () => {
     it("... movie sorting action (no movies)", () => {
       const store = createStore(searchPageReducer);
 
-      const mockSortingAction: PayloadAction<"asc"> = {
+      const mockSortingAction: ReduxTypes.PayloadAction<"asc"> = {
         type: searchActionTypes.movieListSorting,
         payload: "asc"
       };

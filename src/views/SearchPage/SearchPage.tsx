@@ -6,29 +6,30 @@ import MovieGrid from "Components/MovieGrid/MovieGrid";
 import Footer from "Components/Footer/Footer";
 // redux imports
 import { connect } from "react-redux";
-import { StateType } from "Root/types";
-import { IMovie } from "Root/types";
+import { MovieTypes, StateTypes } from "Types";
 
-type SearchPageType = {
+type SearchPageProps = {
   movies: number[];
 };
 
-const SearchPage: React.SFC<SearchPageType> = props => (
+const SearchPage: React.SFC<SearchPageProps> = ({ movies }) => (
   <div>
     <Header>
       <MovieSearch />
     </Header>
     <div>
-      <MovieGrid movieIDs={props.movies} />
+      <MovieGrid movieIDs={movies} />
     </div>
     <Footer />
   </div>
 );
 
 export default connect(
-  (state: StateType.ApplicationState): { movies: number[] } => {
+  (state: StateTypes.ApplicationState): { movies: number[] } => {
     return {
-      movies: state.searchPage.movies.map((movie: IMovie) => movie.id) || []
+      movies:
+        state.searchPage.movies.map((movie: MovieTypes.IMovie) => movie.id) ||
+        []
     };
   },
   undefined

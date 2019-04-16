@@ -3,17 +3,17 @@ import * as React from "react";
 import Button from "Components/Button/Button";
 // styles
 import * as styles from "./MovieSearch.styles.css";
-import { MovieListQuery } from "Root/types";
+import { MovieTypes } from "Types";
 // redux
 import { connect } from "react-redux";
 import { movieSearch } from "Root/views/SearchPage/SearchPage.actions";
-import { StateType } from "Root/types";
+import { StateTypes } from "Types";
 
 type searchType = "title" | "genres";
 
 type movieSearchProps = {
-  submitAction: (query: MovieListQuery) => void;
-  query?: MovieListQuery;
+  submitAction: (query: MovieTypes.MovieListQuery) => void;
+  query?: MovieTypes.MovieListQuery;
 };
 
 type MovieSearchType = { searchFieldValue: string; searchBy: searchType };
@@ -96,11 +96,11 @@ class MovieSearch extends React.Component<movieSearchProps, MovieSearchType> {
 }
 
 export default connect(
-  (store: StateType.ApplicationState) => ({
+  (store: StateTypes.ApplicationState) => ({
     // query: statement
   }),
   (dispatch: any) => ({
-    submitAction: (query: MovieListQuery) => {
+    submitAction: (query: MovieTypes.MovieListQuery) => {
       movieSearch(query)(dispatch);
     }
   })

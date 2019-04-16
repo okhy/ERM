@@ -1,14 +1,14 @@
 import movieService from "./movieService";
-import { MovieListQuery, IMovie } from "Types";
+import { MovieTypes } from "Types";
 
-const mockQuery: MovieListQuery = {
+const mockQuery: MovieTypes.MovieListQuery = {
   search: "test title",
   searchBy: "title",
   sortBy: "desc"
 };
 const mockError = new Error("test error");
 
-const mockMovieList: IMovie[] = [
+const mockMovieList: MovieTypes.IMovie[] = [
   {
     id: 1,
     title: "Movie in array",

@@ -1,12 +1,12 @@
-import { GenericAction, IMovie, StateType } from "Types";
+import { ReduxTypes, MovieTypes, StateTypes } from "Types";
 import searchActionTypes from "./SearchPage.actions";
 
 type searchPageReducerType = (
-  state: StateType.searchPageState,
-  action: GenericAction<any>
-) => StateType.searchPageState;
+  state: StateTypes.searchPageState,
+  action: ReduxTypes.GenericAction<any>
+) => StateTypes.searchPageState;
 
-const initialState: StateType.searchPageState = {
+const initialState: StateTypes.searchPageState = {
   query: "",
   movies: [],
   sort: "desc"
@@ -29,7 +29,7 @@ const searchPageReducer: searchPageReducerType = (
       };
     case searchActionTypes.movieListSorting:
       if (state.movies.length) {
-        const newMovies: IMovie[] = state.movies;
+        const newMovies: MovieTypes.IMovie[] = state.movies;
         newMovies.sort();
         if (action.payload === "desc") {
           newMovies.reverse();

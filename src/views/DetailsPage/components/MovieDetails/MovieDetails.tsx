@@ -1,17 +1,9 @@
 import * as React from "react";
+import { MovieTypes } from "Types";
 // styles
 import * as styles from "./MovieDetails.styles.css";
 
-export interface IMovieDetails {
-  title: string;
-  poster?: string;
-  releaseDate?: string;
-  genres?: string[];
-  runtime?: number;
-  overview: string;
-}
-
-const MovieDetails: React.SFC<IMovieDetails> = ({
+const MovieDetails: React.SFC<MovieTypes.IMovieDetails> = ({
   title,
   poster,
   releaseDate,
