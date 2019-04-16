@@ -9,6 +9,8 @@ import { MovieTypes } from "Types";
 // redux
 import { connect } from "react-redux";
 import { StateTypes } from "Types";
+import { Dispatch } from "redux";
+import searchActionTypes from "Views/SearchPage/SearchPage.actions";
 
 type MoviesGridType = {
   similarResults?: boolean;
@@ -60,9 +62,17 @@ const MovieGrid: React.SFC<MoviesGridType> = props => {
   );
 };
 
-const mapStateToProps = (state: StateTypes.ApplicationState) => ({
+const mapState = (state: StateTypes.ApplicationState) => ({
   getMovie: (id: number) =>
     state.searchPage.movies.find((movie: MovieTypes.IMovie) => movie.id === id)
 });
 
-export default connect(mapStateToProps)(MovieGrid);
+const mapDispatch = (dispatch: Dispatch) => ({
+  sortMovies: (sortKey: string) => {
+    dispatch({ type: searchActionTypes.movieListSorting, payload: sortKey });
+  }
+});
+export default connect(
+  mapState,
+  mapDispatch
+)(MovieGrid);

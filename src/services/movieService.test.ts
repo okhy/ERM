@@ -14,14 +14,16 @@ const mockMovieList: MovieTypes.IMovie[] = [
     title: "Movie in array",
     genres: ["genre1", "genre2"],
     poster: undefined,
-    releaseDate: undefined
+    releaseDate: undefined,
+    rating: 4
   },
   {
     id: 3,
     title: "Movie in array 2",
     genres: ["genre3", "genre4"],
     poster: undefined,
-    releaseDate: undefined
+    releaseDate: undefined,
+    rating: 3
   }
 ];
 

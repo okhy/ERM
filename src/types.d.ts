@@ -4,6 +4,7 @@ declare global {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
   }
 }
+
 export interface ResponseMovie {
   id: number;
   title: string;
@@ -33,10 +34,11 @@ declare module StateTypes {
       error: false | Error;
     };
   }
+
   export interface searchPageState {
     query: string;
     movies: MovieTypes.IMovie[];
-    sort: "desc" | "asc";
+    sortBy: string;
   }
   export interface ApplicationState {
     global: globalState;
@@ -64,6 +66,7 @@ declare module MovieTypes {
 
   export interface IMovie extends IMovieGridItem {
     id: number;
+    rating: number;
   }
   export interface IMovieDetails {
     title: string;

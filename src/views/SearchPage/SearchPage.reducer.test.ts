@@ -9,14 +9,16 @@ const mockedMovieList: MovieTypes.IMovie[] = [
     title: "A-Movie",
     poster: "test poster_path",
     releaseDate: "test release_date",
-    genres: ["test genre"]
+    genres: ["test genre"],
+    rating: 2
   },
   {
     id: 2,
-    title: "Z-movie",
+    title: "Z-Movie",
     poster: "test poster_path",
     releaseDate: "test release_date",
-    genres: ["test genre"]
+    genres: ["test genre"],
+    rating: 4
   }
 ];
 const mockMovieListAction: ReduxTypes.PayloadAction<MovieTypes.IMovie[]> = {
@@ -39,6 +41,7 @@ describe("Search page reducer...", () => {
 
     expect(updatedStore).toEqual(store.getState());
   });
+
   describe("... listens for ...", () => {
     it("... queryMovies action", () => {
       const store = createStore(searchPageReducer);
@@ -48,6 +51,7 @@ describe("Search page reducer...", () => {
       expect(store.getState()).toBeTruthy();
       expect(updatedStore.query).toEqual(mockQuery);
     });
+
     it("... queryMoviesResult action", () => {
       const store = createStore(searchPageReducer);
 
@@ -57,55 +61,33 @@ describe("Search page reducer...", () => {
       expect(store.getState().movies).toBeTruthy();
       expect(store.getState().movies[0]).toEqual(mockedMovieList[0]);
     });
-    it("... movie sorting action (ascending)", () => {
-      const store = createStore(searchPageReducer);
 
-      const mockSortingAction: ReduxTypes.PayloadAction<"asc"> = {
+    it("... movie sorting action - no movies", () => {
+      const store = createStore(searchPageReducer);
+      const mockSortingAction: ReduxTypes.PayloadAction<string> = {
         type: searchActionTypes.movieListSorting,
-        payload: "asc"
+        payload: "test sorting key"
       };
-      store.dispatch(mockMovieListAction);
+
       store.dispatch(mockSortingAction);
 
-      expect(store.getState()).toBeTruthy();
-      expect(store.getState().movies).toBeTruthy();
-      expect(store.getState().sort).toEqual("asc");
-      expect(store.getState().movies).toEqual(mockedMovieList);
+      expect(store.getState().sortBy).toEqual("test sorting key");
     });
-    it("... movie sorting action (descending)", () => {
-      const store = createStore(searchPageReducer);
 
-      const mockSortingAction: ReduxTypes.PayloadAction<"desc"> = {
+    it("... movie sorting by parameter action ", () => {
+      const store = createStore(searchPageReducer);
+      const mockSortingAction: ReduxTypes.PayloadAction<string> = {
         type: searchActionTypes.movieListSorting,
-        payload: "desc"
+        payload: "title"
       };
-      const mockedMovieListReversed = mockedMovieList;
-      mockedMovieListReversed.sort(
-        (a: MovieTypes.IMovie, b: MovieTypes.IMovie) =>
-          a.title <= b.title ? 1 : -1
-      );
 
       store.dispatch(mockMovieListAction);
       store.dispatch(mockSortingAction);
 
       expect(store.getState()).toBeTruthy();
       expect(store.getState().movies).toBeTruthy();
-      expect(store.getState().sort).toEqual("desc");
-      expect(store.getState().movies).toEqual(mockedMovieListReversed);
-    });
-    it("... movie sorting action (no movies)", () => {
-      const store = createStore(searchPageReducer);
-
-      const mockSortingAction: ReduxTypes.PayloadAction<"asc"> = {
-        type: searchActionTypes.movieListSorting,
-        payload: "asc"
-      };
-      store.dispatch(mockSortingAction);
-
-      expect(store.getState()).toBeTruthy();
-      expect(store.getState().movies).toBeTruthy();
-      expect(store.getState().sort).toEqual("asc");
-      expect(store.getState().movies).toEqual([]);
+      expect(store.getState().movies[0].title).toEqual("A-Movie");
+      expect(store.getState().movies[1].title).toEqual("Z-Movie");
     });
   });
 });

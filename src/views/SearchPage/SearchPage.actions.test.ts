@@ -15,7 +15,8 @@ const responseObj = {
         title: "Movie in array",
         genres: ["genre1", "genre2"],
         poster: undefined,
-        releaseDate: undefined
+        releaseDate: undefined,
+        rating: 4
       }
     ]
   })

@@ -9,13 +9,13 @@ type searchPageReducerType = (
 const initialState: StateTypes.searchPageState = {
   query: "",
   movies: [],
-  sort: "desc"
+  sortBy: "title"
 };
 
 const searchPageReducer: searchPageReducerType = (
   state = initialState,
   action
-) => {
+): StateTypes.searchPageState => {
   switch (action.type) {
     case searchActionTypes.getMovieList:
       return {
@@ -28,16 +28,32 @@ const searchPageReducer: searchPageReducerType = (
         movies: action.payload
       };
     case searchActionTypes.movieListSorting:
-      if (state.movies.length) {
+      if (
+        state.movies.length &&
+        Object.keys(state.movies[0]).find(
+          (value: string): boolean => value === action.payload
+        )
+      ) {
         const newMovies: MovieTypes.IMovie[] = state.movies;
-        newMovies.sort();
-        if (action.payload === "desc") {
-          newMovies.reverse();
-        }
-
-        return { ...state, movies: newMovies, sort: action.payload };
+        type sortFunctionReturnType = -1 | 0 | 1;
+        newMovies.sort(
+          (
+            a: MovieTypes.IMovie,
+            b: MovieTypes.IMovie
+          ): sortFunctionReturnType => {
+            if (typeof action.payload === "string") {
+              return a[action.payload].localeCompare(b[action.payload]);
+            }
+            // number
+            if (a[action.payload] === b[action.payload]) {
+              return 0;
+            }
+            return a[action.payload] > b[action.payload] ? 1 : -1;
+          }
+        );
+        return { ...state, movies: newMovies, sortBy: action.payload };
       }
-      return { ...state, sort: action.payload };
+      return { ...state, sortBy: action.payload };
     default:
       return state;
   }
