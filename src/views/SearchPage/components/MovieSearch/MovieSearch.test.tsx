@@ -30,7 +30,7 @@ describe("MovieSearch component...", () => {
   });
   it("... calls passed action on submit", () => {
     const mockFn = jest.fn();
-    const wrapper = shallow(<MovieSearch submitAction={mockFn} />);
+    const wrapper = shallow(<MovieSearch />);
 
     wrapper.simulate("submit", { preventDefault: jest.fn() });
 

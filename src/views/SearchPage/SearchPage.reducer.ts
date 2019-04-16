@@ -1,18 +1,12 @@
-import { GenericAction, IMovie } from "Types";
+import { GenericAction, IMovie, StateType } from "Types";
 import searchActionTypes from "./SearchPage.actions";
 
-interface SearchPageReducerState {
-  query: string;
-  movies: IMovie[];
-  sort: "desc" | "asc";
-}
-
 type searchPageReducerType = (
-  state: SearchPageReducerState,
+  state: StateType.searchPageState,
   action: GenericAction<any>
-) => SearchPageReducerState;
+) => StateType.searchPageState;
 
-const initialState: SearchPageReducerState = {
+const initialState: StateType.searchPageState = {
   query: "",
   movies: [],
   sort: "desc"

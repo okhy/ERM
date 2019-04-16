@@ -5,6 +5,24 @@ declare global {
   }
 }
 
+declare module StateType {
+  interface globalState {
+    fetching: {
+      status: boolean;
+      error: false | Error;
+    };
+  }
+  interface searchPageState {
+    query: string;
+    movies: IMovie[];
+    sort: "desc" | "asc";
+  }
+  interface ApplicationState {
+    global: globalState;
+    searchPage: searchPageState;
+  }
+}
+
 export interface MovieListQuery {
   search: string;
   searchBy?: "title" | "genres";

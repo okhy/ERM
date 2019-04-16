@@ -8,6 +8,7 @@ import * as styles from "./MovieGrid.styles.css";
 import { IMovie } from "Types";
 // redux
 import { connect } from "react-redux";
+import { StateType } from "Root/types";
 
 type MoviesGridType = {
   similarResults?: boolean;
@@ -59,10 +60,9 @@ const MovieGrid: React.SFC<MoviesGridType> = props => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: StateType.ApplicationState) => ({
   getMovie: (id: number) =>
-    state.searchPageReducer.movies.find((movie: IMovie) => movie.id === id)
-  // movieIDs: state.searchPageReducer.movies.map((movie: IMovie) => movie.id)
+    state.searchPage.movies.find((movie: IMovie) => movie.id === id)
 });
 
 export default connect(mapStateToProps)(MovieGrid);
