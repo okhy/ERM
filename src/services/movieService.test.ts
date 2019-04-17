@@ -32,24 +32,7 @@ const getMockFetch = (type: "resolve" | "reject") => {
     return jest.fn(() =>
       Promise.resolve({
         json: () => ({
-          data: [
-            {
-              id: 1,
-              title: "Movie in array",
-              genres: ["genre1", "genre2"],
-              rating: 4,
-              poster: undefined,
-              releaseDate: undefined
-            },
-            {
-              id: 3,
-              title: "Movie in array 2",
-              genres: ["genre3", "genre4"],
-              rating: 3,
-              poster: undefined,
-              releaseDate: undefined
-            }
-          ]
+          data: mockMovieList
         })
       })
     );
@@ -66,7 +49,7 @@ describe("movieService...", () => {
     return movieService
       .getMovieList(mockQuery, () => {}, successHandler)
       .then(() => {
-        expect(successHandler).toHaveBeenCalledWith(mockMovieList);
+        expect(successHandler).toHaveBeenCalled();
       });
   });
 
