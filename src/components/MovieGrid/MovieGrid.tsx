@@ -15,16 +15,21 @@ import searchActionTypes from "Views/SearchPage/SearchPage.actions";
 type MoviesGridType = {
   similarResults?: boolean;
   movieIDs?: number[];
-  getMovie?: (id: number) => MovieTypes.IMovie;
-  sortingAction?: () => void;
+  getMovie: (id: number) => MovieTypes.IMovie;
+  sortMovies: (sortKey: string) => void;
 };
 
-const MovieGrid: React.SFC<MoviesGridType> = props => {
-  const movieCount: number = !!props.movieIDs ? props.movieIDs.length : 0;
+const MovieGrid: React.SFC<MoviesGridType> = ({
+  similarResults,
+  movieIDs,
+  getMovie,
+  sortMovies
+}) => {
+  const movieCount: number = !!movieIDs ? movieIDs.length : 0;
   const movieList: void[] | React.ReactElement[] =
-    props.movieIDs &&
-    props.movieIDs.map((movieID: number) => {
-      const movie = props.getMovie(movieID);
+    movieIDs &&
+    movieIDs.map((movieID: number) => {
+      const movie = getMovie(movieID);
       return <MovieGridItem key={movie.id} {...movie} />;
     });
 
@@ -32,10 +37,14 @@ const MovieGrid: React.SFC<MoviesGridType> = props => {
     movieCount === 1 ? "" : "s"
   } found`;
 
+  const handleSortClick = (sortKey: string) => (e: React.MouseEvent): void => {
+    e.preventDefault();
+    sortMovies(sortKey);
+  };
   return (
     <div className={styles.main}>
       <div className={styles.results}>
-        {props.similarResults ? (
+        {similarResults ? (
           <>
             <span>Films by </span>
             <span>Drama genre</span>
@@ -45,13 +54,23 @@ const MovieGrid: React.SFC<MoviesGridType> = props => {
             <span className={styles.count}>{countMessage}</span>
             <div className={styles.sorting}>
               <span className={styles.sortingLabel}>Sort by</span>
-              <Button label="release date" size="small" variant="white" />
-              <Button label="rating" size="small" variant="white" />
+              <Button
+                label="release date"
+                size="small"
+                variant="white"
+                clickAction={handleSortClick("releaseDate")}
+              />
+              <Button
+                label="rating"
+                size="small"
+                variant="white"
+                clickAction={handleSortClick("rating")}
+              />
             </div>
           </>
         )}
       </div>
-      {!!props.movieIDs && !!props.movieIDs.length ? (
+      {!!movieIDs && !!movieIDs.length ? (
         <div className={styles.grid}>{movieList}</div>
       ) : (
         <div className={styles.sorryMessage}>
@@ -62,17 +81,21 @@ const MovieGrid: React.SFC<MoviesGridType> = props => {
   );
 };
 
+/* istanbul ignore next*/
 const mapState = (state: StateTypes.ApplicationState) => ({
   getMovie: (id: number) =>
     state.searchPage.movies.find((movie: MovieTypes.IMovie) => movie.id === id)
 });
-
+/* istanbul ignore next*/
 const mapDispatch = (dispatch: Dispatch) => ({
   sortMovies: (sortKey: string) => {
     dispatch({ type: searchActionTypes.movieListSorting, payload: sortKey });
   }
 });
+
 export default connect(
   mapState,
   mapDispatch
 )(MovieGrid);
+
+export { MovieGrid };
