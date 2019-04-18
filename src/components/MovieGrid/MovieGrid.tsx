@@ -17,13 +17,15 @@ type MoviesGridType = {
   movieIDs?: number[];
   getMovie: (id: number) => MovieTypes.IMovie;
   sortMovies: (sortKey: string) => void;
+  sortBy?: string;
 };
 
 const MovieGrid: React.SFC<MoviesGridType> = ({
   similarResults,
   movieIDs,
   getMovie,
-  sortMovies
+  sortMovies,
+  sortBy
 }) => {
   const movieCount: number = !!movieIDs ? movieIDs.length : 0;
   const movieList: void[] | React.ReactElement[] =
@@ -57,13 +59,13 @@ const MovieGrid: React.SFC<MoviesGridType> = ({
               <Button
                 label="release date"
                 size="small"
-                variant="white"
+                variant={sortBy === "releaseDate" ? "primary" : "white"}
                 clickAction={handleSortClick("releaseDate")}
               />
               <Button
                 label="rating"
                 size="small"
-                variant="white"
+                variant={sortBy === "rating" ? "primary" : "white"}
                 clickAction={handleSortClick("rating")}
               />
             </div>
@@ -83,6 +85,7 @@ const MovieGrid: React.SFC<MoviesGridType> = ({
 
 /* istanbul ignore next*/
 const mapState = (state: StateTypes.ApplicationState) => ({
+  sortBy: state.searchPage.sortBy,
   getMovie: (id: number) =>
     state.searchPage.movies.find((movie: MovieTypes.IMovie) => movie.id === id)
 });

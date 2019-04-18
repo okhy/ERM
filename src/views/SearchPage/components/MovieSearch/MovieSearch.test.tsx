@@ -28,6 +28,15 @@ describe("MovieSearch component...", () => {
     const wrapper = shallow(<MovieSearch submitAction={jest.fn()} />);
     expect(wrapper.find(`.${styles.main}`)).toBeTruthy();
   });
+  it("... changes searchBy method", () => {
+    const wrapper = shallow(<MovieSearch submitAction={jest.fn()} />);
+    expect(wrapper.state("searchBy")).toEqual("title");
+    wrapper
+      .find(`${styles.optionsLabel} Button[label='genres']`)
+      .simulate("click", { preventDefault: () => {} });
+
+    expect(wrapper.state("searchBy")).toEqual("genres");
+  });
   it("... calls passed action on submit", () => {
     const mockAction = jest.fn();
     const wrapper = shallow(<MovieSearch submitAction={mockAction} />);

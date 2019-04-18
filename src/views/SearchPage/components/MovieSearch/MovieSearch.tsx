@@ -6,7 +6,7 @@ import * as styles from "./MovieSearch.styles.css";
 import { MovieTypes } from "Types";
 // redux
 import { connect } from "react-redux";
-import { movieSearch } from "Root/views/SearchPage/SearchPage.actions";
+import { movieSearch } from "Src/views/SearchPage/SearchPage.actions";
 import { StateTypes } from "Types";
 
 type searchType = "title" | "genres";
@@ -42,7 +42,10 @@ export class MovieSearch extends React.Component<
     this.setState({ searchFieldValue: event.target.value });
   }
   handleSearchByChange(type: searchType) {
-    this.setState({ searchBy: type });
+    return (e: React.MouseEvent) => {
+      e.preventDefault();
+      this.setState({ searchBy: type });
+    };
   }
   handleSubmit(event: React.SyntheticEvent): void {
     event.preventDefault();
@@ -78,19 +81,13 @@ export class MovieSearch extends React.Component<
             label="title"
             size="small"
             variant={this.state.searchBy === "title" ? "primary" : "white"}
-            clickAction={event => {
-              event.preventDefault();
-              this.handleSearchByChange("title");
-            }}
+            clickAction={this.handleSearchByChange("title")}
           />
           <Button
             label="genres"
             size="small"
             variant={this.state.searchBy === "genres" ? "primary" : "white"}
-            clickAction={event => {
-              event.preventDefault();
-              this.handleSearchByChange("genres");
-            }}
+            clickAction={this.handleSearchByChange("genres")}
           />
         </div>
       </form>
@@ -98,6 +95,7 @@ export class MovieSearch extends React.Component<
   }
 }
 
+/* istanbul ignore next*/
 export default connect(
   (store: StateTypes.ApplicationState) => ({
     // query: statement

@@ -1,6 +1,6 @@
 import { MovieTypes, ReduxTypes } from "Types";
 import movieService, { resultType } from "Services/movieService";
-import { toggleFetchStatus, fetchError } from "Root/global.actions";
+import { toggleFetchStatus, fetchError } from "Src/global.actions";
 
 enum detailsActionTypes {
   getMovieDetails = "GET_MOVIE_DETAILS_QUERY",

@@ -5,7 +5,7 @@ import { MovieGrid } from "./MovieGrid";
 import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
 // styles
 import * as styles from "./MovieGrid.styles.css";
-import { MovieTypes } from "Root/types";
+import { MovieTypes } from "Types";
 
 const mockGetMovie = jest.fn(
   (id: number): MovieTypes.IMovie => ({ id: 1, title: "test title", rating: 8 })
@@ -38,16 +38,18 @@ describe("MovieGrid component...", () => {
     const mockSort = jest.fn((key: string) => {
       console.log(key);
     });
+    const mockPrevent = jest.fn();
     const wrapper = shallow(
       <MovieGrid getMovie={mockGetMovie} sortMovies={mockSort} />
     );
 
-    console.log(wrapper.debug());
-
     wrapper
-      .find(`.${styles.sorting} Button`)
-      .simulate("click", { preventDefault: () => {} });
+      .find(`[label="rating"]`)
+      .dive()
+      .find("button")
+      .simulate("click", { preventDefault: mockPrevent });
 
+    // expect(mockPrevent).toHaveBeenCalled();
     expect(mockSort).toHaveBeenCalled();
   });
   it("... renders similar results category", () => {
