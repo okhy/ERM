@@ -23,7 +23,7 @@ const globalReducer: globalReducerType = (state = initialState, action) => {
           error: false
         }
       };
-    case globalActionTypes.setfetchError:
+    case globalActionTypes.setFetchError:
       return {
         ...state,
         fetching: {

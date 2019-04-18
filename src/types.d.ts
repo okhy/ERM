@@ -92,6 +92,10 @@ declare module ReduxTypes {
     (payload: T): GenericAction<T>;
   }
 
+  export interface PayloadActionCreator<T> {
+    (payload: T): PayloadAction<T>;
+  }
+
   export interface StoreDispatch<T> {
     (action: GenericAction<T> | ActionCreator<T>): void;
   }
