@@ -1,19 +1,12 @@
-import { GenericAction } from "Types";
+import { ReduxTypes, StateTypes } from "Types";
 import globalActionTypes from "./global.actions";
 
-type initialStateType = {
-  fetching: {
-    status: boolean;
-    error: false | Error;
-  };
-};
-
 type globalReducerType = (
-  state: initialStateType,
-  action: GenericAction<any>
-) => initialStateType;
+  state: StateTypes.globalState,
+  action: ReduxTypes.GenericAction<any>
+) => StateTypes.globalState;
 
-const initialState: initialStateType = {
+const initialState: StateTypes.globalState = {
   fetching: {
     status: false,
     error: false

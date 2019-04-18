@@ -1,21 +1,22 @@
-import { MovieListQuery, IMovie, PayloadAction } from "Types";
+import { MovieTypes, ReduxTypes } from "Types";
 import searchActionTypes, { movieSearch } from "./SearchPage.actions";
 import { toggleFetchStatus } from "Root/global.actions";
 
-const mockQuery: MovieListQuery = {
+const mockQuery: MovieTypes.MovieListQuery = {
   search: "test title",
   searchBy: "title",
   sortBy: "desc"
 };
 const responseObj = {
-  json: (): { data: IMovie[] } => ({
+  json: (): { data: MovieTypes.IMovie[] } => ({
     data: [
       {
         id: 1,
         title: "Movie in array",
         genres: ["genre1", "genre2"],
         poster: undefined,
-        releaseDate: undefined
+        releaseDate: undefined,
+        rating: 4
       }
     ]
   })
@@ -40,7 +41,9 @@ describe("SearchPage action creators ...", () => {
   it("... return proper searchMovies action", () => {
     (global as any).fetch = jest.fn(getMockFetch("resolve"));
 
-    const expectedActionObject: PayloadAction<MovieListQuery> = {
+    const expectedActionObject: ReduxTypes.PayloadAction<
+      MovieTypes.MovieListQuery
+    > = {
       type: searchActionTypes.getMovieList,
       payload: mockQuery
     };

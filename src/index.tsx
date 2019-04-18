@@ -1,40 +1,58 @@
+import { StateTypes } from "Types";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-// components
-import WithError from "Components/WithError/withError";
 // views
 import SearchPage from "Views/SearchPage/SearchPage";
 // assets
 import * as styles from "./global.css";
 import * as resetCSS from "./reset.css";
-// init styles for whole app
-styles;
-resetCSS;
 // Redux
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware,
+  compose,
+  Reducer
+} from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 // reducers
 import globalReducer from "./global.reducer";
 import searchPageReducer from "Views/SearchPage/SearchPage.reducer";
-// actions
-// import { movieSearch } from "Views/SearchPage/SearchPage.actions";
-// import { fetchMovieById } from "Views/DetailsPage/DetailsPage.actions";
-// todo: detailsPageReducer
+// redux persist
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { PersistGate } from "redux-persist/integration/react";
+// components
+import WithError from "Components/WithError/withError";
+// init styles for whole app
+styles;
+resetCSS;
 
 const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   : compose;
 
-export const rootReducer = combineReducers({
-  globalReducer,
-  searchPageReducer
-});
+const persistConfig = {
+  key: "root",
+  storage
+};
 
+export interface ApplicationState {
+  global: StateTypes.globalState;
+  searchPage: StateTypes.searchPageState;
+}
+
+export const rootReducer: Reducer<ApplicationState> = combineReducers({
+  global: globalReducer,
+  searchPage: searchPageReducer
+});
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(
-  rootReducer,
+  persistedReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
+let persistor = persistStore(store);
 
 export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;
@@ -47,9 +65,11 @@ const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
 ReactDOM.render(
   <div className="app-container">
     <Provider store={store}>
-      <WithError errorCallback={errorHandler}>
-        <SearchPage />
-      </WithError>
+      <PersistGate loading={null} persistor={persistor}>
+        <WithError errorCallback={errorHandler}>
+          <SearchPage />
+        </WithError>
+      </PersistGate>
     </Provider>
   </div>,
   document.getElementById("app")

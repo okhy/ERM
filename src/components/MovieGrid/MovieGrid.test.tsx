@@ -1,47 +1,108 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 // components
-import MovieGrid from "./MovieGrid";
+import { MovieGrid } from "./MovieGrid";
 import MovieGridItem from "./components/MovieGridItem/MovieGridItem";
-import { IMovie } from "Types";
 // styles
 import * as styles from "./MovieGrid.styles.css";
+import { MovieTypes } from "Root/types";
 
-const mockMovie: IMovie = {
-  id: 1,
-  title: "Pulp Fiction",
-  poster: "https://image.tmdb.org/t/p/w500/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
-  releaseDate: "1994-09-10",
-  genres: ["Thriller", "Crime"]
-};
+const mockGetMovie = jest.fn(
+  (id: number): MovieTypes.IMovie => ({ id: 1, title: "test title", rating: 8 })
+);
+const mockSortMovies = jest.fn();
 
 describe("MovieGrid component...", () => {
   it("... renders without errors", () => {
-    const wrapper = shallow(<MovieGrid />);
+    const wrapper = shallow(
+      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSortMovies} />
+    );
     expect(wrapper.find(MovieGrid)).toBeTruthy();
   });
   it("... matches snapshot", () => {
-    const wrapper = shallow(<MovieGrid />);
+    const wrapper = shallow(
+      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSortMovies} />
+    );
     expect(wrapper).toMatchSnapshot();
   });
   it("... renders sorting options", () => {
-    const wrapper = shallow(<MovieGrid />);
+    const wrapper = shallow(
+      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSortMovies} />
+    );
 
     expect(wrapper.find(`.${styles.sorting}`)).toBeTruthy();
     expect(wrapper.find(<button>release date</button>)).toBeTruthy();
     expect(wrapper.find(<button>rating</button>)).toBeTruthy();
   });
+  it("... calls sorting method", () => {
+    const mockSort = jest.fn((key: string) => {
+      console.log(key);
+    });
+    const wrapper = shallow(
+      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSort} />
+    );
+
+    console.log(wrapper.debug());
+
+    wrapper
+      .find(`.${styles.sorting} Button`)
+      .simulate("click", { preventDefault: () => {} });
+
+    expect(mockSort).toHaveBeenCalled();
+  });
   it("... renders similar results category", () => {
-    const wrapper = shallow(<MovieGrid similarResults={true} />);
+    const wrapper = shallow(
+      <MovieGrid
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+        similarResults={true}
+      />
+    );
     expect(wrapper.find(<span>Films by </span>)).toBeTruthy();
   });
+  it("... works with falsy props", () => {
+    const wrapper = shallow(
+      <MovieGrid
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+        similarResults={undefined}
+      />
+    );
+    const wrapper2 = shallow(
+      <MovieGrid
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+        movieIDs={undefined}
+      />
+    );
+
+    expect(wrapper.find(MovieGrid)).toBeTruthy();
+    expect(wrapper2.find(MovieGrid)).toBeTruthy();
+  });
   it("... renders movies", () => {
-    const wrapper = shallow(<MovieGrid movies={[mockMovie]} />);
+    const wrapper = shallow(
+      <MovieGrid
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+        movieIDs={[1, 2, 3, 4]}
+      />
+    );
     expect(wrapper.find(`.${styles.grid}`)).toBeTruthy();
     expect(wrapper.find(MovieGridItem)).toBeTruthy();
   });
   it("... renders error message", () => {
-    const wrapper = shallow(<MovieGrid />);
+    const wrapper = shallow(
+      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSortMovies} />
+    );
+    const wrapper2 = shallow(
+      <MovieGrid
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+        movieIDs={[]}
+      />
+    );
+
     expect(wrapper.find(`.${styles.sorryMessage}`)).toBeTruthy();
+    expect(wrapper2.find(`.${styles.sorryMessage}`)).toBeTruthy();
   });
 });

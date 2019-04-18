@@ -1,4 +1,4 @@
-import { ThunkAction, IMovie, MovieListQuery } from "Types";
+import { MovieTypes, ReduxTypes } from "Types";
 import movieService, { resultType } from "Services/movieService";
 import { toggleFetchStatus, fetchError } from "Root/global.actions";
 
@@ -9,7 +9,7 @@ enum detailsActionTypes {
 
 export default detailsActionTypes;
 
-export const fetchMovieById: ThunkAction<
+export const fetchMovieById: ReduxTypes.ThunkAction<
   string,
   boolean | resultType | Error
 > = id => dispatch => {
@@ -20,12 +20,14 @@ export const fetchMovieById: ThunkAction<
     dispatch(toggleFetchStatus(false));
   };
 
-  const successHandler = (result: IMovie): void => {
-    const query: MovieListQuery = {
+  const successHandler = (result: MovieTypes.IMovie): void => {
+    const query: MovieTypes.MovieListQuery = {
       search: result.genres ? result.genres[0] : "",
       searchBy: "genres"
     };
-    const movieListsuccessHandler = (similarMovies: IMovie[]): void => {
+    const movieListsuccessHandler = (
+      similarMovies: MovieTypes.IMovie[]
+    ): void => {
       dispatch({
         type: detailsActionTypes.getMovieDetailsResponse,
         payload: { movie: result, similar: similarMovies }

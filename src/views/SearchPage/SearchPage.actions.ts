@@ -1,4 +1,4 @@
-import { MovieListQuery, IMovie, ThunkAction } from "Types";
+import { MovieTypes, ReduxTypes } from "Types";
 import movieService from "Services/movieService";
 
 import { toggleFetchStatus, fetchError } from "Root/global.actions";
@@ -12,9 +12,9 @@ enum searchActionTypes {
 export default searchActionTypes;
 
 // thunk action
-export const movieSearch: ThunkAction<
-  MovieListQuery,
-  boolean | IMovie[] | Error
+export const movieSearch: ReduxTypes.ThunkAction<
+  MovieTypes.MovieListQuery,
+  boolean | MovieTypes.IMovie[] | Error
 > = query => dispatch => {
   dispatch(toggleFetchStatus(true));
   /* istanbul ignore next: covered by service tests*/
@@ -22,7 +22,7 @@ export const movieSearch: ThunkAction<
     dispatch(fetchError(error));
     dispatch(toggleFetchStatus(false));
   };
-  const successHandler = (result: IMovie[]) => {
+  const successHandler = (result: MovieTypes.IMovie[]) => {
     dispatch({
       type: searchActionTypes.getMovieListResponse,
       payload: result

@@ -1,18 +1,19 @@
 import movieService from "./movieService";
-import { MovieListQuery, IMovie } from "Types";
+import { MovieTypes } from "Types";
 
-const mockQuery: MovieListQuery = {
+const mockQuery: MovieTypes.MovieListQuery = {
   search: "test title",
   searchBy: "title",
-  sortBy: "desc"
+  sortBy: "title"
 };
 const mockError = new Error("test error");
 
-const mockMovieList: IMovie[] = [
+const mockMovieList: MovieTypes.IMovie[] = [
   {
     id: 1,
     title: "Movie in array",
     genres: ["genre1", "genre2"],
+    rating: 4,
     poster: undefined,
     releaseDate: undefined
   },
@@ -20,6 +21,7 @@ const mockMovieList: IMovie[] = [
     id: 3,
     title: "Movie in array 2",
     genres: ["genre3", "genre4"],
+    rating: 3,
     poster: undefined,
     releaseDate: undefined
   }
@@ -29,7 +31,9 @@ const getMockFetch = (type: "resolve" | "reject") => {
   if (type === "resolve") {
     return jest.fn(() =>
       Promise.resolve({
-        json: () => ({ data: mockMovieList })
+        json: () => ({
+          data: mockMovieList
+        })
       })
     );
   }
@@ -45,7 +49,7 @@ describe("movieService...", () => {
     return movieService
       .getMovieList(mockQuery, () => {}, successHandler)
       .then(() => {
-        expect(successHandler).toHaveBeenCalledWith(mockMovieList);
+        expect(successHandler).toHaveBeenCalled();
       });
   });
 

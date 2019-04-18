@@ -6,36 +6,31 @@ import MovieGrid from "Components/MovieGrid/MovieGrid";
 import Footer from "Components/Footer/Footer";
 // redux imports
 import { connect } from "react-redux";
-// import rootReducer from "Root/index";
-import { movieSearch } from "./SearchPage.actions";
-import { MovieListQuery, IMovie } from "Root/types";
+import { MovieTypes, StateTypes } from "Types";
 
-type SearchPageType = {
-  movies: IMovie[];
-  submitAction: (query: MovieListQuery) => void;
+type SearchPageProps = {
+  movies: number[];
 };
 
-const SearchPage: React.SFC<SearchPageType> = props => (
+const SearchPage: React.SFC<SearchPageProps> = ({ movies }) => (
   <div>
     <Header>
-      <MovieSearch submitAction={props.submitAction} />
+      <MovieSearch />
     </Header>
     <div>
-      <MovieGrid movies={props.movies} />
+      <MovieGrid movieIDs={movies} />
     </div>
     <Footer />
   </div>
 );
 
 export default connect(
-  (state: any) => {
+  (state: StateTypes.ApplicationState): { movies: number[] } => {
     return {
-      movies: state.searchPageReducer.movies || []
+      movies:
+        state.searchPage.movies.map((movie: MovieTypes.IMovie) => movie.id) ||
+        []
     };
   },
-  dispatch => ({
-    submitAction: (query: MovieListQuery) => {
-      movieSearch(query)(dispatch);
-    }
-  })
+  undefined
 )(SearchPage);

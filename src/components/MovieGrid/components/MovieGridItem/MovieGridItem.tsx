@@ -3,9 +3,9 @@ import * as React from "react";
 import * as styles from "./MovieGridItem.styles.css";
 
 // interface
-import {IMovieGridItem} from 'Types'
+import { MovieTypes } from "Types";
 
-const MovieGridItem: React.SFC<IMovieGridItem> = ({
+const MovieGridItem: React.SFC<MovieTypes.IMovieGridItem> = ({
   title,
   poster,
   releaseDate,

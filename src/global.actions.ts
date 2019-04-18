@@ -1,4 +1,4 @@
-import { ActionCreator } from "Types";
+import { ReduxTypes } from "Types";
 
 enum globalActionTypes {
   toggleFetchStatus = "TOGGLE_FETCHING_STATUS",
@@ -7,12 +7,12 @@ enum globalActionTypes {
 
 export default globalActionTypes;
 
-export const toggleFetchStatus: ActionCreator<boolean> = status => ({
+export const toggleFetchStatus: ReduxTypes.ActionCreator<boolean> = status => ({
   type: globalActionTypes.toggleFetchStatus,
   payload: status
 });
 
-export const fetchError: ActionCreator<Error> = error => ({
+export const fetchError: ReduxTypes.ActionCreator<Error> = error => ({
   type: globalActionTypes.setfetchError,
   payload: error
 });
