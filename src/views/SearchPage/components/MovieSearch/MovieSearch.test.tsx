@@ -32,7 +32,9 @@ describe("MovieSearch component...", () => {
     const wrapper = shallow(<MovieSearch submitAction={jest.fn()} />);
     expect(wrapper.state("searchBy")).toEqual("title");
     wrapper
-      .find(`${styles.optionsLabel} Button[label='genres']`)
+      .find(`[label='genres']`)
+      .dive()
+      .find("button")
       .simulate("click", { preventDefault: () => {} });
 
     expect(wrapper.state("searchBy")).toEqual("genres");
