@@ -15,9 +15,10 @@ import searchActionTypes from "Views/SearchPage/SearchPage.actions";
 type MoviesGridType = {
   similarResults?: boolean;
   movieIDs?: number[];
+  // store variables
   getMovie: (id: number) => MovieTypes.IMovie;
   sortMovies: (sortKey: string) => void;
-  sortBy?: string;
+  sortBy: string;
 };
 
 const MovieGrid: React.SFC<MoviesGridType> = ({

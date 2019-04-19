@@ -8,26 +8,38 @@ import * as styles from "./MovieGrid.styles.css";
 import { MovieTypes } from "Types";
 
 const mockGetMovie = jest.fn(
-  (id: number): MovieTypes.IMovie => ({ id: 1, title: "test title", rating: 8 })
+  (id: number): MovieTypes.IMovie => ({ id, title: "test title", rating: 8 })
 );
 const mockSortMovies = jest.fn();
 
 describe("MovieGrid component...", () => {
   it("... renders without errors", () => {
     const wrapper = shallow(
-      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSortMovies} />
+      <MovieGrid
+        sortBy={"title"}
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+      />
     );
     expect(wrapper.find(MovieGrid)).toBeTruthy();
   });
   it("... matches snapshot", () => {
     const wrapper = shallow(
-      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSortMovies} />
+      <MovieGrid
+        sortBy={"title"}
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+      />
     );
     expect(wrapper).toMatchSnapshot();
   });
   it("... renders sorting options", () => {
     const wrapper = shallow(
-      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSortMovies} />
+      <MovieGrid
+        sortBy={"title"}
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+      />
     );
 
     expect(wrapper.find(`.${styles.sorting}`)).toBeTruthy();
@@ -38,7 +50,11 @@ describe("MovieGrid component...", () => {
     const mockSort = jest.fn((key: string) => {});
     const mockPrevent = jest.fn();
     const wrapper = shallow(
-      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSort} />
+      <MovieGrid
+        sortBy={"title"}
+        getMovie={mockGetMovie}
+        sortMovies={mockSort}
+      />
     );
 
     wrapper
@@ -53,6 +69,7 @@ describe("MovieGrid component...", () => {
   it("... renders similar results category", () => {
     const wrapper = shallow(
       <MovieGrid
+        sortBy={"title"}
         getMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         similarResults={true}
@@ -63,6 +80,7 @@ describe("MovieGrid component...", () => {
   it("... works with falsy props", () => {
     const wrapper = shallow(
       <MovieGrid
+        sortBy={"title"}
         getMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         similarResults={undefined}
@@ -70,6 +88,7 @@ describe("MovieGrid component...", () => {
     );
     const wrapper2 = shallow(
       <MovieGrid
+        sortBy={"title"}
         getMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         movieIDs={undefined}
@@ -82,6 +101,7 @@ describe("MovieGrid component...", () => {
   it("... renders movies", () => {
     const wrapper = shallow(
       <MovieGrid
+        sortBy={"title"}
         getMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         movieIDs={[1, 2, 3, 4]}
@@ -92,10 +112,15 @@ describe("MovieGrid component...", () => {
   });
   it("... renders error message", () => {
     const wrapper = shallow(
-      <MovieGrid getMovie={mockGetMovie} sortMovies={mockSortMovies} />
+      <MovieGrid
+        sortBy={"title"}
+        getMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+      />
     );
     const wrapper2 = shallow(
       <MovieGrid
+        sortBy={"title"}
         getMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         movieIDs={[]}
@@ -104,5 +129,103 @@ describe("MovieGrid component...", () => {
 
     expect(wrapper.find(`.${styles.sorryMessage}`)).toBeTruthy();
     expect(wrapper2.find(`.${styles.sorryMessage}`)).toBeTruthy();
+  });
+  describe("sort buttons: ", () => {
+    it("... no sort button is active (default)", () => {
+      const wrapper = shallow(
+        <MovieGrid
+          sortBy={"title"}
+          getMovie={mockGetMovie}
+          sortMovies={mockSortMovies}
+          movieIDs={[1]}
+        />
+      );
+      expect(
+        wrapper
+          .find(`.${styles.sorting} Button`)
+          .first()
+          .prop("variant")
+      ).toEqual("white");
+    });
+    it("... releaseDate button is active", () => {
+      const wrapper = shallow(
+        <MovieGrid
+          sortBy={"releaseDate"}
+          getMovie={mockGetMovie}
+          sortMovies={mockSortMovies}
+          movieIDs={[1]}
+        />
+      );
+      expect(
+        wrapper
+          .find(`.${styles.sorting} Button`)
+          .at(0)
+          .prop("variant")
+      ).toEqual("primary");
+      expect(
+        wrapper
+          .find(`.${styles.sorting} Button`)
+          .at(1)
+          .prop("variant")
+      ).toEqual("white");
+    });
+    it("... rating button is active", () => {
+      const wrapper = shallow(
+        <MovieGrid
+          sortBy={"rating"}
+          getMovie={mockGetMovie}
+          sortMovies={mockSortMovies}
+          movieIDs={[1]}
+        />
+      );
+      expect(
+        wrapper
+          .find(`.${styles.sorting} Button`)
+          .at(0)
+          .prop("variant")
+      ).toEqual("white");
+      expect(
+        wrapper
+          .find(`.${styles.sorting} Button`)
+          .at(1)
+          .prop("variant")
+      ).toEqual("primary");
+    });
+  });
+  describe("moviecount message: ", () => {
+    it("... formats to one element", () => {
+      const wrapper = shallow(
+        <MovieGrid
+          sortBy={"title"}
+          getMovie={mockGetMovie}
+          sortMovies={mockSortMovies}
+          movieIDs={[1]}
+        />
+      );
+      expect(wrapper.find(`.${styles.count}`).text()).toEqual("1 movie found");
+    });
+    it("... formats to multiple elements", () => {
+      const wrapper = shallow(
+        <MovieGrid
+          sortBy={"title"}
+          getMovie={mockGetMovie}
+          sortMovies={mockSortMovies}
+          movieIDs={[1, 2, 3, 4]}
+        />
+      );
+      expect(wrapper.find(`.${styles.count}`).text()).toEqual("4 movies found");
+    });
+    it("... formats to no elements", () => {
+      const wrapper = shallow(
+        <MovieGrid
+          sortBy={"title"}
+          getMovie={mockGetMovie}
+          sortMovies={mockSortMovies}
+        />
+      );
+      expect(wrapper.find(`.${styles.count}`).text()).toEqual(
+        "No movies found"
+      );
+    });
   });
 });

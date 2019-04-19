@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --watch --env.mode=development",
     "prod": "webpack --env.mode=production",
-    "test": "jest -o --watch",
-    "test:coverage": "jest --coverage",
+    "test": "jest --onlyChanged --watch --verbose --colors",
+    "test:coverage": "jest --coverage --colors",
     "storybook": "start-storybook"
   },
   "keywords": [

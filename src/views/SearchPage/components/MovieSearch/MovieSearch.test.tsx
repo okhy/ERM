@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 import { MovieSearch } from "./MovieSearch";
 // styles
 import * as styles from "./MovieSearch.styles.css";
-import { MovieTypes } from "Src/types";
+import { MovieTypes } from "Types";
 
 describe("MovieSearch component...", () => {
   it("... renders without errors", () => {
