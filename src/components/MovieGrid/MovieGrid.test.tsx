@@ -35,9 +35,7 @@ describe("MovieGrid component...", () => {
     expect(wrapper.find(<button>rating</button>)).toBeTruthy();
   });
   it("... calls sorting method", () => {
-    const mockSort = jest.fn((key: string) => {
-      console.log(key);
-    });
+    const mockSort = jest.fn((key: string) => {});
     const mockPrevent = jest.fn();
     const wrapper = shallow(
       <MovieGrid getMovie={mockGetMovie} sortMovies={mockSort} />

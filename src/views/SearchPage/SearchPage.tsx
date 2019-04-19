@@ -9,25 +9,27 @@ import { connect } from "react-redux";
 import { MovieTypes, StateTypes } from "Types";
 
 type SearchPageProps = {
-  movies: number[];
+  movieIDList: number[];
 };
 
-const SearchPage: React.SFC<SearchPageProps> = ({ movies }) => (
+const SearchPage: React.SFC<SearchPageProps> = ({ movieIDList }) => (
   <div>
     <Header>
       <MovieSearch />
     </Header>
     <div>
-      <MovieGrid movieIDs={movies} />
+      <MovieGrid movieIDs={movieIDList} />
     </div>
     <Footer />
   </div>
 );
 
+export { SearchPage };
+/* istanbul ignore next*/
 export default connect(
-  (state: StateTypes.ApplicationState): { movies: number[] } => {
+  (state: StateTypes.ApplicationState): { movieIDList: number[] } => {
     return {
-      movies:
+      movieIDList:
         state.searchPage.movies.map((movie: MovieTypes.IMovie) => movie.id) ||
         []
     };

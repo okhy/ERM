@@ -2,20 +2,22 @@ import * as React from "react";
 import * as puppeteer from "puppeteer";
 import { shallow } from "enzyme";
 // components
-import SearchPage from "./SearchPage";
+import { SearchPage } from "./SearchPage";
 import Header from "Components/Header/Header";
 import Footer from "Components/Footer/Footer";
 
+const mockedMovieIDList: number[] = [1, 2, 3, 4];
+
 describe("SearchPage component...", () => {
   it("... renders without errors", () => {
-    const wrapper = shallow(<SearchPage />);
+    const wrapper = shallow(<SearchPage movieIDList={mockedMovieIDList} />);
 
     expect(wrapper.find(SearchPage)).toBeTruthy();
     expect(wrapper.find(Header)).toBeTruthy();
     expect(wrapper.find(Footer)).toBeTruthy();
   });
   it("... matches snapshot", () => {
-    const wrapper = shallow(<SearchPage />);
+    const wrapper = shallow(<SearchPage movieIDList={mockedMovieIDList} />);
     expect(wrapper).toMatchSnapshot();
   });
 
