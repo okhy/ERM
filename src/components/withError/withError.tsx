@@ -12,6 +12,7 @@ class WithError extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = { hasError: false };
+    this.componentDidCatch = this.componentDidCatch.bind(this);
   }
 
   static getDerivedStateFromError() {
@@ -19,6 +20,7 @@ class WithError extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    this.setState({ hasError: true });
     this.props.errorCallback(error, errorInfo);
   }
 
