@@ -41,11 +41,12 @@ const searchPageReducer: searchPageReducerType = (
             a: MovieTypes.IMovie,
             b: MovieTypes.IMovie
           ): sortFunctionReturnType => {
-            if (typeof action.payload === "string") {
+            if (typeof a[action.payload] === "string") {
+              // paylaod is string
               return a[action.payload].localeCompare(b[action.payload]);
             }
-            // number
             if (a[action.payload] === b[action.payload]) {
+              // payload is number
               return 0;
             }
             return a[action.payload] > b[action.payload] ? 1 : -1;
