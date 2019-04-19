@@ -10,6 +10,14 @@ const mockedMovieList: MovieTypes.IMovie[] = [
     poster: "test poster_path",
     releaseDate: "test release_date",
     genres: ["test genre"],
+    rating: 4
+  },
+  {
+    id: 3,
+    title: "X-Movie",
+    poster: "test poster_path",
+    releaseDate: "test release_date",
+    genres: ["test genre"],
     rating: 2
   },
   {
@@ -19,14 +27,6 @@ const mockedMovieList: MovieTypes.IMovie[] = [
     releaseDate: "test release_date",
     genres: ["test genre"],
     rating: 8
-  },
-  {
-    id: 3,
-    title: "X-Movie",
-    poster: "test poster_path",
-    releaseDate: "test release_date",
-    genres: ["test genre"],
-    rating: 4
   },
   {
     id: 4,
