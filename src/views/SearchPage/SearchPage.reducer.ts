@@ -45,11 +45,11 @@ const searchPageReducer: searchPageReducerType = (
               // paylaod is string
               return a[action.payload].localeCompare(b[action.payload]);
             }
+            // payload is number
             if (a[action.payload] === b[action.payload]) {
-              // payload is number
               return 0;
             }
-            return a[action.payload] > b[action.payload] ? 1 : -1;
+            return a[action.payload] < b[action.payload] ? 1 : -1;
           }
         );
         return { ...state, movies: newMovies, sortBy: action.payload };

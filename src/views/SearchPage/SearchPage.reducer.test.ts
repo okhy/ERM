@@ -18,11 +18,19 @@ const mockedMovieList: MovieTypes.IMovie[] = [
     poster: "test poster_path",
     releaseDate: "test release_date",
     genres: ["test genre"],
-    rating: 4
+    rating: 8
   },
   {
     id: 3,
     title: "X-Movie",
+    poster: "test poster_path",
+    releaseDate: "test release_date",
+    genres: ["test genre"],
+    rating: 4
+  },
+  {
+    id: 4,
+    title: "Y-Movie",
     poster: "test poster_path",
     releaseDate: "test release_date",
     genres: ["test genre"],
@@ -93,9 +101,12 @@ describe("Search page reducer...", () => {
 
     expect(store.getState()).toBeTruthy();
     expect(store.getState().movies).toBeTruthy();
-    expect(store.getState().movies[0].title).toEqual("A-Movie");
-    expect(store.getState().movies[1].title).toEqual("X-Movie");
-    expect(store.getState().movies[2].title).toEqual("Z-Movie");
+    expect(store.getState().movies.map(movie => movie.title)).toEqual([
+      "A-Movie",
+      "X-Movie",
+      "Y-Movie",
+      "Z-Movie"
+    ]);
   });
 
   it("... sorts movies by number parameter", () => {
@@ -110,8 +121,11 @@ describe("Search page reducer...", () => {
 
     expect(store.getState()).toBeTruthy();
     expect(store.getState().movies).toBeTruthy();
-    expect(store.getState().movies[0].rating).toEqual(2);
-    expect(store.getState().movies[1].rating).toEqual(4);
-    expect(store.getState().movies[2].rating).toEqual(4);
+    expect(store.getState().movies.map(movie => movie.rating)).toEqual([
+      8,
+      4,
+      4,
+      2
+    ]);
   });
 });
