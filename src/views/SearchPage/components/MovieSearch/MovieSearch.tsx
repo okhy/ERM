@@ -18,10 +18,7 @@ type movieSearchProps = {
 
 type MovieSearchType = { searchFieldValue: string; searchBy: searchType };
 
-export class MovieSearch extends React.Component<
-  movieSearchProps,
-  MovieSearchType
-> {
+class MovieSearch extends React.Component<movieSearchProps, MovieSearchType> {
   constructor(props: movieSearchProps) {
     super(props);
     this.state = { searchFieldValue: "", searchBy: "title" };
@@ -35,6 +32,8 @@ export class MovieSearch extends React.Component<
       this.setState({
         searchFieldValue: this.props.query.search,
         searchBy: this.props.query.searchBy
+          ? this.props.query.searchBy
+          : "title"
       });
     }
   }
@@ -94,6 +93,8 @@ export class MovieSearch extends React.Component<
     );
   }
 }
+
+export { MovieSearch };
 
 /* istanbul ignore next*/
 export default connect(

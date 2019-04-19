@@ -4,16 +4,19 @@ import { shallow } from "enzyme";
 import { MovieSearch } from "./MovieSearch";
 // styles
 import * as styles from "./MovieSearch.styles.css";
+import { MovieTypes } from "Src/types";
 
 describe("MovieSearch component...", () => {
   it("... renders without errors", () => {
     const wrapper = shallow(<MovieSearch submitAction={jest.fn()} />);
     expect(wrapper.find(MovieSearch)).toBeTruthy();
   });
+
   it("... matches snapshot", () => {
     const wrapper = shallow(<MovieSearch submitAction={jest.fn()} />);
     expect(wrapper).toMatchSnapshot();
   });
+
   it("... updates the value", () => {
     const wrapper = shallow(<MovieSearch submitAction={jest.fn()} />);
 
@@ -24,10 +27,12 @@ describe("MovieSearch component...", () => {
     expect(wrapper.state("searchFieldValue")).toEqual("test string");
     expect(wrapper.find(`input`).prop("value")).toEqual("test string");
   });
+
   it("... renders css classes", () => {
     const wrapper = shallow(<MovieSearch submitAction={jest.fn()} />);
     expect(wrapper.find(`.${styles.main}`)).toBeTruthy();
   });
+
   it("... changes searchBy method", () => {
     const wrapper = shallow(<MovieSearch submitAction={jest.fn()} />);
     expect(wrapper.state("searchBy")).toEqual("title");
@@ -39,6 +44,7 @@ describe("MovieSearch component...", () => {
 
     expect(wrapper.state("searchBy")).toEqual("genres");
   });
+
   it("... calls passed action on submit", () => {
     const mockAction = jest.fn();
     const wrapper = shallow(<MovieSearch submitAction={mockAction} />);
@@ -46,5 +52,32 @@ describe("MovieSearch component...", () => {
     wrapper.simulate("submit", { preventDefault: jest.fn() });
 
     expect(mockAction).toHaveBeenCalled();
+  });
+
+  it("... sets passed query to own state with one prop", () => {
+    const mockQuery: MovieTypes.MovieListQuery = {
+      search: "test title"
+    };
+
+    const wrapper = shallow(
+      <MovieSearch submitAction={jest.fn()} query={mockQuery} />
+    );
+
+    expect(wrapper.state("searchFieldValue")).toEqual(mockQuery.search);
+    expect(wrapper.state("searchBy")).toEqual("title");
+  });
+
+  it("... sets passed query to own state with both props", () => {
+    const mockQuery: MovieTypes.MovieListQuery = {
+      search: "test title",
+      searchBy: "genres"
+    };
+
+    const wrapper = shallow(
+      <MovieSearch submitAction={jest.fn()} query={mockQuery} />
+    );
+
+    expect(wrapper.state("searchFieldValue")).toEqual(mockQuery.search);
+    expect(wrapper.state("searchBy")).toEqual("genres");
   });
 });
