@@ -3,7 +3,7 @@ import { MovieTypes } from "Types";
 // styles
 import * as styles from "./MovieDetails.styles.css";
 
-const MovieDetails: React.SFC<MovieTypes.IMovieDetails> = ({
+const MovieDetails: React.SFC<MovieTypes.IMovie> = ({
   title,
   poster,
   releaseDate,
@@ -24,7 +24,7 @@ const MovieDetails: React.SFC<MovieTypes.IMovieDetails> = ({
     )}
     <div className={styles.details}>
       <span className={styles.title}>{title}</span>
-      {!!genres && !!genres.length && (
+      {!!genres && genres.length && (
         <span className={styles.genres}>{genres.join(" & ")}</span>
       )}
       <div className={styles.yearAndDuration}>

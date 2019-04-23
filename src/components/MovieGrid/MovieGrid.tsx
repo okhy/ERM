@@ -37,7 +37,7 @@ const MovieGrid: React.SFC<MoviesGridType> = ({
       const movie = similarResults
         ? getDetailsPageMovie(movieID)
         : getSearchPageMovie(movieID);
-      return <MovieGridItem key={movie.id} {...movie} />;
+      return <MovieGridItem key={movieID} {...movie} />;
     });
 
   const countMessage: string = `${movieCount || "No"} movie${

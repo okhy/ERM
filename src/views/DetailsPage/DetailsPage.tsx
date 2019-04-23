@@ -18,7 +18,7 @@ type DetailsPageProps = {
   // router props
   match?: any;
   // redux props
-  details: MovieTypes.IMovieDetails;
+  details: MovieTypes.IMovie;
   similarMovies: number[];
   // redux methods
   getMovie(id: string): void;
@@ -38,6 +38,7 @@ class DetailsPage extends React.Component<DetailsPageProps, DetailsPageState> {
 
   componentDidMount() {
     this.props.getMovie(this.state.id);
+    console.log(this.props.details);
   }
 
   render() {

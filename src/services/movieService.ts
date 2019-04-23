@@ -30,7 +30,9 @@ const movieService = (): movieServiceReturnType => {
     poster: movie.poster_path,
     releaseDate: movie.release_date,
     genres: movie.genres,
-    rating: movie.vote_average
+    rating: movie.vote_average,
+    runtime: movie.runtime,
+    overview: movie.overview
   });
   // convert options from object to query string "?optval&opt2=val2"
   const formatOptions = (query: MovieTypes.MovieListQuery): string =>

@@ -1,17 +1,19 @@
+import { MovieTypes } from "Types";
+// react
 import * as React from "react";
+// Link
+import { Link } from "react-router-dom";
 // styles
 import * as styles from "./MovieGridItem.styles.css";
 
-// interface
-import { MovieTypes } from "Types";
-
-const MovieGridItem: React.SFC<MovieTypes.IMovieGridItem> = ({
+const MovieGridItem: React.SFC<MovieTypes.IMovie> = ({
+  id,
   title,
   poster,
   releaseDate,
   genres
 }) => (
-  <div>
+  <Link to={`/movie/${id}`}>
     {!!poster ? (
       <div
         className={styles.poster}
@@ -33,7 +35,7 @@ const MovieGridItem: React.SFC<MovieTypes.IMovieGridItem> = ({
         <span className={styles.genres}>{genres.join(" & ")}</span>
       )}
     </div>
-  </div>
+  </Link>
 );
 
 export default MovieGridItem;

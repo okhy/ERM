@@ -62,24 +62,15 @@ declare module MovieTypes {
     limit?: number;
   }
 
-  export interface IMovieGridItem {
-    title: string;
-    poster?: string;
-    releaseDate?: string;
-    genres?: string[];
-  }
-
-  export interface IMovie extends IMovieGridItem {
+  export interface IMovie {
     id: number;
     rating: number;
-  }
-  export interface IMovieDetails {
     title: string;
     poster?: string;
     releaseDate?: string;
     genres?: string[];
     runtime?: number;
-    overview: string;
+    overview?: string;
   }
 }
 

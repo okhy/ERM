@@ -6,11 +6,13 @@ import { MovieTypes } from "Types";
 // styles
 import * as styles from "./MovieGridItem.styles.css";
 // mock data
-const mockMovie: MovieTypes.IMovieGridItem = {
+const mockMovie: MovieTypes.IMovie = {
+  id: 1,
   title: "Pulp Fiction",
   poster: "https://image.tmdb.org/t/p/w500/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
   releaseDate: "1994-09-10",
-  genres: ["Thriller", "Crime"]
+  genres: ["Thriller", "Crime"],
+  rating: 8
 };
 
 describe("MovieGridItem component...", () => {

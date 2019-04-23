@@ -1,6 +1,11 @@
 import { MovieTypes, ReduxTypes } from "Types";
-import movieService, { resultType } from "Services/movieService";
+import movieService from "Services/movieService";
 import { toggleFetchStatus, fetchError } from "Src/global.actions";
+
+type resultType = {
+  movie: MovieTypes.IMovie;
+  similar: MovieTypes.IMovie[];
+};
 
 enum detailsActionTypes {
   getMovieDetails = "GET_MOVIE_DETAILS_QUERY",
