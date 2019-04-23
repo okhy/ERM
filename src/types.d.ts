@@ -40,9 +40,15 @@ declare module StateTypes {
     movies: MovieTypes.IMovie[];
     sortBy: string;
   }
-  export interface ApplicationState {
+  export interface detailsPageState {
+    details: false | MovieTypes.IMovieDetails;
+    similarMovies: MovieTypes.IMovie[];
+  }
+
+  export interface applicationState {
     global: globalState;
     searchPage: searchPageState;
+    detailsPage: detailsPageState;
   }
 }
 

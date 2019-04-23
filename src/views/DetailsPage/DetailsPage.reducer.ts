@@ -1,20 +1,15 @@
-import { MovieTypes, ReduxTypes } from "Types";
+import { ReduxTypes, StateTypes } from "Types";
 
 import detailsActionTypes from "./DetailsPage.actions";
 
-interface DetailsPageReducerState {
-  details: false | MovieTypes.IMovieDetails;
-  similarMovies: false | MovieTypes.IMovie[];
-}
-
 type detailsPageReducerType = (
-  state: DetailsPageReducerState,
+  state: StateTypes.detailsPageState,
   action: ReduxTypes.GenericAction<any>
-) => DetailsPageReducerState;
+) => StateTypes.detailsPageState;
 
-const initialState: DetailsPageReducerState = {
+const initialState: StateTypes.detailsPageState = {
   details: false,
-  similarMovies: false
+  similarMovies: []
 };
 
 const detailsPageReducer: detailsPageReducerType = (

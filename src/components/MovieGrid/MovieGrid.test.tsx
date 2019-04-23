@@ -17,7 +17,8 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
       />
     );
@@ -27,7 +28,8 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
       />
     );
@@ -37,7 +39,8 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
       />
     );
@@ -52,7 +55,8 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSort}
       />
     );
@@ -70,7 +74,8 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         similarResults={true}
       />
@@ -81,7 +86,8 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         similarResults={undefined}
       />
@@ -89,7 +95,8 @@ describe("MovieGrid component...", () => {
     const wrapper2 = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         movieIDs={undefined}
       />
@@ -102,7 +109,8 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         movieIDs={[1, 2, 3, 4]}
       />
@@ -114,14 +122,16 @@ describe("MovieGrid component...", () => {
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
       />
     );
     const wrapper2 = shallow(
       <MovieGrid
         sortBy={"title"}
-        getMovie={mockGetMovie}
+        getDetailsPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetMovie}
         sortMovies={mockSortMovies}
         movieIDs={[]}
       />
@@ -135,7 +145,8 @@ describe("MovieGrid component...", () => {
       const wrapper = shallow(
         <MovieGrid
           sortBy={"title"}
-          getMovie={mockGetMovie}
+          getDetailsPageMovie={mockGetMovie}
+          getSearchPageMovie={mockGetMovie}
           sortMovies={mockSortMovies}
           movieIDs={[1]}
         />
@@ -151,7 +162,8 @@ describe("MovieGrid component...", () => {
       const wrapper = shallow(
         <MovieGrid
           sortBy={"releaseDate"}
-          getMovie={mockGetMovie}
+          getDetailsPageMovie={mockGetMovie}
+          getSearchPageMovie={mockGetMovie}
           sortMovies={mockSortMovies}
           movieIDs={[1]}
         />
@@ -173,7 +185,8 @@ describe("MovieGrid component...", () => {
       const wrapper = shallow(
         <MovieGrid
           sortBy={"rating"}
-          getMovie={mockGetMovie}
+          getDetailsPageMovie={mockGetMovie}
+          getSearchPageMovie={mockGetMovie}
           sortMovies={mockSortMovies}
           movieIDs={[1]}
         />
@@ -197,7 +210,8 @@ describe("MovieGrid component...", () => {
       const wrapper = shallow(
         <MovieGrid
           sortBy={"title"}
-          getMovie={mockGetMovie}
+          getDetailsPageMovie={mockGetMovie}
+          getSearchPageMovie={mockGetMovie}
           sortMovies={mockSortMovies}
           movieIDs={[1]}
         />
@@ -208,7 +222,8 @@ describe("MovieGrid component...", () => {
       const wrapper = shallow(
         <MovieGrid
           sortBy={"title"}
-          getMovie={mockGetMovie}
+          getDetailsPageMovie={mockGetMovie}
+          getSearchPageMovie={mockGetMovie}
           sortMovies={mockSortMovies}
           movieIDs={[1, 2, 3, 4]}
         />
@@ -219,7 +234,8 @@ describe("MovieGrid component...", () => {
       const wrapper = shallow(
         <MovieGrid
           sortBy={"title"}
-          getMovie={mockGetMovie}
+          getDetailsPageMovie={mockGetMovie}
+          getSearchPageMovie={mockGetMovie}
           sortMovies={mockSortMovies}
         />
       );

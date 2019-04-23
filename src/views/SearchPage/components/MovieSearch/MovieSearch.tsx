@@ -98,7 +98,7 @@ export { MovieSearch };
 
 /* istanbul ignore next*/
 export default connect(
-  (store: StateTypes.ApplicationState) => ({
+  (store: StateTypes.applicationState) => ({
     // query: statement
   }),
   (dispatch: any) => ({
