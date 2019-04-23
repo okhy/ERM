@@ -5,6 +5,8 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 // styles
 import * as styles from "./MovieGridItem.styles.css";
+// components
+import Poster from "Components/Poster/Poster";
 
 const MovieGridItem: React.SFC<MovieTypes.IMovie> = ({
   id,
@@ -14,16 +16,7 @@ const MovieGridItem: React.SFC<MovieTypes.IMovie> = ({
   genres
 }) => (
   <Link to={`/movie/${id}`}>
-    {!!poster ? (
-      <div
-        className={styles.poster}
-        style={{ backgroundImage: `url(${poster})` }}
-      />
-    ) : (
-      <div className={styles.noPoster}>
-        <span className={styles.noPosterLabel}>No poster</span>
-      </div>
-    )}
+    <Poster url={poster} />
     <div className={styles.data}>
       <div className={styles.baseData}>
         <span className={styles.title}>{title}</span>

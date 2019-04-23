@@ -13,6 +13,8 @@ const containerStyle = {
 storiesOf("Components / MovieDetails", module).add("default", () => (
   <div style={containerStyle}>
     <MovieDetails
+      id={1}
+      rating={2}
       title="Movie Title"
       overview="Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nihil consequatur ipsa nesciunt sit molestiae molestias illum architecto tempora voluptatum quia recusandae? Nisi magni incidunt itaque blanditiis cumque, cupiditate quasi?"
     />
