@@ -3,6 +3,7 @@ import { shallow } from "enzyme";
 import { MovieTypes } from "Types";
 // components
 import MovieDetails from "./MovieDetails";
+import Poster from "Components/Poster/Poster";
 // styles
 import * as styles from "./MovieDetails.styles.css";
 
@@ -44,13 +45,7 @@ describe("MovieDetails component...", () => {
   it("... renders passed props", () => {
     const wrapper = shallow(<MovieDetails {...mockMovie} />);
 
-    expect(
-      wrapper
-        .find(`.${styles.poster}`)
-        .prop("style")
-        .backgroundImage.includes(mockMovie.poster)
-    ).toBeTruthy();
-
+    expect(wrapper.find(Poster)).toBeTruthy();
     expect(wrapper.contains(mockMovie.title)).toBeTruthy();
     expect(wrapper.contains(mockMovie.releaseDate.substr(0, 4))).toBeTruthy();
     expect(wrapper.contains(mockMovie.genres.join(" & "))).toBeTruthy();
