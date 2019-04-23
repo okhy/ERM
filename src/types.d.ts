@@ -40,7 +40,7 @@ declare module StateTypes {
     sortBy: string;
   }
   export interface detailsPageState {
-    details: false | MovieTypes.IMovieDetails;
+    details: false | MovieTypes.IMovie;
     similarMovies: MovieTypes.IMovie[];
   }
 

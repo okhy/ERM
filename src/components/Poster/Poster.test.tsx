@@ -5,10 +5,11 @@ import * as styles from "./Poster.styles.css";
 import Poster from "./Poster";
 
 describe("Poster component...", () => {
-  it.todo("... renders poster ", () => {
+  it("... renders poster ", () => {
     const wrapper = shallow(<Poster url="testurlstring" />);
-    console.log(wrapper.find(`.${styles.main}`).prop("styles"));
-    expect(wrapper.find(`.${styles.main}`).prop("styles"));
+    expect(
+      wrapper.find(`.${styles.main}`).prop("style").backgroundImage
+    ).toEqual("url(testurlstring)");
   });
 
   it("... renders placeholder", () => {

@@ -1,6 +1,6 @@
 .base {
   border-radius: var(--step-3);
-  box-shadow: 0 2px 5px 0 var(--color-gray-lighter);
+  box-shadow: 0 2px 5px 0 var(--color-dark-transparent);
   height: 375px;
   width: 250px;
 }
