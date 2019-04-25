@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   preset: "ts-jest",
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   verbose: true,
   transform: {
     ".(js|jsx|ts|tsx)": "ts-jest"
