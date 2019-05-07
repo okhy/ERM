@@ -3,6 +3,7 @@ import { shallow } from "enzyme";
 // components
 import MovieGridItem from "./MovieGridItem";
 import { MovieTypes } from "Types";
+import Poster from "Components/Poster/Poster";
 // styles
 import * as styles from "./MovieGridItem.styles.css";
 // mock data
@@ -14,6 +15,10 @@ const mockMovie: MovieTypes.IMovie = {
   genres: ["Thriller", "Crime"],
   rating: 8
 };
+
+jest.mock("react-router-dom", () => ({
+  Link: (props: any) => <div>{props.children}</div>
+}));
 
 describe("MovieGridItem component...", () => {
   it("... renders without errors", () => {
@@ -28,19 +33,13 @@ describe("MovieGridItem component...", () => {
     const tempReleaseDate = mockMovie.releaseDate.substr(0, 4);
     const wrapper = shallow(<MovieGridItem {...mockMovie} />);
 
-    expect(
-      wrapper
-        .find(`.${styles.poster}`)
-        .prop("style")
-        .backgroundImage.includes(mockMovie.poster)
-    ).toBeTruthy();
     expect(wrapper.contains(`${mockMovie.title}`)).toBeTruthy();
     expect(wrapper.contains(`${tempReleaseDate}`)).toBeTruthy();
     expect(wrapper.contains(`${mockMovie.genres.join(" & ")}`)).toBeTruthy();
   });
-  it("... renders no-poster message ", () => {
+  it("... renders poster ", () => {
     const wrapper = shallow(<MovieGridItem {...mockMovie} poster="" />);
-    expect(wrapper.contains("No poster")).toBeTruthy();
+    expect(wrapper.find(Poster)).toBeTruthy();
   });
   it("... renders styles", () => {
     const wrapper = shallow(<MovieGridItem {...mockMovie} />);
