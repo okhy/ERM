@@ -10,7 +10,7 @@ module.exports = (env, options) => ({
       Components: path.resolve(__dirname, "./src/components"),
       Views: path.resolve(__dirname, "./src/views"),
       Services: path.resolve(__dirname, "./src/services"),
-      Src: path.resolve(__dirname, "./src"),
+      App: path.resolve(__dirname, "./src"),
       Types: path.resolve(__dirname, "./src/types.d.ts"),
       Mocks: path.relative(__dirname, "./__mocks__")
     }

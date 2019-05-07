@@ -1,6 +1,6 @@
 import { MovieTypes, ReduxTypes } from "Types";
 import movieService from "Services/movieService";
-import { toggleFetchStatus, fetchError } from "Src/global.actions";
+import { toggleFetchStatus, fetchError } from "App/global.actions";
 
 type resultType = {
   movie: MovieTypes.IMovie;
@@ -30,7 +30,7 @@ export const fetchMovieById: ReduxTypes.ThunkAction<
       search: result.genres ? result.genres[0] : "",
       searchBy: "genres"
     };
-    const movieListsuccessHandler = (
+    const movieListSuccessHandler = (
       similarMovies: MovieTypes.IMovie[]
     ): void => {
       dispatch({
@@ -40,7 +40,7 @@ export const fetchMovieById: ReduxTypes.ThunkAction<
       dispatch(toggleFetchStatus(false));
     };
 
-    movieService.getMovieList(query, errorHandler, movieListsuccessHandler);
+    movieService.getMovieList(query, errorHandler, movieListSuccessHandler);
   };
 
   movieService.getMovieByID(id, errorHandler, successHandler);

@@ -16,7 +16,7 @@ import { fetchMovieById } from "Views/DetailsPage/DetailsPage.actions";
 
 type DetailsPageProps = {
   // router props
-  match?: any;
+  match: any;
   // redux props
   details: MovieTypes.IMovie;
   similarMovies: number[];
@@ -58,6 +58,7 @@ class DetailsPage extends React.Component<DetailsPageProps, DetailsPageState> {
   }
 }
 
+/* istanbul ignore next*/
 const mapStateToProps = (state: StateTypes.applicationState) => ({
   details: state.detailsPage.details,
   similarMovies:
@@ -65,6 +66,7 @@ const mapStateToProps = (state: StateTypes.applicationState) => ({
     state.detailsPage.similarMovies.map((movie: MovieTypes.IMovie) => movie.id)
 });
 
+/* istanbul ignore next*/
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   getMovie: (id: string) => {
     fetchMovieById(id)(dispatch);

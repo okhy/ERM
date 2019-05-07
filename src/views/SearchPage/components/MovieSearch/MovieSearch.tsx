@@ -6,7 +6,7 @@ import * as styles from "./MovieSearch.styles.css";
 import { MovieTypes } from "Types";
 // redux
 import { connect } from "react-redux";
-import { movieSearch } from "Src/views/SearchPage/SearchPage.actions";
+import { movieSearch } from "App/views/SearchPage/SearchPage.actions";
 import { StateTypes } from "Types";
 
 type searchType = "title" | "genres";
