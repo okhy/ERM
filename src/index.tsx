@@ -3,7 +3,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 // components
-import WithError from "Components/WithError/withError";
+import WithError from "Components/WithError/WithError";
 import Routes from "./Routing";
 import StoreProviderWrapper from "./StoreProviderWrapper";
 // assets
