@@ -18,19 +18,20 @@ export const movieSearch: ReduxTypes.ThunkAction<
 > = query => dispatch => {
   dispatch(toggleFetchStatus(true));
   /* istanbul ignore next: covered by service tests*/
-  const errorHandler = (error: Error) => {
-    dispatch(fetchError(error));
-    dispatch(toggleFetchStatus(false));
-  };
-  const successHandler = (result: MovieTypes.IMovie[]) => {
-    dispatch({
-      type: searchActionTypes.getMovieListResponse,
-      payload: result
-    });
-    dispatch(toggleFetchStatus(false));
-  };
 
-  movieService.getMovieList(query, errorHandler, successHandler);
+  movieService
+    .getMovieList(query)
+    .then((result: MovieTypes.IMovie[]) => {
+      dispatch({
+        type: searchActionTypes.getMovieListResponse,
+        payload: result
+      });
+      dispatch(toggleFetchStatus(false));
+    })
+    .catch((error: Error) => {
+      dispatch(fetchError(error));
+      dispatch(toggleFetchStatus(false));
+    });
 
   return {
     type: searchActionTypes.getMovieList,
