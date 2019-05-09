@@ -15,19 +15,22 @@ type movieServiceReturnType = {
   getMovieByID: getMovieByIDType;
 };
 
+export const transformResponseMovie = (
+  movie: ResponseMovie
+): MovieTypes.IMovie => ({
+  id: movie.id,
+  rating: movie.vote_average,
+  title: movie.title,
+  poster: movie.poster_path,
+  releaseDate: movie.release_date,
+  genres: movie.genres,
+  runtime: movie.runtime,
+  overview: movie.overview
+});
+
 const movieService = (): movieServiceReturnType => {
   const apiURL = "https://reactjs-cdp.herokuapp.com";
 
-  const transformResponseMovie = (movie: ResponseMovie): MovieTypes.IMovie => ({
-    id: movie.id,
-    title: movie.title,
-    poster: movie.poster_path,
-    releaseDate: movie.release_date,
-    genres: movie.genres,
-    rating: movie.vote_average,
-    runtime: movie.runtime,
-    overview: movie.overview
-  });
   // convert options from object to query string "?optval&opt2=val2"
   const formatOptions = (query: MovieTypes.MovieListQuery): string =>
     Object.keys(query).reduce((accumulator, key, index) => {

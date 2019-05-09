@@ -1,4 +1,4 @@
-import movieService from "./movieService";
+import movieService, { transformResponseMovie } from "./movieService";
 import { ResponseMovie, MovieTypes } from "Types";
 
 const mockQuery: MovieTypes.MovieListQuery = {
@@ -8,33 +8,27 @@ const mockQuery: MovieTypes.MovieListQuery = {
 };
 const mockError = new Error("test error");
 
-const mockResponseMovie: ResponseMovie = {
-  id: 1,
-  title: "Movie in array",
-  tagline: "",
-  genres: ["genre1", "genre2"],
-  vote_average: 2,
-  vote_count: 13142,
-  release_date: "string",
-  poster_path: "string",
-  overview: "string",
-  budget: 31998219,
-  revenue: 12929731792763,
-  runtime: 129
-};
-
 const mockResponseMovieList: ResponseMovie[] = [
-  mockResponseMovie,
+  {
+    id: 1,
+    vote_average: 4,
+    title: "Movie in array",
+    poster_path: "test poster path",
+    release_date: "1923",
+    genres: ["genre1", "genre2"],
+    runtime: 129,
+    overview: "overview"
+  },
   {
     id: 3,
     title: "Movie in array 2",
     tagline: "",
     genres: ["genre3", "genre4"],
-    vote_average: 2,
+    vote_average: 3,
     vote_count: 13142,
-    release_date: "string",
-    poster_path: "string",
-    overview: "string",
+    release_date: "1923",
+    poster_path: "test poster path",
+    overview: "overview",
     budget: 31998219,
     revenue: 12929731792763,
     runtime: 129
@@ -46,8 +40,10 @@ const mockMovie: MovieTypes.IMovie = {
   title: "Movie in array",
   genres: ["genre1", "genre2"],
   rating: 4,
-  poster: undefined,
-  releaseDate: undefined
+  overview: "overview",
+  poster: "test poster path",
+  releaseDate: "1923",
+  runtime: 129
 };
 
 const mockMovieList: MovieTypes.IMovie[] = [
@@ -57,8 +53,10 @@ const mockMovieList: MovieTypes.IMovie[] = [
     title: "Movie in array 2",
     genres: ["genre3", "genre4"],
     rating: 3,
-    poster: undefined,
-    releaseDate: undefined
+    overview: "overview",
+    poster: "test poster path",
+    releaseDate: "1923",
+    runtime: 129
   }
 ];
 
@@ -75,9 +73,7 @@ const getMockFetch = (type: "resolve" | "reject" | "resolveSingle"): any => {
   if (type === "resolveSingle") {
     return jest.fn(() =>
       Promise.resolve({
-        json: () => ({
-          data: mockResponseMovie
-        })
+        json: () => mockResponseMovieList[0]
       })
     );
   }
@@ -123,5 +119,9 @@ describe("movieService...", () => {
     });
   });
 
+  it("... transforms responseMovie correctly", () => {
+    const result = transformResponseMovie(mockResponseMovieList[0]);
+    expect(result).toEqual(mockMovie);
+  });
   it.todo("... invokes (?) default error catch on error");
 });
