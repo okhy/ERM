@@ -11,7 +11,7 @@ const Routes: React.SFC = () => (
     <Switch>
       <Route exact path="/" component={SearchPage} />
       <Route exact path="/movie/:id" component={DetailsPage} />
-      <Route exact path="/404" component={ErrorPage} />
+      <Route component={ErrorPage} />
     </Switch>
   </HashRouter>
 );
