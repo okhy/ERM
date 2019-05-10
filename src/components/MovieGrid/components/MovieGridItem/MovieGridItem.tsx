@@ -1,6 +1,10 @@
 import { MovieTypes } from "Types";
 // react
 import * as React from "react";
+// redux
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { fetchMovieById } from "Views/DetailsPage/DetailsPage.actions";
 // Link
 import { Link } from "react-router-dom";
 // styles
@@ -8,14 +12,24 @@ import * as styles from "./MovieGridItem.styles.css";
 // components
 import Poster from "Components/Poster/Poster";
 
-const MovieGridItem: React.SFC<MovieTypes.IMovie> = ({
+type MovieGridItemType = MovieTypes.IMovie & {
+  fetchMovie: (id: number) => void;
+};
+
+const MovieGridItem: React.SFC<MovieGridItemType> = ({
   id,
   title,
   poster,
   releaseDate,
-  genres
+  genres,
+  fetchMovie
 }) => (
-  <Link to={`/movie/${id}`}>
+  <Link
+    to={`/movie/${id}`}
+    onClick={(e: React.SyntheticEvent) => {
+      fetchMovie(id);
+    }}
+  >
     <Poster url={poster} />
     <div className={styles.data}>
       <div className={styles.baseData}>
@@ -31,4 +45,16 @@ const MovieGridItem: React.SFC<MovieTypes.IMovie> = ({
   </Link>
 );
 
-export default MovieGridItem;
+/* istanbul ignore next*/
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  fetchMovie: (id: number) => {
+    fetchMovieById(id)(dispatch);
+  }
+});
+
+export { MovieGridItem };
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(MovieGridItem);

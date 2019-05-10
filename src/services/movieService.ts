@@ -8,7 +8,7 @@ type getMovieListType = (
   query: MovieTypes.MovieListQuery
 ) => Promise<MovieTypes.IMovie[]>;
 
-type getMovieByIDType = (id: string) => Promise<void | MovieTypes.IMovie>;
+type getMovieByIDType = (id: number) => Promise<void | MovieTypes.IMovie>;
 
 type movieServiceReturnType = {
   getMovieList: getMovieListType;

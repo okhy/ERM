@@ -91,11 +91,10 @@ const MovieGrid: React.SFC<MoviesGridType> = ({
 /* istanbul ignore next*/
 const mapState = (state: StateTypes.applicationState) => ({
   sortBy: state.searchPage.sortBy,
-  getDetailsPageMovie: (id: number) => {
+  getDetailsPageMovie: (id: number) =>
     state.detailsPage.similarMovies.find(
       (movie: MovieTypes.IMovie) => movie.id === id
-    );
-  },
+    ),
   getSearchPageMovie: (id: number) =>
     state.searchPage.movies.find((movie: MovieTypes.IMovie) => movie.id === id)
 });

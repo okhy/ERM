@@ -35,7 +35,7 @@ describe("DetailsPage... ", () => {
       (global as any).fetch = jest.fn(getMockFetch("resolve"));
 
       const mockDispatch = jest.fn();
-      const queryAction = fetchMovieById("testId")(mockDispatch);
+      const queryAction = fetchMovieById(1)(mockDispatch);
 
       expect(queryAction).toEqual({
         type: detailsActionTypes.getMovieDetails

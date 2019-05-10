@@ -13,7 +13,7 @@ const mockMovie: MovieTypes.IMovie = {
   rating: 8
 };
 
-const mockMatch = { params: { id: 1 } };
+const mockMatch = { params: { id: "1" } };
 
 describe("DetailsPage component...", () => {
   it("... renders without errors", () => {
@@ -21,8 +21,10 @@ describe("DetailsPage component...", () => {
       <DetailsPage
         match={mockMatch}
         details={mockMovie}
+        detailsID={1}
+        getDetails={jest.fn()}
         similarMovies={[1, 2, 3, 4]}
-        getMovie={jest.fn()}
+        fetchMovie={jest.fn()}
       />
     );
     expect(wrapper.find(DetailsPage)).toBeTruthy();
@@ -32,8 +34,10 @@ describe("DetailsPage component...", () => {
       <DetailsPage
         match={mockMatch}
         details={mockMovie}
+        detailsID={1}
+        getDetails={jest.fn()}
         similarMovies={[1, 2, 3, 4]}
-        getMovie={jest.fn()}
+        fetchMovie={jest.fn()}
       />
     );
     expect(wrapper).toMatchSnapshot();
@@ -43,8 +47,10 @@ describe("DetailsPage component...", () => {
       <DetailsPage
         match={mockMatch}
         details={mockMovie}
+        detailsID={1}
+        getDetails={jest.fn()}
         similarMovies={[1, 2, 3, 4]}
-        getMovie={jest.fn()}
+        fetchMovie={jest.fn()}
       />
     );
     expect(wrapper.state("id")).toEqual(1);
@@ -56,8 +62,10 @@ describe("DetailsPage component...", () => {
       <DetailsPage
         match={mockMatch}
         details={mockMovie}
+        detailsID={1}
+        getDetails={jest.fn()}
         similarMovies={[1, 2, 3, 4]}
-        getMovie={mockGetMovie}
+        fetchMovie={mockGetMovie}
       />
     );
 

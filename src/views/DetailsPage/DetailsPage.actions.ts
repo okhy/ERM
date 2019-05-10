@@ -46,7 +46,7 @@ const successHandler = (
 };
 
 export const fetchMovieById: ReduxTypes.ThunkAction<
-  string,
+  number,
   dispatchInterfaceTypes
 > = id => dispatch => {
   dispatch(toggleFetchStatus(true));

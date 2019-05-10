@@ -1,5 +1,4 @@
 import { StateTypes, MovieTypes } from "Types";
-
 // react
 import * as React from "react";
 // components
@@ -16,41 +15,47 @@ import { fetchMovieById } from "Views/DetailsPage/DetailsPage.actions";
 
 type DetailsPageProps = {
   // router props
-  match: any;
+  match: { params: { id: string } };
   // redux props
+  detailsID: number;
+  getDetails: () => MovieTypes.IMovie;
   details: MovieTypes.IMovie;
   similarMovies: number[];
   // redux methods
-  getMovie(id: string): void;
+  fetchMovie(id: number): void;
 };
 
 type DetailsPageState = {
-  id: string;
+  id: number;
 };
 
-class DetailsPage extends React.Component<DetailsPageProps, DetailsPageState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      id: this.props.match.params.id
-    };
-  }
-
+class DetailsPage extends React.PureComponent<
+  DetailsPageProps,
+  DetailsPageState
+> {
   componentDidMount() {
-    this.props.getMovie(this.state.id);
+    this.props.fetchMovie(+this.props.match.params.id);
   }
 
   render() {
+    const haveDetails = !!this.props.detailsID;
+    const haveSimilar =
+      !!this.props.similarMovies && !!this.props.similarMovies.length;
+
     return (
       <div>
         <Header actionItem={<Button variant="white" label="search" />}>
-          <MovieDetails {...this.props.details} />
+          {haveDetails && <MovieDetails {...this.props.getDetails()} />}
+          {!haveDetails && <span>TODO: Spinner component</span>}
         </Header>
         <div>
-          <MovieGrid
-            similarResults={true}
-            movieIDs={this.props.similarMovies}
-          />
+          {haveSimilar && (
+            <MovieGrid
+              similarResults={true}
+              movieIDs={this.props.similarMovies}
+            />
+          )}
+          {!haveSimilar && <span>TODO: Spinner component</span>}
         </div>
         <Footer />
       </div>
@@ -60,7 +65,8 @@ class DetailsPage extends React.Component<DetailsPageProps, DetailsPageState> {
 
 /* istanbul ignore next*/
 const mapStateToProps = (state: StateTypes.applicationState) => ({
-  details: state.detailsPage.details,
+  detailsID: !!state.detailsPage.details && state.detailsPage.details.id,
+  getDetails: () => state.detailsPage.details,
   similarMovies:
     state.detailsPage.similarMovies &&
     state.detailsPage.similarMovies.map((movie: MovieTypes.IMovie) => movie.id)
@@ -68,7 +74,7 @@ const mapStateToProps = (state: StateTypes.applicationState) => ({
 
 /* istanbul ignore next*/
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  getMovie: (id: string) => {
+  fetchMovie: (id: number) => {
     fetchMovieById(id)(dispatch);
   }
 });

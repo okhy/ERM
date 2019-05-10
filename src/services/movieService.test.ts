@@ -104,7 +104,7 @@ describe("movieService...", () => {
   it("... gets movie by id", () => {
     (global as any).fetch = jest.fn(getMockFetch("resolveSingle"));
 
-    return movieService.getMovieByID("1").then((data: MovieTypes.IMovie) => {
+    return movieService.getMovieByID(1).then((data: MovieTypes.IMovie) => {
       expect(data).toBeTruthy();
       expect(data).toEqual(mockMovie);
     });
@@ -113,7 +113,7 @@ describe("movieService...", () => {
   it("... returns getMovie error", () => {
     (global as any).fetch = jest.fn(getMockFetch("reject"));
 
-    return movieService.getMovieByID("1").catch((error: Error) => {
+    return movieService.getMovieByID(1).catch((error: Error) => {
       expect(error).toBeTruthy();
       expect(error).toEqual(mockError);
     });
