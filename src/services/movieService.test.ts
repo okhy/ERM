@@ -123,5 +123,10 @@ describe("movieService...", () => {
     const result = transformResponseMovie(mockResponseMovieList[0]);
     expect(result).toEqual(mockMovie);
   });
-  it.todo("... invokes (?) default error catch on error");
+  it("... transforms query to queryString correctly", () => {
+    const result = movieService.formatQueryStringToOptions(
+      "?search=test title&searchBy=title&sortBy=title"
+    );
+    expect(result).toEqual(mockQuery);
+  });
 });

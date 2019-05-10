@@ -4,13 +4,15 @@ export type resultType = {
   similar: MovieTypes.IMovie[];
 };
 
+type formatQueryType = (query: MovieTypes.MovieListQuery) => string;
+type formatOptionsType = (options: string) => MovieTypes.MovieListQuery;
 type getMovieListType = (
   query: MovieTypes.MovieListQuery
 ) => Promise<MovieTypes.IMovie[]>;
-
 type getMovieByIDType = (id: number) => Promise<void | MovieTypes.IMovie>;
 
 type movieServiceReturnType = {
+  formatQueryStringToOptions: formatOptionsType;
   getMovieList: getMovieListType;
   getMovieByID: getMovieByIDType;
 };
@@ -32,15 +34,28 @@ const movieService = (): movieServiceReturnType => {
   const apiURL = "https://reactjs-cdp.herokuapp.com";
 
   // convert options from object to query string "?optval&opt2=val2"
-  const formatOptions = (query: MovieTypes.MovieListQuery): string =>
+  const formatOptionsToQueryString: formatQueryType = query =>
     Object.keys(query).reduce((accumulator, key, index) => {
       const ampersand = index > 0 ? "&" : "";
       const option = `${key}=${query[key]}`;
       return accumulator + ampersand + option;
     }, "?");
 
+  const formatQueryStringToOptions: formatOptionsType = options => {
+    const result = options
+      .substr(1)
+      .split("&")
+      .reduce((acc: any, pair: string) => {
+        const splitPair = pair.split("=");
+        acc[splitPair[0]] = splitPair[1];
+        return acc;
+      }, {});
+
+    return result;
+  };
+
   const getMovieList: getMovieListType = query =>
-    fetch(`${apiURL}/movies${formatOptions(query)}`)
+    fetch(`${apiURL}/movies${formatOptionsToQueryString(query)}`)
       .then((response: Response) => response.json())
       .then(
         (responseData: ResponseMovieList): MovieTypes.IMovie[] =>
@@ -65,6 +80,7 @@ const movieService = (): movieServiceReturnType => {
       });
 
   return {
+    formatQueryStringToOptions,
     getMovieList,
     getMovieByID
   };
