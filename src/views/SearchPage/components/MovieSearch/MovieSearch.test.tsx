@@ -1,5 +1,6 @@
 import * as React from "react";
 import { shallow } from "enzyme";
+import movieService from "Services/movieService";
 // components
 import { MovieSearch } from "./MovieSearch";
 // styles
@@ -79,5 +80,23 @@ describe("MovieSearch component...", () => {
 
     expect(wrapper.state("searchFieldValue")).toEqual(mockQuery.search);
     expect(wrapper.state("searchBy")).toEqual("genres");
+  });
+  it("... sets up window.location.hash", () => {
+    location.hash = "initialHash";
+
+    const mockQuery: MovieTypes.MovieListQuery = {
+      search: "test title",
+      searchBy: "title"
+    };
+
+    const wrapper = shallow(
+      <MovieSearch submitAction={jest.fn()} query={mockQuery} />
+    );
+    wrapper.simulate("submit", { preventDefault: jest.fn() });
+
+    const expectedString =
+      "#" + movieService.formatOptionsToQueryString(mockQuery);
+
+    expect(location.hash).toEqual(expectedString);
   });
 });

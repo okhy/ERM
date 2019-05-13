@@ -33,6 +33,8 @@ export const movieListSuccessHandler = (
   dispatch(toggleFetchStatus(false));
 };
 
+// calls functions tested elsewhere
+/* istanbul ignore next*/
 const successHandler = (
   dispatch: ReduxTypes.StoreDispatch<dispatchInterfaceTypes>
 ) => (result: MovieTypes.IMovie): void => {

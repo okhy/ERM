@@ -15,6 +15,10 @@ const mockMovie: MovieTypes.IMovie = {
 
 const mockMatch = { params: { id: "1" } };
 
+jest.mock("react-router-dom", () => ({
+  Link: (props: any) => <div>{props.children}</div>
+}));
+
 describe("DetailsPage component...", () => {
   it("... renders without errors", () => {
     const wrapper = shallow(
@@ -40,31 +44,29 @@ describe("DetailsPage component...", () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
-  it("... sets its own state", () => {
-    const wrapper = shallow(
-      <DetailsPage
-        match={mockMatch}
-        detailsID={1}
-        getDetails={jest.fn(() => mockMovie)}
-        similarMovies={[1, 2, 3, 4]}
-        fetchMovie={jest.fn()}
-      />
-    );
-    expect(wrapper.state("id")).toEqual(1);
-  });
   it("... calls getMovie on mount", () => {
     const mockGetMovie = jest.fn();
-
+    const testID = 1;
     shallow(
       <DetailsPage
         match={mockMatch}
-        detailsID={1}
+        detailsID={testID}
         getDetails={jest.fn(() => mockMovie)}
         similarMovies={[1, 2, 3, 4]}
         fetchMovie={mockGetMovie}
       />
     );
 
-    expect(mockGetMovie).toHaveBeenCalled();
+    expect(mockGetMovie).toHaveBeenCalledWith(testID);
+  });
+  it("... shows spinner when waiting for data", () => {
+    const wrapper = shallow(
+      <DetailsPage
+        match={mockMatch}
+        getDetails={jest.fn(() => mockMovie)}
+        fetchMovie={jest.fn()}
+      />
+    );
+    expect(wrapper.find("span")).toHaveLength(2);
   });
 });

@@ -38,7 +38,7 @@ const movieService = (): movieServiceReturnType => {
   const formatOptionsToQueryString: formatQueryType = query =>
     Object.keys(query).reduce((accumulator, key, index) => {
       const ampersand = index > 0 ? "&" : "";
-      const option = `${key}=${query[key]}`;
+      const option = `${key}=${query[key].replace(" ", "%20")}`;
       return accumulator + ampersand + option;
     }, "?");
 

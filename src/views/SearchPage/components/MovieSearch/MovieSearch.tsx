@@ -67,7 +67,7 @@ class MovieSearch extends React.Component<movieSearchProps, MovieSearchType> {
       ? movieService.formatOptionsToQueryString(query)
       : "";
 
-    window.location.hash = newHash;
+    location.hash = newHash;
   };
 
   render() {

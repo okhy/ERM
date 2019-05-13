@@ -17,21 +17,14 @@ type DetailsPageProps = {
   // router props
   match: { params: { id: string } };
   // redux props
-  detailsID: number;
+  detailsID?: number;
   getDetails: () => MovieTypes.IMovie;
-  similarMovies: number[];
+  similarMovies?: number[];
   // redux methods
   fetchMovie(id: number): void;
 };
 
-type DetailsPageState = {
-  id: number;
-};
-
-class DetailsPage extends React.PureComponent<
-  DetailsPageProps,
-  DetailsPageState
-> {
+class DetailsPage extends React.PureComponent<DetailsPageProps, null> {
   componentDidMount() {
     this.props.fetchMovie(+this.props.match.params.id);
   }

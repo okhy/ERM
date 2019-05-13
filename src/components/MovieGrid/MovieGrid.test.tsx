@@ -106,17 +106,35 @@ describe("MovieGrid component...", () => {
     expect(wrapper2.find(MovieGrid)).toBeTruthy();
   });
   it("... renders movies", () => {
+    const mockGetSPMovie = jest.fn();
     const wrapper = shallow(
       <MovieGrid
         sortBy={"title"}
         getDetailsPageMovie={mockGetMovie}
-        getSearchPageMovie={mockGetMovie}
+        getSearchPageMovie={mockGetSPMovie}
         sortMovies={mockSortMovies}
         movieIDs={[1, 2, 3, 4]}
       />
     );
     expect(wrapper.find(`.${styles.grid}`)).toBeTruthy();
     expect(wrapper.find(MovieGridItem)).toBeTruthy();
+    expect(mockGetSPMovie).toHaveBeenCalled();
+  });
+  it("... renders similar movies", () => {
+    const mockGetDPMovie = jest.fn();
+    const wrapper = shallow(
+      <MovieGrid
+        sortBy={"title"}
+        getDetailsPageMovie={mockGetDPMovie}
+        getSearchPageMovie={mockGetMovie}
+        sortMovies={mockSortMovies}
+        movieIDs={[1, 2, 3, 4]}
+        similarResults={true}
+      />
+    );
+    expect(wrapper.find(`.${styles.grid}`)).toBeTruthy();
+    expect(wrapper.find(MovieGridItem)).toBeTruthy();
+    expect(mockGetDPMovie).toHaveBeenCalled();
   });
   it("... renders error message", () => {
     const wrapper = shallow(
