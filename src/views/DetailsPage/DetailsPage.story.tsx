@@ -1,6 +1,7 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { DetailsPage } from "./DetailsPage";
+import { MovieTypes } from "Types";
 
 const mockMovie: MovieTypes.IMovie = {
   id: 1,
@@ -16,9 +17,8 @@ const mockMatch = { params: { id: "1" } };
 storiesOf("Views / DetailsPage", module).add("default", () => (
   <DetailsPage
     match={mockMatch}
-    details={mockMovie}
     detailsID={1}
-    getDetails={jest.fn()}
+    getDetails={jest.fn(() => mockMovie)}
     similarMovies={[1, 2, 3, 4]}
     fetchMovie={jest.fn()}
   />

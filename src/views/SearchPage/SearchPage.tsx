@@ -6,24 +6,39 @@ import Header from "Components/Header/Header";
 import MovieSearch from "./components/MovieSearch/MovieSearch";
 import MovieGrid from "Components/MovieGrid/MovieGrid";
 import Footer from "Components/Footer/Footer";
+// services
+import movieService from "Services/movieService";
 // redux imports
 import { connect } from "react-redux";
 
 type SearchPageProps = {
   movieIDList: number[];
+  // router props
+  location: { search?: string };
 };
 
-const SearchPage: React.SFC<SearchPageProps> = ({ movieIDList }) => (
-  <div>
-    <Header>
-      <MovieSearch />
-    </Header>
+const SearchPage: React.SFC<SearchPageProps> = ({
+  location,
+  movieIDList,
+  ...props
+}: SearchPageProps) => {
+  return (
     <div>
-      <MovieGrid movieIDs={movieIDList} />
+      <Header>
+        <MovieSearch
+          query={
+            location.search &&
+            movieService.formatQueryStringToOptions(location.search)
+          }
+        />
+      </Header>
+      <div>
+        <MovieGrid movieIDs={movieIDList} />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-);
+  );
+};
 
 export { SearchPage };
 /* istanbul ignore next*/

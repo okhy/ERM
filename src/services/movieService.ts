@@ -12,6 +12,7 @@ type getMovieListType = (
 type getMovieByIDType = (id: number) => Promise<void | MovieTypes.IMovie>;
 
 type movieServiceReturnType = {
+  formatOptionsToQueryString: formatQueryType;
   formatQueryStringToOptions: formatOptionsType;
   getMovieList: getMovieListType;
   getMovieByID: getMovieByIDType;
@@ -47,7 +48,7 @@ const movieService = (): movieServiceReturnType => {
       .split("&")
       .reduce((acc: any, pair: string) => {
         const splitPair = pair.split("=");
-        acc[splitPair[0]] = splitPair[1];
+        acc[splitPair[0]] = splitPair[1].replace("%20", " ");
         return acc;
       }, {});
 
@@ -80,6 +81,7 @@ const movieService = (): movieServiceReturnType => {
       });
 
   return {
+    formatOptionsToQueryString,
     formatQueryStringToOptions,
     getMovieList,
     getMovieByID

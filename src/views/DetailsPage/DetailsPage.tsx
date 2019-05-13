@@ -19,7 +19,6 @@ type DetailsPageProps = {
   // redux props
   detailsID: number;
   getDetails: () => MovieTypes.IMovie;
-  details: MovieTypes.IMovie;
   similarMovies: number[];
   // redux methods
   fetchMovie(id: number): void;

@@ -6,8 +6,8 @@ import * as styles from "./MovieSearch.styles.css";
 import { MovieTypes } from "Types";
 // redux
 import { connect } from "react-redux";
-import { movieSearch } from "App/views/SearchPage/SearchPage.actions";
-import { StateTypes } from "Types";
+import { movieSearch } from "Views/SearchPage/SearchPage.actions";
+import movieService from "Services/movieService";
 
 type searchType = "title" | "genres";
 
@@ -21,38 +21,55 @@ type MovieSearchType = { searchFieldValue: string; searchBy: searchType };
 class MovieSearch extends React.Component<movieSearchProps, MovieSearchType> {
   constructor(props: movieSearchProps) {
     super(props);
-    this.state = { searchFieldValue: "", searchBy: "title" };
+    const searchValueExists = this.props.query && this.props.query.search;
+    const searchByValueExists = this.props.query && this.props.query.searchBy;
 
-    this.handleSearchFieldChange = this.handleSearchFieldChange.bind(this);
-    this.handleSearchByChange = this.handleSearchByChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      searchFieldValue: searchValueExists ? this.props.query.search : "",
+      searchBy: searchByValueExists ? this.props.query.searchBy : "title"
+    };
   }
+  // search on mount
   componentDidMount() {
-    if (this.props.query) {
-      this.setState({
-        searchFieldValue: this.props.query.search,
-        searchBy: this.props.query.searchBy
-          ? this.props.query.searchBy
-          : "title"
+    if (this.state.searchFieldValue) {
+      this.props.submitAction({
+        search: this.state.searchFieldValue,
+        searchBy: this.state.searchBy,
+        ...this.props.query
       });
     }
   }
-  handleSearchFieldChange(event: React.ChangeEvent<HTMLInputElement>): void {
+
+  handleSearchFieldChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     this.setState({ searchFieldValue: event.target.value });
-  }
-  handleSearchByChange(type: searchType) {
-    return (e: React.MouseEvent) => {
-      e.preventDefault();
-      this.setState({ searchBy: type });
-    };
-  }
-  handleSubmit(event: React.SyntheticEvent): void {
+  };
+
+  handleSearchByChange = (type: searchType) => (
+    event: React.MouseEvent
+  ): void => {
     event.preventDefault();
-    this.props.submitAction({
+    this.setState({ searchBy: type });
+  };
+
+  handleSubmit = (event: React.SyntheticEvent): void => {
+    event.preventDefault();
+
+    const query = {
       search: this.state.searchFieldValue,
-      searchBy: this.state.searchBy
-    });
-  }
+      searchBy: this.state.searchBy,
+      ...this.props.query
+    };
+
+    this.props.submitAction(query);
+    const newHash = this.state.searchFieldValue
+      ? movieService.formatOptionsToQueryString(query)
+      : "";
+
+    window.location.hash = newHash;
+  };
+
   render() {
     return (
       <form className={styles.main} onSubmit={this.handleSubmit}>
@@ -98,9 +115,7 @@ export { MovieSearch };
 
 /* istanbul ignore next*/
 export default connect(
-  (store: StateTypes.applicationState) => ({
-    // query: statement
-  }),
+  null,
   (dispatch: any) => ({
     submitAction: (query: MovieTypes.MovieListQuery) => {
       movieSearch(query)(dispatch);

@@ -20,9 +20,8 @@ describe("DetailsPage component...", () => {
     const wrapper = shallow(
       <DetailsPage
         match={mockMatch}
-        details={mockMovie}
         detailsID={1}
-        getDetails={jest.fn()}
+        getDetails={jest.fn(() => mockMovie)}
         similarMovies={[1, 2, 3, 4]}
         fetchMovie={jest.fn()}
       />
@@ -33,9 +32,8 @@ describe("DetailsPage component...", () => {
     const wrapper = shallow(
       <DetailsPage
         match={mockMatch}
-        details={mockMovie}
         detailsID={1}
-        getDetails={jest.fn()}
+        getDetails={jest.fn(() => mockMovie)}
         similarMovies={[1, 2, 3, 4]}
         fetchMovie={jest.fn()}
       />
@@ -46,9 +44,8 @@ describe("DetailsPage component...", () => {
     const wrapper = shallow(
       <DetailsPage
         match={mockMatch}
-        details={mockMovie}
         detailsID={1}
-        getDetails={jest.fn()}
+        getDetails={jest.fn(() => mockMovie)}
         similarMovies={[1, 2, 3, 4]}
         fetchMovie={jest.fn()}
       />
@@ -61,9 +58,8 @@ describe("DetailsPage component...", () => {
     shallow(
       <DetailsPage
         match={mockMatch}
-        details={mockMovie}
         detailsID={1}
-        getDetails={jest.fn()}
+        getDetails={jest.fn(() => mockMovie)}
         similarMovies={[1, 2, 3, 4]}
         fetchMovie={mockGetMovie}
       />
