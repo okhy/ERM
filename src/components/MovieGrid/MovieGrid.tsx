@@ -16,7 +16,8 @@ type MoviesGridType = {
   similarResults?: boolean;
   movieIDs?: number[];
   // store variables
-  getMovie: (id: number) => MovieTypes.IMovie;
+  getDetailsPageMovie: (id: number) => MovieTypes.IMovie;
+  getSearchPageMovie: (id: number) => MovieTypes.IMovie;
   sortMovies: (sortKey: string) => void;
   sortBy: string;
 };
@@ -24,7 +25,8 @@ type MoviesGridType = {
 const MovieGrid: React.SFC<MoviesGridType> = ({
   similarResults,
   movieIDs,
-  getMovie,
+  getDetailsPageMovie,
+  getSearchPageMovie,
   sortMovies,
   sortBy
 }) => {
@@ -32,8 +34,10 @@ const MovieGrid: React.SFC<MoviesGridType> = ({
   const movieList: void[] | React.ReactElement[] =
     movieIDs &&
     movieIDs.map((movieID: number) => {
-      const movie = getMovie(movieID);
-      return <MovieGridItem key={movie.id} {...movie} />;
+      const movie = similarResults
+        ? getDetailsPageMovie(movieID)
+        : getSearchPageMovie(movieID);
+      return <MovieGridItem key={movieID} {...movie} />;
     });
 
   const countMessage: string = `${movieCount || "No"} movie${
@@ -85,9 +89,13 @@ const MovieGrid: React.SFC<MoviesGridType> = ({
 };
 
 /* istanbul ignore next*/
-const mapState = (state: StateTypes.ApplicationState) => ({
+const mapState = (state: StateTypes.applicationState) => ({
   sortBy: state.searchPage.sortBy,
-  getMovie: (id: number) =>
+  getDetailsPageMovie: (id: number) =>
+    state.detailsPage.similarMovies.find(
+      (movie: MovieTypes.IMovie) => movie.id === id
+    ),
+  getSearchPageMovie: (id: number) =>
     state.searchPage.movies.find((movie: MovieTypes.IMovie) => movie.id === id)
 });
 /* istanbul ignore next*/

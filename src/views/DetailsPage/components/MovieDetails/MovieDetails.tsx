@@ -2,8 +2,10 @@ import * as React from "react";
 import { MovieTypes } from "Types";
 // styles
 import * as styles from "./MovieDetails.styles.css";
+// components
+import Poster from "Components/Poster/Poster";
 
-const MovieDetails: React.SFC<MovieTypes.IMovieDetails> = ({
+const MovieDetails: React.SFC<MovieTypes.IMovie> = ({
   title,
   poster,
   releaseDate,
@@ -12,19 +14,10 @@ const MovieDetails: React.SFC<MovieTypes.IMovieDetails> = ({
   overview
 }) => (
   <div className={styles.main}>
-    {!!poster ? (
-      <div
-        className={styles.poster}
-        style={{ backgroundImage: `url(${poster})` }}
-      />
-    ) : (
-      <div className={styles.noPoster}>
-        <span className={styles.noPosterLabel}>No poster</span>
-      </div>
-    )}
+    <Poster url={poster} />
     <div className={styles.details}>
       <span className={styles.title}>{title}</span>
-      {!!genres && !!genres.length && (
+      {!!genres && genres.length && (
         <span className={styles.genres}>{genres.join(" & ")}</span>
       )}
       <div className={styles.yearAndDuration}>

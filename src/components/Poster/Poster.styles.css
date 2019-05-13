@@ -1,0 +1,26 @@
+.base {
+  border-radius: var(--step-3);
+  box-shadow: 0 2px 5px 0 var(--color-dark-transparent);
+  height: 375px;
+  width: 250px;
+}
+
+.main {
+  composes: base;
+  background-size: cover;
+  display: block;
+  z-index: 1;
+}
+
+.noPoster {
+  composes: base;
+  background-color: var(--color-gray-lightest);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noPosterLabel {
+  composes: Typo-Big Typo-Bold from global;
+  color: var(--color-gray-light);
+}

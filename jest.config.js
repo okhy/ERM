@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   preset: "ts-jest",
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   verbose: true,
   transform: {
     ".(js|jsx|ts|tsx)": "ts-jest"
@@ -15,7 +15,7 @@ module.exports = {
     "Components(.*)$": "<rootDir>/src/components/$1",
     "Views(.*)$": "<rootDir>/src/views/$1",
     "Services(.*)$": "<rootDir>/src/services/$1",
-    "Src(.*)$": "<rootDir>/src/$1",
+    "App(.*)$": "<rootDir>/src/$1",
     Types: "<rootDir>/src/types.d.ts",
     "Mocks(.*)$": "<rootDir>/__mocks__/$1"
   },

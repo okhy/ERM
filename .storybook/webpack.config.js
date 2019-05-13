@@ -4,11 +4,12 @@ module.exports = {
   resolve: {
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx", ".css"],
     alias: {
-      Components: path.resolve(__dirname, "./../src/components"),
-      Views: path.resolve(__dirname, "./../src/views"),
-      HOC: path.resolve(__dirname, "./../src/hoc"),
-      Index: path.resolve(__dirname, "./../src"),
-      Mocks: path.relative(__dirname, "./../__mocks__")
+      Components: path.resolve(__dirname, "./src/components"),
+      Views: path.resolve(__dirname, "./src/views"),
+      Services: path.resolve(__dirname, "./src/services"),
+      Src: path.resolve(__dirname, "./src"),
+      Types: path.resolve(__dirname, "./src/types.d.ts"),
+      Mocks: path.relative(__dirname, "./__mocks__")
     }
   },
   module: {

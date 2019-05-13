@@ -1,5 +1,5 @@
-import movieService from "./movieService";
-import { MovieTypes } from "Types";
+import movieService, { transformResponseMovie } from "./movieService";
+import { ResponseMovie, MovieTypes } from "Types";
 
 const mockQuery: MovieTypes.MovieListQuery = {
   search: "test title",
@@ -8,32 +8,72 @@ const mockQuery: MovieTypes.MovieListQuery = {
 };
 const mockError = new Error("test error");
 
-const mockMovieList: MovieTypes.IMovie[] = [
+const mockResponseMovieList: ResponseMovie[] = [
   {
     id: 1,
+    vote_average: 4,
     title: "Movie in array",
+    poster_path: "test poster path",
+    release_date: "1923",
     genres: ["genre1", "genre2"],
-    rating: 4,
-    poster: undefined,
-    releaseDate: undefined
+    runtime: 129,
+    overview: "overview"
   },
+  {
+    id: 3,
+    title: "Movie in array 2",
+    tagline: "",
+    genres: ["genre3", "genre4"],
+    vote_average: 3,
+    vote_count: 13142,
+    release_date: "1923",
+    poster_path: "test poster path",
+    overview: "overview",
+    budget: 31998219,
+    revenue: 12929731792763,
+    runtime: 129
+  }
+];
+
+const mockMovie: MovieTypes.IMovie = {
+  id: 1,
+  title: "Movie in array",
+  genres: ["genre1", "genre2"],
+  rating: 4,
+  overview: "overview",
+  poster: "test poster path",
+  releaseDate: "1923",
+  runtime: 129
+};
+
+const mockMovieList: MovieTypes.IMovie[] = [
+  mockMovie,
   {
     id: 3,
     title: "Movie in array 2",
     genres: ["genre3", "genre4"],
     rating: 3,
-    poster: undefined,
-    releaseDate: undefined
+    overview: "overview",
+    poster: "test poster path",
+    releaseDate: "1923",
+    runtime: 129
   }
 ];
 
-const getMockFetch = (type: "resolve" | "reject") => {
+const getMockFetch = (type: "resolve" | "reject" | "resolveSingle"): any => {
   if (type === "resolve") {
     return jest.fn(() =>
       Promise.resolve({
         json: () => ({
-          data: mockMovieList
+          data: mockResponseMovieList
         })
+      })
+    );
+  }
+  if (type === "resolveSingle") {
+    return jest.fn(() =>
+      Promise.resolve({
+        json: () => mockResponseMovieList[0]
       })
     );
   }
@@ -44,44 +84,49 @@ describe("movieService...", () => {
   it("... gets movieList by query", () => {
     (global as any).fetch = jest.fn(getMockFetch("resolve"));
 
-    const successHandler = jest.fn();
-
     return movieService
-      .getMovieList(mockQuery, () => {}, successHandler)
-      .then(() => {
-        expect(successHandler).toHaveBeenCalled();
+      .getMovieList(mockQuery)
+      .then((data: MovieTypes.IMovie[]) => {
+        expect(data).toBeTruthy();
+        expect(data).toEqual(mockMovieList);
       });
   });
 
   it("... returns an getMovies error", () => {
     (global as any).fetch = jest.fn(getMockFetch("reject"));
 
-    const errorHandler = jest.fn();
-
-    return movieService.getMovieList(mockQuery, errorHandler).catch(() => {
-      expect(errorHandler).toHaveBeenCalled();
+    return movieService.getMovieList(mockQuery).catch((error: Error) => {
+      expect(error).toBeTruthy();
+      expect(error).toEqual(mockError);
     });
   });
 
   it("... gets movie by id", () => {
-    (global as any).fetch = jest.fn(getMockFetch("resolve"));
+    (global as any).fetch = jest.fn(getMockFetch("resolveSingle"));
 
-    const successHandler = jest.fn();
-
-    return movieService
-      .getMovieByID("1", () => {}, successHandler)
-      .then(() => {
-        expect(successHandler).toHaveBeenCalled();
-      });
+    return movieService.getMovieByID(1).then((data: MovieTypes.IMovie) => {
+      expect(data).toBeTruthy();
+      expect(data).toEqual(mockMovie);
+    });
   });
 
   it("... returns getMovie error", () => {
     (global as any).fetch = jest.fn(getMockFetch("reject"));
 
-    const errorHandler = jest.fn();
-
-    return movieService.getMovieByID("1", errorHandler).catch(() => {
-      expect(errorHandler).toHaveBeenCalled();
+    return movieService.getMovieByID(1).catch((error: Error) => {
+      expect(error).toBeTruthy();
+      expect(error).toEqual(mockError);
     });
+  });
+
+  it("... transforms responseMovie correctly", () => {
+    const result = transformResponseMovie(mockResponseMovieList[0]);
+    expect(result).toEqual(mockMovie);
+  });
+  it("... transforms query to queryString correctly", () => {
+    const result = movieService.formatQueryStringToOptions(
+      "?search=test title&searchBy=title&sortBy=title"
+    );
+    expect(result).toEqual(mockQuery);
   });
 });

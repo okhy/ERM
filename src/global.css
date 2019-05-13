@@ -6,6 +6,7 @@
 
 :root {
   --color-white-transparent: rgba(255, 255, 255, 0.9);
+  --color-dark-transparent: rgba(0, 0, 0, 0.2);
   --color-primary-lighter: #4f3db4;
   --color-primary: #1e0f75;
   --color-primary-darker: #11045c;
@@ -53,7 +54,7 @@
 
 /**
 * Typography based on modular scale.
-* Settings: 
+* Settings:
 *   Bases: 16px
 *   Ratio: 1.4
 */

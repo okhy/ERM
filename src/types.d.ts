@@ -1,4 +1,3 @@
-import { rootReducer } from "./index";
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
@@ -8,16 +7,16 @@ declare global {
 export interface ResponseMovie {
   id: number;
   title: string;
-  tagline: string;
   vote_average: number;
-  vote_count: number;
   release_date: string;
   poster_path: string;
   overview: string;
-  budget: number;
-  revenue: number;
-  genres: string[];
   runtime: number | null;
+  genres: string[];
+  tagline?: string;
+  revenue?: number;
+  budget?: number;
+  vote_count?: number;
 }
 
 export interface ResponseMovieList {
@@ -40,9 +39,15 @@ declare module StateTypes {
     movies: MovieTypes.IMovie[];
     sortBy: string;
   }
-  export interface ApplicationState {
+  export interface detailsPageState {
+    details: false | MovieTypes.IMovie;
+    similarMovies: MovieTypes.IMovie[];
+  }
+
+  export interface applicationState {
     global: globalState;
     searchPage: searchPageState;
+    detailsPage: detailsPageState;
   }
 }
 
@@ -57,24 +62,15 @@ declare module MovieTypes {
     limit?: number;
   }
 
-  export interface IMovieGridItem {
-    title: string;
-    poster?: string;
-    releaseDate?: string;
-    genres?: string[];
-  }
-
-  export interface IMovie extends IMovieGridItem {
+  export interface IMovie {
     id: number;
     rating: number;
-  }
-  export interface IMovieDetails {
     title: string;
     poster?: string;
     releaseDate?: string;
     genres?: string[];
     runtime?: number;
-    overview: string;
+    overview?: string;
   }
 }
 
