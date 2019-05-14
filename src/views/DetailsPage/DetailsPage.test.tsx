@@ -2,16 +2,8 @@ import * as React from "react";
 import { shallow } from "enzyme";
 // components
 import { DetailsPage } from "./DetailsPage";
-import { MovieTypes } from "Types";
-
-const mockMovie: MovieTypes.IMovie = {
-  id: 1,
-  title: "Pulp Fiction",
-  poster: "https://image.tmdb.org/t/p/w500/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
-  releaseDate: "1994-09-10",
-  genres: ["Thriller", "Crime"],
-  rating: 8
-};
+// mocks
+import { mockMovie } from "Mocks/movieMocks";
 
 const mockMatch = { params: { id: "1" } };
 

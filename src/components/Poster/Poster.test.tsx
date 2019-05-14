@@ -8,7 +8,7 @@ describe("Poster component...", () => {
   it("... renders poster ", () => {
     const wrapper = shallow(<Poster url="testurlstring" />);
     expect(
-      wrapper.find(`.${styles.main}`).prop("style").backgroundImage
+      wrapper.find(`.${styles.main}`).prop("style")["backgroundImage"]
     ).toEqual("url(testurlstring)");
   });
 

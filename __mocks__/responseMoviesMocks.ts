@@ -1,4 +1,5 @@
 import { ResponseMovie, ResponseMovieList } from "Types";
+
 export const singleMovie: ResponseMovie = {
   id: 680,
   title: "Pulp Fiction",
