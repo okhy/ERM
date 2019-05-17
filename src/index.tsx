@@ -20,14 +20,16 @@ export interface IErrorHandlerFunction {
 const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
   console.log(error, errorInfo);
 };
-
-ReactDOM.render(
+const App = () => (
   <div className="app-container">
     <StoreProviderWrapper>
       <WithError errorCallback={errorHandler}>
         <Routes />
       </WithError>
     </StoreProviderWrapper>
-  </div>,
-  document.getElementById("app")
+  </div>
 );
+
+ReactDOM.render(<App />, document.getElementById("app"));
+
+export { App };
