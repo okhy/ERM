@@ -25,6 +25,6 @@
     "noUnusedLocals": true
     // "experimentalDecorators": true
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "server/server.ts"],
   "exclude": ["./node_modules", "./dist", "./__mocks__", "./coverage"]
 }

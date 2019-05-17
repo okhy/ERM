@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --watch --env.mode=development",
-    "prod": "webpack --env.mode=production",
+    "build": "webpack --env.mode=production",
+    "serve": "nodemon server/server.js",
     "test": "jest --onlyChanged --watch",
     "test:coverage": "jest --coverage",
-    "storybook": "start-storybook",
-    "server": "nodemon server/server.js"
+    "storybook": "start-storybook"
   },
   "keywords": [
     "react"
