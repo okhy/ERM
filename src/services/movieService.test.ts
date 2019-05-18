@@ -12,9 +12,9 @@ import {
 
 describe("movieService...", () => {
   it("... gets movieList by query", () => {
-    (global as any).fetch = jest.fn(getMockFetch("resolve"));
+    const mockedMovieService = movieService(getMockFetch("resolve"));
 
-    return movieService
+    return mockedMovieService
       .getMovieList(mockQuery)
       .then((data: MovieTypes.IMovie[]) => {
         expect(data).toBeTruthy();
@@ -23,27 +23,29 @@ describe("movieService...", () => {
   });
 
   it("... returns an getMovies error", () => {
-    (global as any).fetch = jest.fn(getMockFetch("reject"));
+    const mockedMovieService = movieService(getMockFetch("resolve"));
 
-    return movieService.getMovieList(mockQuery).catch((error: Error) => {
+    return mockedMovieService.getMovieList(mockQuery).catch((error: Error) => {
       expect(error).toBeTruthy();
       expect(error).toEqual(mockError);
     });
   });
 
   it("... gets movie by id", () => {
-    (global as any).fetch = jest.fn(getMockFetch("resolveSingle"));
+    const mockedMovieService = movieService(getMockFetch("resolveSingle"));
 
-    return movieService.getMovieByID(1).then((data: MovieTypes.IMovie) => {
-      expect(data).toBeTruthy();
-      expect(data).toEqual(mockMovie);
-    });
+    return mockedMovieService
+      .getMovieByID(1)
+      .then((data: MovieTypes.IMovie) => {
+        expect(data).toBeTruthy();
+        expect(data).toEqual(mockMovie);
+      });
   });
 
   it("... returns getMovie error", () => {
-    (global as any).fetch = jest.fn(getMockFetch("reject"));
+    const mockedMovieService = movieService(getMockFetch("resolve"));
 
-    return movieService.getMovieByID(1).catch((error: Error) => {
+    return mockedMovieService.getMovieByID(1).catch((error: Error) => {
       expect(error).toBeTruthy();
       expect(error).toEqual(mockError);
     });
@@ -54,7 +56,7 @@ describe("movieService...", () => {
     expect(result).toEqual(mockMovie);
   });
   it("... transforms query to queryString correctly", () => {
-    const result = movieService.formatQueryStringToOptions(
+    const result = movieService(jest.fn()).formatQueryStringToOptions(
       "?search=test title&searchBy=title&sortBy=title"
     );
     expect(result).toEqual(mockQuery);

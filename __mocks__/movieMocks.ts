@@ -79,7 +79,7 @@ export const getMockFetch = (
   if (type === "resolveSingle") {
     return jest.fn(() =>
       Promise.resolve({
-        json: () => mockResponseMovieList[0]
+        json: () => mockResponseMovie
       })
     );
   }

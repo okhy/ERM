@@ -38,7 +38,7 @@ export const movieListSuccessHandler = (
 const successHandler = (
   dispatch: ReduxTypes.StoreDispatch<dispatchInterfaceTypes>
 ) => (result: MovieTypes.IMovie): void => {
-  movieService
+  movieService(fetch)
     .getMovieList({
       search: result.genres ? result.genres[0] : "",
       searchBy: "genres"
@@ -53,7 +53,7 @@ export const fetchMovieById: ReduxTypes.ThunkAction<
 > = id => dispatch => {
   dispatch(toggleFetchStatus(true));
 
-  movieService
+  movieService(fetch)
     .getMovieByID(id)
     .then(successHandler(dispatch))
     .catch(errorHandler(dispatch));

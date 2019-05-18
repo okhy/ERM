@@ -28,7 +28,7 @@ const SearchPage: React.SFC<SearchPageProps> = ({
         <MovieSearch
           query={
             location.search &&
-            movieService.formatQueryStringToOptions(location.search)
+            movieService(fetch).formatQueryStringToOptions(location.search)
           }
         />
       </Header>

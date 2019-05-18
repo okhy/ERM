@@ -31,8 +31,13 @@ export const transformResponseMovie = (
   overview: movie.overview
 });
 
-const movieService = (): movieServiceReturnType => {
-  const apiURL = "https://reactjs-cdp.herokuapp.com";
+type fetchType = (q: string) => any;
+interface movieServiceType {
+  (fetch: fetchType, api?: string): movieServiceReturnType;
+}
+
+const movieService: movieServiceType = (fetch, api) => {
+  const apiURL: string = api || "https://reactjs-cdp.herokuapp.com";
 
   // convert options from object to query string "?optval&opt2=val2"
   const formatOptionsToQueryString: formatQueryType = query =>
@@ -73,8 +78,9 @@ const movieService = (): movieServiceReturnType => {
     fetch(`${apiURL}/movies/${id}`)
       .then((response: Response) => response.json())
       .then(
-        (responseData: ResponseMovie): MovieTypes.IMovie =>
-          transformResponseMovie(responseData)
+        (responseData: ResponseMovie): MovieTypes.IMovie => {
+          return transformResponseMovie(responseData);
+        }
       )
       .catch((error: Error) => {
         throw error;
@@ -88,4 +94,4 @@ const movieService = (): movieServiceReturnType => {
   };
 };
 
-export default movieService();
+export default movieService;

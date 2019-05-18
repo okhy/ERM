@@ -29,9 +29,9 @@ const getMockFetch = (type: "resolve" | "reject") => {
   return jest.fn(() => Promise.reject(mockError));
 };
 
-describe("DetailsPage... ", () => {
+describe("DetailsPage actions... ", () => {
   describe("... fetchMovieById ...", () => {
-    it("... dispatches query action", () => {
+    it("... dispatch query action", () => {
       (global as any).fetch = jest.fn(getMockFetch("resolve"));
 
       const mockDispatch = jest.fn();

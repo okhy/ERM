@@ -95,7 +95,7 @@ describe("MovieSearch component...", () => {
     wrapper.simulate("submit", { preventDefault: jest.fn() });
 
     const expectedString =
-      "#" + movieService.formatOptionsToQueryString(mockQuery);
+      "#" + movieService(jest.fn()).formatOptionsToQueryString(mockQuery);
 
     expect(location.hash).toEqual(expectedString);
   });

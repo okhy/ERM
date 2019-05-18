@@ -64,7 +64,7 @@ class MovieSearch extends React.Component<movieSearchProps, MovieSearchType> {
 
     this.props.submitAction(query);
     const newHash = this.state.searchFieldValue
-      ? movieService.formatOptionsToQueryString(query)
+      ? movieService(fetch).formatOptionsToQueryString(query)
       : "";
 
     location.hash = newHash;

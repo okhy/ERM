@@ -19,7 +19,7 @@ export const movieSearch: ReduxTypes.ThunkAction<
   dispatch(toggleFetchStatus(true));
   /* istanbul ignore next: covered by service tests*/
 
-  movieService
+  movieService(fetch)
     .getMovieList(query)
     .then((result: MovieTypes.IMovie[]) => {
       dispatch({
