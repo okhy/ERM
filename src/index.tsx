@@ -8,10 +8,10 @@ import Routes from "./Routing";
 import StoreProviderWrapper from "./StoreProviderWrapper";
 // assets
 import * as styles from "./global.css";
-import * as resetCSS from "./reset.css";
+import "./reset.css";
 // init styles for whole app
 styles;
-resetCSS;
+// resetCSS;
 
 export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;
