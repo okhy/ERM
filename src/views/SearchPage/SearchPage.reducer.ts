@@ -35,21 +35,12 @@ const searchPageReducer: searchPageReducerType = (
         )
       ) {
         const newMovies: MovieTypes.IMovie[] = state.movies;
-        type sortFunctionReturnType = -1 | 0 | 1;
         newMovies.sort(
-          (
-            a: MovieTypes.IMovie,
-            b: MovieTypes.IMovie
-          ): sortFunctionReturnType => {
+          (a: MovieTypes.IMovie, b: MovieTypes.IMovie): number => {
             if (typeof a[action.payload] === "string") {
-              // paylaod is string
               return a[action.payload].localeCompare(b[action.payload]);
             }
-            // payload is number
-            if (a[action.payload] === b[action.payload]) {
-              return 0;
-            }
-            return a[action.payload] < b[action.payload] ? 1 : -1;
+            return a[action.payload] - b[action.payload];
           }
         );
         return { ...state, movies: newMovies, sortBy: action.payload };
