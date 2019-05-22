@@ -23,11 +23,11 @@ const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
 
 ReactDOM.render(
   <div className="app-container">
-    <StoreProviderWrapper>
-      <WithError errorCallback={errorHandler}>
+    <WithError errorCallback={errorHandler}>
+      <StoreProviderWrapper>
         <Routes />
-      </WithError>
-    </StoreProviderWrapper>
+      </StoreProviderWrapper>
+    </WithError>
   </div>,
   document.getElementById("app")
 );
