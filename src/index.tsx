@@ -32,4 +32,4 @@ const App = () => (
 
 ReactDOM.render(<App />, document.getElementById("app"));
 
-export { App };
+export default App;

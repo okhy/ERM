@@ -1,7 +1,13 @@
-<!DOCTYPE html>
+// import * as React from "react";
+// import * as ReactDOMServer from "react-dom/server";
+// components
+// import App from "App/index";
+
+const renderTemplate = () => {
+  return `<!DOCTYPE html>
 <html>
   <head>
-    <title>Epam React Mentoring Project</title>
+    <title>Epam React Mentoring Project - SSR</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -14,4 +20,7 @@
     <div id="app"></div>
     <script src="./bundle.js"></script>
   </body>
-</html>
+</html>`;
+};
+
+module.exports = renderTemplate;

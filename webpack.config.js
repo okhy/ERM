@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = env => {
   const isProduction = !!env && !!env.mode && env.mode === "production";
   return {
-    entry: "./src/index.tsx",
+    entry: path.resolve(__dirname, "./src/index.tsx"),
     output: {
       path: path.resolve(__dirname, "./dist"),
       publicPath: path.resolve(__dirname, "./"),
