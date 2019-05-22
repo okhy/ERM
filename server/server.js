@@ -3,13 +3,16 @@ const express = require("express");
 const renderTemplate = require("./renderTemplate");
 const app = express();
 
-if (process.env.mode === "development") {
+const isProduction =
+  !!process.env && !!process.env.mode && process.env.mode === "production";
+
+if (!isProduction) {
   const webpack = require("webpack");
   const webpackDevMiddleware = require("webpack-dev-middleware");
   const webpackHotMiddleware = require("webpack-hot-middleware");
   const webpackConfig = require("../webpack.config");
 
-  const compiler = webpack(webpackConfig);
+  const compiler = webpack(webpackConfig(process.env));
 
   app.use(webpackDevMiddleware(compiler));
   app.use(webpackHotMiddleware(compiler));
