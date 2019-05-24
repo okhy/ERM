@@ -1,7 +1,14 @@
-<!DOCTYPE html>
+import renderTemplate from "./renderTemplate";
+
+describe("Template rendered funciton...", () => {
+  it("... renders passed html", () => {
+    const testHtml = "test";
+    const renderedHtml = renderTemplate(testHtml);
+
+    expect(renderedHtml).toEqual(`<!DOCTYPE html>
 <html>
   <head>
-    <title>Epam React Mentoring Project</title>
+    <title>Epam React Mentoring Project - SSR</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -11,7 +18,9 @@
     />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">${testHtml}</div>
     <script src="./bundle.js"></script>
   </body>
-</html>
+</html>`);
+  });
+});

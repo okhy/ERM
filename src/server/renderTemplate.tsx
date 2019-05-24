@@ -1,13 +1,33 @@
 import * as React from "react";
-import { ReactDOMServer } from "react-dom/server";
+import { renderToString } from "react-dom/server";
 // components
-import Template from "./template";
-import { App } from "App/index";
+// import App from "App/index";
 
-const renderTemplate = ReactDOMServer.renderToStaticMarkup(
-  <Template>
-    <App />
-    <span>Andrzej</span>
-  </Template>
-);
+type renderToStringType = (html: string) => string;
+
+const renderTemplate: renderToStringType = html => `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Epam React Mentoring Project - SSR</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="app">${html}</div>
+    <script src="./bundle.js"></script>
+  </body>
+</html>`;
+
+const TestComponent: React.SFC = () => {
+  return <span>Andrzej2</span>;
+};
+
+const renderedTemplate = renderTemplate(renderToString(<TestComponent />));
+
 export default renderTemplate;
+export { renderedTemplate };

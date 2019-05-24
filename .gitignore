@@ -5,6 +5,8 @@
 /dist/bundle.js.map
 /dist/bundle.js
 /dist/*.hot-update.*
+/dist/*.css.d.ts
 /coverage/
 # git stuff
 .gitconfig
+server/*.css.d.ts
