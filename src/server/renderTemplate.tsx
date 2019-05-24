@@ -23,10 +23,11 @@ const renderTemplate: renderToStringType = html => `<!DOCTYPE html>
   </body>
 </html>`;
 
-const TestComponent: React.SFC = () => <span>Andrzej</span>;
+const TestComponent: React.SFC = () => {
+  return <span>Andrzej2</span>;
+};
 
-const renderedApp = renderTemplate(renderToString(<TestComponent />));
+const renderedTemplate = renderTemplate(renderToString(<TestComponent />));
 
-module.exports = { renderedApp };
-export { renderedApp };
 export default renderTemplate;
+export { renderedTemplate };

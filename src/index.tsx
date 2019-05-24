@@ -20,13 +20,17 @@ export interface IErrorHandlerFunction {
 const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
   console.log(error, errorInfo);
 };
-const App = () => (
+
+type AppPropsType = {
+  router?: any;
+};
+const App: React.SFC<AppPropsType> = ({ router }) => (
   <div className="app-container">
-    <StoreProviderWrapper>
-      <WithError errorCallback={errorHandler}>
-        <Routes />
-      </WithError>
-    </StoreProviderWrapper>
+    <WithError errorCallback={errorHandler}>
+      <StoreProviderWrapper>
+        <Routes router={router} />
+      </StoreProviderWrapper>
+    </WithError>
   </div>
 );
 

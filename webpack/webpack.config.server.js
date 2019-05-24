@@ -4,22 +4,30 @@ const merge = require("webpack-merge");
 const nodeExternals = require("webpack-node-externals");
 const common = require("./webpack.config.common");
 
-console.log(
-  `
-server path:`,
-  path.resolve(__dirname, "./../server"),
-  `
-`
-);
-
 module.exports = merge(common(process.env), {
   name: "server",
   target: "node",
-  entry: "./src/server/renderTemplate.tsx",
-  externals: [nodeExternals()],
+  entry: "./src/server/server.ts",
   output: {
     path: path.resolve(__dirname, "./../server"),
-    filename: "renderTemplate.js",
-    pathinfo: true
+    filename: "server.js"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "css-loader/locals",
+            options: {
+              import: true,
+              modules: true,
+              sourceMap: true,
+              localIdentName: "[local]--[hash:base64:10]"
+            }
+          }
+        ]
+      }
+    ]
   }
 });

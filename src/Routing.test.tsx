@@ -35,6 +35,10 @@
 //     expect(wrapper.find(ErrorPage)).toBeTruthy();
 //   });
 // });
-it("passes this suite", () => {
-  expect(1).toBeTruthy();
+describe("Routing module...", () => {
+  it.todo("... renders wrapped app");
+
+  it("passes this suite", () => {
+    expect(1).toBeTruthy();
+  });
 });
