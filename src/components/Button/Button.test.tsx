@@ -44,7 +44,6 @@ describe("Button component...", (): void => {
     expect(wrapper.find(`.${styles.icon}`)).toBeTruthy();
     expect(wrapper.find("i.fa-font-awesome-flag")).toBeTruthy();
   });
-  // todo:
   it("... renders 'small' type'", () => {
     const wrapper = shallow(
       <Button
