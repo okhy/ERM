@@ -1,11 +1,11 @@
-import renderTemplate from "./renderTemplate";
+import * as React from "react";
+import wrapAppStringWithTemplate from "./appRenderer";
+import { renderToString } from "react-dom/server";
 
 describe("Template rendered funciton...", () => {
-  it("... renders passed html", () => {
-    const testHtml = "test";
-    const renderedHtml = renderTemplate(testHtml);
-
-    expect(renderedHtml).toEqual(`<!DOCTYPE html>
+  it("... renders passed react element", () => {
+    const TestReactElement = () => <span>Test component</span>;
+    const expectedHtml = `<!DOCTYPE html>
 <html>
   <head>
     <title>Epam React Mentoring Project - SSR</title>
@@ -18,9 +18,15 @@ describe("Template rendered funciton...", () => {
     />
   </head>
   <body>
-    <div id="app">${testHtml}</div>
+    <div id="app">${renderToString(<TestReactElement />)}</div>
     <script src="./bundle.js"></script>
   </body>
-</html>`);
+</html>`;
+
+    const renderedHtml = wrapAppStringWithTemplate(
+      renderToString(<TestReactElement />)
+    );
+
+    expect(renderedHtml).toEqual(expectedHtml);
   });
 });

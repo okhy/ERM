@@ -1,11 +1,22 @@
 import * as React from "react";
 import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+// components
+import App from "./../";
+// import { createStore } from "redux";
+// import { Provider } from "react-redux";
+
 // components
 // import App from "App/index";
+export type headInjectType = {
+  link: string;
+  rel: "stylesheet";
+  integrity?: string;
+  crossorigin?: string;
+};
 
 type renderToStringType = (html: string) => string;
-
-const renderTemplate: renderToStringType = html => `<!DOCTYPE html>
+const wrapAppStringWithTemplate: renderToStringType = html => `<!DOCTYPE html>
 <html>
   <head>
     <title>Epam React Mentoring Project - SSR</title>
@@ -23,11 +34,14 @@ const renderTemplate: renderToStringType = html => `<!DOCTYPE html>
   </body>
 </html>`;
 
-const TestComponent: React.SFC = () => {
-  return <span>Andrzej2</span>;
-};
+// const TestComponent: React.SFC = () => {
+//   return <span>Andrzej2</span>;
+// };
 
-const renderedTemplate = renderTemplate(renderToString(<TestComponent />));
+const store = {};
+const wrappedApp = renderToString(<App router={StaticRouter} store={store} />);
 
-export default renderTemplate;
+const renderedTemplate: string = wrapAppStringWithTemplate(wrappedApp);
+
+export default wrapAppStringWithTemplate;
 export { renderedTemplate };

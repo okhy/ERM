@@ -18,7 +18,7 @@ module.exports = merge(common(process.env), {
         test: /\.css$/,
         use: [
           {
-            loader: "css-loader/locals",
+            loader: "css-loader",
             options: {
               import: true,
               modules: true,

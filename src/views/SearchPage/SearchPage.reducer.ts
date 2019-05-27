@@ -40,7 +40,7 @@ const searchPageReducer: searchPageReducerType = (
             if (typeof a[action.payload] === "string") {
               return a[action.payload].localeCompare(b[action.payload]);
             }
-            return a[action.payload] - b[action.payload];
+            return b[action.payload] - a[action.payload];
           }
         );
         return { ...state, movies: newMovies, sortBy: action.payload };

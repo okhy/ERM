@@ -1,6 +1,6 @@
 // imports
 import * as express from "express";
-import { renderedTemplate } from "./renderTemplate";
+import { renderedTemplate } from "./appRenderer";
 
 type templateMiddlewareType = (html: string) => (req: any, res: any) => void;
 const templateMiddleware: templateMiddlewareType = html => (req, res) => {
