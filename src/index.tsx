@@ -24,16 +24,16 @@ const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
 type AppPropsType = {
   router?: any;
   providedErrorHandler?: IErrorHandlerFunction;
-  store?: any;
+  state?: any;
 };
 const App: React.SFC<AppPropsType> = ({
   router,
   providedErrorHandler,
-  store
+  state
 }) => (
   <div className="app-container">
     <WithError errorCallback={providedErrorHandler || errorHandler}>
-      <StoreProviderWrapper providedStore={store}>
+      <StoreProviderWrapper providedState={state}>
         <Routes router={router} />
       </StoreProviderWrapper>
     </WithError>

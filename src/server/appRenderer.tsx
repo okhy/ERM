@@ -5,10 +5,10 @@ import wrapAppStringWithTemplate from "./wrapAppStringWithTemplate";
 // components
 import App from "./../index";
 
-type renderAppToStringType = (store?: any) => string;
-const renderAppToString: renderAppToStringType = store => {
+type renderAppToStringType = (state?: any) => string;
+const renderAppToString: renderAppToStringType = state => {
   return wrapAppStringWithTemplate(
-    renderToString(<App store={store} router={StaticRouter} />)
+    renderToString(<App state={state} router={StaticRouter} />)
   );
 };
 

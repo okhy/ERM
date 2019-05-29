@@ -4,13 +4,15 @@ import renderAppToString from "./appRenderer";
 
 type templateMiddlewareType = (html: string) => (req: any, res: any) => void;
 const templateMiddleware: templateMiddlewareType = html => (req, res) => {
+  console.log(req.url);
+
   res.send(html);
 };
 
 const app = express();
 
-app.use(templateMiddleware(renderAppToString({})));
-app.use(express.static("dist"));
+app.use(express.static("./dist"));
+app.use("*", templateMiddleware(renderAppToString({})));
 
 // run server
 const port: string = process.env.PORT || "8080";

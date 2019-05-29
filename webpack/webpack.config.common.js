@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = ({ mode, isServer }) => {
@@ -31,7 +32,7 @@ module.exports = ({ mode, isServer }) => {
           test: /\.css$/,
           use: [
             {
-              loader: !isServer ? "style-loader" : "isomorphic-style-loader"
+              loader: isServer ? MiniCssExtractPlugin.loader : "style-loader"
             },
             {
               loader: "css-loader",
@@ -40,14 +41,20 @@ module.exports = ({ mode, isServer }) => {
                 modules: true,
                 sourceMap: !isServer,
                 localIdentName: "[local]--[hash:base64:10]",
-                importLoaders: 1,
-                exportOnlyLocals: !!isServer
+                importLoaders: 1
+                // exportOnlyLocals: !!isServer
               }
             },
             { loader: "typed-css-modules-loader" }
           ]
         }
       ]
-    }
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: "./../dist/[name].css",
+        chunkFilename: "./../dist/[id].css"
+      })
+    ]
   };
 };

@@ -71,288 +71,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/Button/Button.styles.css":
-/*!*****************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/components/Button/Button.styles.css ***!
-  \*****************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"main": "main--2PvMjmEKGj",
-	"small": "small--2x2Fu4F8tZ",
-	"icon": "icon--ZxbmSZ6dRR Typo-Base-Size",
-	"label": "label--2sTCEdU_ww Typo-Base",
-	"smallLabel": "smallLabel--2KPuQMrSI4 Typo-Small",
-	"smallIcon": "smallIcon--3N6HbN4hLI icon--ZxbmSZ6dRR Typo-Base-Size Typo-Small-Size",
-	"basic": "basic--3H_CF4nQit",
-	"primary": "primary--3oLrhkA1sK",
-	"white": "white--2sCRFIzGkg",
-	"negative": "negative--13uLUEqxro",
-	"disabled": "disabled--36dzZiYDf4"
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/Header/Header.styles.css":
-/*!*****************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/components/Header/Header.styles.css ***!
-  \*****************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"main": "main--3WcB7HhuAt",
-	"content": "content--24h273L6rD"
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/LogoBar/LogoBar.styles.css":
-/*!*******************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/components/LogoBar/LogoBar.styles.css ***!
-  \*******************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"main": "main--2h0OYChSM1",
-	"logo": "logo--38LLapTivf Typo-Big",
-	"actionsWrapper": "actionsWrapper--N6RVU0ahF5"
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/MovieGrid/MovieGrid.styles.css":
-/*!***********************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/components/MovieGrid/MovieGrid.styles.css ***!
-  \***********************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"main": "main--2CDpY4Geq5",
-	"results": "results--Rcw5bcqfC8",
-	"count": "count--2Uj_FOskjy Typo-Base Typo-Bold",
-	"sorting": "sorting--G_AmDpPF6O",
-	"sortingLabel": "sortingLabel--2Wdluvzh5m Typo-Base",
-	"grid": "grid--1zC8WBtbAE",
-	"sorryMessage": "sorryMessage--2byhF3-d3w Typo-Big"
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/MovieGrid/components/MovieGridItem/MovieGridItem.styles.css":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/components/MovieGrid/components/MovieGridItem/MovieGridItem.styles.css ***!
-  \****************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"posterBase": "posterBase--3HKyckwz-n",
-	"poster": "poster--1lWKpfZjHB posterBase--3HKyckwz-n",
-	"noPoster": "noPoster--3tY5o5T9RG posterBase--3HKyckwz-n",
-	"noPosterLabel": "noPosterLabel--3U2NI5KzNu Typo-Big Typo-Bold",
-	"data": "data--2J0ZE0111P",
-	"baseData": "baseData--1TTT652wwr",
-	"title": "title--KcdksvBbRs Typo-Big Typo-Bold",
-	"releaseDate": "releaseDate--1qemYuMYuC Typo-Base",
-	"genres": "genres--1h11aYsl9t Typo-Small"
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/Poster/Poster.styles.css":
-/*!*****************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/components/Poster/Poster.styles.css ***!
-  \*****************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"base": "base--XaDP8rqba0",
-	"main": "main--Li1wQn5agF base--XaDP8rqba0",
-	"noPoster": "noPoster--25KUyC8wJw base--XaDP8rqba0",
-	"noPosterLabel": "noPosterLabel--1G9GrwF056 Typo-Big Typo-Bold"
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/global.css":
-/*!****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/global.css ***!
-  \****************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = {
-	"main": "main--E0HTVKQY0v " + __webpack_require__(/*! -!../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/typed-css-modules-loader!./reset.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/reset.css")["main"] + ""
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/reset.css":
-/*!***************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/reset.css ***!
-  \***************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"main": "main--1zhdlX0xdi"
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/views/DetailsPage/components/MovieDetails/MovieDetails.styles.css":
-/*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/views/DetailsPage/components/MovieDetails/MovieDetails.styles.css ***!
-  \***********************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"main": "main--YWKTZc0fnx",
-	"poster": "poster--1L33cQ3Vhp",
-	"noPoster": "noPoster--3XH2HlLYii",
-	"noPosterLabel": "noPosterLabel--1BsZ8owRf-",
-	"details": "details--3S4I1MVBW5",
-	"title": "title--3FXPckeSIu",
-	"genres": "genres--1JmbPaCtFr",
-	"yearAndDuration": "yearAndDuration--2E6vTsJX45",
-	"year": "year--2UXyvW7HxL",
-	"duration": "duration--25dJcemmuG",
-	"overview": "overview--3AwaA5oXtZ"
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/views/SearchPage/components/MovieSearch/MovieSearch.styles.css":
-/*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader!./src/views/SearchPage/components/MovieSearch/MovieSearch.styles.css ***!
-  \********************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"main": "main--lwJ8YzOmOa",
-	"label": "label--PWCADLHhMH Typo-Base Typo-Bold",
-	"searchWrap": "searchWrap--3A6TicG3O-",
-	"searchField": "searchField--1_GP4PARK5",
-	"searchLabel": "searchLabel--1RtqNdZlQb label--PWCADLHhMH Typo-Base Typo-Bold",
-	"searchInput": "searchInput--22Tv-JRa-c Typo-Base",
-	"optionsLabel": "optionsLabel--1D99Vmq6-0 label--PWCADLHhMH Typo-Base Typo-Bold",
-	"options": "options--3u1uGhf6DA"
-};
-
-/***/ }),
-
-/***/ "./node_modules/isomorphic-style-loader/insertCss.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/isomorphic-style-loader/insertCss.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*! Isomorphic Style Loader | MIT License | https://github.com/kriasoft/isomorphic-style-loader */
-
-
-
-var inserted = {};
-
-function b64EncodeUnicode(str) {
-  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {
-    return String.fromCharCode("0x" + p1);
-  }));
-}
-
-function removeCss(ids) {
-  ids.forEach(function (id) {
-    if (--inserted[id] <= 0) {
-      var elem = document.getElementById(id);
-
-      if (elem) {
-        elem.parentNode.removeChild(elem);
-      }
-    }
-  });
-}
-
-function insertCss(styles, _temp) {
-  var _ref = _temp === void 0 ? {} : _temp,
-      _ref$replace = _ref.replace,
-      replace = _ref$replace === void 0 ? false : _ref$replace,
-      _ref$prepend = _ref.prepend,
-      prepend = _ref$prepend === void 0 ? false : _ref$prepend,
-      _ref$prefix = _ref.prefix,
-      prefix = _ref$prefix === void 0 ? 's' : _ref$prefix;
-
-  var ids = [];
-
-  for (var i = 0; i < styles.length; i++) {
-    var _styles$i = styles[i],
-        moduleId = _styles$i[0],
-        css = _styles$i[1],
-        media = _styles$i[2],
-        sourceMap = _styles$i[3];
-    var id = "" + prefix + moduleId + "-" + i;
-    ids.push(id);
-
-    if (inserted[id]) {
-      if (!replace) {
-        inserted[id]++;
-        continue;
-      }
-    }
-
-    inserted[id] = 1;
-    var elem = document.getElementById(id);
-    var create = false;
-
-    if (!elem) {
-      create = true;
-      elem = document.createElement('style');
-      elem.setAttribute('type', 'text/css');
-      elem.id = id;
-
-      if (media) {
-        elem.setAttribute('media', media);
-      }
-    }
-
-    var cssText = css;
-
-    if (sourceMap && typeof btoa === 'function') {
-      cssText += "\n/*# sourceMappingURL=data:application/json;base64," + b64EncodeUnicode(JSON.stringify(sourceMap)) + "*/";
-      cssText += "\n/*# sourceURL=" + sourceMap.file + "?" + id + "*/";
-    }
-
-    if ('textContent' in elem) {
-      elem.textContent = cssText;
-    } else {
-      elem.styleSheet.cssText = cssText;
-    }
-
-    if (create) {
-      if (prepend) {
-        document.head.insertBefore(elem, document.head.childNodes[0]);
-      } else {
-        document.head.appendChild(elem);
-      }
-    }
-  }
-
-  return removeCss.bind(null, ids);
-}
-
-module.exports = insertCss;
-//# sourceMappingURL=insertCss.js.map
-
-
-/***/ }),
-
 /***/ "./src/Routing.tsx":
 /*!*************************!*\
   !*** ./src/Routing.tsx ***!
@@ -429,22 +147,8 @@ exports.default = StoreProviderWrapper;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!../../../node_modules/typed-css-modules-loader!./Button.styles.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/Button/Button.styles.css");
-    var insertCss = __webpack_require__(/*! ../../../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"main":"main--2PvMjmEKGj","small":"small--2x2Fu4F8tZ","icon":"icon--ZxbmSZ6dRR Typo-Base-Size","label":"label--2sTCEdU_ww Typo-Base","smallLabel":"smallLabel--2KPuQMrSI4 Typo-Small","smallIcon":"smallIcon--3N6HbN4hLI icon--ZxbmSZ6dRR Typo-Base-Size Typo-Small-Size","basic":"basic--3H_CF4nQit","primary":"primary--3oLrhkA1sK","white":"white--2sCRFIzGkg","negative":"negative--13uLUEqxro","disabled":"disabled--36dzZiYDf4"};
 
 /***/ }),
 
@@ -509,22 +213,8 @@ exports.default = Footer;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!../../../node_modules/typed-css-modules-loader!./Header.styles.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/Header/Header.styles.css");
-    var insertCss = __webpack_require__(/*! ../../../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"main":"main--3WcB7HhuAt","content":"content--24h273L6rD"};
 
 /***/ }),
 
@@ -557,22 +247,8 @@ exports.default = Header;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!../../../node_modules/typed-css-modules-loader!./LogoBar.styles.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/LogoBar/LogoBar.styles.css");
-    var insertCss = __webpack_require__(/*! ../../../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"main":"main--2h0OYChSM1","logo":"logo--38LLapTivf Typo-Big","actionsWrapper":"actionsWrapper--N6RVU0ahF5"};
 
 /***/ }),
 
@@ -604,22 +280,8 @@ exports.default = LogoBar;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!../../../node_modules/typed-css-modules-loader!./MovieGrid.styles.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/MovieGrid/MovieGrid.styles.css");
-    var insertCss = __webpack_require__(/*! ../../../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"main":"main--2CDpY4Geq5","results":"results--Rcw5bcqfC8","count":"count--2Uj_FOskjy Typo-Base Typo-Bold","sorting":"sorting--G_AmDpPF6O","sortingLabel":"sortingLabel--2Wdluvzh5m Typo-Base","grid":"grid--1zC8WBtbAE","sorryMessage":"sorryMessage--2byhF3-d3w Typo-Big"};
 
 /***/ }),
 
@@ -709,22 +371,8 @@ exports.default = react_redux_1.connect(mapState, mapDispatch)(MovieGrid);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js??ref--5-1!../../../../../node_modules/typed-css-modules-loader!./MovieGridItem.styles.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/MovieGrid/components/MovieGridItem/MovieGridItem.styles.css");
-    var insertCss = __webpack_require__(/*! ../../../../../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"posterBase":"posterBase--3HKyckwz-n","poster":"poster--1lWKpfZjHB posterBase--3HKyckwz-n","noPoster":"noPoster--3tY5o5T9RG posterBase--3HKyckwz-n","noPosterLabel":"noPosterLabel--3U2NI5KzNu Typo-Big Typo-Bold","data":"data--2J0ZE0111P","baseData":"baseData--1TTT652wwr","title":"title--KcdksvBbRs Typo-Big Typo-Bold","releaseDate":"releaseDate--1qemYuMYuC Typo-Base","genres":"genres--1h11aYsl9t Typo-Small"};
 
 /***/ }),
 
@@ -780,22 +428,8 @@ exports.default = react_redux_1.connect(null, mapDispatchToProps)(MovieGridItem)
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!../../../node_modules/typed-css-modules-loader!./Poster.styles.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/components/Poster/Poster.styles.css");
-    var insertCss = __webpack_require__(/*! ../../../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"base":"base--XaDP8rqba0","main":"main--Li1wQn5agF base--XaDP8rqba0","noPoster":"noPoster--25KUyC8wJw base--XaDP8rqba0","noPosterLabel":"noPosterLabel--1G9GrwF056 Typo-Big Typo-Bold"};
 
 /***/ }),
 
@@ -910,22 +544,8 @@ exports.fetchError = function (error) { return ({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/typed-css-modules-loader!./global.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/global.css");
-    var insertCss = __webpack_require__(/*! ../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"main":"main--E0HTVKQY0v main--1zhdlX0xdi"};
 
 /***/ }),
 
@@ -1005,10 +625,10 @@ var errorHandler = function (error, errorInfo) {
     console.log(error, errorInfo);
 };
 var App = function (_a) {
-    var router = _a.router, providedErrorHandler = _a.providedErrorHandler, store = _a.store;
+    var router = _a.router, providedErrorHandler = _a.providedErrorHandler, state = _a.state;
     return (React.createElement("div", { className: "app-container" },
         React.createElement(WithError_1.default, { errorCallback: providedErrorHandler || errorHandler },
-            React.createElement(StoreProviderWrapper_1.default, { providedStore: store },
+            React.createElement(StoreProviderWrapper_1.default, { providedState: state },
                 React.createElement(Routing_1.default, { router: router })))));
 };
 if (typeof document != "undefined") {
@@ -1026,22 +646,8 @@ exports.default = App;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/typed-css-modules-loader!./reset.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/reset.css");
-    var insertCss = __webpack_require__(/*! ../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"main":"main--1zhdlX0xdi"};
 
 /***/ }),
 
@@ -1061,8 +667,8 @@ var server_1 = __webpack_require__(/*! react-dom/server */ "react-dom/server");
 var wrapAppStringWithTemplate_1 = __webpack_require__(/*! ./wrapAppStringWithTemplate */ "./src/server/wrapAppStringWithTemplate.ts");
 // components
 var index_1 = __webpack_require__(/*! ./../index */ "./src/index.tsx");
-var renderAppToString = function (store) {
-    return wrapAppStringWithTemplate_1.default(server_1.renderToString(React.createElement(index_1.default, { store: store, router: react_router_dom_1.StaticRouter })));
+var renderAppToString = function (state) {
+    return wrapAppStringWithTemplate_1.default(server_1.renderToString(React.createElement(index_1.default, { state: state, router: react_router_dom_1.StaticRouter })));
 };
 exports.default = renderAppToString;
 
@@ -1083,12 +689,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = __webpack_require__(/*! express */ "express");
 var appRenderer_1 = __webpack_require__(/*! ./appRenderer */ "./src/server/appRenderer.tsx");
 var templateMiddleware = function (html) { return function (req, res) {
+    console.log(req.url);
     res.send(html);
 }; };
 exports.templateMiddleware = templateMiddleware;
 var app = express();
-app.use(templateMiddleware(appRenderer_1.default({})));
-app.use(express.static("dist"));
+app.use(express.static("./dist"));
+app.use("*", templateMiddleware(appRenderer_1.default({})));
 // run server
 var port = process.env.PORT || "8080";
 app.listen(port, function () { return console.log("listening on :" + port); });
@@ -1106,7 +713,7 @@ app.listen(port, function () { return console.log("listening on :" + port); });
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var wrapAppStringWithTemplate = function (html) { return "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Epam React Mentoring Project - SSR</title>\n    <link href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro\" rel=\"stylesheet\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\n      integrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\"\n      crossorigin=\"anonymous\"\n    />\n  </head>\n  <body>\n    <div id=\"app\">" + html + "</div>\n    <script src=\"./bundle.js\"></script>\n  </body>\n</html>"; };
+var wrapAppStringWithTemplate = function (html) { return "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Epam React Mentoring Project - SSR</title>\n    <link href=\"main.css\" rel=\"stylesheet\" type=\"text/css\"/>\n    <link href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro\" rel=\"stylesheet\" type=\"text/css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\n      integrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\"\n      crossorigin=\"anonymous\"\n    />\n  </head>\n  <body>\n    <div id=\"app\">" + html + "</div>\n    <script src=\"bundle.js\"></script>\n  </body>\n</html>"; };
 exports.default = wrapAppStringWithTemplate;
 
 
@@ -1376,22 +983,8 @@ exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Det
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js??ref--5-1!../../../../../node_modules/typed-css-modules-loader!./MovieDetails.styles.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/views/DetailsPage/components/MovieDetails/MovieDetails.styles.css");
-    var insertCss = __webpack_require__(/*! ../../../../../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"main":"main--YWKTZc0fnx","poster":"poster--1L33cQ3Vhp","noPoster":"noPoster--3XH2HlLYii","noPosterLabel":"noPosterLabel--1BsZ8owRf-","details":"details--3S4I1MVBW5","title":"title--3FXPckeSIu","genres":"genres--1JmbPaCtFr","yearAndDuration":"yearAndDuration--2E6vTsJX45","year":"year--2UXyvW7HxL","duration":"duration--25dJcemmuG","overview":"overview--3AwaA5oXtZ"};
 
 /***/ }),
 
@@ -1604,22 +1197,8 @@ exports.default = react_redux_1.connect(function (state) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-    var refs = 0;
-    var css = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js??ref--5-1!../../../../../node_modules/typed-css-modules-loader!./MovieSearch.styles.css */ "./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/typed-css-modules-loader/index.js!./src/views/SearchPage/components/MovieSearch/MovieSearch.styles.css");
-    var insertCss = __webpack_require__(/*! ../../../../../node_modules/isomorphic-style-loader/insertCss.js */ "./node_modules/isomorphic-style-loader/insertCss.js");
-    var content = typeof css === 'string' ? [[module.i, css, '']] : css;
-
-    exports = module.exports = css.locals || {};
-    exports._getContent = function() { return content; };
-    exports._getCss = function() { return '' + css; };
-    exports._insertCss = function(options) { return insertCss(content, options) };
-
-    // Hot Module Replacement
-    // https://webpack.github.io/docs/hot-module-replacement
-    // Only activated in browser context
-    if (false) { var removeCss; }
-  
+// extracted by mini-css-extract-plugin
+module.exports = {"main":"main--lwJ8YzOmOa","label":"label--PWCADLHhMH Typo-Base Typo-Bold","searchWrap":"searchWrap--3A6TicG3O-","searchField":"searchField--1_GP4PARK5","searchLabel":"searchLabel--1RtqNdZlQb label--PWCADLHhMH Typo-Base Typo-Bold","searchInput":"searchInput--22Tv-JRa-c Typo-Base","optionsLabel":"optionsLabel--1D99Vmq6-0 label--PWCADLHhMH Typo-Base Typo-Bold","options":"options--3u1uGhf6DA"};
 
 /***/ }),
 
