@@ -40,6 +40,7 @@ const App: React.SFC<AppPropsType> = ({
   </div>
 );
 
-ReactDOM.hydrate(<App />, document.getElementById("app"));
-
+if (typeof document != "undefined") {
+  ReactDOM.hydrate(<App />, document.getElementById("app"));
+}
 export default App;

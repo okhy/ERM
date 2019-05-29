@@ -2,13 +2,7 @@ import { StateTypes } from "Types";
 // react
 import * as React from "react";
 // Redux
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware,
-  compose,
-  Reducer
-} from "redux";
+import { createStore, combineReducers, applyMiddleware, Reducer } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 // reducers
@@ -16,13 +10,10 @@ import globalReducer from "./global.reducer";
 import searchPageReducer from "Views/SearchPage/SearchPage.reducer";
 import detailsPageReducer from "Views/DetailsPage/DetailsPage.reducer";
 
-const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  : compose;
-
-const initialState: any = !!window.__PRELOADED_STATE__
-  ? window.__PRELOADED_STATE__
-  : null;
+const initialState: Object | undefined =
+  typeof window != "undefined" && !!window.__PRELOADED_STATE__
+    ? window.__PRELOADED_STATE__
+    : undefined;
 
 export const rootReducer: Reducer<
   StateTypes.applicationState
@@ -32,16 +23,18 @@ export const rootReducer: Reducer<
   detailsPage: detailsPageReducer
 });
 
-const store = createStore(
-  rootReducer,
-  initialState,
-  composeEnhancers(applyMiddleware(thunk))
-);
-type StoreProviderWrapperPropsType = { providedStore?: any };
-
+type StoreProviderWrapperPropsType = { providedState?: any };
 const StoreProviderWrapper: React.SFC<StoreProviderWrapperPropsType> = ({
-  providedStore,
+  providedState,
   children
-}) => <Provider store={providedStore || store}>{children}</Provider>;
+}) => {
+  const store = createStore(
+    rootReducer,
+    providedState || initialState,
+    applyMiddleware(thunk)
+  );
+
+  return <Provider store={store}>{children}</Provider>;
+};
 
 export default StoreProviderWrapper;

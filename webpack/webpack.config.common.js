@@ -1,7 +1,7 @@
 const path = require("path");
 
-module.exports = env => {
-  const isProduction = !!env && !!env.mode && env.mode === "production";
+module.exports = ({ mode, isServer }) => {
+  const isProduction = !!mode && mode === "production";
   return {
     resolve: {
       extensions: ["*", ".js", ".jsx", ".ts", ".tsx", ".css"],
@@ -16,34 +16,32 @@ module.exports = env => {
     },
     // options
     watch: !isProduction,
-    mode: isProduction ? "production" : "development",
+    mode: mode || "development",
     devtool: isProduction ? "none" : "source-map",
-    stats: "verbose",
+    stats: isProduction ? "none" : "verbose",
     // loaders
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
-          exclude: path.resolve(__dirname, "/node_modules"),
-          use: ["babel-loader"]
-        },
-        {
-          test: /\.(ts|tsx)$/,
+          test: /\.(js|jsx|ts|tsx)$/,
           exclude: path.resolve(__dirname, "/node_modules"),
           use: ["awesome-typescript-loader"]
         },
         {
           test: /\.css$/,
           use: [
-            { loader: "style-loader" },
+            {
+              loader: !isServer ? "style-loader" : "isomorphic-style-loader"
+            },
             {
               loader: "css-loader",
               options: {
-                import: true,
+                import: !isServer,
                 modules: true,
-                sourceMap: true,
+                sourceMap: !isServer,
                 localIdentName: "[local]--[hash:base64:10]",
-                importLoaders: 1
+                importLoaders: 1,
+                exportOnlyLocals: !!isServer
               }
             },
             { loader: "typed-css-modules-loader" }

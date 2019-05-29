@@ -9,4 +9,4 @@
 /coverage/
 # git stuff
 .gitconfig
-server/*.css.d.ts
+server/

@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      // "*": ["types/*"],
       "Components/*": ["components/*"],
       "Views/*": ["views/*"],
       "Services/*": ["services/*"],
@@ -23,8 +22,13 @@
     "noImplicitThis": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true
-    // "experimentalDecorators": true
   },
   "include": ["./src/**/*"],
-  "exclude": ["./node_modules", "./dist", "./__mocks__", "./coverage"]
+  "exclude": [
+    "./node_modules",
+    "./dist",
+    "./__mocks__",
+    "./coverage",
+    "./server"
+  ]
 }
