@@ -1,6 +1,6 @@
 import * as React from "react";
 // router
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 // views
 import SearchPage from "Views/SearchPage/SearchPage";
 import DetailsPage from "Views/DetailsPage/DetailsPage";
@@ -10,7 +10,8 @@ type RoutesPropsType = {
   router?: any;
 };
 const Routes: React.SFC<RoutesPropsType> = ({ router }) => {
-  const RouterComponent = router || HashRouter;
+  const RouterComponent = router || BrowserRouter;
+  console.log(RouterComponent);
   return (
     <RouterComponent>
       <Switch>

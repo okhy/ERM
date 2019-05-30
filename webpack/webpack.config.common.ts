@@ -1,7 +1,13 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
+import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
+import * as path from "path";
+import * as webpack from "webpack";
 
-module.exports = ({ mode, isServer }) => {
+type commonConfigOptionsType = { mode?: string; isServer?: boolean };
+type commonConfigType = (
+  config: commonConfigOptionsType
+) => webpack.Configuration;
+
+const commonConfig: commonConfigType = ({ mode, isServer }) => {
   const isProduction = !!mode && mode === "production";
   return {
     resolve: {
@@ -17,8 +23,8 @@ module.exports = ({ mode, isServer }) => {
     },
     // options
     watch: !isProduction,
-    mode: mode || "development",
-    devtool: isProduction ? "none" : "source-map",
+    mode: isProduction ? "production" : "development",
+    devtool: isProduction ? false : "source-map",
     stats: isProduction ? "none" : "verbose",
     // loaders
     module: {
@@ -32,7 +38,9 @@ module.exports = ({ mode, isServer }) => {
           test: /\.css$/,
           use: [
             {
-              loader: isServer ? MiniCssExtractPlugin.loader : "style-loader"
+              loader: isServer
+                ? `` + MiniCssExtractPlugin.loader
+                : "style-loader"
             },
             {
               loader: "css-loader",
@@ -42,7 +50,6 @@ module.exports = ({ mode, isServer }) => {
                 sourceMap: !isServer,
                 localIdentName: "[local]--[hash:base64:10]",
                 importLoaders: 1
-                // exportOnlyLocals: !!isServer
               }
             },
             { loader: "typed-css-modules-loader" }
@@ -58,3 +65,5 @@ module.exports = ({ mode, isServer }) => {
     ]
   };
 };
+
+export default commonConfig;
