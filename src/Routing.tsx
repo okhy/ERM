@@ -10,15 +10,15 @@ type RoutesPropsType = {
   router?: any;
 };
 const Routes: React.SFC<RoutesPropsType> = ({ router }) => {
-  const Router = router || HashRouter;
+  const RouterComponent = router || HashRouter;
   return (
-    <Router>
+    <RouterComponent>
       <Switch>
         <Route exact path="/" component={SearchPage} />
         <Route exact path="/movie/:id" component={DetailsPage} />
         <Route component={ErrorPage} />
       </Switch>
-    </Router>
+    </RouterComponent>
   );
 };
 

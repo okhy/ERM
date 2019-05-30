@@ -4,8 +4,6 @@ import renderAppToString from "./appRenderer";
 
 type templateMiddlewareType = (html: string) => (req: any, res: any) => void;
 const templateMiddleware: templateMiddlewareType = html => (req, res) => {
-  console.log(req.url);
-
   res.send(html);
 };
 

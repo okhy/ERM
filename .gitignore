@@ -6,7 +6,10 @@
 /dist/bundle.js
 /dist/*.hot-update.*
 /dist/*.css.d.ts
+server/*
+
+# dev stats
 /coverage/
+
 # git stuff
 .gitconfig
-server/
