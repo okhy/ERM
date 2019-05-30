@@ -18,7 +18,7 @@ export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;
 }
 
-const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
+export const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
   console.log(error, errorInfo);
 };
 
