@@ -25,6 +25,7 @@ describe("wrapAppStringWithTemplate...", () => {
 </html>`;
 
     const renderedHtml = wrapAppStringWithTemplate(
+      {},
       renderToString(<TestReactElement />)
     );
 

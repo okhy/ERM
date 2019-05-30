@@ -23,17 +23,14 @@ export const rootReducer: Reducer<
   detailsPage: detailsPageReducer
 });
 
-type StoreProviderWrapperPropsType = { providedState?: any };
-const StoreProviderWrapper: React.SFC<StoreProviderWrapperPropsType> = ({
-  providedState,
-  children
-}) => {
-  const store = createStore(
-    rootReducer,
-    providedState || initialState,
-    applyMiddleware(thunk)
-  );
+export const store = createStore(
+  rootReducer,
+  initialState,
+  applyMiddleware(thunk)
+);
 
+// type StoreProviderWrapperPropsType = { providedState?: any };
+const StoreProviderWrapper: React.SFC = ({ children }) => {
   return <Provider store={store}>{children}</Provider>;
 };
 

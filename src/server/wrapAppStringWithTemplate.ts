@@ -1,5 +1,8 @@
-type renderToStringType = (html: string) => string;
-const wrapAppStringWithTemplate: renderToStringType = html => `<!DOCTYPE html>
+type renderToStringType = (store: any, html: string) => string;
+const wrapAppStringWithTemplate: renderToStringType = (
+  store,
+  html
+) => `<!DOCTYPE html>
 <html>
   <head>
     <title>Epam React Mentoring Project - SSR</title>
@@ -14,6 +17,9 @@ const wrapAppStringWithTemplate: renderToStringType = html => `<!DOCTYPE html>
   </head>
   <body>
     <div id="app">${html}</div>
+    <script>
+        window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState())}
+      </script>
     <script src="bundle.js"></script>
   </body>
 </html>`;

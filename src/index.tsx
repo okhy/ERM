@@ -4,11 +4,12 @@ import * as ReactDOM from "react-dom";
 
 // components
 import WithError from "Components/WithError/WithError";
-import Routes from "./Routing";
+import Routes, { RouterType } from "./Routing";
 import StoreProviderWrapper from "./StoreProviderWrapper";
 // assets
 import * as styles from "./global.css";
 import "./reset.css";
+import { BrowserRouter } from "react-router-dom";
 // init styles for whole app
 styles;
 // resetCSS;
@@ -22,25 +23,23 @@ const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
 };
 
 type AppPropsType = {
-  router?: any;
-  providedErrorHandler?: IErrorHandlerFunction;
-  state?: any;
+  router: RouterType;
+  errorHandler: IErrorHandlerFunction;
 };
-const App: React.SFC<AppPropsType> = ({
-  router,
-  providedErrorHandler,
-  state
-}) => (
+const App: React.SFC<AppPropsType> = ({ router, errorHandler }): any => (
   <div className="app-container">
-    <WithError errorCallback={providedErrorHandler || errorHandler}>
-      <StoreProviderWrapper providedState={state}>
-        <Routes router={router} />
+    <WithError errorCallback={errorHandler}>
+      <StoreProviderWrapper>
+        <Routes PassedRouter={router} />
       </StoreProviderWrapper>
     </WithError>
   </div>
 );
 
 if (typeof document != "undefined") {
-  ReactDOM.hydrate(<App />, document.getElementById("app"));
+  ReactDOM.hydrate(
+    <App router={BrowserRouter} errorHandler={errorHandler} />,
+    document.getElementById("app")
+  );
 }
 export default App;
