@@ -1,13 +1,7 @@
-import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
-import * as path from "path";
-import * as webpack from "webpack";
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
 
-type commonConfigOptionsType = { mode?: string; isServer?: boolean };
-type commonConfigType = (
-  config: commonConfigOptionsType
-) => webpack.Configuration;
-
-const commonConfig: commonConfigType = ({ mode, isServer }) => {
+const commonConfig = ({ mode, isServer }) => {
   const isProduction = !!mode && mode === "production";
   return {
     resolve: {
@@ -66,4 +60,4 @@ const commonConfig: commonConfigType = ({ mode, isServer }) => {
   };
 };
 
-export default commonConfig;
+module.exports = commonConfig;
