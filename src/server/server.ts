@@ -10,7 +10,7 @@ const templateMiddleware: templateMiddlewareType = html => (req, res) => {
 
 const app = express();
 
-app.use(express.static("./dist"));
+app.use(express.static("dist"));
 app.use("*", templateMiddleware(renderAppToString(store)));
 
 // run server
