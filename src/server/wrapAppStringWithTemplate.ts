@@ -16,10 +16,10 @@ const wrapAppStringWithTemplate: renderToStringType = (
     />
   </head>
   <body>
-    <div id="app">${html}</div>
     <script>
         window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState())}
-      </script>
+    </script>
+    <div id="app">${html}</div>
     <script src="bundle.js"></script>
   </body>
 </html>`;

@@ -8,17 +8,17 @@ import Routes, { RouterType } from "./Routing";
 import StoreProviderWrapper from "./StoreProviderWrapper";
 // assets
 import * as styles from "./global.css";
-import "./reset.css";
+import * as resetCSS from "./reset.css";
 import { BrowserRouter } from "react-router-dom";
 // init styles for whole app
 styles;
-// resetCSS;
+resetCSS;
 
 export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;
 }
 
-export const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
+export const handleError: IErrorHandlerFunction = (error, errorInfo) => {
   console.log(error, errorInfo);
 };
 
@@ -38,7 +38,7 @@ const App: React.SFC<AppPropsType> = ({ router, errorHandler }): any => (
 
 if (typeof document != "undefined") {
   ReactDOM.hydrate(
-    <App router={BrowserRouter} errorHandler={errorHandler} />,
+    <App router={BrowserRouter} errorHandler={handleError} />,
     document.getElementById("app")
   );
 }

@@ -19,7 +19,7 @@ const commonConfig = ({ mode, isServer }) => {
     watch: !isProduction,
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? false : "source-map",
-    stats: isProduction ? "none" : "verbose",
+    stats: !isProduction,
     // loaders
     module: {
       rules: [
