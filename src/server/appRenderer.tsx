@@ -5,11 +5,18 @@ import wrapAppStringWithTemplate from "./wrapAppStringWithTemplate";
 // components
 import App, { handleError } from "./../index";
 
-type renderAppToStringType = (store?: any) => string;
-const renderAppToString: renderAppToStringType = store => {
+type renderAppToStringType = (options: {
+  store?: any;
+  location?: any;
+}) => string;
+const renderAppToString: renderAppToStringType = ({ store, location }) => {
+  const context = {};
+  const RouterStatic = () => (
+    <StaticRouter location={location} context={context} />
+  );
   return wrapAppStringWithTemplate(
     store,
-    renderToString(<App router={StaticRouter} errorHandler={handleError} />)
+    renderToString(<App router={RouterStatic} errorHandler={handleError} />)
   );
 };
 
