@@ -9,6 +9,7 @@ import { store } from "./../StoreProviderWrapper";
 import searchActionTypes from "Views/SearchPage/SearchPage.actions";
 import detailsActionTypes from "Views/DetailsPage/DetailsPage.actions";
 import { Store, AnyAction } from "redux";
+import * as path from "path";
 
 type detailsPayloadType = {
   movie: MovieTypes.IMovie;
@@ -54,6 +55,7 @@ const rootPathMiddleware: templateMiddlewareType = (dispatch, handleError) => (
     .catch(handleError);
 };
 
+// todo: fix a promise in a promise call
 const detailsMiddleware: templateMiddlewareType = (
   dispatch,
   handleError
