@@ -4,75 +4,97 @@ import movieService from "Services/movieService";
 import renderAppToString from "./appRenderer";
 import "isomorphic-fetch";
 // app imports
-import { MovieTypes } from "Types";
+import { MovieTypes, StateTypes } from "Types";
 import { store } from "./../StoreProviderWrapper";
 import searchActionTypes from "Views/SearchPage/SearchPage.actions";
-// import detailsActionTypes from "Views/DetailsPage/DetailsPage.actions";
+import detailsActionTypes from "Views/DetailsPage/DetailsPage.actions";
+import { Store, AnyAction } from "redux";
 
+type detailsPayloadType = {
+  movie: MovieTypes.IMovie;
+  similar: MovieTypes.IMovie[];
+};
+type StoreType = Store<StateTypes.applicationState, AnyAction>;
+
+type sendFunctionType = (s: string) => void;
+type handleErrorType = (send: sendFunctionType) => (error: Error) => void;
+const handleError: handleErrorType = send => error => {
+  send(renderAppToString({ store: undefined, location: "/404" }));
+};
+
+type storeDispatchReturnType = (type: string, payload: Object) => StoreType;
+type storeDispatchType = (store: StoreType) => storeDispatchReturnType;
+const storeDispatch: storeDispatchType = store => (type, payload) => {
+  store.dispatch({ type, payload });
+
+  return store;
+};
+
+type middlewareType = (req: express.Request, res: express.Response) => void;
 type templateMiddlewareType = (
-  store: any
-) => (req: express.Request, res: express.Response) => void;
-const templateMiddleware: templateMiddlewareType = store => (req, res) => {
-  const location = req.baseUrl;
-  // if (location === "") {
+  dispatch: storeDispatchReturnType,
+  handleError: handleErrorType
+) => middlewareType;
+
+const rootPathMiddleware: templateMiddlewareType = (dispatch, handleError) => (
+  req,
+  res
+) => {
   movieService
     .getMovieList({ search: "" })
-    .then((result: MovieTypes.IMovie[]) => {
-      store.dispatch({
-        type: searchActionTypes.getMovieListResponse,
-        payload: result
-      });
-      return store;
+    .then(
+      (result: MovieTypes.IMovie[]): StoreType =>
+        dispatch(searchActionTypes.getMovieListResponse, result)
+    )
+    .then((modifiedStore: StoreType) => {
+      res.send(
+        renderAppToString({ store: modifiedStore, location: req.baseUrl })
+      );
     })
-    .then((store: any) => {
-      res.send(renderAppToString({ store, location }));
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  // }
-  // console.log(location.includes("/movie"));
-  // if (location.includes("/movie")) {
-  //   /// I am embarassed by that code...
-  //   movieService
-  //     .getMovieByID(+location.split("/")[2])
-  //     .then((movie: MovieTypes.IMovie) => {
-  //       console.log("firin request for: ", movie.title);
+    .catch(handleError);
+};
 
-  //       movieService
-  //         .getMovieList({
-  //           search: movie.genres ? movie.genres[0] : "",
-  //           searchBy: "genres"
-  //         })
-  //         .then((similar: MovieTypes.IMovie[]) => {
-  //           console.log(`got ${similar.length} movies`);
-
-  //           store.dispatch({
-  //             type: detailsActionTypes.getMovieDetailsResponse,
-  //             payload: { movie, similar }
-  //           });
-
-  //           console.log("state after dispatch: ", store.getState());
-
-  //           return store;
-  //         })
-  //         .then((store: any) => {
-  //           res.send(renderAppToString({ store, location }));
-  //         });
-  //     });
-  // } else {
-  //   res.send(renderAppToString({ store, location }));
-  // }
+const detailsMiddleware: templateMiddlewareType = (
+  dispatch,
+  handleError
+) => async (req, res) => {
+  await movieService
+    .getMovieByID(req.params.id)
+    .then(
+      async (movie: MovieTypes.IMovie): Promise<any> => {
+        return await movieService
+          .getMovieList({
+            search: movie.genres ? movie.genres[0] : "",
+            searchBy: "genres"
+          })
+          .then(similar => ({
+            movie,
+            similar
+          }))
+          .then(
+            (payload: detailsPayloadType): StoreType =>
+              dispatch(detailsActionTypes.getMovieDetailsResponse, payload)
+          )
+          .then(
+            (store: StoreType): void => {
+              res.send(renderAppToString({ store, location: req.baseUrl }));
+            }
+          )
+          .catch(handleError);
+      }
+    )
+    .catch(handleError);
 };
 
 const app = express();
 
 app.use(express.static("dist"));
-app.use("*", templateMiddleware(store));
+app.use("/movie/:id", detailsMiddleware(storeDispatch(store), handleError));
+app.use("/", rootPathMiddleware(storeDispatch(store), handleError));
 
 // run server
 const port: string = process.env.PORT || "8080";
 app.listen(port, () => console.log(`listening on :${port}`));
 
 // exports
-export { templateMiddleware };
+export { rootPathMiddleware, detailsMiddleware };

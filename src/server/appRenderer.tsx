@@ -11,8 +11,10 @@ type renderAppToStringType = (options: {
 }) => string;
 const renderAppToString: renderAppToStringType = ({ store, location }) => {
   const context = {};
-  const RouterStatic = () => (
-    <StaticRouter location={location} context={context} />
+  const RouterStatic: React.SFC = (props: any) => (
+    <StaticRouter location={location} context={context}>
+      {props.children}
+    </StaticRouter>
   );
   return wrapAppStringWithTemplate(
     store,

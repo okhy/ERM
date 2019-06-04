@@ -17,7 +17,9 @@ const wrapAppStringWithTemplate: renderToStringType = (
   </head>
   <body>
     <script>
-        window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState())}
+        window.__PRELOADED_STATE__ = ${
+          !!store && !!store.getState ? JSON.stringify(store.getState()) : null
+        }
     </script>
     <div id="app">${html}</div>
     <script src="bundle.js"></script>
