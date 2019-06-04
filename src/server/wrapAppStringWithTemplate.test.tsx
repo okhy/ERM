@@ -4,7 +4,7 @@ import { renderToString } from "react-dom/server";
 
 describe("wrapAppStringWithTemplate...", () => {
   it("... renders passed react element", () => {
-    const TestReactElement = () => <span>Test component</span>;
+    const TestReactElement: React.SFC = () => <span>Test component</span>;
     const expectedHtml = `<!DOCTYPE html>
 <html>
   <head>

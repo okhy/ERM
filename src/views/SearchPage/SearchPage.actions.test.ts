@@ -1,6 +1,6 @@
 import { MovieTypes, ReduxTypes } from "Types";
 import searchActionTypes, { movieSearch } from "./SearchPage.actions";
-import { toggleFetchStatus } from "App/global.actions";
+import { toggleFetchStatus } from "Src/global.actions";
 
 const mockQuery: MovieTypes.MovieListQuery = {
   search: "test title",
