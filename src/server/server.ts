@@ -41,8 +41,12 @@ const rootPathMiddleware: templateMiddlewareType = (dispatch, handleError) => (
   req,
   res
 ) => {
+  // console.log(req.query);
+  // const queryString = movieService.formatOptionsToQueryString(req.query);
+  // const queryOptions = movieService.formatQueryStringToOptions(queryString)
+
   movieService
-    .getMovieList({ search: "" })
+    .getMovieList({ search: "", ...req.query })
     .then(
       (result: MovieTypes.IMovie[]): StoreType =>
         dispatch(searchActionTypes.getMovieListResponse, result)
