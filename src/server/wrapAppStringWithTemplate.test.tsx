@@ -9,7 +9,7 @@ describe("wrapAppStringWithTemplate...", () => {
 <html>
   <head>
     <title>Epam React Mentoring Project - SSR</title>
-    <link href="main.css" rel="stylesheet" type="text/css"/>
+    <link href="/main.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
@@ -20,7 +20,7 @@ describe("wrapAppStringWithTemplate...", () => {
   </head>
   <body>
     <div id="app">${renderToString(<TestReactElement />)}</div>
-    <script src="./bundle.js"></script>
+    <script src="/bundle.js"></script>
   </body>
 </html>`;
 

@@ -81,22 +81,21 @@ describe("MovieSearch component...", () => {
     expect(wrapper.state("searchFieldValue")).toEqual(mockQuery.search);
     expect(wrapper.state("searchBy")).toEqual("genres");
   });
-  it("... sets up window.location.hash", () => {
-    location.hash = "initialHash";
+  it("... sets up window.location.search", () => {
+    location.search = "initialHash";
 
     const mockQuery: MovieTypes.MovieListQuery = {
       search: "test title",
       searchBy: "title"
     };
-
+    const submitActionMock = jest.fn();
     const wrapper = shallow(
-      <MovieSearch submitAction={jest.fn()} query={mockQuery} />
+      <MovieSearch submitAction={submitActionMock} query={mockQuery} />
     );
     wrapper.simulate("submit", { preventDefault: jest.fn() });
-
-    const expectedString =
-      "#" + movieService.formatOptionsToQueryString(mockQuery);
-
-    expect(location.hash).toEqual(expectedString);
+    console.log(location);
+    const expectedString = movieService.formatOptionsToQueryString(mockQuery);
+    expect(submitActionMock).toHaveBeenCalledWith(mockQuery);
+    expect(location.search).toEqual(expectedString);
   });
 });
