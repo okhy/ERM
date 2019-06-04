@@ -4,30 +4,42 @@ import * as ReactDOM from "react-dom";
 
 // components
 import WithError from "Components/WithError/WithError";
-import Routes from "./Routing";
+import Routes, { RouterType } from "./Routing";
 import StoreProviderWrapper from "./StoreProviderWrapper";
 // assets
 import * as styles from "./global.css";
-import "./reset.css";
+import * as resetCSS from "./reset.css";
+import { BrowserRouter } from "react-router-dom";
 // init styles for whole app
 styles;
-// resetCSS;
+resetCSS;
 
 export interface IErrorHandlerFunction {
   (error: Error, errorInfo: React.ErrorInfo): void;
 }
 
-const errorHandler: IErrorHandlerFunction = (error, errorInfo) => {
+export const handleError: IErrorHandlerFunction = (error, errorInfo) => {
   console.log(error, errorInfo);
 };
 
-ReactDOM.render(
+type AppPropsType = {
+  router: RouterType;
+  errorHandler: IErrorHandlerFunction;
+};
+const App: React.SFC<AppPropsType> = ({ router, errorHandler }): any => (
   <div className="app-container">
     <WithError errorCallback={errorHandler}>
       <StoreProviderWrapper>
-        <Routes />
+        <Routes PassedRouter={router} />
       </StoreProviderWrapper>
     </WithError>
-  </div>,
-  document.getElementById("app")
+  </div>
 );
+
+if (typeof document != "undefined") {
+  ReactDOM.hydrate(
+    <App router={BrowserRouter} errorHandler={handleError} />,
+    document.getElementById("app")
+  );
+}
+export default App;

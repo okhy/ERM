@@ -8,7 +8,7 @@ import { mockMovie } from "Mocks/movieMocks";
 const mockMatch = { params: { id: "1" } };
 
 jest.mock("react-router-dom", () => ({
-  Link: (props: any) => <div>{props.children}</div>
+  Link: (props: any): any => <div>{props.children}</div>
 }));
 
 describe("DetailsPage component...", () => {

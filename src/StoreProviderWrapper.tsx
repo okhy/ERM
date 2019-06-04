@@ -2,32 +2,18 @@ import { StateTypes } from "Types";
 // react
 import * as React from "react";
 // Redux
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware,
-  compose,
-  Reducer
-} from "redux";
+import { createStore, combineReducers, applyMiddleware, Reducer } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-// redux persist
-// import { persistStore, persistReducer } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
-// import { PersistGate } from "redux-persist/integration/react";
 // reducers
 import globalReducer from "./global.reducer";
 import searchPageReducer from "Views/SearchPage/SearchPage.reducer";
 import detailsPageReducer from "Views/DetailsPage/DetailsPage.reducer";
 
-const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  : compose;
-
-// const persistConfig = {
-//   key: "root",
-//   storage
-// };
+const initialState: Object | undefined =
+  typeof window != "undefined" && !!window.__PRELOADED_STATE__
+    ? window.__PRELOADED_STATE__
+    : undefined;
 
 export const rootReducer: Reducer<
   StateTypes.applicationState
@@ -37,19 +23,15 @@ export const rootReducer: Reducer<
   detailsPage: detailsPageReducer
 });
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
-const store = createStore(
+export const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  initialState,
+  applyMiddleware(thunk)
 );
-// let persistor = persistStore(store);
 
-const StoreProviderWrapper: React.SFC = props => (
-  <Provider store={store}>
-    {/* <PersistGate loading={null} persistor={persistor}> */}
-    {props.children}
-    {/* </PersistGate> */}
-  </Provider>
-);
+// type StoreProviderWrapperPropsType = { providedState?: any };
+const StoreProviderWrapper: React.SFC = ({ children }) => {
+  return <Provider store={store}>{children}</Provider>;
+};
 
 export default StoreProviderWrapper;

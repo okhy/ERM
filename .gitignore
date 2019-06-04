@@ -1,10 +1,12 @@
 # General ignore resources:
-/node_modules/
+node_modules
 
 # Build files:
-/dist/bundle.js.map
-/dist/bundle.js
-/dist/*.hot-update.*
-/coverage/
+dist
+server
+
+# dev stats
+coverage
+
 # git stuff
 .gitconfig
