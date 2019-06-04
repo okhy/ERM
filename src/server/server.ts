@@ -9,7 +9,6 @@ import { store } from "./../StoreProviderWrapper";
 import searchActionTypes from "Views/SearchPage/SearchPage.actions";
 import detailsActionTypes from "Views/DetailsPage/DetailsPage.actions";
 import { Store, AnyAction } from "redux";
-import * as path from "path";
 
 type detailsPayloadType = {
   movie: MovieTypes.IMovie;
@@ -41,10 +40,6 @@ const rootPathMiddleware: templateMiddlewareType = (dispatch, handleError) => (
   req,
   res
 ) => {
-  // console.log(req.query);
-  // const queryString = movieService.formatOptionsToQueryString(req.query);
-  // const queryOptions = movieService.formatQueryStringToOptions(queryString)
-
   movieService
     .getMovieList({ search: "", ...req.query })
     .then(
