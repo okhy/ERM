@@ -58,6 +58,8 @@
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.2",
     "typed-css-modules-loader": "0.0.17",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.5",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
