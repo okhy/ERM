@@ -26,7 +26,7 @@ type DetailsPageProps = {
 
 class DetailsPage extends React.PureComponent<DetailsPageProps, null> {
   componentDidMount() {
-    this.props.fetchMovie(+this.props.match.params.id);A
+    this.props.fetchMovie(Number(this.props.match.params.id));
   }
 
   render() {
