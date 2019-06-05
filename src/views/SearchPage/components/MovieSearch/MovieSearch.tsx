@@ -29,16 +29,6 @@ class MovieSearch extends React.Component<movieSearchProps, MovieSearchType> {
       searchBy: searchByValueExists ? this.props.query.searchBy : "title"
     };
   }
-  // search on mount
-  componentDidMount() {
-    if (this.state.searchFieldValue) {
-      this.props.submitAction({
-        search: this.state.searchFieldValue,
-        searchBy: this.state.searchBy,
-        ...this.props.query
-      });
-    }
-  }
 
   handleSearchFieldChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -56,18 +46,10 @@ class MovieSearch extends React.Component<movieSearchProps, MovieSearchType> {
   handleSubmit = (event: React.SyntheticEvent): void => {
     event.preventDefault();
 
-    const query = {
+    this.props.submitAction({
       search: this.state.searchFieldValue,
-      searchBy: this.state.searchBy,
-      ...this.props.query
-    };
-
-    this.props.submitAction(query);
-    const newSearch = this.state.searchFieldValue
-      ? movieService.formatOptionsToQueryString(query)
-      : "";
-
-    location.search = newSearch;
+      searchBy: this.state.searchBy
+    });
   };
 
   render() {
@@ -118,6 +100,7 @@ export default connect(
   null,
   (dispatch: any) => ({
     submitAction: (query: MovieTypes.MovieListQuery) => {
+      location.search = movieService.formatOptionsToQueryString(query);
       movieSearch(query)(dispatch);
     }
   })
