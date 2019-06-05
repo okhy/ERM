@@ -5,7 +5,7 @@
       "Components/*": ["components/*"],
       "Views/*": ["views/*"],
       "Services/*": ["services/*"],
-      "App/*": ["*"],
+      "Src/*": ["*"],
       "Types": ["types.d.ts"],
       "Mocks/*": ["../__mocks__/*"]
     },

@@ -16,7 +16,7 @@ Webpack automatically watches and updates files. No `webpack-dev-server` is curr
 
 ### Testing
 
-- Unit Testing is set up under `npm run test` command.
+- Unit Testing is set up under `npm run test` command. (for coverage `npm run test:coverage`) should be used.
 - Visual testing / documentation is set up under `npm run storybook` command
 
 ## Building Project
@@ -25,10 +25,9 @@ Webpack automatically watches and updates files. No `webpack-dev-server` is curr
 
 # Dev notes
 
-to run project two npm scripts have to be called:
-
-- `npm run dev`
-- `npm run serve`
+to run project two npm scripts have to be called: `npm run dev` and `npm run serve`.
+These can be called separately or using `npm start` command.
+In future this will also run storybook and possibly testing.
 
 Note: even though `npm run dev` runs `webpack` command, due to webpack config files being written in TypeScript it has to be run in node context, thus through `npm run dev`
 

@@ -4,7 +4,7 @@ import detailsActionTypes, {
   errorHandler,
   movieListSuccessHandler
 } from "./DetailsPage.actions";
-import { toggleFetchStatus, fetchError } from "App/global.actions";
+import { toggleFetchStatus, fetchError } from "Src/global.actions";
 
 const mockMovie: MovieTypes.IMovie = {
   id: 1,
