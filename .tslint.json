@@ -3,8 +3,8 @@
   "extends": [
     "tslint:recommended",
     "tslint-react",
-    "tslint-config-airbnb",
-    "tsling-config-prettier"
+    "tsling-config-prettier",
+    "tslint-config-airbnb"
   ],
   "exclude": ["node_modules"]
 }
