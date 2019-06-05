@@ -10,7 +10,7 @@ const commonConfig = ({ mode, isServer }) => {
         Components: path.resolve(__dirname, "./../src/components"),
         Views: path.resolve(__dirname, "./../src/views"),
         Services: path.resolve(__dirname, "./../src/services"),
-        Src: path.resolve(__dirname, "./../src"),
+        App: path.resolve(__dirname, "./../src"),
         Types: path.resolve(__dirname, "./../src/types.d.ts"),
         Mocks: path.resolve(__dirname, "./../__mocks__")
       }
