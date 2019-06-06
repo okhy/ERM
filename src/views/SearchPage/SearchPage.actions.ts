@@ -6,7 +6,7 @@ import { toggleFetchStatus, fetchError } from "App/global.actions";
 enum searchActionTypes {
   getMovieList = "GET_MOVIE_LIST_QUERY",
   getMovieListResponse = "GET_MOVIE_LIST_RESPONSE",
-  movieListSorting = "MOVIE_LIST_SORT"
+  setMovieListSorting = "SET_MOVIE_LIST_SORT"
 }
 
 export default searchActionTypes;

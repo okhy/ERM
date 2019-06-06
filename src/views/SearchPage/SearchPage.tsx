@@ -10,6 +10,8 @@ import Footer from "Components/Footer/Footer";
 import movieService from "Services/movieService";
 // redux imports
 import { connect } from "react-redux";
+// selector
+import sortMoviesSelector from "Views/SearchPage/SearchPage.selector";
 
 type SearchPageProps = {
   movieIDList: number[];
@@ -46,7 +48,7 @@ export default connect(
   (state: StateTypes.applicationState): { movieIDList: number[] } => {
     return {
       movieIDList:
-        state.searchPage.movies.map((movie: MovieTypes.IMovie) => movie.id) ||
+        sortMoviesSelector(state).map((movie: MovieTypes.IMovie) => movie.id) ||
         []
     };
   },
