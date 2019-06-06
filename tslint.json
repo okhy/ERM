@@ -1,5 +1,0 @@
-{
-  "defaultSeverity": "error",
-  "extends": ["tslint-react", "prettier"],
-  "exclude": ["node_modules"]
-}

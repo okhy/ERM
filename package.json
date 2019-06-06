@@ -59,6 +59,8 @@
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.2",
     "typed-css-modules-loader": "0.0.17",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.5",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
@@ -67,11 +69,13 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "@types/reselect": "^2.2.0",
     "npm": "^6.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   }
 }

@@ -58,12 +58,12 @@ const rootPathMiddleware: templateMiddlewareType = (dispatch, handleError) => (
 const detailsMiddleware: templateMiddlewareType = (
   dispatch,
   handleError
-) => async (req, res) => {
-  await movieService
+) => (req, res) => {
+  movieService
     .getMovieByID(req.params.id)
     .then(
-      async (movie: MovieTypes.IMovie): Promise<any> => {
-        return await movieService
+      (movie: MovieTypes.IMovie): Promise<any> => {
+        return movieService
           .getMovieList({
             search: movie.genres ? movie.genres[0] : "",
             searchBy: "genres"

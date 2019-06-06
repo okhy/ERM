@@ -1,0 +1,10 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tsling-config-prettier",
+    "tslint-config-airbnb"
+  ],
+  "exclude": ["node_modules"]
+}

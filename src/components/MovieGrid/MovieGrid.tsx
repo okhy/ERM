@@ -10,6 +10,7 @@ import { MovieTypes } from "Types";
 import { connect } from "react-redux";
 import { StateTypes } from "Types";
 import { Dispatch } from "redux";
+import sortMoviesSelector from 'Views/SearchPage/SearchPage.selector'
 import searchActionTypes from "Views/SearchPage/SearchPage.actions";
 
 type MoviesGridType = {
@@ -91,17 +92,17 @@ const MovieGrid: React.SFC<MoviesGridType> = ({
 /* istanbul ignore next*/
 const mapState = (state: StateTypes.applicationState) => ({
   sortBy: state.searchPage.sortBy,
-  getDetailsPageMovie: (id: number) =>
+  getDetailsPageMovie: (id: number): MovieTypes.IMovie =>
     state.detailsPage.similarMovies.find(
       (movie: MovieTypes.IMovie) => movie.id === id
     ),
-  getSearchPageMovie: (id: number) =>
+  getSearchPageMovie: (id: number): MovieTypes.IMovie =>
     state.searchPage.movies.find((movie: MovieTypes.IMovie) => movie.id === id)
 });
 /* istanbul ignore next*/
 const mapDispatch = (dispatch: Dispatch) => ({
-  sortMovies: (sortKey: string) => {
-    dispatch({ type: searchActionTypes.movieListSorting, payload: sortKey });
+  sortMovies: (sortKey: string): void => {
+    dispatch({ type: searchActionTypes.setMovieListSorting, payload: sortKey });
   }
 });
 
