@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "Components/*": ["components/*"],
-      "Views/*": ["views/*"],
-      "Services/*": ["services/*"],
-      "Src/*": ["*"],
-      "Types": ["types.d.ts"],
-      "Mocks/*": ["../__mocks__/*"]
+      "Components/*": ["src/components/*"],
+      "Views/*": ["src/views/*"],
+      "Services/*": ["src/services/*"],
+      "App/*": ["src/*"],
+      "Types": ["src/types.d.ts"],
+      "Mocks/*": ["__mocks__/*"]
     },
     "moduleResolution": "node",
     "sourceMap": true,

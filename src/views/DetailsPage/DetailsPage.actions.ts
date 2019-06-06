@@ -1,6 +1,6 @@
 import { MovieTypes, ReduxTypes } from "Types";
 import movieService from "Services/movieService";
-import { toggleFetchStatus, fetchError } from "Src/global.actions";
+import { toggleFetchStatus, fetchError } from "App/global.actions";
 
 type resultType = {
   movie: MovieTypes.IMovie;
